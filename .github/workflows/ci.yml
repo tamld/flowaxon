@@ -1,0 +1,31 @@
+name: Portfolio & LLM Endpoint Gate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: HTML, Telemetry JSON & llms.txt Gate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Verify Portfolio & LLM Endpoints
+        run: |
+          python3 -c "
+          import json, os
+          for p in ['index.html', 'llms.txt', 'llms-full.txt', 'data/telemetry.json']:
+              assert os.path.exists(p), f'Missing {p}'
+          json.load(open('data/telemetry.json', encoding='utf-8'))
+          llms = open('llms.txt', encoding='utf-8').read()
+          assert 'tamld/g8s' in llms and 'tamld/hash-checker' in llms and 'tamld/awesome-download-manager' in llms
+          print('Portfolio and LLM endpoints verified.')
+          "

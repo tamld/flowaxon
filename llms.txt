@@ -16,6 +16,8 @@ Tam approaches AI not as prompt-driven magic, but as an untrusted, high-velocity
 - [tamld-llm-wiki (Architecture Case Study)](https://tamld.github.io/llms-full.txt#second-brain): Governed AI Second Brain featuring a deterministic physics engine (wiki.py), ADLC finite state machines, and Gate D deep-why verification.
 - [defense-in-depth](https://github.com/tamld/defense-in-depth): Human-in-the-loop (HITL) HMAC-SHA256 Telegram approval cards for autonomous incident remediation and SRE operations.
 - [TuneFlow](https://github.com/tamld/tuneflow): Fast, cross-platform audio and streaming utility built with modern systems programming.
+- [hash-checker](https://github.com/tamld/hash-checker): Cross-platform cryptographic file integrity verifier in Rust (CLI + Native GUI).
+- [awesome-download-manager](https://github.com/tamld/awesome-download-manager): Deterministic, schema-validated open-source download manager reference catalog with automated liveness and license curation.
 - [GitHub Profile Dossier](https://github.com/tamld/tamld): Central hub documenting architecture decisions, public runtimes, and engineering principles.
 
 ## Architectural Invariants
