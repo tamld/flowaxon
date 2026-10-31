@@ -242,6 +242,14 @@ func NewMux(rootDir string) http.Handler {
 			json.NewEncoder(w).Encode(map[string]string{"status": "pull_triggered"})
 
 		default:
+			if strings.Contains(path, "..") || strings.Contains(r.URL.RawPath, "..") ||
+				strings.HasPrefix(path, "/.") || strings.HasPrefix(path, "/scripts/") ||
+				strings.HasSuffix(path, ".go") || strings.HasSuffix(path, ".mod") ||
+				strings.HasSuffix(path, ".sh") || strings.HasSuffix(path, ".mjs") ||
+				strings.Contains(path, "Containerfile") {
+				http.Error(w, "forbidden", http.StatusForbidden)
+				return
+			}
 			w.Header().Del("Content-Type")
 			if strings.HasSuffix(path, ".svg") {
 				w.Header().Set("Content-Type", "image/svg+xml")
