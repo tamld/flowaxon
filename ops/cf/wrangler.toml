@@ -1,0 +1,21 @@
+# Wrangler configuration for the FlowAxon v4 compute layer.
+# Scope: Cloudflare Pages serves the static site; R2 serves media; the
+# homelab hosts internal services only — see docs/research/01-brand-brief.md §15.
+#
+# name — the Pages project identifier. Wrangler targets this project on deploy.
+name = "flowaxon-v4"
+
+# pages_build_output_dir — directory uploaded as the Pages production bundle.
+# This key activates "Pages / static assets" mode in Wrangler v4 config.
+pages_build_output_dir = "sites/v4"
+
+# compatibility_date — pins runtime behavior semantics (Workers/Pages config
+# surfaces that read this file) to this date. Frozen at WV sign-off.
+compatibility_date = "2026-10-01"
+
+# [r2_buckets] — MEDIA binding reserved for the WV completion step.
+# Media assets are served from the dedicated media bucket custom domain,
+# NOT from Pages. Uncomment and wire bindings only when the media
+# migration activation ships.
+# [r2_buckets]
+# MEDIA = { bucket_name = "flowaxon-media", custom_domain = "media.flowaxon.com" }

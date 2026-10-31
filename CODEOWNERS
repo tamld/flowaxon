@@ -1,0 +1,2 @@
+# Single-owner repository: all changes across the codebase, configuration, and CI/CD pipelines require owner review and approval before merge.
+* @tamld

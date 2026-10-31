@@ -1,0 +1,164 @@
+# P0 gap: between-push drift rescan — see docs/research/13-cicd-security-testing-gap-audit.md
+name: Nightly — Drift Rescan (SBOM/CVE/DAST/uptime)
+
+on:
+  schedule:
+    - cron: "0 2 * * *" # 02:00 UTC daily scheduled scan (source: 24h drift audit cadence)
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: tamld/flowaxon
+
+jobs:
+  # ==========================================================================
+  # JOB 1: OCI CONTAINER DRIFT RESCAN & SBOM CVE GATE
+  # ==========================================================================
+  image-rescan:
+    name: "Rescan 1 — GHCR Image Trivy CVE & Syft/Grype SBOM Gate"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pull Published Image from GHCR
+        run: docker pull ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+
+      - name: Aqua Security Trivy Image CVE Gate
+        run: |
+          docker run --rm -v /var/run/docker.sock:/var/run/docker.sock aquasec/trivy:latest image \
+            --exit-code 1 \
+            --severity HIGH,CRITICAL \
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+
+      - name: Generate CycloneDX SBOM from Image (Anchore Syft)
+        run: |
+          docker run --rm -v /var/run/docker.sock:/var/run/docker.sock anchore/syft:latest \
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest \
+            -o cyclonedx-json > flowaxon-sbom.cdx.json
+          test -s flowaxon-sbom.cdx.json
+
+      - name: Anchore Grype SBOM Vulnerability Gate
+        run: |
+          docker run --rm -v "${PWD}:/work" -w /work anchore/grype:latest \
+            sbom:/work/flowaxon-sbom.cdx.json \
+            --fail-on high
+
+      - name: Record Image Rescan Step Summary
+        if: always()
+        run: |
+          echo "### 📦 Nightly Image Rescan Results" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Target Image: \`${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest\`" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Trivy CVE Gate: Completed (--severity HIGH,CRITICAL; exit-code 1)" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Anchore Syft SBOM: Generated CycloneDX JSON" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Anchore Grype Gate: Completed (--fail-on high)" >> "$GITHUB_STEP_SUMMARY"
+
+  # ==========================================================================
+  # JOB 2: LOCAL EPHEMERAL CONTAINER DAST PROBE SUITE (STAGE 5 REPLICA)
+  # ==========================================================================
+  dast-rescan:
+    name: "Rescan 2 — Ephemeral Container DAST Probe Suite"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      - name: Build & Launch Ephemeral Container Target (:8080)
+        run: |
+          docker build -t flowaxon-dast:latest -f Containerfile .
+          docker run -d --name flowaxon-dast -p 127.0.0.1:8080:8080 --read-only flowaxon-dast:latest
+          sleep 2
+          curl -sf http://127.0.0.1:8080/healthz
+
+      - name: Execute Active DAST Security Probes (Traversal, XSS, Method, Headers, MIME)
+        run: bash scripts/run-dast-probes.sh http://127.0.0.1:8080
+
+      - name: Stop Ephemeral Container
+        if: always()
+        run: docker rm -f flowaxon-dast || true
+
+      - name: Record DAST Rescan Step Summary
+        if: always()
+        run: |
+          echo "### 🛡️ Nightly Ephemeral DAST Results" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Target: Ephemeral Container (\`http://127.0.0.1:8080\`)" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Probe Suite: \`scripts/run-dast-probes.sh\` completed" >> "$GITHUB_STEP_SUMMARY"
+
+  # ==========================================================================
+  # JOB 3: READ-ONLY PRODUCTION HOST UPTIME & TLS EXPIRY PROBE
+  # ==========================================================================
+  uptime-probe:
+    name: "Rescan 3 — Production Host Uptime & TLS Expiry Probe"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Probe Production HTTPS Availability (Read-Only)
+        run: |
+          if ! HTTP_STATUS=$(curl -fsSL -o /dev/null -w "%{http_code}" https://flowaxon.com); then
+            echo "### ❌ Production HTTPS Availability Probe Failed" >> "$GITHUB_STEP_SUMMARY"
+            echo "- Target: \`https://flowaxon.com\`" >> "$GITHUB_STEP_SUMMARY"
+            echo "- Error: Request failed with HTTP status \`${HTTP_STATUS:-unreachable}\`" >> "$GITHUB_STEP_SUMMARY"
+            exit 1
+          fi
+          if [ "$HTTP_STATUS" != "200" ]; then
+            echo "### ❌ Production HTTPS Availability Probe Failed" >> "$GITHUB_STEP_SUMMARY"
+            echo "- Target: \`https://flowaxon.com\`" >> "$GITHUB_STEP_SUMMARY"
+            echo "- Expected: HTTP 200 (source: operational health baseline)" >> "$GITHUB_STEP_SUMMARY"
+            echo "- Actual: HTTP \`$HTTP_STATUS\`" >> "$GITHUB_STEP_SUMMARY"
+            exit 1
+          fi
+          echo "### ✅ Production HTTPS Availability Verified" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Target: \`https://flowaxon.com\` returned HTTP \`$HTTP_STATUS\` (read-only GET)" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Verify Production TLS Certificate Expiry (>= 14 Days Remaining)
+        run: |
+          # 14 days = 14 * 86400 = 1209600 seconds (source: automated certificate renewal grace threshold)
+          MIN_DAYS=14
+          MIN_SECONDS=$((MIN_DAYS * 86400))
+          CERT_DATA=$(echo | openssl s_client -servername flowaxon.com -connect flowaxon.com:443 2>/dev/null)
+          if [ -z "$CERT_DATA" ]; then
+            echo "### ❌ TLS Certificate Inspection Failed" >> "$GITHUB_STEP_SUMMARY"
+            echo "Unable to establish TLS connection to \`flowaxon.com:443\`." >> "$GITHUB_STEP_SUMMARY"
+            exit 1
+          fi
+          CERT_EXPIRY=$(echo "$CERT_DATA" | openssl x509 -noout -enddate 2>/dev/null | cut -d= -f2-)
+          if [ -z "$CERT_EXPIRY" ]; then
+            echo "### ❌ TLS Certificate Inspection Failed" >> "$GITHUB_STEP_SUMMARY"
+            echo "Unable to parse expiration date from TLS certificate for \`flowaxon.com\`." >> "$GITHUB_STEP_SUMMARY"
+            exit 1
+          fi
+          if ! echo "$CERT_DATA" | openssl x509 -noout -checkend "$MIN_SECONDS" > /dev/null; then
+            echo "### ❌ TLS Certificate Expiry Gate Failed" >> "$GITHUB_STEP_SUMMARY"
+            echo "- Endpoint: \`flowaxon.com:443\`" >> "$GITHUB_STEP_SUMMARY"
+            echo "- Expiration Date: \`$CERT_EXPIRY\`" >> "$GITHUB_STEP_SUMMARY"
+            echo "- Threshold: < $MIN_DAYS days remaining" >> "$GITHUB_STEP_SUMMARY"
+            exit 1
+          fi
+          echo "### ✅ TLS Certificate Validity Verified" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Endpoint: \`flowaxon.com:443\`" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Expiration Date: \`$CERT_EXPIRY\`" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Threshold: Verified valid for >= $MIN_DAYS days remaining" >> "$GITHUB_STEP_SUMMARY"
+
+  # ==========================================================================
+  # SUMMARY: DRIFT RESCAN PIPELINE CONVERGENCE
+  # ==========================================================================
+  rescan-summary:
+    name: "Drift Rescan Rollup Summary"
+    runs-on: ubuntu-latest
+    needs: [image-rescan, dast-rescan, uptime-probe]
+    if: always()
+    steps:
+      - name: Compute Nightly Pipeline Drift Status
+        run: |
+          echo "### 🌙 Nightly Drift Rescan Pipeline Summary" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Gate | Job | Status |" >> "$GITHUB_STEP_SUMMARY"
+          echo "| :--- | :--- | :--- |" >> "$GITHUB_STEP_SUMMARY"
+          echo "| GHCR Image CVE & SBOM | \`image-rescan\` | ${{ needs.image-rescan.result }} |" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Ephemeral DAST Probes | \`dast-rescan\` | ${{ needs.dast-rescan.result }} |" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Production Host & TLS | \`uptime-probe\` | ${{ needs.uptime-probe.result }} |" >> "$GITHUB_STEP_SUMMARY"
+          if [ "${{ needs.image-rescan.result }}" != "success" ] || \
+             [ "${{ needs.dast-rescan.result }}" != "success" ] || \
+             [ "${{ needs.uptime-probe.result }}" != "success" ]; then
+            echo "❌ One or more nightly drift rescan gates failed."
+            exit 1
+          fi
+          echo "✅ All nightly drift rescan gates passed."
