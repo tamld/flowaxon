@@ -105,3 +105,8 @@ log check confirms zero traffic during the paused window.
 - k6 v2.3.0, 25 VUs / 60s, `k6-smoke.js`
 - **PASS all thresholds**: p95 = **124ms** (budget <800ms, 6.4× headroom) · http_req_failed = **0.00%** · 19,548/19,548 checks succeeded · avg 76ms / med 66ms (VN → CF edge)
 - Bottleneck note: p95 spike 1.01s max on first-run asset cold path; steady-state edge cache clean.
+
+### 2026-11-01 — production domain cutover (flowaxon.com → CF Pages edge)
+- Custom domain Active; served by CF edge (cf-ray SIN) — apex no longer traverses the homelab (structural zero-origin).
+- k6 smoke: p95 = **166ms**, 0.00% failures, 13,298/13,298 checks ✓ (budget <800ms, 4.8× headroom).
+- CSP + HSTS live on production (`_headers` parity with main.go, incl. media-src for R2).
