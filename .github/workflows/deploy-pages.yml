@@ -53,7 +53,7 @@ jobs:
               yaml.safe_load(yml.read_text(encoding="utf-8"))
           print("workflow YAML parses OK")
           PY
-          find sites/v4 -type f -name '*.html' -print0 | while IFS= read -r -d '' f; do
+          find . -maxdepth 1 -type f -name '*.html' -print0 | while IFS= read -r -d '' f; do
             python3 -c "import sys; from html.parser import HTMLParser; p=sys.argv[1]; HTMLParser().feed(open(p, encoding='utf-8').read())" "$f"
           done
           echo "built HTML sanity-check OK"
