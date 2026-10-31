@@ -317,3 +317,14 @@
     initCopyEmail();
   }
 })();
+
+/* promo play toggle */
+(function(){
+  var b=document.getElementById('promoPlay'),v=document.getElementById('promoFull');
+  if(!b||!v)return;
+  b.addEventListener('click',function(){
+    v.classList.toggle('is-on');
+    if(v.classList.contains('is-on')){v.play();b.textContent='✕ hide the promo';}
+    else{v.pause();b.textContent='▶ play the promo';}
+  });
+})();
