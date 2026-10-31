@@ -23,6 +23,14 @@ func NewMux(rootDir string) http.Handler {
 		host := r.Host
 		path := r.URL.Path
 
+		// Self-hardened HTTP security headers (enforced in standalone container & behind Traefik)
+		w.Header().Set("Content-Security-Policy", "default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; img-src 'self' data: https:; font-src 'self'; connect-src 'self' https://cloudflareinsights.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests")
+		w.Header().Set("Strict-Transport-Security", "max-age=31536000; includeSubDomains; preload")
+		w.Header().Set("X-Content-Type-Options", "nosniff")
+		w.Header().Set("X-Frame-Options", "DENY")
+		w.Header().Set("Referrer-Policy", "strict-origin-when-cross-origin")
+		w.Header().Set("Permissions-Policy", "camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()")
+
 		if strings.HasPrefix(host, "www.") {
 			http.Redirect(w, r, "https://flowaxon.com"+r.URL.RequestURI(), http.StatusMovedPermanently)
 			return
@@ -262,5 +270,13 @@ func main() {
 	if len(os.Args) > 1 {
 		rootDir = os.Args[1]
 	}
-	http.ListenAndServe(":"+port, NewMux(rootDir))
+	srv := &http.Server{
+		Addr:              ":" + port,
+		Handler:           NewMux(rootDir),
+		ReadHeaderTimeout: 10 * time.Second,
+		ReadTimeout:       30 * time.Second,
+		WriteTimeout:      60 * time.Second,
+		IdleTimeout:       120 * time.Second,
+	}
+	_ = srv.ListenAndServe()
 }
