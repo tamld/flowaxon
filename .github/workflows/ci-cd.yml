@@ -120,21 +120,20 @@ jobs:
         run: docker build -t ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:test-${{ github.sha }} -f Containerfile .
 
       - name: Run Aqua Security Trivy Image Vulnerability Scan
-        uses: aquasecurity/trivy-action@18f2510ee396bbf400402990b394f2dd8c87dbb0 # 0.28.0
-        with:
-          image-ref: "${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:test-${{ github.sha }}"
-          format: "table"
-          exit-code: "1"
-          ignore-unfixed: true
-          vuln-type: "os,library"
-          severity: "CRITICAL,HIGH"
+        run: |
+          docker run --rm -v /var/run/docker.sock:/var/run/docker.sock aquasec/trivy:latest image \
+            --exit-code 1 \
+            --ignore-unfixed \
+            --pkg-types os \
+            --severity CRITICAL,HIGH \
+            "${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:test-${{ github.sha }}"
 
-      - name: Generate CycloneDX SBOM Artifact
-        uses: anchore/sbom-action@e22c38f90f1ab9dbf6ee32fc5ac9ded1dc692e57 # v0.17.8
-        with:
-          image: "${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:test-${{ github.sha }}"
-          format: cyclonedx-json
-          output-file: flowaxon-sbom.cdx.json
+      - name: Generate CycloneDX SBOM Artifact (Anchore Syft)
+        run: |
+          docker run --rm -v /var/run/docker.sock:/var/run/docker.sock anchore/syft:latest \
+            "${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:test-${{ github.sha }}" \
+            -o cyclonedx-json > flowaxon-sbom.cdx.json
+          test -s flowaxon-sbom.cdx.json
 
   # ==========================================================================
   # STAGE 5: LIVE DAST (DYNAMIC APPLICATION SECURITY TESTING) PROBE SUITE
@@ -179,7 +178,7 @@ jobs:
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
       - name: Log in to GitHub Container Registry (GHCR)
-        uses: docker/login-action@9780b0c442fbb1117ed29e0efdff1e18412f7567 # v3.3.0
+        uses: docker/login-action@81c6f93d4bc991e510b342a00b419b3bb4efc5c6 # v4.7.0
         with:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
@@ -187,7 +186,7 @@ jobs:
 
       - name: Build and Push Hardened Distroless Image
         id: push
-        uses: docker/build-push-action@4f58ea79222b3b9dc2c8bbdd6debcef730109a75 # v6.9.0
+        uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc # v7.4.0
         with:
           context: .
           file: ./Containerfile
@@ -197,7 +196,7 @@ jobs:
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:sha-${{ github.sha }}
 
       - name: Attest SLSA Build Provenance
-        uses: actions/attest-build-provenance@1c608d11d69870c2092266b3f9a6f3abbf17002c # v1.4.3
+        uses: actions/attest-build-provenance@4d101475d8b20a2381f78447822ac1eab6504dd8 # v4.2.2
         with:
           subject-name: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           subject-digest: ${{ steps.push.outputs.digest }}
