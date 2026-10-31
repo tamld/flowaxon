@@ -98,3 +98,10 @@ log check confirms zero traffic during the paused window.
 - For Cloud runs, link the k6 Cloud run URL in the same PR comment.
 - Any FAILED or rate-limited observations must include the failing
   request names from the k6 output so they are actionable.
+
+## Results log
+
+### 2026-11-01 — first edge load test (flowaxon-v4.pages.dev)
+- k6 v2.3.0, 25 VUs / 60s, `k6-smoke.js`
+- **PASS all thresholds**: p95 = **124ms** (budget <800ms, 6.4× headroom) · http_req_failed = **0.00%** · 19,548/19,548 checks succeeded · avg 76ms / med 66ms (VN → CF edge)
+- Bottleneck note: p95 spike 1.01s max on first-run asset cold path; steady-state edge cache clean.
