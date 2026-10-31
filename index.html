@@ -1,765 +1,533 @@
 <!DOCTYPE html>
-<html lang="en" class="dark scroll-smooth">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Le Duc Tam (tamld) — AI Systems Architect & Enterprise IT Operations</title>
-  <meta name="description" content="11+ years bridging mission-critical enterprise IT operations with autonomous AI agent systems and deterministic governance harnesses.">
-  <meta name="author" content="Le Duc Tam (tamld)">
-  <link rel="canonical" href="https://flowaxon.com/">
-
-  <!-- Favicon & Touch Icons -->
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="manifest" href="/site.webmanifest">
-  <meta name="theme-color" content="#09090b">
-
-  <!-- Open Graph / Meta -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://flowaxon.com/">
-  <meta property="og:title" content="Le Duc Tam (tamld) — AI Systems Architect & Enterprise IT Operations">
-  <meta property="og:description" content="11+ years bridging mission-critical infrastructure with autonomous agentic harnesses. Physical evidence first. Zero marketing fluff.">
-  <meta property="og:image" content="https://github.com/tamld.png">
-
-  <!-- Machine-Readable Standards -->
-  <link rel="alternate" type="text/markdown" title="LLMs.txt" href="/llms.txt">
-  <link rel="alternate" type="text/markdown" title="LLMs Full Dossier" href="/llms-full.txt">
-
-  <!-- Typography: Inter & JetBrains Mono -->
-  <link rel="stylesheet" href="/assets/css/flowaxon.css?v=3.0.0" integrity="sha384-kgJdnTRA2ZaYFKTkSZzD0TAOrENpKbjdzT+9pfsq4yfU+Q/3WPCLsKSP9mlYZG10" crossorigin="anonymous">
-  <script src="/assets/js/flowaxon.js?v=3.0.0" integrity="sha384-mJ3dfZoS3Qf9LRXZlnQWHu1iH9QTYjgLFj8g8m6acQ/JZBszkIv9aO8oNyd4ewnH" crossorigin="anonymous" defer></script>
-
-  <!-- Structured Data: Schema.org Entity Profile -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FlowAxon v4 — AI Agent Systems Architect &amp; Infrastructure Governance</title>
+  <meta property="og:description" content="11 years of production infrastructure. Deterministic harnesses for autonomous AI: g8s + Aegis.">
+  <meta property="og:image" content="https://flowaxon.com/assets/og-image.png">
+  <meta property="og:title" content="Le Duc Tam — I build the brakes for autonomous AI agents">
+  <meta name="description" content="Autonomous AI agents are already in production. Most have no brakes. I build the brakes. Eleven years of operating real infrastructure.">
+  <link rel="stylesheet" href="assets/v4/v4.css" integrity="sha384-54A/zBCgEgir6lan3PhKHe6MFfLUueI102ZKoLYcKUdu0bJ5j2NrPsD6Ms4q89Hn" crossorigin  crossorigin>
+  <script src="assets/v4/v4.js" integrity="sha384-LNSmhLz8bs0rsOS8kiQ8zomUkHRajJglwuPH8q3Wo2v6mqghu+dB9Af4JVr+SyyS" crossorigin  crossorigin defer></script>
+  <script src="assets/v4/rig.js" integrity="sha384-rLffYEfhTOyLwXcfGTSxw/E7DYKJ6++/i3cSZckhsJ7oL8ztjTzsVgqWQ9g/GZv7" crossorigin  crossorigin defer></script>
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ProfilePage",
-    "dateCreated": "2026-10-07T00:00:00Z",
-    "dateModified": "2026-10-31T00:00:00Z",
-    "mainEntity": {
-      "@type": "Person",
-      "name": "Le Duc Tam",
-      "alternateName": "tamld",
-      "jobTitle": "Systems Engineer & AI Agent Systems Architect",
-      "description": "11+ years enterprise IT infrastructure operations, Linux virtualization, networking, and deterministic AI agentic systems engineering.",
-      "url": "https://flowaxon.com/",
-      "image": "https://github.com/tamld.png",
-      "sameAs": [
-        "https://github.com/tamld",
-        "https://linkedin.com/in/tamld"
-      ],
-      "knowsAbout": [
-        "Enterprise IT Infrastructure",
-        "Linux Virtualization & LXC",
-        "Proxmox VE",
-        "MikroTik RouterOS",
-        "Ansible Automation",
-        "Deterministic AI Agent Systems",
-        "VictoriaLogs Telemetry",
-        "GitOps & Zero-Leakage DLP"
-      ]
-    }
-  }
+  {"@context":"https://schema.org","@graph":[
+    {"@type":"Person","name":"Le Duc Tam","alternateName":"tamld","jobTitle":"AI Agent Systems Architect & Principal Infrastructure Engineer","url":"https://flowaxon.com","sameAs":["https://github.com/tamld"],"knowsAbout":["AI agent orchestration","zero-trust infrastructure","DevSecOps","Go","homelab automation"]},
+    {"@type":"WebSite","name":"FlowAxon","url":"https://flowaxon.com","author":{"@type":"Person","name":"Le Duc Tam"},"description":"Deterministic harnesses for autonomous AI agents — g8s and Aegis."}
+  ]}
   </script>
 </head>
-<!--email_off-->
-<body class="bg-canvas text-zinc-300 font-sans antialiased min-h-screen">
+<body>
 
-  <!-- TOP BAR: Global Ecosystem Switcher + Live SSE Telemetry -->
-  <header class="sticky top-0 z-50 bg-canvas border-b border-borderHairline px-4 sm:px-8 py-3">
-    <div class="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-4">
-      
-      <!-- Brand, Ecosystem Subdomain Switcher & Live SSE Heartbeat -->
-      <div class="flex flex-wrap items-center gap-2.5">
-        <a href="#top" class="flex items-center gap-2 font-mono text-sm tracking-tight text-zinc-100 hover:text-white transition-colors">
-          <span class="w-2 h-2 rounded-full bg-signalGreen inline-block"></span>
-          <span class="font-semibold text-zinc-200">flowaxon</span>
-          <span class="text-zinc-600">/</span>
-          <span class="text-zinc-400 text-xs font-normal">hub</span>
-        </a>
-
-        <nav class="flex items-center gap-1.5 font-mono text-[11px]" aria-label="FlowAxon Product Constellation">
-          <a href="https://flowaxon.com" class="px-2 py-0.5 rounded bg-[#0c1926] border border-[#14324f] text-accentLight font-semibold">Hub</a>
-          <a href="https://g8s.flowaxon.com" class="px-2 py-0.5 rounded bg-panel border border-borderHairline text-zinc-300 hover:text-white hover:border-accentLight transition-colors">g8s.flowaxon.com ↗</a>
-          <a href="https://aegis.flowaxon.com" class="px-2 py-0.5 rounded bg-panel border border-borderHairline text-zinc-300 hover:text-white hover:border-accentLight transition-colors">aegis.flowaxon.com ↗</a>
-        </nav>
-
-        <div id="header-status-badge" class="hidden sm:inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-panel border border-borderHairline text-[11px] font-mono text-zinc-400">
-          <span class="text-signalGreen font-bold">●</span>
-          <span id="sse-status-text">SSE LIVE</span>
-          <span id="sse-mem" class="text-accentLight"></span>
-          <span id="sse-uptime" class="text-zinc-500"></span>
-        </div>
-      </div>
-
-      <!-- Actions & Machine Links -->
-      <div class="flex items-center gap-3 text-xs font-mono">
-        <a href="#systems" class="hidden md:inline-block text-zinc-400 hover:text-zinc-100 py-1 px-2 transition-colors">Constellation</a>
-        <a href="#journey" class="hidden md:inline-block text-zinc-400 hover:text-zinc-100 py-1 px-2 transition-colors">Journey</a>
-
-        <button type="button" data-cmdk-toggle="1" class="px-2.5 py-1 rounded bg-panel border border-borderSubtle text-zinc-200 hover:border-accentLight transition-colors font-mono text-xs" title="Open Command Palette (Cmd+K)">⌘K</button>
-        <a href="/llms.txt" class="flex items-center gap-1.5 px-2.5 py-1 rounded bg-panel border border-borderSubtle text-accentLight hover:border-zinc-500 transition-colors" title="View Machine-Readable LLM Index">
-          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 17v1"/><path d="M15 17v1"/><path d="M9 7h6"/><path d="M12 7v3"/></svg>
-          <span>/llms.txt</span>
-        </a>
-
-        <div class="flex items-center gap-1.5 pl-2 border-l border-borderHairline text-zinc-400">
-          <a href="https://github.com/tamld" target="_blank" rel="noopener noreferrer" class="p-1.5 rounded hover:text-zinc-100 hover:bg-panel transition-colors" title="GitHub">
-            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
-          </a>
-          <a href="https://linkedin.com/in/tamld" target="_blank" rel="noopener noreferrer" class="p-1.5 rounded hover:text-zinc-100 hover:bg-panel transition-colors" title="LinkedIn">
-            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
-          </a>
-          <a href="mailto:ductam1828@gmail.com" class="p-1.5 rounded hover:text-zinc-100 hover:bg-panel transition-colors" title="Email">
-            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-          </a>
-        </div>
-      </div>
-
+  <header class="site-header">
+    <div class="container nav-row">
+    <a href="#hero" class="brand-link" aria-label="FlowAxon Homepage">
+    <span>flowaxon</span>
+    <span class="brand-badge">v4</span>
+    </a>
+    <nav class="nav-links" aria-label="Primary Navigation">
+    <a href="#duality">01 Duality</a>
+    <a href="#thread">02 Thread</a>
+    <a href="#acts">03 Acts</a>
+    <a href="#surf">04 Surf</a>
+    <a href="#work">06 Work</a>
+    <a href="#motion">07 Motion</a>
+    <a href="#collaborate">08 Collaborate</a>
+    </nav>
     </div>
   </header>
 
-  <main class="max-w-6xl mx-auto px-4 sm:px-8 py-8 sm:py-12 space-y-16">
+  <main>
+    <!-- 1. HERO -->
+    <section id="hero" class="section-v4">
+    <div class="container">
+    <h1 class="hero-h1">Autonomous AI agents are already in production. Most have <span class="text-amber">no brakes</span>. I build the brakes.</h1>
+    <p class="hero-echo">$ whoami — AI agent systems architect · 11y production · UTC+7</p>
+    <p class="hero-sub">Eleven years of operating real infrastructure — from a 48-hour ransomware crucible to a Proxmox/podman fleet in production. One drive underneath it all: take what repeats, and make it obey — one system, seen from above. g8s is the engine agents obey; Aegis is the console humans command.</p>
 
-    <!-- 7:5 ASYMMETRIC SPLIT HERO: FLAT, CLEAN & SOLID -->
-    <section id="top" class="grid lg:grid-cols-12 gap-8 items-start pt-2">
-      
-      <!-- Left Column: Identity, Real Face, Stance (Col 7) -->
-      <div class="lg:col-span-7 space-y-6">
-        
-        <!-- Avatar + Live Identity Header -->
-        <div class="flex items-center gap-4">
-          <div class="relative shrink-0">
-            <img src="https://github.com/tamld.png" alt="Le Duc Tam" 
-                 class="w-16 h-16 sm:w-20 sm:h-20 rounded-full border border-borderSubtle object-cover bg-panel">
-            <span class="absolute bottom-0 right-0 w-3.5 h-3.5 rounded-full bg-signalGreen border-2 border-canvas" title="Operational"></span>
-          </div>
+    <div class="hero-chips" aria-label="Core Engineering Pillars">
+    <span class="chip">g8s</span>
+    <span class="chip">Aegis</span>
+    <span class="chip">6-stage zero-trust CI</span>
+    <span class="chip">SLSA attested</span>
+    <span class="chip">EN-first</span>
+    </div>
 
-          <div class="space-y-1">
-            <h1 class="text-2xl sm:text-4xl font-bold tracking-tight text-zinc-100">
-              Le Duc Tam
-            </h1>
-            <p class="text-xs sm:text-sm font-mono text-zinc-400">
-              Systems Engineer &amp; AI Agent Architect • 11+ Yrs Infrastructure
-            </p>
-          </div>
-        </div>
-
-        <!-- Stance: Clear, unpadded statement of engineering truth -->
-        <div class="space-y-3">
-          <p class="text-base sm:text-lg text-zinc-200 font-normal leading-relaxed">
-            Bridging <span class="text-white font-medium underline decoration-zinc-700 decoration-1 underline-offset-4">11+ years of enterprise IT infrastructure</span> with <span class="text-accentLight font-medium">autonomous AI agent harnesses</span> and deterministic governance.
-          </p>
-
-          <p class="text-xs sm:text-sm text-zinc-400 font-mono leading-relaxed border-l-2 border-borderSubtle pl-3">
-            "I don't build systems to impress — I build them to quietly endure. Solid systems begin with steady hands, zero-trust boundaries, and physical evidence."
-          </p>
-        </div>
-
-        <!-- Concrete Metrics Capsule - Solid Panels -->
-        <div class="grid grid-cols-3 gap-2.5 pt-1 font-mono">
-          <div class="p-3 rounded bg-panel border border-borderHairline">
-            <div class="text-xl sm:text-2xl font-bold text-zinc-100">11+</div>
-            <div class="text-[11px] text-zinc-400">Years Enterprise Ops</div>
-          </div>
-          <div class="p-3 rounded bg-panel border border-borderHairline">
-            <div class="text-xl sm:text-2xl font-bold text-accentLight">Zero-WAN</div>
-            <div class="text-[11px] text-zinc-400">Default-Deny Ingress</div>
-          </div>
-          <div class="p-3 rounded bg-panel border border-borderHairline">
-            <div class="text-xl sm:text-2xl font-bold text-signalGreen">&lt; 2s</div>
-            <div class="text-[11px] text-zinc-400">LogSQL Fleet Triage</div>
-          </div>
-        </div>
-
-        <!-- Direct Action Anchors -->
-        <div class="flex flex-wrap items-center gap-3 pt-2 font-mono text-xs">
-          <a href="#systems" class="px-4 py-2 rounded bg-zinc-100 text-zinc-950 font-medium hover:bg-white transition-colors flex items-center gap-1.5">
-            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></svg>
-            <span>Engineered Systems</span>
-          </a>
-          <a href="https://github.com/tamld" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2 rounded bg-panel border border-borderSubtle text-zinc-300 hover:text-white hover:border-zinc-500 transition-colors flex items-center gap-1.5">
-            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
-            <span>GitHub Profile</span>
-          </a>
-          <a href="https://linkedin.com/in/tamld" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2 rounded bg-panel border border-borderSubtle text-zinc-300 hover:text-white hover:border-zinc-500 transition-colors flex items-center gap-1.5">
-            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
-            <span>LinkedIn</span>
-          </a>
-        </div>
-
-      </div>
-
-      <!-- Right Column: Living Telemetry Shell (Col 5) -->
-      <div class="lg:col-span-5 space-y-3">
-        
-        <div class="rounded-lg overflow-hidden border border-borderSubtle bg-panel">
-          <!-- Terminal Titlebar - Flat solid header -->
-          <div class="flex items-center justify-between px-3.5 py-2 bg-[#0c0c0f] border-b border-borderHairline text-zinc-400 font-mono text-xs">
-            <div class="flex items-center gap-2">
-              <span class="w-2.5 h-2.5 rounded-full bg-zinc-700 inline-block"></span>
-              <span class="w-2.5 h-2.5 rounded-full bg-zinc-700 inline-block"></span>
-              <span class="w-2.5 h-2.5 rounded-full bg-zinc-700 inline-block"></span>
-              <span class="ml-2 text-zinc-400 text-[11px]">telemetry@tamld:~</span>
-            </div>
-            <span class="text-[10px] text-zinc-500 font-mono">zsh • active</span>
-          </div>
-
-          <!-- Output Screen -->
-          <div id="terminal-screen" class="p-4 space-y-2.5 text-xs font-mono min-h-[220px] max-h-[300px] overflow-y-auto text-zinc-300">
-            <div class="text-zinc-500">// System ready. Click commands or execute below:</div>
-            
-            <div class="space-y-1">
-              <div><span class="text-signalGreen">guest@tamld:~$</span> <span class="text-zinc-100">tamld --status</span></div>
-              <div class="text-zinc-400 pl-3 border-l border-borderSubtle space-y-0.5 text-[11px]">
-                <div>• Node: Proxmox VE (i5-8500, 16GB Hard Budget)</div>
-                <div>• Gateway: MikroTik RouterOS (DHCP Authority)</div>
-                <div>• Ingress: Traefik v3 + CrowdSec (Zero-WAN)</div>
-                <div>• Agent Harness: g8s Subagent Capability Sandbox</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Interactive Input with Tab Autocomplete and History -->
-          <div class="p-2.5 bg-black border-t border-borderHairline flex items-center gap-2 font-mono text-xs">
-            <span class="text-signalGreen select-none">$</span>
-            <input id="terminal-input" type="text" autocomplete="off" spellcheck="false"
-                   placeholder="type 'drill', 'ping wan', 'uptime', 'skills' (Tab to complete, ↑/↓ for history)..." 
-                   class="flex-1 bg-transparent text-zinc-100 placeholder-zinc-600 focus:outline-none">
-            <button id="terminal-run" class="px-2 py-0.5 rounded bg-zinc-800 hover:bg-zinc-700 text-zinc-300 text-[11px] transition-colors" title="Execute Command (Enter)">
-              run ↵
-            </button>
-          </div>
-
-          <!-- Chip shortcuts -->
-          <div class="px-3 py-2 bg-[#0c0c0f] border-t border-borderHairline flex flex-wrap items-center justify-between gap-1.5 text-[11px] font-mono">
-            <div class="flex flex-wrap gap-1.5">
-              <button data-term-cmd="drill" class="px-2 py-0.5 rounded bg-[#271d0c] hover:bg-[#38280f] text-amber-400 border border-[#4a3413] transition-colors flex items-center gap-1" title="Execute SRE Incident Triage Drill simulation">
-                <span>⚡ drill</span>
-              </button>
-              <button data-term-cmd="products" class="px-2 py-0.5 rounded bg-zinc-800 hover:bg-zinc-700 text-accentLight transition-colors" title="Query live product constellation">products</button>
-              <button data-term-cmd="g8s" class="px-2 py-0.5 rounded bg-zinc-800 hover:bg-zinc-700 text-accentLight transition-colors" title="Inspect g8s portal">g8s</button>
-              <button data-term-cmd="aegis" class="px-2 py-0.5 rounded bg-zinc-800 hover:bg-zinc-700 text-rose-400 transition-colors" title="Inspect Aegis portal">aegis</button>
-              <button data-term-cmd="ping wan" class="px-2 py-0.5 rounded bg-zinc-800 hover:bg-zinc-700 text-signalGreen transition-colors" title="Ping WAN edge endpoint">ping</button>
-              <button data-term-cmd="uptime" class="px-2 py-0.5 rounded bg-zinc-800 hover:bg-zinc-700 text-zinc-300 transition-colors" title="Check live system uptime">uptime</button>
-              <button data-term-cmd="topology" class="px-2 py-0.5 rounded bg-zinc-800 hover:bg-zinc-700 text-accentLight transition-colors">topology</button>
-              <button data-term-cmd="clear" class="px-2 py-0.5 rounded bg-zinc-800 hover:bg-zinc-700 text-zinc-500 transition-colors">clear</button>
-            </div>
-            <div class="hidden sm:inline-block text-[10px] text-zinc-500">
-              press <kbd class="px-1 py-0.5 rounded bg-zinc-800 text-zinc-300">/</kbd> to focus
-            </div>
-          </div>
-        </div>
-
-      </div>
-
+    <div class="hero-stats-grid">
+    <div class="stat-card reveal-on-scroll">
+    <div class="stat-value" data-count="1146">1,146</div>
+    <div class="stat-label">repos surfed</div>
+    <a href="https://github.com/tamld?tab=stars" class="src-link" target="_blank" rel="noopener noreferrer">github.com/tamld?tab=stars ↗</a>
+    </div>
+    <div class="stat-card reveal-on-scroll">
+    <div class="stat-value"><span data-count="6">6</span>/6</div>
+    <div class="stat-label">CI stages verified</div>
+    <a href="https://github.com/tamld/flowaxon/actions/runs/41189766268" class="src-link" target="_blank" rel="noopener noreferrer">run #41189766268 link ↗</a>
+    </div>
+    <div class="stat-card reveal-on-scroll">
+    <div class="stat-value"><span data-count="864">864</span> KB</div>
+    <div class="stat-label">RSS prod memory</div>
+    <a href="/healthz" class="src-link">(measured 2026-10-31)</a>
+    </div>
+    <div class="stat-card reveal-on-scroll">
+    <div class="stat-value">1:1</div>
+    <div class="stat-label">issue=worker=receipt</div>
+    <a href="https://github.com/tamld/g8s" class="src-link" target="_blank" rel="noopener noreferrer">github.com/tamld/g8s ↗</a>
+    </div>
+    </div>
+    </div>
     </section>
 
-    
-    <!-- BA STAKEHOLDER & READER SELF-SEGMENTATION ROUTER (v3.0) -->
-    <section id="persona-router" class="p-4 sm:p-5 rounded-lg bg-panel border border-borderSubtle space-y-3">
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-        <div class="flex items-center gap-2 font-mono text-xs">
-          <span class="px-2 py-0.5 rounded bg-[#0c1926] border border-[#14324f] text-accentLight font-bold">BA LENS</span>
-          <span class="text-zinc-300">Select your stakeholder role to tailor proof points:</span>
-        </div>
-        <div class="flex flex-wrap gap-2" role="group" aria-label="Stakeholder Persona Filter">
-          <button type="button" data-persona-filter="cto" class="persona-pill active">1. CTO / VP Engineering</button>
-          <button type="button" data-persona-filter="sre" class="persona-pill">2. Principal SRE &amp; SecOps</button>
-          <button type="button" data-persona-filter="builder" class="persona-pill">3. AI Agent Builder</button>
-          <button type="button" data-persona-filter="agent" class="persona-pill">4. WebMCP / AI Agent</button>
-        </div>
-      </div>
-      <div class="p-3.5 rounded bg-black border border-borderHairline flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <div class="space-y-1">
-          <div id="persona-lens-badge" class="text-[10px] font-mono uppercase tracking-wider text-signalGreen">CTO / VP OF ENGINEERING LENS</div>
-          <div id="persona-lens-headline" class="text-sm sm:text-base font-bold text-white">Zero-Quota-Burn AI Delegation + Deterministic Production Governance</div>
-          <p id="persona-lens-summary" class="text-xs text-zinc-400 leading-relaxed">See how g8s eliminates frontier F0 Brain quota waste (0% coordinator burn via 9router worker fan-out) while Aegis enforces HMAC-SHA256 human-in-the-loop blast doors on production infrastructure.</p>
-        </div>
-        <a id="persona-lens-cta" href="#anatomy" class="shrink-0 px-3.5 py-2 rounded bg-[#0c1926] border border-[#14324f] text-accentLight hover:text-white font-mono text-xs">Inspect 3D Constellation Rig ↓</a>
-      </div>
+    <!-- 2. 01 THE TRUST DUALITY -->
+    <section id="duality" class="section-v4">
+    <div class="container">
+    <h2 class="section-title">Two governance planes, one invariant boundary</h2>
+    <div class="duality-grid">
+    <div class="duality-panel panel-g8s reveal-on-scroll">
+    <div class="duality-head">
+    <span class="duality-name">g8s</span>
+    <span class="duality-tagline">"The engine agents obey"</span>
+    </div>
+    <ul class="duality-list">
+    <li>agent-facing: containment rings F2⊆F1⊆F0</li>
+    <li>single-use path-scoped write receipts</li>
+    <li>fail-closed worktree isolation</li>
+    <li>durable SQLite controlplane</li>
+    </ul>
+    </div>
+    <div class="duality-hinge" aria-hidden="true">
+    <span class="hinge-glyph">⧉</span>
+    <span class="hinge-label">Harness Ring</span>
+    </div>
+    <div class="duality-panel panel-aegis reveal-on-scroll">
+    <div class="duality-head">
+    <span class="duality-name">Aegis</span>
+    <span class="duality-tagline">"The console humans command"</span>
+    </div>
+    <ul class="duality-list">
+    <li>human-facing: runtime interception &amp; blast doors</li>
+    <li>HITL approvals</li>
+    <li>AST-level mutation guards</li>
+    <li>proportional governance</li>
+    </ul>
+    </div>
+    </div>
+    </div>
     </section>
 
-
-    <!-- REAL MONOCHROME TECH SUBSTRATE -->
-    <section class="border-y border-borderHairline py-5 space-y-3">
-      <div class="text-[11px] font-mono text-zinc-500 uppercase tracking-wider text-center sm:text-left">
-        Operating Substrate &amp; Toolchain
-      </div>
-
-      <div class="flex flex-wrap items-center justify-between gap-6 opacity-80 font-mono text-xs text-zinc-300">
-        <div class="flex items-center gap-2 hover:text-white transition-colors">
-          <svg class="w-4 h-4 text-amber-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><line x1="6" x2="6.01" y1="6" y2="6"/><line x1="6" x2="6.01" y1="18" y2="18"/></svg>
-          <span>Proxmox VE</span>
-        </div>
-        <div class="flex items-center gap-2 hover:text-white transition-colors">
-          <svg class="w-4 h-4 text-sky-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="8" x="2" y="14" rx="2"/><path d="M6.01 18H6"/><path d="M10.01 18H10"/><path d="M15 10v4"/><path d="M17.84 7.17a4 4 0 0 0-5.66 0"/><path d="M20.66 4.34a8 8 0 0 0-11.31 0"/></svg>
-          <span>MikroTik RouterOS</span>
-        </div>
-        <div class="flex items-center gap-2 hover:text-white transition-colors">
-          <svg class="w-4 h-4 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" x2="20" y1="19" y2="19"/></svg>
-          <span>Go / Golang</span>
-        </div>
-        <div class="flex items-center gap-2 hover:text-white transition-colors">
-          <svg class="w-4 h-4 text-blue-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-          <span>Python 3.11</span>
-        </div>
-        <div class="flex items-center gap-2 hover:text-white transition-colors">
-          <svg class="w-4 h-4 text-red-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="8" x="3" y="3" rx="2"/><path d="M7 11v4a2 2 0 0 0 2 2h4"/><rect width="8" height="8" x="13" y="13" rx="2"/></svg>
-          <span>Ansible IaC</span>
-        </div>
-        <div class="flex items-center gap-2 hover:text-white transition-colors">
-          <svg class="w-4 h-4 text-cyan-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
-          <span>Traefik v3</span>
-        </div>
-        <div class="flex items-center gap-2 hover:text-white transition-colors">
-          <svg class="w-4 h-4 text-indigo-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="16" y="16" width="6" height="6" rx="1"/><rect x="2" y="16" width="6" height="6" rx="1"/><rect x="9" y="2" width="6" height="6" rx="1"/><path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"/><path d="M12 12V8"/></svg>
-          <span>Tailscale Mesh</span>
-        </div>
-        <div class="flex items-center gap-2 hover:text-white transition-colors">
-          <svg class="w-4 h-4 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.48 12H2"/></svg>
-          <span>VictoriaLogs</span>
-        </div>
-      </div>
+    <!-- 3. 02 THE ONE THREAD -->
+    <section id="thread" class="section-v4">
+    <div class="container">
+    <h2 class="section-title">From shell scripts to agent containment harnesses</h2>
+    <div class="thread-card reveal-on-scroll">
+    <div class="thread-svg-wrap">
+    <svg class="thread-svg" font-family="ui-monospace, monospace" viewBox="0 0 720 90" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Chronological evolution timeline">
+    <line x1="80" y1="45" x2="640" y2="45" stroke="#f0a832" stroke-width="2" stroke-dasharray="6 6" opacity="0.8" />
+    <circle cx="80" cy="45" r="8" fill="#0a0e14" stroke="#e07850" stroke-width="3" />
+    <circle cx="80" cy="45" r="3" fill="#e07850" />
+    <text x="80" y="24" fill="#e07850" font-size="12" font-weight="700" text-anchor="middle">2016</text>
+    <circle cx="360" cy="45" r="8" fill="#0a0e14" stroke="#6f8fb8" stroke-width="3" />
+    <circle cx="360" cy="45" r="3" fill="#6f8fb8" />
+    <text x="360" y="24" fill="#6f8fb8" font-size="12" font-weight="700" text-anchor="middle">2021</text>
+    <circle cx="640" cy="45" r="8" fill="#0a0e14" stroke="#f0a832" stroke-width="3" />
+    <circle cx="640" cy="45" r="3" fill="#f0a832" />
+    <text x="640" y="24" fill="#f0a832" font-size="12" font-weight="700" text-anchor="middle">2025</text>
+    </svg>
+    </div>
+    <div class="thread-nodes-grid">
+    <div class="thread-node-box node-rust">
+    <div class="thread-year text-rust">2016 company floor</div>
+    <p class="thread-body">"cmd scripts kill repetition → automation mindset born"</p>
+    </div>
+    <div class="thread-node-box node-steel">
+    <div class="thread-year text-steel">2021 the doctrine</div>
+    <p class="thread-body">"top-down vision, then lateral — homelab becomes one governed system"</p>
+    </div>
+    <div class="thread-node-box node-amber">
+    <div class="thread-year text-amber">2025 the harness</div>
+    <p class="thread-body">"g8s unifies agent chaos under receipts and rings"</p>
+    </div>
+    </div>
+    </div>
+    </div>
     </section>
 
-    <!-- INTERACTIVE 4-LAYER ISOMETRIC SYSTEM ANATOMY RIG -->
-    <section id="anatomy" class="p-5 sm:p-6 rounded-lg bg-panel border border-borderSubtle space-y-4">
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-borderHairline pb-3">
-        <div class="space-y-0.5">
-          <div class="text-[11px] font-mono uppercase tracking-wider text-accentLight flex items-center gap-1.5">
-            <span class="w-1.5 h-1.5 bg-signalGreen rounded-full"></span>
-            Interactive 4-Layer System Anatomy Rig
-          </div>
-          <h2 class="text-lg sm:text-xl font-bold tracking-tight text-zinc-100">
-            Zero-Trust Constellation Architecture (Edge ➔ g8s ➔ Aegis ➔ Pull-GitOps)
-          </h2>
-        </div>
-        <div class="flex flex-wrap gap-1.5 font-mono text-xs">
-          <button data-iso-layer="edge" class="iso-layer-btn active px-2.5 py-1 rounded border border-borderHairline bg-canvas text-zinc-300">1. Edge &amp; mTLS</button>
-          <button data-iso-layer="g8s" class="iso-layer-btn px-2.5 py-1 rounded border border-borderHairline bg-canvas text-zinc-300">2. g8s Harness</button>
-          <button data-iso-layer="aegis" class="iso-layer-btn px-2.5 py-1 rounded border border-borderHairline bg-canvas text-zinc-300">3. Aegis HITL</button>
-          <button data-iso-layer="gitops" class="iso-layer-btn px-2.5 py-1 rounded border border-borderHairline bg-canvas text-zinc-300">4. Pull-GitOps</button>
-        </div>
-      </div>
+    <!-- 4. 03 THE ACTS -->
+    <section id="acts" class="section-v4">
+    <div class="container">
+    <h2 class="section-title">Three eras of deterministic execution</h2>
+    <div class="acts-stack">
+    <!-- Act I -->
+    <article class="act-card act-1 reveal-on-scroll">
+    <div class="act-header">
+    <h3 class="act-title">Act I · The 48-Hour Crucible — Distributed Command Under Crisis</h3>
+    <span class="micro-label">operator-attested · essay pending</span>
+    </div>
+    <p class="act-desc">2016 nationwide retail ransomware outbreak (100+ endpoints crippled at Thien Nam Hoa). Decomposed recovery into 3 parallel operational squads (Foundation / ERP-POS / Identity Verification) with pre-built automation scripts, recovering 100+ nodes in 48 hours with zero Monday morning retail downtime.</p>
+    <div class="scrubber-module">
+    <div class="scrubber-controls">
+    <input type="range" id="scrubber-range" class="scrubber-slider" min="0" max="48" step="1" value="0" aria-label="48-Hour recovery timeline">
+    <div class="scrubber-milestones">
+    <button type="button" class="scrubber-btn active" data-hour="0">0h</button>
+    <button type="button" class="scrubber-btn" data-hour="12">12h</button>
+    <button type="button" class="scrubber-btn" data-hour="24">24h</button>
+    <button type="button" class="scrubber-btn" data-hour="36">36h</button>
+    <button type="button" class="scrubber-btn" data-hour="48">48h</button>
+    </div>
+    </div>
+    <div class="scrubber-readout">
+    <div class="scrubber-meta">
+    <span id="scrubber-hour" class="scrubber-hour">T+00:00</span>
+    <span id="scrubber-squad" class="scrubber-squad">Squad: Incident Command</span>
+    <span id="scrubber-recovered" class="scrubber-recovered">0 / 100+ recovered</span>
+    </div>
+    <div id="scrubber-log" class="scrubber-log">Nationwide retail ransomware outbreak detected across 100+ endpoints. Air-gap isolation initiated. Automated triage underway.</div>
+    </div>
+    </div>
+    </article>
 
-      <div class="iso overflow-x-auto"><figure class="iso-figure"><div class="iso-plate"><div class="iso-plate-corners" aria-hidden="true"><span class="iso-plate-corner" data-corner="fig">FIG 01 // CONSTELLATION-RIG</span><span class="iso-plate-corner" data-corner="title">DUAL-PLANE BARE-METAL &amp; AI HARNESS BENCH</span><span class="iso-plate-corner" data-corner="hint">CLICK LAYER CARRIAGES OR RUN /DRILL IN TERMINAL</span><span class="iso-plate-corner" data-corner="readout" data-readout>RSS 770KB • WAN/LAN 100% • TLS 1.3 mTLS</span></div><svg xmlns="http://www.w3.org/2000/svg" class="iso-svg" viewBox="0 0 760 430" role="img" aria-label="Fig 01: Symbiotic Dual-Plane Bare-Metal &amp; AI Constellation Test Rig"><g class="iso-solid"><path class="iso-fill" d="M316.2 137.7L316.8 136.1L318.2 134.6L320.4 133.3L323.1 132.4L326.3 131.8L329.6 131.7L332.9 132L335.9 132.7L338.4 133.8L340.3 135.2L341.4 136.7L341.7 138.4L341.7 147.6L341.1 149.3L339.7 150.8L337.5 152L334.7 153L331.6 153.5L328.3 153.7L325 153.4L322 152.6L319.4 151.6L317.5 150.2L316.4 148.6L316.2 147Z"/><path class="iso-shade" data-shade="0" d="M337.5 152L334.7 153L334.7 143.8L337.5 142.8ZM341.7 147.6L341.1 149.3L341.1 140L341.7 138.4ZM341.1 149.3L339.7 150.8L339.7 141.5L341.1 140ZM339.7 150.8L337.5 152L337.5 142.8L339.7 141.5Z"/><path class="iso-shade" data-shade="1" d="M334.7 153L331.6 153.5L331.6 144.3L334.7 143.8ZM331.6 153.5L328.3 153.7L328.3 144.4L331.6 144.3Z"/><path class="iso-shade" data-shade="2" d="M328.3 153.7L325 153.4L325 144.1L328.3 144.4ZM325 153.4L322 152.6L322 143.4L325 144.1Z"/><path class="iso-shade" data-shade="3" d="M322 152.6L319.4 151.6L319.4 142.3L322 143.4ZM319.4 151.6L317.5 150.2L317.5 141L319.4 142.3ZM317.5 150.2L316.4 148.6L316.4 139.4L317.5 141ZM316.4 148.6L316.2 147L316.2 137.7L316.4 139.4Z"/><path class="iso-top" d="M337.5 142.8L334.7 143.8L331.6 144.3L328.3 144.4L325 144.1L322 143.4L319.4 142.3L317.5 141L316.4 139.4L316.2 137.7L316.8 136.1L318.2 134.6L320.4 133.3L323.1 132.4L326.3 131.8L329.6 131.7L332.9 132L335.9 132.7L338.4 133.8L340.3 135.2L341.4 136.7L341.7 138.4L341.1 140L339.7 141.5Z"/><path class="iso-line iso-crease" data-tone="faint" d="M341.7 138.4L341.1 140L339.7 141.5L337.5 142.8L334.7 143.8L331.6 144.3L328.3 144.4L325 144.1L322 143.4L319.4 142.3L317.5 141L316.4 139.4L316.2 137.7"/><path class="iso-line iso-edge" data-tone="lo" d="M316.2 137.7L316.8 136.1L318.2 134.6L320.4 133.3L323.1 132.4L326.3 131.8L329.6 131.7L332.9 132L335.9 132.7L338.4 133.8L340.3 135.2L341.4 136.7L341.7 138.4M341.7 147.6L341.1 149.3L339.7 150.8L337.5 152L334.7 153L331.6 153.5L328.3 153.7L325 153.4L322 152.6L319.4 151.6L317.5 150.2L316.4 148.6L316.2 147M316.2 137.7L316.2 147M341.7 138.4L341.7 147.6"/></g><g class="iso-solid"><path class="iso-fill" d="M595.7 293L596.3 291.3L597.8 289.8L599.9 288.5L602.7 287.6L605.8 287L609.2 286.9L612.4 287.2L615.5 287.9L618 289L619.9 290.4L621 292L621.3 293.6L621.3 302.9L620.7 304.5L619.2 306L617 307.3L614.3 308.2L611.1 308.8L607.8 308.9L604.5 308.6L601.5 307.9L599 306.8L597.1 305.4L596 303.9L595.7 302.2Z"/><path class="iso-shade" data-shade="0" d="M617 307.3L614.3 308.2L614.3 299L617 298ZM621.3 302.9L620.7 304.5L620.7 295.3L621.3 293.6ZM620.7 304.5L619.2 306L619.2 296.8L620.7 295.3ZM619.2 306L617 307.3L617 298L619.2 296.8Z"/><path class="iso-shade" data-shade="1" d="M614.3 308.2L611.1 308.8L611.1 299.6L614.3 299ZM611.1 308.8L607.8 308.9L607.8 299.7L611.1 299.6Z"/><path class="iso-shade" data-shade="2" d="M607.8 308.9L604.5 308.6L604.5 299.4L607.8 299.7ZM604.5 308.6L601.5 307.9L601.5 298.7L604.5 299.4Z"/><path class="iso-shade" data-shade="3" d="M601.5 307.9L599 306.8L599 297.6L601.5 298.7ZM599 306.8L597.1 305.4L597.1 296.2L599 297.6ZM597.1 305.4L596 303.9L596 294.6L597.1 296.2ZM596 303.9L595.7 302.2L595.7 293L596 294.6Z"/><path class="iso-top" d="M617 298L614.3 299L611.1 299.6L607.8 299.7L604.5 299.4L601.5 298.7L599 297.6L597.1 296.2L596 294.6L595.7 293L596.3 291.3L597.8 289.8L599.9 288.5L602.7 287.6L605.8 287L609.2 286.9L612.4 287.2L615.5 287.9L618 289L619.9 290.4L621 292L621.3 293.6L620.7 295.3L619.2 296.8Z"/><path class="iso-line iso-crease" data-tone="faint" d="M621.3 293.6L620.7 295.3L619.2 296.8L617 298L614.3 299L611.1 299.6L607.8 299.7L604.5 299.4L601.5 298.7L599 297.6L597.1 296.2L596 294.6L595.7 293"/><path class="iso-line iso-edge" data-tone="lo" d="M595.7 293L596.3 291.3L597.8 289.8L599.9 288.5L602.7 287.6L605.8 287L609.2 286.9L612.4 287.2L615.5 287.9L618 289L619.9 290.4L621 292L621.3 293.6M621.3 302.9L620.7 304.5L619.2 306L617 307.3L614.3 308.2L611.1 308.8L607.8 308.9L604.5 308.6L601.5 307.9L599 306.8L597.1 305.4L596 303.9L595.7 302.2M595.7 293L595.7 302.2M621.3 293.6L621.3 302.9"/></g><g class="iso-solid"><path class="iso-fill" d="M138.7 217.6L139.3 216L140.8 214.4L143 213.2L145.7 212.2L148.9 211.7L152.2 211.5L155.5 211.8L158.5 212.6L161 213.7L162.9 215L164 216.6L164.3 218.3L164.3 227.5L163.7 229.1L162.2 230.6L160.1 231.9L157.3 232.9L154.2 233.4L150.8 233.5L147.6 233.2L144.5 232.5L142 231.4L140.1 230.1L139 228.5L138.7 226.8Z"/><path class="iso-shade" data-shade="0" d="M160.1 231.9L157.3 232.9L157.3 223.6L160.1 222.7ZM164.3 227.5L163.7 229.1L163.7 219.9L164.3 218.3ZM163.7 229.1L162.2 230.6L162.2 221.4L163.7 219.9ZM162.2 230.6L160.1 231.9L160.1 222.7L162.2 221.4Z"/><path class="iso-shade" data-shade="1" d="M157.3 232.9L154.2 233.4L154.2 224.2L157.3 223.6ZM154.2 233.4L150.8 233.5L150.8 224.3L154.2 224.2Z"/><path class="iso-shade" data-shade="2" d="M150.8 233.5L147.6 233.2L147.6 224L150.8 224.3ZM147.6 233.2L144.5 232.5L144.5 223.3L147.6 224Z"/><path class="iso-shade" data-shade="3" d="M144.5 232.5L142 231.4L142 222.2L144.5 223.3ZM142 231.4L140.1 230.1L140.1 220.8L142 222.2ZM140.1 230.1L139 228.5L139 219.3L140.1 220.8ZM139 228.5L138.7 226.8L138.7 217.6L139 219.3Z"/><path class="iso-top" d="M160.1 222.7L157.3 223.6L154.2 224.2L150.8 224.3L147.6 224L144.5 223.3L142 222.2L140.1 220.8L139 219.3L138.7 217.6L139.3 216L140.8 214.4L143 213.2L145.7 212.2L148.9 211.7L152.2 211.5L155.5 211.8L158.5 212.6L161 213.7L162.9 215L164 216.6L164.3 218.3L163.7 219.9L162.2 221.4Z"/><path class="iso-line iso-crease" data-tone="faint" d="M164.3 218.3L163.7 219.9L162.2 221.4L160.1 222.7L157.3 223.6L154.2 224.2L150.8 224.3L147.6 224L144.5 223.3L142 222.2L140.1 220.8L139 219.3L138.7 217.6"/><path class="iso-line iso-edge" data-tone="lo" d="M138.7 217.6L139.3 216L140.8 214.4L143 213.2L145.7 212.2L148.9 211.7L152.2 211.5L155.5 211.8L158.5 212.6L161 213.7L162.9 215L164 216.6L164.3 218.3M164.3 227.5L163.7 229.1L162.2 230.6L160.1 231.9L157.3 232.9L154.2 233.4L150.8 233.5L147.6 233.2L144.5 232.5L142 231.4L140.1 230.1L139 228.5L138.7 226.8M138.7 217.6L138.7 226.8M164.3 218.3L164.3 227.5"/></g><g class="iso-solid"><path class="iso-fill" d="M418.3 372.8L418.9 371.2L420.3 369.7L422.5 368.4L425.3 367.5L428.4 366.9L431.7 366.8L435 367.1L438 367.8L440.6 368.9L442.5 370.3L443.6 371.8L443.8 373.5L443.8 382.7L443.2 384.4L441.8 385.9L439.6 387.2L436.9 388.1L433.7 388.7L430.4 388.8L427.1 388.5L424.1 387.8L421.6 386.7L419.7 385.3L418.6 383.7L418.3 382.1Z"/><path class="iso-shade" data-shade="0" d="M439.6 387.2L436.9 388.1L436.9 378.9L439.6 377.9ZM443.8 382.7L443.2 384.4L443.2 375.1L443.8 373.5ZM443.2 384.4L441.8 385.9L441.8 376.7L443.2 375.1ZM441.8 385.9L439.6 387.2L439.6 377.9L441.8 376.7Z"/><path class="iso-shade" data-shade="1" d="M436.9 388.1L433.7 388.7L433.7 379.4L436.9 378.9ZM433.7 388.7L430.4 388.8L430.4 379.6L433.7 379.4Z"/><path class="iso-shade" data-shade="2" d="M430.4 388.8L427.1 388.5L427.1 379.3L430.4 379.6ZM427.1 388.5L424.1 387.8L424.1 378.5L427.1 379.3Z"/><path class="iso-shade" data-shade="3" d="M424.1 387.8L421.6 386.7L421.6 377.4L424.1 378.5ZM421.6 386.7L419.7 385.3L419.7 376.1L421.6 377.4ZM419.7 385.3L418.6 383.7L418.6 374.5L419.7 376.1ZM418.6 383.7L418.3 382.1L418.3 372.8L418.6 374.5Z"/><path class="iso-top" d="M439.6 377.9L436.9 378.9L433.7 379.4L430.4 379.6L427.1 379.3L424.1 378.5L421.6 377.4L419.7 376.1L418.6 374.5L418.3 372.8L418.9 371.2L420.3 369.7L422.5 368.4L425.3 367.5L428.4 366.9L431.7 366.8L435 367.1L438 367.8L440.6 368.9L442.5 370.3L443.6 371.8L443.8 373.5L443.2 375.1L441.8 376.7Z"/><path class="iso-line iso-crease" data-tone="faint" d="M443.8 373.5L443.2 375.1L441.8 376.7L439.6 377.9L436.9 378.9L433.7 379.4L430.4 379.6L427.1 379.3L424.1 378.5L421.6 377.4L419.7 376.1L418.6 374.5L418.3 372.8"/><path class="iso-line iso-edge" data-tone="lo" d="M418.3 372.8L418.9 371.2L420.3 369.7L422.5 368.4L425.3 367.5L428.4 366.9L431.7 366.8L435 367.1L438 367.8L440.6 368.9L442.5 370.3L443.6 371.8L443.8 373.5M443.8 382.7L443.2 384.4L441.8 385.9L439.6 387.2L436.9 388.1L433.7 388.7L430.4 388.8L427.1 388.5L424.1 387.8L421.6 386.7L419.7 385.3L418.6 383.7L418.3 382.1M418.3 372.8L418.3 382.1M443.8 373.5L443.8 382.7"/></g><g class="iso-solid"><path class="iso-halo" d="M122.4 202.4L122.9 200.7L124.1 199.2L125.8 197.7L128.1 196.5L318.2 110.9L320.8 109.9L323.9 109.2L327.1 108.8L330.5 108.8L333.8 109L336.9 109.6L339.8 110.4L342.2 111.6L633.2 273.1L635.2 274.5L636.6 276L637.4 277.6L637.6 279.3L637.6 294.1L637.1 295.7L635.9 297.3L634.2 298.7L631.9 299.9L441.8 385.5L439.2 386.5L436.1 387.2L432.9 387.6L429.5 387.7L426.2 387.5L423.1 386.9L420.2 386L417.8 384.9L126.8 223.3L124.8 222L123.4 220.5L122.6 218.8L122.4 217.2Z"/><path class="iso-fill" d="M122.4 202.4L122.9 200.7L124.1 199.2L125.8 197.7L128.1 196.5L318.2 110.9L320.8 109.9L323.9 109.2L327.1 108.8L330.5 108.8L333.8 109L336.9 109.6L339.8 110.4L342.2 111.6L633.2 273.1L635.2 274.5L636.6 276L637.4 277.6L637.6 279.3L637.6 294.1L637.1 295.7L635.9 297.3L634.2 298.7L631.9 299.9L441.8 385.5L439.2 386.5L436.1 387.2L432.9 387.6L429.5 387.7L426.2 387.5L423.1 386.9L420.2 386L417.8 384.9L126.8 223.3L124.8 222L123.4 220.5L122.6 218.8L122.4 217.2Z"/><path class="iso-shade" data-shade="0" d="M637.6 294.1L637.1 295.7L637.1 280.9L637.6 279.3ZM637.1 295.7L635.9 297.3L635.9 282.5L637.1 280.9ZM635.9 297.3L634.2 298.7L634.2 283.9L635.9 282.5ZM634.2 298.7L631.9 299.9L631.9 285.2L634.2 283.9ZM631.9 299.9L441.8 385.5L441.8 370.8L631.9 285.2ZM441.8 385.5L439.2 386.5L439.2 371.7L441.8 370.8Z"/><path class="iso-shade" data-shade="1" d="M439.2 386.5L436.1 387.2L436.1 372.5L439.2 371.7ZM436.1 387.2L432.9 387.6L432.9 372.9L436.1 372.5ZM432.9 387.6L429.5 387.7L429.5 372.9L432.9 372.9Z"/><path class="iso-shade" data-shade="2" d="M429.5 387.7L426.2 387.5L426.2 372.7L429.5 372.9ZM426.2 387.5L423.1 386.9L423.1 372.1L426.2 372.7Z"/><path class="iso-shade" data-shade="3" d="M423.1 386.9L420.2 386L420.2 371.3L423.1 372.1ZM420.2 386L417.8 384.9L417.8 370.1L420.2 371.3ZM417.8 384.9L126.8 223.3L126.8 208.6L417.8 370.1ZM126.8 223.3L124.8 222L124.8 207.2L126.8 208.6ZM124.8 222L123.4 220.5L123.4 205.7L124.8 207.2ZM123.4 220.5L122.6 218.8L122.6 204.1L123.4 205.7ZM122.6 218.8L122.4 217.2L122.4 202.4L122.6 204.1Z"/><path class="iso-top" d="M633.2 273.1L635.2 274.5L636.6 276L637.4 277.6L637.6 279.3L637.1 280.9L635.9 282.5L634.2 283.9L631.9 285.2L441.8 370.8L439.2 371.7L436.1 372.5L432.9 372.9L429.5 372.9L426.2 372.7L423.1 372.1L420.2 371.3L417.8 370.1L126.8 208.6L124.8 207.2L123.4 205.7L122.6 204.1L122.4 202.4L122.9 200.7L124.1 199.2L125.8 197.7L128.1 196.5L318.2 110.9L320.8 109.9L323.9 109.2L327.1 108.8L330.5 108.8L333.8 109L336.9 109.6L339.8 110.4L342.2 111.6Z"/><path class="iso-line iso-crease" data-tone="faint" d="M637.6 279.3L637.1 280.9L635.9 282.5L634.2 283.9L631.9 285.2L441.8 370.8L439.2 371.7L436.1 372.5L432.9 372.9L429.5 372.9L426.2 372.7L423.1 372.1L420.2 371.3L417.8 370.1L126.8 208.6L124.8 207.2L123.4 205.7L122.6 204.1L122.4 202.4"/><path class="iso-line iso-bevel" data-tone="faint" d="M637.6 279.3L634.6 280.6L633.6 282L632.1 283.2L630.1 284.3L440.2 369.8L437.9 370.7L435.3 371.3L432.5 371.6L429.7 371.7L426.9 371.4L424.2 371L421.8 370.2L419.6 369.2L128.8 207.7L127 206.6L125.8 205.3L125.1 203.9L122.4 202.4"/><path class="iso-line iso-edge" data-tone="mid" d="M122.4 202.4L122.9 200.7L124.1 199.2L125.8 197.7L128.1 196.5L318.2 110.9L320.8 109.9L323.9 109.2L327.1 108.8L330.5 108.8L333.8 109L336.9 109.6L339.8 110.4L342.2 111.6L633.2 273.1L635.2 274.5L636.6 276L637.4 277.6L637.6 279.3M637.6 294.1L637.1 295.7L635.9 297.3L634.2 298.7L631.9 299.9L441.8 385.5L439.2 386.5L436.1 387.2L432.9 387.6L429.5 387.7L426.2 387.5L423.1 386.9L420.2 386L417.8 384.9L126.8 223.3L124.8 222L123.4 220.5L122.6 218.8L122.4 217.2M637.6 279.3L637.6 294.1M122.4 202.4L122.4 217.2"/></g><path class="iso-line" data-tone="faint" d="M623.7 277.4L624.3 277.9L624.7 278.4L624.8 279L624.6 279.5L624.1 280L623.4 280.4L433.3 366L432.4 366.3L431.3 366.5L430.2 366.6L429.1 366.4L428.1 366.2L427.3 365.8L136.3 204.3L135.7 203.8L135.3 203.3L135.2 202.7L135.4 202.2L135.9 201.7L136.6 201.3L326.7 115.7L327.6 115.4L328.7 115.2L329.8 115.1L330.9 115.2L331.9 115.5L332.7 115.8Z"/><path class="iso-line" data-tone="faint" d="M150.9 209.2L147.4 210.8M162.3 215.5L158.8 217.1M168 218.7L164.5 220.3M173.7 221.9L170.2 223.4M179.4 225L175.9 226.6M190.8 231.4L187.3 232.9M196.5 234.5L193 236.1M202.2 237.7L198.7 239.3M207.9 240.9L204.4 242.4M219.3 247.2L215.9 248.8M225 250.4L221.6 251.9M230.8 253.5L227.3 255.1M236.5 256.7L233 258.3M247.9 263L244.4 264.6M253.6 266.2L250.1 267.8M259.3 269.4L255.8 270.9M265 272.5L261.5 274.1M276.4 278.9L272.9 280.5M282.1 282L278.6 283.6M287.8 285.2L284.3 286.8M293.5 288.4L290 290M304.9 294.7L301.4 296.3M310.6 297.9L307.1 299.5M316.3 301.1L312.8 302.6M322 304.2L318.6 305.8M333.4 310.6L330 312.1M339.2 313.7L335.7 315.3M344.9 316.9L341.4 318.5M350.6 320.1L347.1 321.6M362 326.4L358.5 328M367.7 329.6L364.2 331.1M373.4 332.7L369.9 334.3M379.1 335.9L375.6 337.5M390.5 342.2L387 343.8M396.2 345.4L392.7 347M401.9 348.6L398.4 350.2M407.6 351.7L404.1 353.3M419 358.1L415.5 359.7M316.9 123L320 124.7M304.2 128.7L307.4 130.4M297.9 131.5L301 133.3M291.5 134.4L294.7 136.1M285.2 137.2L288.3 139M272.5 142.9L275.7 144.7M266.2 145.8L269.3 147.5M259.9 148.6L263 150.4M253.5 151.5L256.7 153.2M240.9 157.2L244 158.9M234.5 160.1L237.7 161.8M228.2 162.9L231.3 164.7M221.8 165.8L225 167.5M209.2 171.5L212.3 173.2M202.8 174.3L206 176.1M196.5 177.2L199.6 178.9M190.2 180L193.3 181.8M177.5 185.7L180.6 187.5M171.2 188.6L174.3 190.3M164.8 191.4L168 193.2M158.5 194.3L161.6 196"/><path class="iso-line" data-tone="lo" d="M156.6 212.3L149.5 215.6M185.1 228.2L178 231.4M213.6 244L206.5 247.2M242.2 259.9L235 263.1M270.7 275.7L263.6 278.9M299.2 291.6L292.1 294.8M327.7 307.4L320.6 310.6M356.3 323.2L349.1 326.4M384.8 339.1L377.7 342.3M413.3 354.9L406.2 358.1M310.6 125.8L317 129.4M278.9 140.1L285.3 143.7M247.2 154.4L253.6 157.9M215.5 168.6L221.9 172.2M183.8 182.9L190.2 186.4M152.1 197.1L158.6 200.7"/><g class="iso-dots" data-tone="hi"><circle cx="329.2" cy="119.9" r="1.6"/><circle cx="614.5" cy="278.3" r="1.6"/><circle cx="145.5" cy="202.6" r="1.6"/><circle cx="430.8" cy="361" r="1.6"/></g><text class="iso-face-text" data-tone="mid" transform="matrix(1.426 0.792 -1.584 0.713 158.802 205.431)" font-size="3.1" text-anchor="start">DUAL-PLANE SUBSTRATE // ZERO-WAN EXPOSURE // 16GB HARD BUDGET</text><text class="iso-face-text" data-tone="hi" transform="matrix(1.426 0.792 0 1.846 138.208 219.502)" font-size="3" text-anchor="start">FLOWAXON-RIG-01 // PVE-NODE-01 // 770KB-RSS-GO-ENGINE</text><g class="iso-solid rig-part rig-edge"><path class="iso-fill" d="M192.7 179.9L193.1 178.8L194.1 177.8L195.6 177L290.6 134.2L292.4 133.6L294.5 133.2L296.7 133.1L298.9 133.3L300.9 133.8L302.6 134.5L345.4 158.3L346.7 159.2L347.4 160.2L347.6 161.3L347.6 170.6L347.2 171.7L346.2 172.7L344.8 173.5L249.8 216.3L247.9 216.9L245.8 217.3L243.6 217.4L241.4 217.2L239.4 216.7L237.7 216L194.9 192.2L193.7 191.3L192.9 190.3L192.7 189.1Z"/><path class="iso-shade" data-shade="0" d="M347.6 170.6L347.2 171.7L347.2 162.4L347.6 161.3ZM347.2 171.7L346.2 172.7L346.2 163.4L347.2 162.4ZM346.2 172.7L344.8 173.5L344.8 164.3L346.2 163.4ZM344.8 173.5L249.8 216.3L249.8 207.1L344.8 164.3ZM249.8 216.3L247.9 216.9L247.9 207.7L249.8 207.1Z"/><path class="iso-shade" data-shade="1" d="M247.9 216.9L245.8 217.3L245.8 208.1L247.9 207.7ZM245.8 217.3L243.6 217.4L243.6 208.2L245.8 208.1Z"/><path class="iso-shade" data-shade="2" d="M243.6 217.4L241.4 217.2L241.4 208L243.6 208.2ZM241.4 217.2L239.4 216.7L239.4 207.5L241.4 208Z"/><path class="iso-shade" data-shade="3" d="M239.4 216.7L237.7 216L237.7 206.8L239.4 207.5ZM237.7 216L194.9 192.2L194.9 183L237.7 206.8ZM194.9 192.2L193.7 191.3L193.7 182.1L194.9 183ZM193.7 191.3L192.9 190.3L192.9 181L193.7 182.1ZM192.9 190.3L192.7 189.1L192.7 179.9L192.9 181Z"/><path class="iso-top" d="M345.4 158.3L346.7 159.2L347.4 160.2L347.6 161.3L347.2 162.4L346.2 163.4L344.8 164.3L249.8 207.1L247.9 207.7L245.8 208.1L243.6 208.2L241.4 208L239.4 207.5L237.7 206.8L194.9 183L193.7 182.1L192.9 181L192.7 179.9L193.1 178.8L194.1 177.8L195.6 177L290.6 134.2L292.4 133.6L294.5 133.2L296.7 133.1L298.9 133.3L300.9 133.8L302.6 134.5Z"/><path class="iso-line iso-crease" data-tone="faint" d="M347.6 161.3L347.2 162.4L346.2 163.4L344.8 164.3L249.8 207.1L247.9 207.7L245.8 208.1L243.6 208.2L241.4 208L239.4 207.5L237.7 206.8L194.9 183L193.7 182.1L192.9 181L192.7 179.9"/><path class="iso-line iso-bevel" data-tone="faint" d="M347.6 161.3L346 162.2L345.2 163.1L343.9 163.8L249 206.6L247.3 207.1L245.6 207.4L243.7 207.5L241.8 207.3L240.1 206.9L238.6 206.3L195.9 182.6L194.8 181.8L194.2 180.9L192.7 179.9"/><path class="iso-line iso-edge" data-tone="mid" d="M192.7 179.9L193.1 178.8L194.1 177.8L195.6 177L290.6 134.2L292.4 133.6L294.5 133.2L296.7 133.1L298.9 133.3L300.9 133.8L302.6 134.5L345.4 158.3L346.7 159.2L347.4 160.2L347.6 161.3M347.6 170.6L347.2 171.7L346.2 172.7L344.8 173.5L249.8 216.3L247.9 216.9L245.8 217.3L243.6 217.4L241.4 217.2L239.4 216.7L237.7 216L194.9 192.2L193.7 191.3L192.9 190.3L192.7 189.1M347.6 161.3L347.6 170.6M192.7 179.9L192.7 189.1"/></g><g class="iso-solid rig-part rig-edge" data-lit=""><path class="iso-fill" d="M242.5 156.7L242.8 153.6L244.5 150.6L247.5 147.9L251.6 145.6L256.7 143.8L262.4 142.6L268.5 142L274.7 142.2L280.7 143L286.1 144.5L290.8 146.6L294.4 149.1L296.8 152L297.8 155L297.8 169.8L297.5 172.9L295.8 175.9L292.8 178.6L288.7 180.9L283.7 182.7L277.9 183.9L271.8 184.5L265.6 184.3L259.7 183.4L254.2 182L249.6 179.9L246 177.4L243.6 174.5L242.5 171.5Z"/><path class="iso-shade" data-shade="0" d="M288.7 180.9L283.7 182.7L283.7 168L288.7 166.2ZM297.8 169.8L297.5 172.9L297.5 158.1L297.8 155ZM297.5 172.9L295.8 175.9L295.8 161.1L297.5 158.1ZM295.8 175.9L292.8 178.6L292.8 163.8L295.8 161.1ZM292.8 178.6L288.7 180.9L288.7 166.2L292.8 163.8Z"/><path class="iso-shade" data-shade="1" d="M283.7 182.7L277.9 183.9L277.9 169.2L283.7 168ZM277.9 183.9L271.8 184.5L271.8 169.7L277.9 169.2Z"/><path class="iso-shade" data-shade="2" d="M271.8 184.5L265.6 184.3L265.6 169.5L271.8 169.7ZM265.6 184.3L259.7 183.4L259.7 168.7L265.6 169.5ZM259.7 183.4L254.2 182L254.2 167.2L259.7 168.7Z"/><path class="iso-shade" data-shade="3" d="M254.2 182L249.6 179.9L249.6 165.1L254.2 167.2ZM249.6 179.9L246 177.4L246 162.6L249.6 165.1ZM246 177.4L243.6 174.5L243.6 159.7L246 162.6ZM243.6 174.5L242.5 171.5L242.5 156.7L243.6 159.7Z"/><path class="iso-top" d="M288.7 166.2L283.7 168L277.9 169.2L271.8 169.7L265.6 169.5L259.7 168.7L254.2 167.2L249.6 165.1L246 162.6L243.6 159.7L242.5 156.7L242.8 153.6L244.5 150.6L247.5 147.9L251.6 145.6L256.7 143.8L262.4 142.6L268.5 142L274.7 142.2L280.7 143L286.1 144.5L290.8 146.6L294.4 149.1L296.8 152L297.8 155L297.5 158.1L295.8 161.1L292.8 163.8Z"/><path class="iso-line iso-crease" data-tone="faint" d="M297.8 155L297.5 158.1L295.8 161.1L292.8 163.8L288.7 166.2L283.7 168L277.9 169.2L271.8 169.7L265.6 169.5L259.7 168.7L254.2 167.2L249.6 165.1L246 162.6L243.6 159.7L242.5 156.7"/><path class="iso-line iso-bevel" data-tone="faint" d="M297.8 155L295.8 158L294.2 160.8L291.4 163.3L287.6 165.5L282.8 167.2L277.5 168.3L271.7 168.8L265.9 168.7L260.3 167.9L255.2 166.5L250.8 164.6L247.5 162.2L245.2 159.5L242.5 156.7"/><path class="iso-line iso-edge" data-tone="hi" d="M242.5 156.7L242.8 153.6L244.5 150.6L247.5 147.9L251.6 145.6L256.7 143.8L262.4 142.6L268.5 142L274.7 142.2L280.7 143L286.1 144.5L290.8 146.6L294.4 149.1L296.8 152L297.8 155M297.8 169.8L297.5 172.9L295.8 175.9L292.8 178.6L288.7 180.9L283.7 182.7L277.9 183.9L271.8 184.5L265.6 184.3L259.7 183.4L254.2 182L249.6 179.9L246 177.4L243.6 174.5L242.5 171.5M242.5 156.7L242.5 171.5M297.8 155L297.8 169.8"/></g><path class="iso-line" data-tone="lo" d="M288.7 179.4L288.7 167.6M282.8 181.5L282.8 169.7M275.9 182.7L275.9 170.9M268.7 183L268.7 171.2M261.6 182.3L261.6 170.5M255.1 180.8L255.1 169M249.6 178.4L249.6 166.6M245.5 175.4L245.5 163.6M243.1 172L243.1 160.2M296.5 173.4L296.5 161.6M293.4 176.7L293.4 164.9"/><g class="iso-solid" data-lit=""><path class="iso-fill" d="M255.3 138.9L256 136.9L257.7 135.2L260.2 133.7L263.4 132.6L267.1 131.9L271 131.8L274.8 132.1L278.3 133L281.3 134.3L283.5 135.9L284.8 137.7L285.1 139.6L285.1 156.2L284.4 158.2L282.7 159.9L280.2 161.4L276.9 162.5L273.3 163.2L269.4 163.3L265.6 163L262 162.1L259.1 160.9L256.9 159.2L255.6 157.4L255.3 155.5Z"/><path class="iso-shade" data-shade="0" d="M280.2 161.4L276.9 162.5L276.9 145.9L280.2 144.8ZM285.1 156.2L284.4 158.2L284.4 141.6L285.1 139.6ZM284.4 158.2L282.7 159.9L282.7 143.3L284.4 141.6ZM282.7 159.9L280.2 161.4L280.2 144.8L282.7 143.3Z"/><path class="iso-shade" data-shade="1" d="M276.9 162.5L273.3 163.2L273.3 146.5L276.9 145.9ZM273.3 163.2L269.4 163.3L269.4 146.7L273.3 146.5Z"/><path class="iso-shade" data-shade="2" d="M269.4 163.3L265.6 163L265.6 146.3L269.4 146.7ZM265.6 163L262 162.1L262 145.5L265.6 146.3Z"/><path class="iso-shade" data-shade="3" d="M262 162.1L259.1 160.9L259.1 144.2L262 145.5ZM259.1 160.9L256.9 159.2L256.9 142.6L259.1 144.2ZM256.9 159.2L255.6 157.4L255.6 140.8L256.9 142.6ZM255.6 157.4L255.3 155.5L255.3 138.9L255.6 140.8Z"/><path class="iso-top" d="M280.2 144.8L276.9 145.9L273.3 146.5L269.4 146.7L265.6 146.3L262 145.5L259.1 144.2L256.9 142.6L255.6 140.8L255.3 138.9L256 136.9L257.7 135.2L260.2 133.7L263.4 132.6L267.1 131.9L271 131.8L274.8 132.1L278.3 133L281.3 134.3L283.5 135.9L284.8 137.7L285.1 139.6L284.4 141.6L282.7 143.3Z"/><path class="iso-line iso-crease" data-tone="faint" d="M285.1 139.6L284.4 141.6L282.7 143.3L280.2 144.8L276.9 145.9L273.3 146.5L269.4 146.7L265.6 146.3L262 145.5L259.1 144.2L256.9 142.6L255.6 140.8L255.3 138.9"/><path class="iso-line iso-bevel" data-tone="faint" d="M285.1 139.6L283.4 141.4L281.8 143L279.4 144.4L276.5 145.4L273.1 146L269.4 146.2L265.9 145.8L262.6 145.1L259.9 143.9L257.8 142.4L256.6 140.7L255.3 138.9"/><path class="iso-line iso-edge" data-tone="hi" d="M255.3 138.9L256 136.9L257.7 135.2L260.2 133.7L263.4 132.6L267.1 131.9L271 131.8L274.8 132.1L278.3 133L281.3 134.3L283.5 135.9L284.8 137.7L285.1 139.6M285.1 156.2L284.4 158.2L282.7 159.9L280.2 161.4L276.9 162.5L273.3 163.2L269.4 163.3L265.6 163L262 162.1L259.1 160.9L256.9 159.2L255.6 157.4L255.3 155.5M255.3 138.9L255.3 155.5M285.1 139.6L285.1 156.2"/></g><path class="iso-line" data-tone="blue" data-dashed="" d="M293 182.9L288.2 184.7L282.9 186.1L277.3 186.9L271.4 187.3L265.4 187.1L259.6 186.5L254.2 185.3L249.2 183.7L244.8 181.7L241.3 179.3L238.6 176.6L236.8 173.8L236.1 170.9L236.4 167.9L237.7 165L240.1 162.3L243.3 159.8L247.4 157.6L252.1 155.8L257.4 154.4L263.1 153.6L269 153.2L274.9 153.4L280.7 154L286.2 155.2L291.2 156.8L295.5 158.8L299.1 161.2L301.8 163.9L303.5 166.7L304.3 169.7L303.9 172.6L302.6 175.5L300.3 178.3L297 180.8Z"/><text class="iso-face-text" data-tone="hi" transform="matrix(1.426 0.792 -1.584 0.713 204.424 178.345)" font-size="2.9" text-anchor="start">L1 EDGE mTLS</text><g class="iso-solid rig-part rig-traefik"><path class="iso-fill" d="M323.4 172.1L323.7 171.3L324.4 170.5L325.5 169.9L385.7 142.8L387 142.3L388.6 142L390.3 142L391.9 142.1L393.4 142.5L394.7 143L446.1 171.5L447 172.2L447.6 173L447.7 173.8L447.7 203.4L447.4 204.2L446.7 204.9L445.6 205.6L385.4 232.7L384 233.2L382.4 233.4L380.8 233.5L379.1 233.3L377.6 233L376.4 232.4L325 203.9L324.1 203.2L323.5 202.5L323.4 201.6Z"/><path class="iso-shade" data-shade="0" d="M447.7 203.4L447.4 204.2L447.4 174.7L447.7 173.8ZM447.4 204.2L446.7 204.9L446.7 175.4L447.4 174.7ZM446.7 204.9L445.6 205.6L445.6 176L446.7 175.4ZM445.6 205.6L385.4 232.7L385.4 203.1L445.6 176ZM385.4 232.7L384 233.2L384 203.6L385.4 203.1Z"/><path class="iso-shade" data-shade="1" d="M384 233.2L382.4 233.4L382.4 203.9L384 203.6ZM382.4 233.4L380.8 233.5L380.8 204L382.4 203.9Z"/><path class="iso-shade" data-shade="2" d="M380.8 233.5L379.1 233.3L379.1 203.8L380.8 204ZM379.1 233.3L377.6 233L377.6 203.5L379.1 203.8Z"/><path class="iso-shade" data-shade="3" d="M377.6 233L376.4 232.4L376.4 202.9L377.6 203.5ZM376.4 232.4L325 203.9L325 174.4L376.4 202.9ZM325 203.9L324.1 203.2L324.1 173.7L325 174.4ZM324.1 203.2L323.5 202.5L323.5 172.9L324.1 173.7ZM323.5 202.5L323.4 201.6L323.4 172.1L323.5 172.9Z"/><path class="iso-top" d="M446.1 171.5L447 172.2L447.6 173L447.7 173.8L447.4 174.7L446.7 175.4L445.6 176L385.4 203.1L384 203.6L382.4 203.9L380.8 204L379.1 203.8L377.6 203.5L376.4 202.9L325 174.4L324.1 173.7L323.5 172.9L323.4 172.1L323.7 171.3L324.4 170.5L325.5 169.9L385.7 142.8L387 142.3L388.6 142L390.3 142L391.9 142.1L393.4 142.5L394.7 143Z"/><path class="iso-line iso-crease" data-tone="faint" d="M447.7 173.8L447.4 174.7L446.7 175.4L445.6 176L385.4 203.1L384 203.6L382.4 203.9L380.8 204L379.1 203.8L377.6 203.5L376.4 202.9L325 174.4L324.1 173.7L323.5 172.9L323.4 172.1"/><path class="iso-line iso-bevel" data-tone="faint" d="M447.7 173.8L445.8 174.4L445.2 174.9L444.4 175.5L384.3 202.5L383.2 202.9L382.1 203.1L380.9 203.1L379.7 203L378.6 202.7L377.5 202.3L326.3 173.9L325.6 173.3L325.2 172.7L323.4 172.1"/><path class="iso-line iso-edge" data-tone="hi" d="M323.4 172.1L323.7 171.3L324.4 170.5L325.5 169.9L385.7 142.8L387 142.3L388.6 142L390.3 142L391.9 142.1L393.4 142.5L394.7 143L446.1 171.5L447 172.2L447.6 173L447.7 173.8M447.7 203.4L447.4 204.2L446.7 204.9L445.6 205.6L385.4 232.7L384 233.2L382.4 233.4L380.8 233.5L379.1 233.3L377.6 233L376.4 232.4L325 203.9L324.1 203.2L323.5 202.5L323.4 201.6M447.7 173.8L447.7 203.4M323.4 172.1L323.4 201.6"/></g><path class="iso-line" data-tone="lo" d="M404 168.7L406.9 168M405.7 171.7L408.8 171.6M405.3 174.9L408.5 175.2M403.1 177.8L405.8 178.6M393.8 182L395.1 183.5M387.6 182.8L388 184.4M381.3 182.7L380.7 184.2M375.4 181.5L373.8 182.9M367 176.9L364.1 177.5M365.4 173.8L362.2 174M365.7 170.7L362.6 170.3M368 167.7L365.2 166.9M377.3 163.5L376 162.1M383.4 162.7L383.1 161.1M389.7 162.9L390.4 161.3M395.7 164L397.3 162.6"/><path class="iso-line" data-tone="hi" d="M398.2 167.1L403 164.9M396.9 179.1L401.2 181.5M372.9 178.5L368.1 180.6M374.1 166.4L369.8 164.1"/><g class="iso-solid" data-lit=""><path class="iso-fill" d="M372.8 164.4L373 162.4L374.5 160.5L377 159L380.3 157.9L384.2 157.4L388.2 157.5L391.9 158.2L395 159.5L397.2 161.1L398.2 163.1L398.2 172.3L398 174.3L396.6 176.2L394.1 177.7L390.7 178.8L386.9 179.3L382.9 179.2L379.1 178.5L376 177.2L373.8 175.6L372.8 173.6Z"/><path class="iso-shade" data-shade="0" d="M394.1 177.7L390.7 178.8L390.7 169.6L394.1 168.5ZM398.2 172.3L398 174.3L398 165.1L398.2 163.1ZM398 174.3L396.6 176.2L396.6 166.9L398 165.1ZM396.6 176.2L394.1 177.7L394.1 168.5L396.6 166.9Z"/><path class="iso-shade" data-shade="1" d="M390.7 178.8L386.9 179.3L386.9 170.1L390.7 169.6Z"/><path class="iso-shade" data-shade="2" d="M386.9 179.3L382.9 179.2L382.9 170L386.9 170.1ZM382.9 179.2L379.1 178.5L379.1 169.3L382.9 170Z"/><path class="iso-shade" data-shade="3" d="M379.1 178.5L376 177.2L376 168L379.1 169.3ZM376 177.2L373.8 175.6L373.8 166.3L376 168ZM373.8 175.6L372.8 173.6L372.8 164.4L373.8 166.3Z"/><path class="iso-top" d="M394.1 168.5L390.7 169.6L386.9 170.1L382.9 170L379.1 169.3L376 168L373.8 166.3L372.8 164.4L373 162.4L374.5 160.5L377 159L380.3 157.9L384.2 157.4L388.2 157.5L391.9 158.2L395 159.5L397.2 161.1L398.2 163.1L398 165.1L396.6 166.9Z"/><path class="iso-line iso-crease" data-tone="faint" d="M398.2 163.1L398 165.1L396.6 166.9L394.1 168.5L390.7 169.6L386.9 170.1L382.9 170L379.1 169.3L376 168L373.8 166.3L372.8 164.4"/><path class="iso-line iso-bevel" data-tone="faint" d="M398.2 163.1L397 165L395.7 166.7L393.4 168.1L390.3 169.1L386.8 169.6L383.1 169.5L379.7 168.8L376.8 167.7L374.8 166.1L372.8 164.4"/><path class="iso-line iso-edge" data-tone="hi" d="M372.8 164.4L373 162.4L374.5 160.5L377 159L380.3 157.9L384.2 157.4L388.2 157.5L391.9 158.2L395 159.5L397.2 161.1L398.2 163.1M398.2 172.3L398 174.3L396.6 176.2L394.1 177.7L390.7 178.8L386.9 179.3L382.9 179.2L379.1 178.5L376 177.2L373.8 175.6L372.8 173.6M372.8 164.4L372.8 173.6M398.2 163.1L398.2 172.3"/></g><text class="iso-face-text" data-tone="hi" transform="matrix(1.426 0.792 -1.584 0.713 334.351 171.255)" font-size="2.8" text-anchor="start">TRAEFIK v3</text><g class="iso-solid rig-part rig-router"><path class="iso-fill" d="M237.8 218L238.1 217.2L238.9 216.4L239.9 215.8L300.1 188.7L301.5 188.2L303.1 187.9L304.7 187.9L306.4 188L307.9 188.4L309.2 188.9L360.5 217.4L361.5 218.1L362 218.9L362.1 219.7L362.1 241.9L361.8 242.7L361.1 243.5L360 244.1L299.8 271.2L298.5 271.7L296.9 271.9L295.2 272L293.6 271.9L292.1 271.5L290.8 271L239.5 242.4L238.5 241.8L238 241L237.8 240.1Z"/><path class="iso-shade" data-shade="0" d="M362.1 241.9L361.8 242.7L361.8 220.6L362.1 219.7ZM361.8 242.7L361.1 243.5L361.1 221.3L361.8 220.6ZM361.1 243.5L360 244.1L360 221.9L361.1 221.3ZM360 244.1L299.8 271.2L299.8 249L360 221.9ZM299.8 271.2L298.5 271.7L298.5 249.5L299.8 249Z"/><path class="iso-shade" data-shade="1" d="M298.5 271.7L296.9 271.9L296.9 249.8L298.5 249.5ZM296.9 271.9L295.2 272L295.2 249.9L296.9 249.8Z"/><path class="iso-shade" data-shade="2" d="M295.2 272L293.6 271.9L293.6 249.7L295.2 249.9ZM293.6 271.9L292.1 271.5L292.1 249.3L293.6 249.7Z"/><path class="iso-shade" data-shade="3" d="M292.1 271.5L290.8 271L290.8 248.8L292.1 249.3ZM290.8 271L239.5 242.4L239.5 220.3L290.8 248.8ZM239.5 242.4L238.5 241.8L238.5 219.6L239.5 220.3ZM238.5 241.8L238 241L238 218.8L238.5 219.6ZM238 241L237.8 240.1L237.8 218L238 218.8Z"/><path class="iso-top" d="M360.5 217.4L361.5 218.1L362 218.9L362.1 219.7L361.8 220.6L361.1 221.3L360 221.9L299.8 249L298.5 249.5L296.9 249.8L295.2 249.9L293.6 249.7L292.1 249.3L290.8 248.8L239.5 220.3L238.5 219.6L238 218.8L237.8 218L238.1 217.2L238.9 216.4L239.9 215.8L300.1 188.7L301.5 188.2L303.1 187.9L304.7 187.9L306.4 188L307.9 188.4L309.2 188.9Z"/><path class="iso-line iso-crease" data-tone="faint" d="M362.1 219.7L361.8 220.6L361.1 221.3L360 221.9L299.8 249L298.5 249.5L296.9 249.8L295.2 249.9L293.6 249.7L292.1 249.3L290.8 248.8L239.5 220.3L238.5 219.6L238 218.8L237.8 218"/><path class="iso-line iso-bevel" data-tone="faint" d="M362.1 219.7L360.2 220.3L359.7 220.8L358.8 221.3L298.8 248.4L297.7 248.8L296.5 249L295.3 249L294.1 248.9L293 248.6L292 248.2L240.8 219.8L240 219.2L239.6 218.6L237.8 218"/><path class="iso-line iso-edge" data-tone="mid" d="M237.8 218L238.1 217.2L238.9 216.4L239.9 215.8L300.1 188.7L301.5 188.2L303.1 187.9L304.7 187.9L306.4 188L307.9 188.4L309.2 188.9L360.5 217.4L361.5 218.1L362 218.9L362.1 219.7M362.1 241.9L361.8 242.7L361.1 243.5L360 244.1L299.8 271.2L298.5 271.7L296.9 271.9L295.2 272L293.6 271.9L292.1 271.5L290.8 271L239.5 242.4L238.5 241.8L238 241L237.8 240.1M362.1 219.7L362.1 241.9M237.8 218L237.8 240.1"/></g><g class="iso-dots" data-tone="hi"><circle cx="300.8" cy="196.6" r="1.1" data-pulse=""/><circle cx="307.9" cy="200.6" r="1.1" data-pulse=""/><circle cx="315" cy="204.5" r="1.1" data-pulse=""/><circle cx="322.2" cy="208.5" r="1.1" data-pulse=""/><circle cx="329.3" cy="212.5" r="1.1" data-pulse=""/><circle cx="336.4" cy="216.4" r="1.1" data-pulse=""/><circle cx="292.8" cy="200.2" r="1.1" data-pulse=""/><circle cx="300" cy="204.2" r="1.1" data-pulse=""/><circle cx="307.1" cy="208.1" r="1.1" data-pulse=""/><circle cx="314.2" cy="212.1" r="1.1" data-pulse=""/><circle cx="321.4" cy="216" r="1.1" data-pulse=""/><circle cx="328.5" cy="220" r="1.1" data-pulse=""/></g><text class="iso-face-text" data-tone="mid" transform="matrix(1.426 0.792 -1.584 0.713 250.395 216.436)" font-size="2.7" text-anchor="start">ROUTEROS DHCP</text><path class="iso-line" data-tone="lo" d="M420.7 199.5L422 201L422.7 203.3L422.6 205.9L421.7 208.4L420.4 210.6L418.7 212.1L417 212.6L415.6 212.2M424.9 201.8L426.3 203.4L427 205.6L426.9 208.2L426 210.8L424.6 213L423 214.4L421.3 215L419.9 214.6M429.2 204.2L430.6 205.8L431.2 208L431.1 210.6L430.3 213.2L428.9 215.3L427.2 216.8L425.6 217.4L424.2 217M433.5 206.6L434.9 208.2L435.5 210.4L435.4 213L434.6 215.5L433.2 217.7L431.5 219.2L429.9 219.8L428.5 219.4M437.8 209L439.2 210.5L439.8 212.8L439.7 215.4L438.9 217.9L437.5 220.1L435.8 221.6L434.1 222.1L432.8 221.7M442.1 211.3L443.4 212.9L444.1 215.2L444 217.7L443.1 220.3L441.8 222.5L440.1 223.9L438.4 224.5L437 224.1M338.3 236.6L339.7 238.1L340.3 240.4L340.2 242.9L339.4 245.5L338 247.7L336.3 249.1L334.6 249.7L333.3 249.3M342.6 238.9L343.9 240.5L344.6 242.7L344.5 245.3L343.6 247.9L342.3 250L340.6 251.5L338.9 252.1L337.5 251.7M346.9 241.3L348.2 242.9L348.9 245.1L348.8 247.7L347.9 250.3L346.5 252.4L344.9 253.9L343.2 254.5L341.8 254.1M351.1 243.7L352.5 245.2L353.2 247.5L353 250.1L352.2 252.6L350.8 254.8L349.2 256.3L347.5 256.8L346.1 256.4M355.4 246.1L356.8 247.6L357.4 249.9L357.3 252.4L356.5 255L355.1 257.2L353.4 258.6L351.8 259.2L350.4 258.8M359.7 248.4L361.1 250L361.7 252.2L361.6 254.8L360.8 257.4L359.4 259.5L357.7 261L356 261.6L354.7 261.2"/><path class="iso-line" data-tone="hi" d="M415.5 204.4L441.2 218.6M333.1 241.5L358.8 255.7"/><path class="iso-line" data-tone="mid" d="M410.4 206.6L411.1 204.4L412.4 202.1L414.3 200.2L416.6 199.1L418.8 198.8L420.7 199.5M415.6 212.2L414.8 211L414.7 209L415.3 206.7L416.7 204.5L418.6 202.6L420.8 201.4L423 201.2L424.9 201.8M419.9 214.6L419.1 213.3L419 211.4L419.6 209.1L421 206.9L422.9 205L425.1 203.8L427.3 203.5L429.2 204.2M424.2 217L423.4 215.7L423.2 213.8L423.9 211.5L425.3 209.2L427.2 207.4L429.4 206.2L431.6 205.9L433.5 206.6M428.5 219.4L427.6 218.1L427.5 216.2L428.2 213.9L429.5 211.6L431.5 209.7L433.7 208.6L435.9 208.3L437.8 209M432.8 221.7L431.9 220.5L431.8 218.5L432.5 216.2L433.8 214L435.7 212.1L437.9 210.9L440.2 210.7L442.1 211.3M437 224.1L436.2 222.8L436.1 220.9M328 243.7L328.7 241.4L330.1 239.2L332 237.3L334.2 236.1L336.4 235.9L338.3 236.6M333.3 249.3L332.4 248L332.3 246.1L333 243.8L334.3 241.6L336.2 239.7L338.5 238.5L340.7 238.2L342.6 238.9M337.5 251.7L336.7 250.4L336.6 248.5L337.3 246.2L338.6 243.9L340.5 242.1L342.7 240.9L344.9 240.6L346.9 241.3M341.8 254.1L341 252.8L340.9 250.9L341.5 248.6L342.9 246.3L344.8 244.4L347 243.3L349.2 243L351.1 243.7M346.1 256.4L345.3 255.2L345.2 253.2L345.8 251L347.2 248.7L349.1 246.8L351.3 245.6L353.5 245.4L355.4 246.1M350.4 258.8L349.6 257.6L349.4 255.6L350.1 253.3L351.5 251.1L353.4 249.2L355.6 248L357.8 247.7L359.7 248.4M354.7 261.2L353.8 259.9L353.7 258"/><g class="iso-solid"><path class="iso-fill" d="M325.2 276.6L325.5 275.6L326.2 274.6L327.3 273.7L328.7 272.9L471.3 208.8L472.9 208.1L474.8 207.7L476.9 207.5L478.9 207.4L481 207.6L483 207.9L484.8 208.5L486.3 209.2L589 266.2L590.2 267L591.1 268L591.6 269L591.7 270L591.7 281.1L591.4 282.1L590.7 283.1L589.6 284L588.2 284.8L445.6 349L444 349.6L442.1 350L440 350.3L438 350.3L435.9 350.2L433.9 349.8L432.1 349.3L430.6 348.6L327.9 291.6L326.7 290.7L325.8 289.8L325.3 288.7L325.2 287.7Z"/><path class="iso-shade" data-shade="0" d="M591.7 281.1L591.4 282.1L591.4 271.1L591.7 270ZM591.4 282.1L590.7 283.1L590.7 272L591.4 271.1ZM590.7 283.1L589.6 284L589.6 272.9L590.7 272ZM589.6 284L588.2 284.8L588.2 273.7L589.6 272.9ZM588.2 284.8L445.6 349L445.6 337.9L588.2 273.7ZM445.6 349L444 349.6L444 338.5L445.6 337.9Z"/><path class="iso-shade" data-shade="1" d="M444 349.6L442.1 350L442.1 339L444 338.5ZM442.1 350L440 350.3L440 339.2L442.1 339ZM440 350.3L438 350.3L438 339.3L440 339.2Z"/><path class="iso-shade" data-shade="2" d="M438 350.3L435.9 350.2L435.9 339.1L438 339.3ZM435.9 350.2L433.9 349.8L433.9 338.7L435.9 339.1Z"/><path class="iso-shade" data-shade="3" d="M433.9 349.8L432.1 349.3L432.1 338.2L433.9 338.7ZM432.1 349.3L430.6 348.6L430.6 337.5L432.1 338.2ZM430.6 348.6L327.9 291.6L327.9 280.5L430.6 337.5ZM327.9 291.6L326.7 290.7L326.7 279.6L327.9 280.5ZM326.7 290.7L325.8 289.8L325.8 278.7L326.7 279.6ZM325.8 289.8L325.3 288.7L325.3 277.7L325.8 278.7ZM325.3 288.7L325.2 287.7L325.2 276.6L325.3 277.7Z"/><path class="iso-top" d="M589 266.2L590.2 267L591.1 268L591.6 269L591.7 270L591.4 271.1L590.7 272L589.6 272.9L588.2 273.7L445.6 337.9L444 338.5L442.1 339L440 339.2L438 339.3L435.9 339.1L433.9 338.7L432.1 338.2L430.6 337.5L327.9 280.5L326.7 279.6L325.8 278.7L325.3 277.7L325.2 276.6L325.5 275.6L326.2 274.6L327.3 273.7L328.7 272.9L471.3 208.8L472.9 208.1L474.8 207.7L476.9 207.5L478.9 207.4L481 207.6L483 207.9L484.8 208.5L486.3 209.2Z"/><path class="iso-line iso-crease" data-tone="faint" d="M591.7 270L591.4 271.1L590.7 272L589.6 272.9L588.2 273.7L445.6 337.9L444 338.5L442.1 339L440 339.2L438 339.3L435.9 339.1L433.9 338.7L432.1 338.2L430.6 337.5L327.9 280.5L326.7 279.6L325.8 278.7L325.3 277.7L325.2 276.6"/><path class="iso-line iso-bevel" data-tone="faint" d="M591.7 270L589.8 270.9L589.2 271.7L588.3 272.4L587 273.1L444.6 337.2L443.1 337.8L441.5 338.2L439.8 338.4L438 338.4L436.3 338.3L434.7 338L433.2 337.5L431.8 336.9L329.2 279.9L328.1 279.2L327.4 278.4L327 277.6L325.2 276.6"/><path class="iso-line iso-edge" data-tone="mid" d="M325.2 276.6L325.5 275.6L326.2 274.6L327.3 273.7L328.7 272.9L471.3 208.8L472.9 208.1L474.8 207.7L476.9 207.5L478.9 207.4L481 207.6L483 207.9L484.8 208.5L486.3 209.2L589 266.2L590.2 267L591.1 268L591.6 269L591.7 270M591.7 281.1L591.4 282.1L590.7 283.1L589.6 284L588.2 284.8L445.6 349L444 349.6L442.1 350L440 350.3L438 350.3L435.9 350.2L433.9 349.8L432.1 349.3L430.6 348.6L327.9 291.6L326.7 290.7L325.8 289.8L325.3 288.7L325.2 287.7M591.7 270L591.7 281.1M325.2 276.6L325.2 287.7"/></g><g class="iso-solid rig-part rig-g8s" data-lit=""><path class="iso-fill" d="M418.4 217L418.8 215.9L419.8 214.9L421.2 214.1L471.9 191.2L473.7 190.6L475.8 190.2L478 190.1L480.2 190.4L482.2 190.8L483.9 191.6L572.4 240.7L573.6 241.6L574.4 242.6L574.5 243.7L574.5 269.6L574.1 270.7L573.2 271.7L571.7 272.5L521 295.3L519.2 296L517.1 296.3L514.9 296.4L512.7 296.2L510.7 295.8L509 295L420.6 245.9L419.3 245L418.6 244L418.4 242.8Z"/><path class="iso-shade" data-shade="0" d="M574.5 269.6L574.1 270.7L574.1 244.8L574.5 243.7ZM574.1 270.7L573.2 271.7L573.2 245.8L574.1 244.8ZM573.2 271.7L571.7 272.5L571.7 246.7L573.2 245.8ZM571.7 272.5L521 295.3L521 269.5L571.7 246.7ZM521 295.3L519.2 296L519.2 270.1L521 269.5Z"/><path class="iso-shade" data-shade="1" d="M519.2 296L517.1 296.3L517.1 270.5L519.2 270.1ZM517.1 296.3L514.9 296.4L514.9 270.6L517.1 270.5Z"/><path class="iso-shade" data-shade="2" d="M514.9 296.4L512.7 296.2L512.7 270.4L514.9 270.6ZM512.7 296.2L510.7 295.8L510.7 269.9L512.7 270.4Z"/><path class="iso-shade" data-shade="3" d="M510.7 295.8L509 295L509 269.2L510.7 269.9ZM509 295L420.6 245.9L420.6 220.1L509 269.2ZM420.6 245.9L419.3 245L419.3 219.2L420.6 220.1ZM419.3 245L418.6 244L418.6 218.1L419.3 219.2ZM418.6 244L418.4 242.8L418.4 217L418.6 218.1Z"/><path class="iso-top" d="M572.4 240.7L573.6 241.6L574.4 242.6L574.5 243.7L574.1 244.8L573.2 245.8L571.7 246.7L521 269.5L519.2 270.1L517.1 270.5L514.9 270.6L512.7 270.4L510.7 269.9L509 269.2L420.6 220.1L419.3 219.2L418.6 218.1L418.4 217L418.8 215.9L419.8 214.9L421.2 214.1L471.9 191.2L473.7 190.6L475.8 190.2L478 190.1L480.2 190.4L482.2 190.8L483.9 191.6Z"/><path class="iso-line iso-crease" data-tone="faint" d="M574.5 243.7L574.1 244.8L573.2 245.8L571.7 246.7L521 269.5L519.2 270.1L517.1 270.5L514.9 270.6L512.7 270.4L510.7 269.9L509 269.2L420.6 220.1L419.3 219.2L418.6 218.1L418.4 217"/><path class="iso-line iso-bevel" data-tone="faint" d="M574.5 243.7L572.3 244.5L571.6 245.3L570.4 246L519.9 268.7L518.3 269.3L516.7 269.6L515 269.6L513.3 269.5L511.7 269.1L510.3 268.5L422.1 219.5L421 218.7L420.4 217.9L418.4 217"/><path class="iso-line iso-edge" data-tone="hi" d="M418.4 217L418.8 215.9L419.8 214.9L421.2 214.1L471.9 191.2L473.7 190.6L475.8 190.2L478 190.1L480.2 190.4L482.2 190.8L483.9 191.6L572.4 240.7L573.6 241.6L574.4 242.6L574.5 243.7M574.5 269.6L574.1 270.7L573.2 271.7L571.7 272.5L521 295.3L519.2 296L517.1 296.3L514.9 296.4L512.7 296.2L510.7 295.8L509 295L420.6 245.9L419.3 245L418.6 244L418.4 242.8M574.5 243.7L574.5 269.6M418.4 217L418.4 242.8"/></g><g class="iso-solid" data-lit=""><path class="iso-fill" d="M475.2 218.7L476.2 216L478.6 213.5L482.2 211.4L486.8 209.8L492 208.9L497.6 208.7L503.1 209.2L508.1 210.4L512.3 212.2L515.5 214.5L517.3 217.1L517.8 219.9L517.8 230.9L516.7 233.7L514.3 236.2L510.7 238.3L506.1 239.9L500.9 240.8L495.3 241L489.9 240.5L484.9 239.3L480.6 237.5L477.5 235.2L475.6 232.6L475.2 229.8Z"/><path class="iso-shade" data-shade="0" d="M510.7 238.3L506.1 239.9L506.1 228.8L510.7 227.2ZM517.8 230.9L516.7 233.7L516.7 222.6L517.8 219.9ZM516.7 233.7L514.3 236.2L514.3 225.1L516.7 222.6ZM514.3 236.2L510.7 238.3L510.7 227.2L514.3 225.1Z"/><path class="iso-shade" data-shade="1" d="M506.1 239.9L500.9 240.8L500.9 229.7L506.1 228.8ZM500.9 240.8L495.3 241L495.3 229.9L500.9 229.7Z"/><path class="iso-shade" data-shade="2" d="M495.3 241L489.9 240.5L489.9 229.4L495.3 229.9ZM489.9 240.5L484.9 239.3L484.9 228.2L489.9 229.4Z"/><path class="iso-shade" data-shade="3" d="M484.9 239.3L480.6 237.5L480.6 226.4L484.9 228.2ZM480.6 237.5L477.5 235.2L477.5 224.1L480.6 226.4ZM477.5 235.2L475.6 232.6L475.6 221.5L477.5 224.1ZM475.6 232.6L475.2 229.8L475.2 218.7L475.6 221.5Z"/><path class="iso-top" d="M510.7 227.2L506.1 228.8L500.9 229.7L495.3 229.9L489.9 229.4L484.9 228.2L480.6 226.4L477.5 224.1L475.6 221.5L475.2 218.7L476.2 216L478.6 213.5L482.2 211.4L486.8 209.8L492 208.9L497.6 208.7L503.1 209.2L508.1 210.4L512.3 212.2L515.5 214.5L517.3 217.1L517.8 219.9L516.7 222.6L514.3 225.1Z"/><path class="iso-line iso-crease" data-tone="faint" d="M517.8 219.9L516.7 222.6L514.3 225.1L510.7 227.2L506.1 228.8L500.9 229.7L495.3 229.9L489.9 229.4L484.9 228.2L480.6 226.4L477.5 224.1L475.6 221.5L475.2 218.7"/><path class="iso-line iso-bevel" data-tone="faint" d="M517.8 219.9L515.5 222.4L513.3 224.8L509.9 226.7L505.6 228.2L500.6 229.1L495.4 229.3L490.3 228.8L485.6 227.7L481.6 226L478.6 223.8L476.9 221.4L475.2 218.7"/><path class="iso-line iso-edge" data-tone="hi" d="M475.2 218.7L476.2 216L478.6 213.5L482.2 211.4L486.8 209.8L492 208.9L497.6 208.7L503.1 209.2L508.1 210.4L512.3 212.2L515.5 214.5L517.3 217.1L517.8 219.9M517.8 230.9L516.7 233.7L514.3 236.2L510.7 238.3L506.1 239.9L500.9 240.8L495.3 241L489.9 240.5L484.9 239.3L480.6 237.5L477.5 235.2L475.6 232.6L475.2 229.8M475.2 218.7L475.2 229.8M517.8 219.9L517.8 230.9"/></g><path class="iso-line" data-tone="green" data-flow="" d="M515 240.3L510.6 241.9L505.7 243.1L500.4 243.7L495 243.8L489.6 243.4L484.5 242.5L479.9 241.1L475.9 239.3L472.7 237.1L470.3 234.6L469 232L468.8 229.3L469.6 226.6L471.5 224L474.3 221.7L477.9 219.7L482.3 218.1L487.2 216.9L492.5 216.3L497.9 216.2L503.3 216.6L508.4 217.5L513 218.9L517.1 220.7L520.3 222.9L522.6 225.4L523.9 228L524.1 230.7L523.3 233.4L521.5 236L518.7 238.3Z"/><text class="iso-face-text" data-tone="hi" transform="matrix(1.426 0.792 -1.584 0.713 428.488 216.145)" font-size="2.6" text-anchor="start">L2: g8s HARNESS (F0/F1/F2)</text><g class="iso-solid rig-part rig-aegis" data-lit=""><path class="iso-fill" d="M342.4 251.2L342.8 250.1L343.7 249.1L345.2 248.3L395.9 225.5L397.7 224.8L399.8 224.5L402 224.4L404.2 224.6L406.2 225.1L407.9 225.8L496.3 274.9L497.6 275.8L498.3 276.9L498.5 278L498.5 303.8L498.1 304.9L497.1 305.9L495.7 306.8L445 329.6L443.2 330.2L441.1 330.6L438.9 330.7L436.7 330.5L434.7 330L433 329.3L344.5 280.2L343.3 279.2L342.5 278.2L342.4 277.1Z"/><path class="iso-shade" data-shade="0" d="M498.5 303.8L498.1 304.9L498.1 279.1L498.5 278ZM498.1 304.9L497.1 305.9L497.1 280.1L498.1 279.1ZM497.1 305.9L495.7 306.8L495.7 280.9L497.1 280.1ZM495.7 306.8L445 329.6L445 303.7L495.7 280.9ZM445 329.6L443.2 330.2L443.2 304.4L445 303.7Z"/><path class="iso-shade" data-shade="1" d="M443.2 330.2L441.1 330.6L441.1 304.7L443.2 304.4ZM441.1 330.6L438.9 330.7L438.9 304.8L441.1 304.7Z"/><path class="iso-shade" data-shade="2" d="M438.9 330.7L436.7 330.5L436.7 304.6L438.9 304.8ZM436.7 330.5L434.7 330L434.7 304.1L436.7 304.6Z"/><path class="iso-shade" data-shade="3" d="M434.7 330L433 329.3L433 303.4L434.7 304.1ZM433 329.3L344.5 280.2L344.5 254.3L433 303.4ZM344.5 280.2L343.3 279.2L343.3 253.4L344.5 254.3ZM343.3 279.2L342.5 278.2L342.5 252.3L343.3 253.4ZM342.5 278.2L342.4 277.1L342.4 251.2L342.5 252.3Z"/><path class="iso-top" d="M496.3 274.9L497.6 275.8L498.3 276.9L498.5 278L498.1 279.1L497.1 280.1L495.7 280.9L445 303.7L443.2 304.4L441.1 304.7L438.9 304.8L436.7 304.6L434.7 304.1L433 303.4L344.5 254.3L343.3 253.4L342.5 252.3L342.4 251.2L342.8 250.1L343.7 249.1L345.2 248.3L395.9 225.5L397.7 224.8L399.8 224.5L402 224.4L404.2 224.6L406.2 225.1L407.9 225.8Z"/><path class="iso-line iso-crease" data-tone="faint" d="M498.5 278L498.1 279.1L497.1 280.1L495.7 280.9L445 303.7L443.2 304.4L441.1 304.7L438.9 304.8L436.7 304.6L434.7 304.1L433 303.4L344.5 254.3L343.3 253.4L342.5 252.3L342.4 251.2"/><path class="iso-line iso-bevel" data-tone="faint" d="M498.5 278L496.3 278.8L495.5 279.5L494.3 280.2L443.8 303L442.3 303.5L440.7 303.8L439 303.9L437.3 303.7L435.7 303.3L434.3 302.7L346 253.7L345 253L344.4 252.1L342.4 251.2"/><path class="iso-line iso-edge" data-tone="hi" d="M342.4 251.2L342.8 250.1L343.7 249.1L345.2 248.3L395.9 225.5L397.7 224.8L399.8 224.5L402 224.4L404.2 224.6L406.2 225.1L407.9 225.8L496.3 274.9L497.6 275.8L498.3 276.9L498.5 278M498.5 303.8L498.1 304.9L497.1 305.9L495.7 306.8L445 329.6L443.2 330.2L441.1 330.6L438.9 330.7L436.7 330.5L434.7 330L433 329.3L344.5 280.2L343.3 279.2L342.5 278.2L342.4 277.1M498.5 278L498.5 303.8M342.4 251.2L342.4 277.1"/></g><g class="iso-solid" data-lit=""><path class="iso-fill" d="M384.9 240.9L385.7 238.7L387.6 236.7L390.5 235L394.1 233.8L398.3 233L402.8 232.9L407.2 233.3L411.2 234.2L414.6 235.7L417.1 237.5L418.6 239.6L418.9 241.8L418.9 254.8L418.1 256.9L416.2 258.9L413.3 260.6L409.6 261.9L405.4 262.6L401 262.8L396.6 262.4L392.6 261.5L389.2 260L386.7 258.2L385.2 256.1L384.9 253.9Z"/><path class="iso-shade" data-shade="0" d="M413.3 260.6L409.6 261.9L409.6 249L413.3 247.7ZM418.9 254.8L418.1 256.9L418.1 244L418.9 241.8ZM418.1 256.9L416.2 258.9L416.2 246L418.1 244ZM416.2 258.9L413.3 260.6L413.3 247.7L416.2 246Z"/><path class="iso-shade" data-shade="1" d="M409.6 261.9L405.4 262.6L405.4 249.7L409.6 249ZM405.4 262.6L401 262.8L401 249.9L405.4 249.7Z"/><path class="iso-shade" data-shade="2" d="M401 262.8L396.6 262.4L396.6 249.5L401 249.9ZM396.6 262.4L392.6 261.5L392.6 248.5L396.6 249.5Z"/><path class="iso-shade" data-shade="3" d="M392.6 261.5L389.2 260L389.2 247.1L392.6 248.5ZM389.2 260L386.7 258.2L386.7 245.3L389.2 247.1ZM386.7 258.2L385.2 256.1L385.2 243.2L386.7 245.3ZM385.2 256.1L384.9 253.9L384.9 240.9L385.2 243.2Z"/><path class="iso-top" d="M413.3 247.7L409.6 249L405.4 249.7L401 249.9L396.6 249.5L392.6 248.5L389.2 247.1L386.7 245.3L385.2 243.2L384.9 240.9L385.7 238.7L387.6 236.7L390.5 235L394.1 233.8L398.3 233L402.8 232.9L407.2 233.3L411.2 234.2L414.6 235.7L417.1 237.5L418.6 239.6L418.9 241.8L418.1 244L416.2 246Z"/><path class="iso-line iso-crease" data-tone="faint" d="M418.9 241.8L418.1 244L416.2 246L413.3 247.7L409.6 249L405.4 249.7L401 249.9L396.6 249.5L392.6 248.5L389.2 247.1L386.7 245.3L385.2 243.2L384.9 240.9"/><path class="iso-line iso-bevel" data-tone="faint" d="M418.9 241.8L417.1 243.9L415.3 245.7L412.6 247.3L409.1 248.5L405.2 249.2L401.1 249.4L396.9 249L393.2 248.1L390 246.7L387.6 245L386.2 243L384.9 240.9"/><path class="iso-line iso-edge" data-tone="hi" d="M384.9 240.9L385.7 238.7L387.6 236.7L390.5 235L394.1 233.8L398.3 233L402.8 232.9L407.2 233.3L411.2 234.2L414.6 235.7L417.1 237.5L418.6 239.6L418.9 241.8M418.9 254.8L418.1 256.9L416.2 258.9L413.3 260.6L409.6 261.9L405.4 262.6L401 262.8L396.6 262.4L392.6 261.5L389.2 260L386.7 258.2L385.2 256.1L384.9 253.9M384.9 240.9L384.9 253.9M418.9 241.8L418.9 254.8"/></g><g class="iso-solid"><path class="iso-fill" d="M410.3 269.8L410.7 269L411.7 268.3L443.4 254L444.8 253.6L446.5 253.5L448.1 253.7L449.4 254.2L475.1 268.5L475.9 269.2L476.2 270L476.2 277.4L475.8 278.2L474.8 278.9L443.1 293.1L441.7 293.5L440 293.7L438.4 293.5L437.1 293L411.4 278.7L410.6 278L410.3 277.2Z"/><path class="iso-shade" data-shade="0" d="M476.2 277.4L475.8 278.2L475.8 270.8L476.2 270ZM475.8 278.2L474.8 278.9L474.8 271.5L475.8 270.8ZM474.8 278.9L443.1 293.1L443.1 285.7L474.8 271.5ZM443.1 293.1L441.7 293.5L441.7 286.2L443.1 285.7Z"/><path class="iso-shade" data-shade="1" d="M441.7 293.5L440 293.7L440 286.3L441.7 286.2Z"/><path class="iso-shade" data-shade="2" d="M440 293.7L438.4 293.5L438.4 286.1L440 286.3Z"/><path class="iso-shade" data-shade="3" d="M438.4 293.5L437.1 293L437.1 285.6L438.4 286.1ZM437.1 293L411.4 278.7L411.4 271.3L437.1 285.6ZM411.4 278.7L410.6 278L410.6 270.6L411.4 271.3ZM410.6 278L410.3 277.2L410.3 269.8L410.6 270.6Z"/><path class="iso-top" d="M475.1 268.5L475.9 269.2L476.2 270L475.8 270.8L474.8 271.5L443.1 285.7L441.7 286.2L440 286.3L438.4 286.1L437.1 285.6L411.4 271.3L410.6 270.6L410.3 269.8L410.7 269L411.7 268.3L443.4 254L444.8 253.6L446.5 253.5L448.1 253.7L449.4 254.2Z"/><path class="iso-line iso-crease" data-tone="faint" d="M476.2 270L475.8 270.8L474.8 271.5L443.1 285.7L441.7 286.2L440 286.3L438.4 286.1L437.1 285.6L411.4 271.3L410.6 270.6L410.3 269.8"/><path class="iso-line iso-bevel" data-tone="faint" d="M476.2 270L475 270.6L474.2 271.2L442.6 285.4L441.4 285.8L440.1 285.9L438.8 285.7L437.7 285.3L412.1 271.1L411.4 270.5L410.3 269.8"/><path class="iso-line iso-edge" data-tone="mid" d="M410.3 269.8L410.7 269L411.7 268.3L443.4 254L444.8 253.6L446.5 253.5L448.1 253.7L449.4 254.2L475.1 268.5L475.9 269.2L476.2 270M476.2 277.4L475.8 278.2L474.8 278.9L443.1 293.1L441.7 293.5L440 293.7L438.4 293.5L437.1 293L411.4 278.7L410.6 278L410.3 277.2M476.2 270L476.2 277.4M410.3 269.8L410.3 277.2"/></g><path class="iso-line" data-tone="red" data-flow="" d="M417.6 262.6L413.9 264L409.7 265L405.3 265.5L400.7 265.6L396.1 265.3L391.8 264.5L387.9 263.3L384.5 261.8L381.7 259.9L379.8 257.8L378.7 255.6L378.5 253.3L379.2 251.1L380.7 248.9L383.1 246.9L386.2 245.2L389.9 243.9L394.1 242.9L398.5 242.3L403.1 242.2L407.7 242.6L412 243.4L415.9 244.5L419.3 246.1L422 247.9L424 250L425.1 252.3L425.3 254.5L424.6 256.8L423.1 259L420.7 261Z"/><text class="iso-face-text" data-tone="hi" transform="matrix(1.426 0.792 -1.584 0.713 352.452 250.377)" font-size="2.6" text-anchor="start">L3: AEGIS AST + 2FA HITL</text><g class="iso-wire" data-tone="blue"><path class="iso-line" data-tone="blue" data-flow="" d="M307.7 165L355.6 169.3"/><circle class="iso-wire-end" cx="307.7" cy="165" r="1.5"/><circle class="iso-wire-end" cx="355.6" cy="169.3" r="1.5"/></g><g class="iso-wire" data-tone="green"><path class="iso-line" data-tone="green" data-flow="" d="M272.9 180.7L276.4 204.9"/><circle class="iso-wire-end" cx="272.9" cy="180.7" r="1.5"/><circle class="iso-wire-end" cx="276.4" cy="204.9" r="1.5"/></g><g class="iso-wire" data-tone="blue"><path class="iso-line" data-tone="blue" data-flow="" d="M425 192.7L452.9 210.9"/><circle class="iso-wire-end" cx="425" cy="192.7" r="1.5"/><circle class="iso-wire-end" cx="452.9" cy="210.9" r="1.5"/></g><g class="iso-wire" data-tone="red"><path class="iso-line" data-tone="red" data-flow="" d="M326.8 240.6L370.5 248"/><circle class="iso-wire-end" cx="326.8" cy="240.6" r="1.5"/><circle class="iso-wire-end" cx="370.5" cy="248" r="1.5"/></g><g class="iso-wire" data-tone="hi"><path class="iso-line" data-tone="hi" data-dotted="" d="M350.7 203.4L334.8 210.6"/><circle class="iso-wire-end" cx="350.7" cy="203.4" r="1.3"/><circle class="iso-wire-end" cx="334.8" cy="210.6" r="1.3"/></g></svg></div><figcaption class="iso-legend"><span class="iso-keys"><span class="iso-key"><svg class="iso-swatch" data-mark="lit" viewBox="0 0 16 10" aria-hidden="true"><path d="M2 4.5 8 1.5 14 4.5 14 6 8 9 2 6Z"/><path class="iso-swatch-crease" d="M2 4.5 8 7.5 14 4.5"/></svg>Active Containment Core (g8s / Aegis)</span><span class="iso-key"><svg class="iso-swatch" data-mark="blue" viewBox="0 0 16 10" aria-hidden="true"><path d="M1.5 5h13"/></svg>Cloudflare mTLS Ingress Stream</span><span class="iso-key"><svg class="iso-swatch" data-mark="green" viewBox="0 0 16 10" aria-hidden="true"><path d="M1.5 5h13"/></svg>WriteReceipt Verified Path</span><span class="iso-key"><svg class="iso-swatch" data-mark="red" viewBox="0 0 16 10" aria-hidden="true"><path d="M1.5 5h13"/></svg>AST Risk / HITL 2FA Intercept</span></span><span class="iso-caption">Every incoming request traverses Cloudflare Full-Strict mTLS into Traefik v3 and MikroTik RouterOS (Single DHCP Authority), routing isolated workloads into g8s (WriteReceipt worktrees) and Aegis (Shell AST + Telegram 2FA).</span></figcaption></figure></div>
+    <!-- Act II -->
+    <article class="act-card act-2 reveal-on-scroll">
+    <div class="act-header">
+    <h3 class="act-title">Act II · The Arithmetic of Determinism — Kaizen &amp; Single-Source Infrastructure</h3>
+    <a href="https://github.com/tamld/flowaxon/actions/runs/41189766268" class="src-link" target="_blank" rel="noopener noreferrer">run #41189766268 link ↗</a>
+    </div>
+    <p class="act-desc">Enterprise virtualization, MikroTik RouterOS Single DHCP Authority, Dual-Plane Observability ([LAN] vs [WAN]), and Zero-WAN Exposure. The Automation Equation: "1 manual click takes 3 seconds. 1 automated script takes 3 hours. 100 flawed clicks cost 3 years."</p>
+    <div class="rig-container" id="constellation-rig">
+    <div class="rig-plate-header">
+    <div class="rig-plate-meta">
+    <span class="rig-plate-tag">FIG 01 // CONSTELLATION-RIG</span>
+    <span class="rig-plate-title">PRODUCTION DEPLOYMENT &amp; HARNESS BENCH</span>
+    </div>
+    <div class="rig-plate-readout" id="rig-plate-readout">
+    <span class="readout-dot"></span>
+    <span>RSS 864KB • TLS 1.3 mTLS • 6/6 CI GREEN</span>
+    </div>
+    </div>
 
-      <div id="iso-layer-detail" class="p-3.5 rounded bg-canvas border border-borderHairline font-mono text-xs text-zinc-300">
-        <!-- Populated by selectIsoLayer('edge') -->
-      </div>
+    <div class="rig-canvas-wrap" id="rig-canvas-wrap">
+    <svg class="rig-svg" id="rig-svg" viewBox="0 0 920 220" role="img" aria-label="Deployment map of the machine serving this page" preserveAspectRatio="xMidYMid meet">
+    <text x="14" y="28" class="rig-svg-kicker">DEPLOYMENT MAP OF THE MACHINE SERVING THIS PAGE</text>
+    <text x="906" y="28" text-anchor="end" class="rig-svg-kicker-src">TOPOLOGY SSoT · ZERO PROBABILISTIC NOISE</text>
+
+    <g class="rig-paths-layer">
+    <path id="path-edge-ingress" class="rig-path-track" d="M 158 105 L 202 105" />
+    <path id="path-edge-ingress-pulse" class="rig-pulse-line" data-index="0" data-path="edge-ingress" d="M 158 105 L 202 105" />
+
+    <path id="path-fleet-ingress" class="rig-path-track" d="M 346 105 L 390 105" />
+    <path id="path-fleet-ingress-pulse" class="rig-pulse-line" data-index="1" data-path="fleet-ingress" d="M 346 105 L 390 105" />
+
+    <path id="path-engine-fleet" class="rig-path-track" d="M 534 105 L 578 105" />
+    <path id="path-engine-fleet-pulse" class="rig-pulse-line" data-index="2" data-path="engine-fleet" d="M 534 105 L 578 105" />
+
+    <path id="path-engine-harness" class="rig-path-track" d="M 722 105 L 766 105" />
+    <path id="path-engine-harness-pulse" class="rig-pulse-line" data-index="3" data-path="engine-harness" d="M 722 105 L 766 105" />
+    </g>
+
+    <!-- 1. EDGE -->
+    <g class="rig-node" id="node-edge" data-entity="edge" tabindex="0" role="button" aria-haspopup="dialog" aria-label="Edge block: Cloudflare WAF and TLS termination">
+    <rect class="rig-node-box" x="14" y="55" width="144" height="100" rx="3" />
+    <rect class="rig-node-header-bar" x="14" y="55" width="144" height="22" rx="3" />
+    <circle class="rig-status-dot" cx="26" cy="66" r="3" />
+    <text class="rig-node-label" x="38" y="70">01 // EDGE</text>
+    <text class="rig-node-name" x="26" y="92">CLOUDFLARE WAF</text>
+    <text class="rig-node-sub" x="26" y="108">Strict TLS · HSTS Preload</text>
+    <rect class="rig-metric-pill" x="22" y="122" width="128" height="24" rx="2" />
+    <text class="rig-node-metric-text" x="86" y="138" text-anchor="middle">TLS 1.3 · mTLS origin</text>
+    </g>
+
+    <!-- 2. INGRESS -->
+    <g class="rig-node" id="node-ingress" data-entity="ingress" tabindex="0" role="button" aria-haspopup="dialog" aria-label="Ingress block: Traefik v3 reverse proxy">
+    <rect class="rig-node-box" x="202" y="55" width="144" height="100" rx="3" />
+    <rect class="rig-node-header-bar" x="202" y="55" width="144" height="22" rx="3" />
+    <circle class="rig-status-dot" cx="214" cy="66" r="3" />
+    <text class="rig-node-label" x="226" y="70">02 // INGRESS</text>
+    <text class="rig-node-name" x="214" y="92">TRAEFIK v3</text>
+    <text class="rig-node-sub" x="214" y="108">Reverse Proxy · mTLS</text>
+    <rect class="rig-metric-pill" x="210" y="122" width="128" height="24" rx="2" />
+    <text class="rig-node-metric-text" x="274" y="138" text-anchor="middle">3 vhosts</text>
+    </g>
+
+    <!-- 3. FLEET -->
+    <g class="rig-node" id="node-fleet" data-entity="fleet" tabindex="0" role="button" aria-haspopup="dialog" aria-label="Fleet block: Proxmox LXC and rootless podman">
+    <rect class="rig-node-box" x="390" y="55" width="144" height="100" rx="3" />
+    <rect class="rig-node-header-bar" x="390" y="55" width="144" height="22" rx="3" />
+    <circle class="rig-status-dot" cx="402" cy="66" r="3" />
+    <text class="rig-node-label" x="414" y="70">03 // FLEET</text>
+    <text class="rig-node-name" x="402" y="92">PROXMOX · PODMAN</text>
+    <text class="rig-node-sub" x="402" y="108">Production Container</text>
+    <rect class="rig-metric-pill" x="398" y="122" width="128" height="24" rx="2" />
+    <text class="rig-node-metric-text" x="462" y="138" text-anchor="middle">production container</text>
+    </g>
+
+    <!-- 4. ENGINE -->
+    <g class="rig-node" id="node-engine" data-entity="engine" tabindex="0" role="button" aria-haspopup="dialog" aria-label="Engine block: Static Go binary">
+    <rect class="rig-node-box" x="578" y="55" width="144" height="100" rx="3" />
+    <rect class="rig-node-header-bar" x="578" y="55" width="144" height="22" rx="3" />
+    <circle class="rig-status-dot" cx="590" cy="66" r="3" />
+    <text class="rig-node-label" x="602" y="70">04 // ENGINE</text>
+    <text class="rig-node-name" x="590" y="92">GO ENGINE</text>
+    <text class="rig-node-sub" x="590" y="108">Static Binary · HTTP/2</text>
+    <rect class="rig-metric-pill" x="586" y="122" width="128" height="24" rx="2" />
+    <text class="rig-node-metric-text" x="650" y="138" text-anchor="middle">864 KB RSS</text>
+    </g>
+
+    <!-- 5. HARNESS -->
+    <g class="rig-node" id="node-harness" data-entity="harness" tabindex="0" role="button" aria-haspopup="dialog" aria-label="Harness block: g8s controlplane and Aegis gates">
+    <rect class="rig-node-box" x="766" y="55" width="144" height="100" rx="3" />
+    <rect class="rig-node-header-bar" x="766" y="55" width="144" height="22" rx="3" />
+    <circle class="rig-status-dot" cx="778" cy="66" r="3" />
+    <text class="rig-node-label" x="790" y="70">05 // HARNESS</text>
+    <text class="rig-node-name" x="778" y="92">g8s · AEGIS</text>
+    <text class="rig-node-sub" x="778" y="108">Agent Ring · AST Gates</text>
+    <rect class="rig-metric-pill" x="774" y="122" width="128" height="24" rx="2" />
+    <text class="rig-node-metric-text" x="838" y="138" text-anchor="middle">6-stage pipeline green</text>
+    </g>
+
+    <text x="14" y="195" class="rig-svg-footer-text">TRAVERSAL: CLOUDFLARE EDGE ➔ TRAEFIK v3 ➔ PROXMOX PODMAN ➔ GO ENGINE ⇄ g8s/AEGIS</text>
+    <text x="906" y="195" text-anchor="end" class="rig-svg-footer-src">(src: manifest.json + run #41189766268)</text>
+    </svg>
+
+    <div id="rig-popover" class="rig-popover" role="dialog" aria-modal="true" aria-labelledby="rig-popover-title" hidden>
+    <div class="rig-popover-header">
+    <span class="rig-popover-tag" id="rig-popover-tag">ENTITY // 01</span>
+    <button type="button" class="rig-popover-close" id="rig-popover-close" aria-label="Close popover (Esc)">[Esc ✕]</button>
+    </div>
+    <h4 class="rig-popover-title" id="rig-popover-title">Edge</h4>
+    <p class="rig-popover-what" id="rig-popover-what">Cloudflare WAF + TLS termination, HSTS preload</p>
+    <div class="rig-popover-metric-wrap">
+    <div class="rig-metric-header">
+    <span>ONE VERIFIED METRIC</span>
+    <span>MECHANICAL SSoT</span>
+    </div>
+    <div class="rig-metric-val" id="rig-popover-metric">TLS 1.3 · mTLS origin</div>
+    <div class="rig-metric-src" id="rig-popover-source">(src: manifest tech_stack.edge_and_ingress)</div>
+    </div>
+    <div class="rig-popover-chips-wrap">
+    <div class="rig-chips-header">FEATURE MAP BRIDGE (manifest.json)</div>
+    <div class="rig-popover-chips" id="rig-popover-chips"></div>
+    </div>
+    </div>
+    </div>
+
+    <div class="rig-footer">
+    <div class="rig-promise-bar">
+    <span class="rig-promise-line">CLICK ANY BLOCK · OR TYPE /DRILL</span>
+    <span class="rig-telemetry-badge">100% OPERATIONAL</span>
+    </div>
+    <form id="rig-cli-form" class="rig-cli-form" autocomplete="off">
+    <label for="rig-cli-input" class="rig-cli-prompt">$</label>
+    <input type="text" id="rig-cli-input" class="rig-cli-input" placeholder="/drill [edge | ingress | fleet | engine | harness | map | help]" aria-label="Constellation rig drill command input" autocomplete="off" spellcheck="false">
+    <button type="submit" class="rig-cli-submit">RUN</button>
+    </form>
+    <div class="rig-quick-bar" aria-label="Quick drill commands">
+    <span class="rig-quick-label">TARGETS:</span>
+    <button type="button" class="rig-chip-btn" data-drill="edge">/drill edge</button>
+    <button type="button" class="rig-chip-btn" data-drill="ingress">/drill ingress</button>
+    <button type="button" class="rig-chip-btn" data-drill="fleet">/drill fleet</button>
+    <button type="button" class="rig-chip-btn" data-drill="engine">/drill engine</button>
+    <button type="button" class="rig-chip-btn" data-drill="harness">/drill harness</button>
+    <button type="button" class="rig-chip-btn" data-drill="map">/drill map</button>
+    <button type="button" class="rig-chip-btn" data-drill="help">/drill help</button>
+    </div>
+    <div id="rig-log-area" class="rig-log-area" role="log" aria-live="polite">
+    <div class="rig-log-line text-muted">[INIT] Constellation Rig SSoT initialized · 5 deployment entities mapped.</div>
+    <div class="rig-log-line text-muted">[READY] Click any block above or run /drill [target] in terminal.</div>
+    </div>
+    </div>
+    </div>
+    </article>
+
+    <!-- Act III -->
+    <article class="act-card act-3 reveal-on-scroll">
+    <div class="act-header">
+    <h3 class="act-title">Act III · The Symbiotic Frontier — Deterministic Harnesses for Autonomous AI</h3>
+    <button type="button" class="btn-copy" data-drill="harness" aria-label="Inspect Harness in Constellation Rig">Harness Rig #5 ↗</button>
+    </div>
+    <p class="act-desc">g8s &amp; Aegis. F0/F1/F2 exponential containment rings + S0..S3 orthogonal control strata + HMAC-SHA256 Telegram 2FA runtime interception.</p>
+    <div class="dispatch-module">
+    <div class="dispatch-flow" aria-label="Dispatch Architecture Flow">
+    <span class="flow-step" data-step="1">F0 Brain</span>
+    <span class="flow-arrow">→</span>
+    <span class="flow-step" data-step="2">F1·a Lease Claim</span>
+    <span class="flow-arrow">→</span>
+    <span class="flow-step" data-step="3">F1·b Scoped Write</span>
+    <span class="flow-arrow">→</span>
+    <span class="flow-step" data-step="4">F1·c WriteReceipt</span>
+    <span class="flow-arrow">→</span>
+    <span class="flow-step" data-step="5">Seal &amp; Done</span>
+    </div>
+    <div class="dispatch-terminal" role="region" aria-label="Terminal Log">
+    <div class="term-line" data-step="1">$ g8s submit —brief: research-packet-N</div>
+    <div class="term-line" data-step="2">lease claimed (CAS) · worktree isolated</div>
+    <div class="term-line" data-step="3">F1 writing … receipt-scoped paths only</div>
+    <div class="term-line" data-step="4">receipt sealed · id 0x8f7d2e4a · paths 1 · ttl 3600s</div>
+    <div class="term-line" data-step="5">$ watch --milestone worker-complete … done</div>
+    </div>
+    <div class="dispatch-actions">
+    <button type="button" id="btn-dispatch-trigger" class="btn-dispatch">Dispatch Worker (Demo)</button>
+    <button type="button" class="btn-dispatch rig-bridge-btn" data-drill="harness">Inspect Harness in Rig (/drill harness)</button>
+    </div>
+    </div>
+    </article>
+    </div>
+    </div>
     </section>
 
-    <!-- ASYMMETRIC BENTO GRID: PRODUCT CONSTELLATION LAUNCHPAD (ZERO GRADIENT) -->
-    <section id="systems" class="space-y-6">
-      
-      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3">
-        <div class="space-y-1">
-          <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-zinc-100">
-            Product Constellation &amp; Engineered Systems
-          </h2>
-          <p class="text-xs sm:text-sm text-zinc-400">
-            Dedicated product portals on <code class="text-accentLight">*.flowaxon.com</code>, physical codebases, reproducible receipts, zero ghost capacity.
-          </p>
-        </div>
-
-        <!-- Interactive Topology Trigger -->
-        <button id="toggle-topology-btn" class="inline-flex items-center gap-2 px-3 py-1.5 rounded bg-panel border border-borderSubtle hover:border-accentLight text-xs font-mono text-zinc-300 hover:text-white transition-all group" title="Toggle Architecture Topology Diagram">
-          <span class="w-2 h-2 rounded-full bg-signalGreen"></span>
-          <span>Inspect Architecture Topology</span>
-          <svg id="topology-chevron" class="w-3.5 h-3.5 text-zinc-500 group-hover:text-accentLight transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-        </button>
-      </div>
-
-      <!-- Collapsible Topology Drawer (Zero Gradient, Responsive) -->
-      <div id="topology-drawer" class="hidden rounded-lg bg-panel border border-borderSubtle p-4 sm:p-6 space-y-4">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-borderHairline pb-3 text-xs font-mono">
-          <div class="flex items-center gap-2 text-zinc-200">
-            <span class="font-bold text-accentLight">PROD TOPOLOGY</span>
-            <span class="text-zinc-600">/</span>
-            <span class="text-zinc-400">Dual-Plane Ingress &amp; Observability</span>
-          </div>
-          <div class="flex flex-wrap items-center gap-3 text-[11px] text-zinc-400">
-            <span class="inline-flex items-center gap-1"><span class="w-2 h-2 bg-[#38bdf8] inline-block"></span> WAN Ingress</span>
-            <span class="inline-flex items-center gap-1"><span class="w-2 h-2 bg-[#10b981] inline-block"></span> [LAN] Probes</span>
-            <span class="inline-flex items-center gap-1"><span class="w-2 h-2 bg-[#f59e0b] inline-block"></span> 2FA Auth Barrier</span>
-            <a href="/assets/diagrams/arch-dualplane-topology.svg" target="_blank" class="text-accentLight hover:underline ml-2">Open Raw SVG ↗</a>
-          </div>
-        </div>
-
-        <div class="overflow-x-auto rounded bg-canvas border border-borderHairline p-2">
-          <img src="/assets/diagrams/arch-dualplane-topology.svg?v=2.0.2" alt="Homelab Dual-Plane Ingress and Observability Architecture Topology" class="w-full min-w-[760px] h-auto block">
-        </div>
-
-        <div class="grid sm:grid-cols-3 gap-3 text-[11px] font-mono text-zinc-400 pt-2 border-t border-borderHairline">
-          <div>
-            <span class="text-zinc-200 font-semibold">1. Single DHCP Authority:</span>
-            MikroTik RouterOS binds static MAC-to-IP leases. PVE containers strictly declare <code class="text-accentLight">net0: ip=dhcp</code>.
-          </div>
-          <div>
-            <span class="text-zinc-200 font-semibold">2. Zero-WAN Ingress:</span>
-            PVE Hypervisor &amp; RouterOS locked to Tailscale. Only Traefik 80/443 exposed via Cloudflare IP ranges.
-          </div>
-          <div>
-            <span class="text-zinc-200 font-semibold">3. Dual-Plane Invariant:</span>
-            <code class="text-signalGreen">LAN=UP &amp;&amp; WAN=DOWN</code> immediately isolates routing/TLS/WAF failures without manual host SSH loops.
-          </div>
-        </div>
-
-        <!-- Interactive Node Inspector Pills (Zero Gradient, Flat Dark-Tech) -->
-        <div class="pt-3 border-t border-borderHairline space-y-2.5">
-          <div class="flex items-center justify-between text-xs font-mono">
-            <span class="text-zinc-300 flex items-center gap-1.5 font-semibold">
-              <span class="w-1.5 h-1.5 rounded-full bg-accentLight inline-block"></span>
-              Inspect Component Architecture:
-            </span>
-            <span class="text-zinc-500 text-[11px]">Click nodes to audit configuration</span>
-          </div>
-
-          <div class="flex flex-wrap gap-2 text-xs font-mono" id="node-pills">
-            <button class="node-pill px-2.5 py-1 rounded border border-accentLight bg-panel text-accentLight transition-all" data-node="edge">
-              EDGE-PROXY (Traefik)
-            </button>
-            <button class="node-pill px-2.5 py-1 rounded border border-borderHairline bg-panel text-zinc-400 hover:border-zinc-600 transition-all" data-node="auth">
-              IAM-AUTH (Authelia)
-            </button>
-            <button class="node-pill px-2.5 py-1 rounded border border-borderHairline bg-panel text-zinc-400 hover:border-zinc-600 transition-all" data-node="dhcp">
-              DHCP-SSOT (RouterOS)
-            </button>
-            <button class="node-pill px-2.5 py-1 rounded border border-borderHairline bg-panel text-zinc-400 hover:border-zinc-600 transition-all" data-node="dual">
-              DUAL-PLANE (Uptime Kuma)
-            </button>
-            <button class="node-pill px-2.5 py-1 rounded border border-borderHairline bg-panel text-zinc-400 hover:border-zinc-600 transition-all" data-node="log">
-              LOG-SINK (VictoriaLogs)
-            </button>
-          </div>
-
-          <!-- Dynamic Node Inspector Output Box -->
-          <div id="node-detail" class="p-3.5 rounded bg-canvas border border-borderHairline font-mono text-xs text-zinc-300 space-y-2">
-            <!-- Rendered dynamically by inspectNode() -->
-          </div>
-        </div>
-      </div>
-
-      <div class="grid lg:grid-cols-12 gap-4">
-        
-        <!-- MASTER BENTO CARD (Col 8): g8s Subagent Harness -->
-        <div class="lg:col-span-8 p-6 rounded-lg bg-panel border border-borderSubtle hover:border-borderStrong transition-colors flex flex-col justify-between group">
-          
-          <div class="space-y-4">
-            <div class="flex items-center justify-between">
-              <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-[#0c1926] text-accentLight border border-[#14324f]">
-                v0.21.0 • Pure Go • Live Subdomain Portal
-              </span>
-              <a href="https://g8s.flowaxon.com" class="px-2.5 py-1 rounded bg-[#0c1926] border border-[#14324f] text-accentLight text-xs font-mono font-semibold hover:text-white transition-colors">
-                Launch g8s.flowaxon.com ↗
-              </a>
-            </div>
-
-            <div class="space-y-1">
-              <h3 class="text-lg sm:text-xl font-bold text-zinc-100 group-hover:text-accentLight transition-colors">
-                g8s (The Gatekeepers) — Zero-Trust Agent Harness
-              </h3>
-              <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">
-                A lightweight, zero-trust process execution &amp; capability harness for AI Agent CLI Workers. "k8s orchestrates your compute containers; g8s orchestrates your AI subagents."
-              </p>
-            </div>
-
-            <!-- Visual Flow ASCII Diagram - Solid Black Surface -->
-            <div class="p-3 rounded bg-black border border-borderHairline font-mono text-[11px] text-zinc-300 overflow-x-auto">
-              <div class="text-zinc-500">// Authority Delegation Flow (Interactive Playground on g8s.flowaxon.com):</div>
-              <div class="text-zinc-200 pt-1">F0 Brain (S2 Governor)</div>
-              <div class="text-zinc-500">  │  issues single-use path-scoped WriteReceipt</div>
-              <div class="text-accentLight">  ▼  [g8s Harness: F1 Worker Worktree + Orthogonal Strata S0..S3]</div>
-              <div class="text-zinc-500">  │  enforces E_S1_DIRECT_MUTATION_FORBIDDEN + DLP</div>
-              <div class="text-signalGreen">  ▼  F1/F2 Worker Executed ➔ Sealed Evidence Delivered</div>
-            </div>
-          </div>
-
-          <div class="pt-4 mt-4 border-t border-borderHairline flex flex-wrap items-center justify-between gap-2 text-xs font-mono">
-            <a href="https://g8s.flowaxon.com" class="text-accentLight font-semibold hover:underline">
-              ▶ Interactive WriteReceipt Playground (g8s.flowaxon.com) ↗
-            </a>
-            <a href="https://github.com/tamld/g8s" target="_blank" rel="noopener noreferrer" class="text-zinc-400 hover:text-white hover:underline">
-              github.com/tamld/g8s ↗
-            </a>
-          </div>
-
-        </div>
-
-        <!-- SATELLITE 1 (Col 4): Production Homelab IaC Platform -->
-        <div class="lg:col-span-4 p-6 rounded-lg bg-panel border border-borderSubtle hover:border-borderStrong transition-colors flex flex-col justify-between group">
-          
-          <div class="space-y-3">
-            <div class="flex items-center justify-between">
-              <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-[#0c1f17] text-signalGreen border border-[#16432f]">
-                Bare-Metal SRE
-              </span>
-              <a href="https://github.com/tamld/IaC" target="_blank" rel="noopener noreferrer" class="text-zinc-500 group-hover:text-zinc-200 transition-colors">
-                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
-              </a>
-            </div>
-
-            <h3 class="text-base font-bold text-zinc-100 group-hover:text-signalGreen transition-colors">
-              AI-Assisted Infrastructure Platform (IaC)
-            </h3>
-
-            <p class="text-xs text-zinc-400 leading-relaxed">
-              Production-inspired reference architecture for bare-metal homelabs: Traefik v3, CrowdSec, Rootless Podman, Tailscale Mesh, and VictoriaLogs.
-            </p>
-
-            <div class="text-[11px] font-mono text-zinc-400 space-y-1 pt-1">
-              <div>• Dual-Plane WAN vs LAN isolation</div>
-              <div>• Single RouterOS DHCP lease authority</div>
-            </div>
-          </div>
-
-          <div class="pt-4 mt-4 border-t border-borderHairline flex items-center justify-between text-xs font-mono">
-            <span class="text-zinc-500">Ansible • Proxmox</span>
-            <a href="https://github.com/tamld/IaC" target="_blank" rel="noopener noreferrer" class="text-signalGreen hover:underline">
-              github.com/tamld/IaC ↗
-            </a>
-          </div>
-
-        </div>
-
-        <!-- SATELLITE 2 (Col 6): Governed Second Brain -->
-        <div class="lg:col-span-6 p-6 rounded-lg bg-panel border border-borderSubtle hover:border-borderStrong transition-colors flex flex-col justify-between group">
-          
-          <div class="space-y-3">
-            <div class="flex items-center justify-between">
-              <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-[#1a0f26] text-purple-400 border border-[#3b1a59]">
-                🔒 Architecture Case Study
-              </span>
-              <span class="text-[11px] font-mono text-zinc-500">Private SSoT</span>
-            </div>
-
-            <h3 class="text-base font-bold text-zinc-100 group-hover:text-purple-400 transition-colors">
-              Governed Second Brain (Epistemic Physics Engine)
-            </h3>
-
-            <p class="text-xs text-zinc-400 leading-relaxed">
-              Deterministic Second Brain with physical note physics (wiki.py). ADLC finite state machines, Gate D deep-why audits, and an epistemic claim ladder (Hypothesis ➔ Proven).
-            </p>
-
-            <div class="text-[11px] font-mono text-zinc-400 space-y-1">
-              <div>• 3-Layer Map Protocol (Global ➔ Architectural ➔ Behavioral)</div>
-              <div>• Pre-commit and commit-time hard git hooks</div>
-            </div>
-          </div>
-
-          <div class="pt-4 mt-4 border-t border-borderHairline flex items-center justify-between text-xs font-mono">
-            <span class="text-zinc-500">Python 3.11 • Physics Engine</span>
-            <a href="/llms-full.txt#second-brain" class="text-purple-400 hover:underline font-mono text-xs">
-              Read Case Study ↗
-            </a>
-          </div>
-
-        </div>
-
-        <!-- SATELLITE 3 (Col 6): Aegis / defense-in-depth HITL -->
-        <div class="lg:col-span-6 p-6 rounded-lg bg-panel border border-borderSubtle hover:border-borderStrong transition-colors flex flex-col justify-between group">
-          
-          <div class="space-y-3">
-            <div class="flex items-center justify-between">
-              <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-[#240c14] text-rose-400 border border-[#4d1326]">
-                v1.4.0 • Live Subdomain Portal
-              </span>
-              <a href="https://aegis.flowaxon.com" class="px-2.5 py-1 rounded bg-[#240c14] border border-[#4d1326] text-rose-400 text-xs font-mono font-semibold hover:text-white transition-colors">
-                Launch aegis.flowaxon.com ↗
-              </a>
-            </div>
-
-            <h3 class="text-base font-bold text-zinc-100 group-hover:text-rose-400 transition-colors">
-              Aegis (defense-in-depth) — Shell AST &amp; Telegram HITL
-            </h3>
-
-            <p class="text-xs text-zinc-400 leading-relaxed">
-              Layered runtime guardrail for AI-driven shell execution: L1 AST risk scoring, L2 HMAC-SHA256 signed Telegram HITL approval cards, and L3 pre-commit DLP.
-            </p>
-
-            <div class="text-[11px] font-mono text-zinc-400 space-y-1">
-              <div>• Cryptographic one-click approval / reject callbacks</div>
-              <div>• Zero accidental blast radius on live nodes</div>
-            </div>
-          </div>
-
-          <div class="pt-4 mt-4 border-t border-borderHairline flex flex-wrap items-center justify-between gap-2 text-xs font-mono">
-            <a href="https://aegis.flowaxon.com" class="text-rose-400 font-semibold hover:underline">
-              ▶ Interactive AST &amp; HITL Playground (aegis.flowaxon.com) ↗
-            </a>
-            <a href="https://github.com/tamld/defense-in-depth" target="_blank" rel="noopener noreferrer" class="text-zinc-400 hover:text-white hover:underline">
-              github.com/tamld/defense-in-depth ↗
-            </a>
-          </div>
-
-        </div>
-
-      </div>
-
-      <!-- VERIFIED SECURITY & STANDARDS PROOF STRIP -->
-      <div class="p-4 rounded-lg bg-[#0c0c0f] border border-borderHairline flex flex-wrap items-center justify-between gap-3 font-mono text-[11px]">
-        <div class="flex items-center gap-2 text-zinc-200 font-semibold">
-          <span class="w-2 h-2 rounded-full bg-signalGreen"></span>
-          <span>Live Verified Security &amp; Agentic Standards:</span>
-        </div>
-        <div class="flex flex-wrap items-center gap-2 text-zinc-300">
-          <span class="px-2 py-0.5 rounded bg-panel border border-borderHairline text-signalGreen">✓ SecurityHeaders A+</span>
-          <span class="px-2 py-0.5 rounded bg-panel border border-borderHairline text-signalGreen">✓ Hardenize 100% Green</span>
-          <span class="px-2 py-0.5 rounded bg-panel border border-borderHairline text-accentLight">✓ DNSSEC + CAA + DANE/MTA-STS</span>
-          <a href="/.well-known/security.txt" class="px-2 py-0.5 rounded bg-panel border border-borderHairline text-accentLight hover:underline">✓ RFC 9116 security.txt</a>
-          <span class="px-2 py-0.5 rounded bg-panel border border-borderHairline text-zinc-300">✓ 15-Yr Origin mTLS</span>
-          <span class="px-2 py-0.5 rounded bg-panel border border-borderHairline text-purple-400">✓ W3C WebMCP Active</span>
-        </div>
-      </div>
-
+    <!-- 5. 04 SURF MAP -->
+    <section id="surf" class="section-v4">
+    <div class="container">
+    <h2 class="section-title">Continuous horizon curation &amp; star trajectory</h2>
+    <div class="surf-card reveal-on-scroll">
+    <div class="bars-container" aria-label="Repository Stars By Year">
+    <div class="bar-col">
+    <div class="bar-value" data-count="183">183</div>
+    <div class="surf-bar-track"><div class="surf-bar bar-2022"></div></div>
+    <div class="bar-year">2022</div>
+    </div>
+    <div class="bar-col">
+    <div class="bar-value" data-count="186">186</div>
+    <div class="surf-bar-track"><div class="surf-bar bar-2023"></div></div>
+    <div class="bar-year">2023</div>
+    </div>
+    <div class="bar-col">
+    <div class="bar-value" data-count="106">106</div>
+    <div class="surf-bar-track"><div class="surf-bar bar-2024"></div></div>
+    <div class="bar-year">2024</div>
+    </div>
+    <div class="bar-col">
+    <div class="bar-value" data-count="456">456</div>
+    <div class="surf-bar-track"><div class="surf-bar bar-2025"></div></div>
+    <div class="bar-year">2025</div>
+    </div>
+    <div class="bar-col">
+    <div class="bar-value" data-count="212">212</div>
+    <div class="surf-bar-track"><div class="surf-bar bar-2026"></div></div>
+    <div class="bar-year">2026</div>
+    </div>
+    </div>
+    <div class="cluster-chips" aria-label="Topic Clusters">
+    <span class="cluster-chip">ai <span>114</span></span>
+    <span class="cluster-chip">agents <span>81</span></span>
+    <span class="cluster-chip">docker <span>68</span></span>
+    <span class="cluster-chip">claude-code <span>49</span></span>
+    <span class="cluster-chip">cli <span>50</span></span>
+    <span class="cluster-chip">linux <span>46</span></span>
+    <span class="cluster-chip">golang <span>36</span></span>
+    <span class="cluster-chip">mcp <span>26</span></span>
+    </div>
+    <div class="src-footer-line">
+    github.com/tamld stars, fetched 2026-10-31, n=1,146 &mdash; <a href="https://github.com/tamld?tab=stars" class="src-link" target="_blank" rel="noopener noreferrer">github.com/tamld?tab=stars ↗</a>
+    </div>
+    </div>
+    </div>
     </section>
 
-    <!-- BEAT 3: THE JOURNEY & INVARIANTS (INTERACTIVE STEPPED LOG) -->
-    <section id="journey" class="space-y-4">
-      
-      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-2 border-b border-borderHairline pb-3">
-        <div class="space-y-0.5">
-          <div class="text-[11px] font-mono uppercase tracking-wider text-accentLight flex items-center gap-1.5">
-            <span class="w-1.5 h-1.5 bg-accentLight rounded-full"></span>
-            Career Evolution &amp; Invariants
-          </div>
-          <h2 class="text-lg sm:text-xl font-bold tracking-tight text-zinc-100">
-            The Journey: 11 Years to Symbiosis
-          </h2>
-        </div>
-        <div class="font-mono text-xs text-zinc-500">
-          Click chapters below • 2014 → Present
-        </div>
-      </div>
-
-      <!-- Stepped Chapter Buttons (Tab Strip) -->
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 font-mono text-xs" id="chapter-tabs">
-        <button class="chapter-btn p-2.5 rounded text-left border transition-all bg-panel text-zinc-100 border-accentLight" data-ch="0">
-          <div class="text-[10px] text-accentLight font-semibold">01 · 2016</div>
-          <div class="font-medium truncate">48h Crucible</div>
-        </button>
-        <button class="chapter-btn p-2.5 rounded text-left border transition-all bg-panel text-zinc-400 border-borderHairline hover:border-zinc-700" data-ch="1">
-          <div class="text-[10px] text-zinc-500 font-semibold">02 · 2021-24</div>
-          <div class="font-medium truncate">Business Lens</div>
-        </button>
-        <button class="chapter-btn p-2.5 rounded text-left border transition-all bg-panel text-zinc-400 border-borderHairline hover:border-zinc-700" data-ch="2">
-          <div class="text-[10px] text-zinc-500 font-semibold">03 · DISCIPLINE</div>
-          <div class="font-medium truncate">Determinism Math</div>
-        </button>
-        <button class="chapter-btn p-2.5 rounded text-left border transition-all bg-panel text-zinc-400 border-borderHairline hover:border-zinc-700" data-ch="3">
-          <div class="text-[10px] text-zinc-500 font-semibold">04 · FRONTIER</div>
-          <div class="font-medium truncate">AI Symbiosis</div>
-        </button>
-      </div>
-
-      <!-- Single Interactive Card: Breathable, Micro-copy, Zero Bloat -->
-      <div id="chapter-content" class="p-5 sm:p-6 rounded-lg bg-panel border border-borderSubtle space-y-3.5 min-h-[220px]">
-        <!-- Injected by JS switchChapter(0) -->
-      </div>
-
+    <!-- 6. 05 FEATURE MAP -->
+    <!-- 7. 06 WORK -->
+    <section id="work" class="section-v4">
+    <div class="container">
+    <h2 class="section-title">Autonomous agent systems in production</h2>
+    <div class="work-table">
+    <div class="work-row reveal-on-scroll">
+    <div class="work-title-group">
+    <span class="work-name">g8s</span>
+    <span class="work-metric">v0.21 · 21+ releases</span>
+    </div>
+    <a href="https://github.com/tamld/g8s" class="src-link" target="_blank" rel="noopener noreferrer">github.com/tamld/g8s ↗</a>
+    </div>
+    <div class="work-row reveal-on-scroll">
+    <div class="work-title-group">
+    <span class="work-name">Aegis</span>
+    <span class="work-metric">0 unreviewed mutations</span>
+    </div>
+    <a href="https://github.com/tamld/aegis" class="src-link" target="_blank" rel="noopener noreferrer">github.com/tamld/aegis ↗</a>
+    </div>
+    <div class="work-row reveal-on-scroll">
+    <div class="work-title-group">
+    <span class="work-name">The constellation</span>
+    <span class="work-metric">6/6 stages green</span>
+    </div>
+    <a href="https://github.com/tamld/flowaxon" class="src-link" target="_blank" rel="noopener noreferrer">github.com/tamld/flowaxon ↗</a>
+    </div>
+    </div>
+    </div>
     </section>
 
-    <!-- AGENTIC / LLMS.TXT STRIP: FLAT SOLID FOOTNOTE -->
-    <section class="p-5 sm:p-6 rounded bg-[#0c0c0f] border border-borderHairline space-y-4">
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <div class="space-y-1">
-          <div class="flex items-center gap-2 text-xs font-mono text-zinc-300">
-            <svg class="w-4 h-4 text-accentLight" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 17v1"/><path d="M15 17v1"/><path d="M9 7h6"/><path d="M12 7v3"/></svg>
-            <span class="font-semibold text-zinc-100">Machine-Readable Discovery Endpoint</span>
-            <span class="text-zinc-600">•</span>
-            <span class="text-zinc-500">llmstxt.org &amp; W3C WebMCP</span>
-          </div>
-          <p class="text-xs text-zinc-400">
-            AI agents can ingest Tam's verified technical profile via raw Markdown or invoke live W3C WebMCP tools (<code class="text-accentLight">navigator.modelContext</code>).
-          </p>
-        </div>
-
-        <div class="flex items-center gap-2 font-mono text-xs shrink-0">
-          <a href="/llms.txt" class="px-3 py-1.5 rounded bg-panel border border-borderSubtle hover:border-zinc-500 text-zinc-300 hover:text-white transition-colors">
-            /llms.txt
-          </a>
-          <a href="/llms-full.txt" class="px-3 py-1.5 rounded bg-panel border border-borderSubtle hover:border-zinc-500 text-zinc-300 hover:text-white transition-colors">
-            /llms-full.txt
-          </a>
-          <a href="/api/v1/products" class="px-3 py-1.5 rounded bg-panel border border-borderSubtle hover:border-zinc-500 text-accentLight hover:text-white transition-colors">
-            /api/v1/products
-          </a>
-        </div>
-      </div>
-
-      <div class="p-3 rounded bg-black border border-borderHairline font-mono text-xs flex items-center justify-between gap-2 overflow-x-auto">
-        <div class="flex items-center gap-2 text-zinc-300">
-          <span class="text-accentLight select-none">$</span>
-          <span id="curl-cmd">curl -sL https://flowaxon.com/llms.txt</span>
-        </div>
-        <button id="copy-btn" class="px-2 py-1 rounded bg-zinc-800 hover:bg-zinc-700 text-zinc-300 text-[11px] transition-colors shrink-0 flex items-center gap-1">
-          <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
-          <span>Copy</span>
-        </button>
-      </div>
+    <!-- 8. 07 IN MOTION -->
+    <section id="motion" class="section-v4">
+    <div class="container">
+    <h2 class="section-title">Architectural walkthrough &amp; dynamic containment</h2>
+    <div class="motion-grid">
+    <div class="video-cell reveal-on-scroll">
+    <video class="motion-video" poster="/assets/video/g8s-explainer/poster.jpg" data-src="/assets/video/g8s-explainer/g8s-explainer.webm" muted loop playsinline preload="none" aria-label="g8s architectural explainer video placeholder"></video>
+    <div class="video-badge">POSTER PREVIEW</div>
+    </div>
+    <div class="affordance-cell reveal-on-scroll">
+    <h3 class="affordance-title">g8s Zero-Trust Architecture in 120 Seconds</h3>
+    <p class="affordance-spec">full 2-min explainer · 5.5 MB VP9 · EN re-render queued</p>
+    </div>
+    </div>
+    </div>
     </section>
 
+    <!-- 9. 08 COLLABORATE + WRITING + FOOTER -->
+    <section id="collaborate" class="section-v4">
+    <div class="container">
+    <h2 class="section-title">Deterministic systems engineered for production</h2>
+    <div class="propositions-grid">
+    <div class="prop-card reveal-on-scroll">
+    <h3 class="prop-title">You bring chaos, I return a system</h3>
+    <p class="prop-body">Where disparate tools and brittle handoffs fail under load, I engineer single-authority control planes that bring deterministic order. Every component is bounded, observable, and governed from a unified vantage point.</p>
+    </div>
+    <div class="prop-card reveal-on-scroll">
+    <h3 class="prop-title">Agents you can bet production on</h3>
+    <p class="prop-body">Probabilistic models belong behind deterministic harnesses with strict capability rings and fail-closed isolation. I build containment architectures so autonomous workers execute safely in production without risking infrastructure.</p>
+    </div>
+    <div class="prop-card reveal-on-scroll">
+    <h3 class="prop-title">Systems that prove themselves</h3>
+    <p class="prop-body">Claims without mechanical verification are liability. Every pipeline, policy, and state transition in my systems generates tamper-evident receipts and cryptographic audit trails before touching disk.</p>
+    </div>
+    </div>
+
+    <blockquote class="whoami-block reveal-on-scroll">
+    "I am the person who cannot watch something repeat twice without building the system that ends it. Cmd scripts became a homelab doctrine; the doctrine became a harness for AI agents. Same screw, three turns — and I'm not done turning it."
+    </blockquote>
+
+    <div class="essays-section reveal-on-scroll">
+    <div class="essays-title">Essays &amp; Systems Doctrine</div>
+    <ul class="essays-list">
+    <li class="essay-item">
+    <span class="essay-name">The 48-Hour Crucible: Distributed Command and Recovery Under Crisis</span>
+    <span class="essay-status">outline</span>
+    </li>
+    <li class="essay-item">
+    <span class="essay-name">The Arithmetic of Determinism: Kaizen, Single-Authority Ingress, and Dual-Plane Systems</span>
+    <span class="essay-status">outline</span>
+    </li>
+    <li class="essay-item">
+    <span class="essay-name">Containment Rings and WriteReceipts: Deterministic Harnesses for Autonomous AI Agents</span>
+    <span class="essay-status">outline</span>
+    </li>
+    </ul>
+    </div>
+    </div>
+    </section>
   </main>
 
-  <!-- MINIMAL SOLID FOOTER -->
-  <footer class="border-t border-borderHairline py-8 px-4 sm:px-8 text-xs font-mono text-zinc-500">
-    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
-      <div>
-        © 2026 Le Duc Tam (tamld). Pure Go Multi-Subdomain Engine • Zero trackers • Zero gradients.
-      </div>
-      <div class="flex flex-wrap items-center gap-4 text-zinc-400">
-        <a href="https://g8s.flowaxon.com" class="hover:text-accentLight transition-colors">g8s.flowaxon.com</a>
-        <a href="https://aegis.flowaxon.com" class="hover:text-rose-400 transition-colors">aegis.flowaxon.com</a>
-        <a href="https://github.com/tamld" target="_blank" rel="noopener noreferrer" class="hover:text-zinc-100 transition-colors">GitHub</a>
-        <a href="https://linkedin.com/in/tamld" target="_blank" rel="noopener noreferrer" class="hover:text-zinc-100 transition-colors">LinkedIn</a>
-        <a href="/.well-known/security.txt" class="hover:text-signalGreen transition-colors">security.txt</a>
-        <a href="/llms.txt" class="hover:text-accentLight transition-colors">/llms.txt</a>
-      </div>
+  <footer class="site-footer">
+    <div class="container footer-row">
+    <div class="footer-contact">
+    <span class="footer-email">hello@flowaxon.com</span>
+    <button type="button" id="copy-email-btn" class="btn-copy" aria-label="Copy email to clipboard">copy</button>
+    </div>
+    <div class="footer-links">
+    <a href="https://github.com/tamld" class="footer-link" target="_blank" rel="noopener noreferrer">github.com/tamld ↗</a>
+    <a href="/.well-known/security.txt" class="footer-link">/.well-known/security.txt</a>
+    </div>
     </div>
   </footer>
 
-
-  <!-- GLOBAL CMD+K COMMAND PALETTE MODAL (L3 GLASS OVERLAY) -->
-  <div id="cmdk-modal" class="cmdk-backdrop hidden" role="dialog" aria-modal="true" aria-label="FlowAxon Command Palette">
-    <div class="cmdk-dialog font-mono">
-      <div class="px-4 py-3 border-b border-borderHairline flex items-center justify-between text-xs text-zinc-400">
-        <span>⌘K FlowAxon Constellation Launcher</span>
-        <button type="button" data-cmdk-close="1" class="px-2 py-0.5 rounded bg-panel border border-borderHairline text-zinc-300 hover:text-white">ESC</button>
-      </div>
-      <div class="p-2 space-y-1">
-        <div class="px-3 py-1 text-[10px] uppercase tracking-wider text-zinc-500">Product Constellation Domains</div>
-        <a href="https://flowaxon.com" class="cmdk-item">
-          <span>🌐 flowaxon.com — Executive Dossier &amp; Dual-Plane Hub</span>
-          <span class="text-[11px] text-accentLight">Hub ↵</span>
-        </a>
-        <a href="https://g8s.flowaxon.com" class="cmdk-item">
-          <span>🛡️ g8s.flowaxon.com — Zero-Trust AI Agent Capability Harness (v0.21.0)</span>
-          <span class="text-[11px] text-signalGreen">Product 1 ↵</span>
-        </a>
-        <a href="https://aegis.flowaxon.com" class="cmdk-item">
-          <span>🚨 aegis.flowaxon.com — Shell AST &amp; Telegram 2FA Runtime Guardrail (v1.4.0)</span>
-          <span class="text-[11px] text-rose-400">Product 2 ↵</span>
-        </a>
-        <div class="px-3 pt-2 pb-1 text-[10px] uppercase tracking-wider text-zinc-500">Machine-Readable SSoT &amp; DevSecOps Proofs</div>
-        <a href="/manifest.json" class="cmdk-item">
-          <span>📄 /manifest.json — SSoT Architecture, BA Storytelling &amp; 6-Stage CI/CD Manifest</span>
-          <span class="text-[11px] text-zinc-400">JSON ↵</span>
-        </a>
-        <a href="/llms.txt" class="cmdk-item">
-          <span>🤖 /llms.txt — AI Agent Context Index (llmstxt.org Standard)</span>
-          <span class="text-[11px] text-zinc-400">Markdown ↵</span>
-        </a>
-        <a href="https://github.com/tamld/flowaxon" target="_blank" rel="noopener noreferrer" class="cmdk-item">
-          <span>📦 github.com/tamld/flowaxon — Source Code &amp; 6-Stage DevSecOps Pipeline</span>
-          <span class="text-[11px] text-zinc-400">GitHub ↗</span>
-        </a>
-      </div>
-    </div>
-  </div>
-
 </body>
-<!--/email_off-->
 </html>
