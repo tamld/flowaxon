@@ -1,0 +1,232 @@
+{
+  "$schema": "https://flowaxon.com/schemas/manifest.v3.json",
+  "schema_version": "flowaxon.manifest.v3.0",
+  "project": {
+    "name": "FlowAxon Engineering Portfolio & AI Product Constellation",
+    "repository": "https://github.com/tamld/flowaxon",
+    "container_image": "ghcr.io/tamld/flowaxon:latest",
+    "version": "3.0.0-blueprint",
+    "updated_at": "2026-10-31T15:55:00+07:00",
+    "governance_mode": "g8s-spec-driven-development"
+  },
+  "protagonist_and_storytelling": {
+    "identity": {
+      "full_name": "Le Duc Tam",
+      "handle": "tamld",
+      "title": "AI Agent Systems Architect & Principal Infrastructure Engineer",
+      "experience_years": 11,
+      "location": "Ho Chi Minh City, Vietnam (UTC+7)",
+      "core_thesis": "LLMs cannot be trusted to operate production infrastructure on probabilistic prompts alone. True human-AI symbiosis requires a deterministic physical substrate: capability-scoped WriteReceipts (g8s), runtime AST & human-in-the-loop blast doors (Aegis), and epistemic memory verification."
+    },
+    "three_act_narrative_arc": [
+      {
+        "act": "Act I (2015–2020)",
+        "title": "The 48-Hour Crucible — Distributed Command Under Crisis",
+        "anchor_event": "2016 nationwide retail ransomware outbreak (100+ endpoints crippled at Thien Nam Hoa).",
+        "engineering_proof": "Decomposed recovery into 3 parallel operational squads (Foundation / ERP-POS / Identity Verification) with pre-built automation scripts, recovering 100+ nodes in 48 hours with zero Monday morning retail downtime.",
+        "visual_interactive_artifact": "Interactive Crisis Timeline & Squad Decomposition Simulator"
+      },
+      {
+        "act": "Act II (2021–2024)",
+        "title": "The Arithmetic of Determinism — Kaizen & Single-Source Infrastructure",
+        "anchor_event": "Enterprise virtualization, MikroTik RouterOS Single DHCP Authority, Dual-Plane Observability ([LAN] vs [WAN]), and Zero-WAN Exposure.",
+        "engineering_proof": "The Automation Equation: '1 manual click takes 3 seconds. 1 automated script takes 3 hours. 100 flawed clicks cost 3 years.'",
+        "visual_interactive_artifact": "Interactive 3D Isometric Dual-Plane Homelab & Network Authority Rig"
+      },
+      {
+        "act": "Act III (2025–2026+)",
+        "title": "The Symbiotic Frontier — Deterministic Harnesses for Autonomous AI",
+        "anchor_event": "Creation of g8s (The Gatekeepers), Aegis (defense-in-depth), and Governed Second-Brain Wiki.",
+        "engineering_proof": "F0/F1/F2 exponential containment rings + S0..S3 orthogonal control strata + HMAC-SHA256 Telegram 2FA runtime interception.",
+        "visual_interactive_artifact": "Live Multi-Subdomain Product Constellation (flowaxon.com -> g8s.flowaxon.com + aegis.flowaxon.com)"
+      }
+    ]
+  },
+  "website_optimal_8_component_structure": [
+    {
+      "order": 1,
+      "id": "C1_GLOBAL_CONSTELLATION_BAR_AND_CMDK",
+      "name": "Sticky Glass Constellation Switcher & Cmd+K Command Palette",
+      "purpose": "Instant 1-click/1-keystroke navigation across flowaxon.com, g8s.flowaxon.com, aegis.flowaxon.com, live SSE heartbeat badge, and keyboard-first search.",
+      "benchmark_inspiration": "Linear.app + Raycast.com + Paco.me"
+    },
+    {
+      "order": 2,
+      "id": "C2_ABOVE_FOLD_HERO_WITH_3D_ANATOMY_MACHINE",
+      "name": "Asymmetric Split Hero with Live Interactive 3D Isometric 'Anatomy' Machine",
+      "purpose": "Win the 3-second first impression: Left column presents high-contrast editorial typography & persona CTAs; Right column embeds a real interactive 3D Isometric machine (4-tone shading, moving parts, WebGL shader glow) that users can click, rotate, and trigger.",
+      "benchmark_inspiration": "Bartosz Ciechanowski (ciechanow.ski) + Anatomy Test-Rig / Raptor-Engine"
+    },
+    {
+      "order": 3,
+      "id": "C3_PERSONA_VALUE_ROUTER",
+      "name": "Stakeholder & Reader Persona Selector (CTO / Principal SRE / AI Builder / Agent)",
+      "purpose": "BA-driven self-segmentation allowing each visitor archetype to see tailored proof points, metrics, and interactive sandboxes immediately.",
+      "benchmark_inspiration": "Vercel.com + Tailscale.com"
+    },
+    {
+      "order": 4,
+      "id": "C4_SCROLLYTELLING_3_ACT_NARRATIVE",
+      "name": "Scroll-Driven 3-Act Engineering Story (2015 Crisis -> Determinism -> Symbiotic AI)",
+      "purpose": "Progressive disclosure narrative using Native CSS Scroll-Driven Animations (animation-timeline: view()) synchronized with sticky visual state transitions.",
+      "benchmark_inspiration": "Rauno Freiberg (rauno.me) + Emil Kowalski (emilkowal.ski)"
+    },
+    {
+      "order": 5,
+      "id": "C5_BENTO_PRODUCT_CONSTELLATION_GRID",
+      "name": "5-Layer OKLCH Spotlight Bento Constellation Grid",
+      "purpose": "Showcase flagship systems (g8s, Aegis, Dual-Plane IaC, Governed Second Brain) with radial cursor-tracking spotlight borders, specular 1px top highlights, and live telemetry counters.",
+      "benchmark_inspiration": "Linear.app/features + Apple Bento Grids"
+    },
+    {
+      "order": 6,
+      "id": "C6_LIVE_INTERACTIVE_SANDBOX_AND_TERMINAL",
+      "name": "Real Backend-Connected Interactive Sandbox / Playground",
+      "purpose": "Let visitors execute real HTTP/JSON calls against the Go engine (Dual-Plane SRE Drill on Hub, WriteReceipt Stratum Firewall on g8s, Shell AST + Telegram 2FA Simulator on Aegis).",
+      "benchmark_inspiration": "Cloudflare Workers Playground + Stripe API Explorer"
+    },
+    {
+      "order": 7,
+      "id": "C7_QUANTITATIVE_SECURITY_AND_VERIFICATION_PROOFS",
+      "name": "Live DevSecOps, Cryptographic & Infrastructure Proof Ledger",
+      "purpose": "Display verifiable badges and live proofs: A+ SecurityHeaders, 100% Internet.nl Web, SHA-384 SRI, <1MB Go runtime RSS, and 6-stage CI/CD SAST+DAST status.",
+      "benchmark_inspiration": "Chainguard + Trail of Bits"
+    },
+    {
+      "order": 8,
+      "id": "C8_AGENT_WEBMCP_AND_LLMS_TXT_DOCK",
+      "name": "Machine-Readable AI Agent & W3C WebMCP Dock",
+      "purpose": "Expose 1-click curl commands for /llms.txt, /llms-full.txt, /data/telemetry.json, and live navigator.modelContext WebMCP tool registration.",
+      "benchmark_inspiration": "llmstxt.org + W3C WebMCP Spec"
+    }
+  ],
+  "tech_stack": {
+    "architectural_principle": "Decouple Rich Build-Time Compilation (GitHub Actions / Local Node.js 20+) from Ultra-Light Runtime Execution (<1MB static Go 1.22 binary inside 256MB LXC Container).",
+    "build_time_frontend_stack": {
+      "bundler": "Vite 6 + TypeScript (Zero runtime Node.js dependency on server)",
+      "styling_and_surfaces": "Tailwind CSS v4 + ui-motion-craft 5-Layer OKLCH Surface Architecture (L0 Deep Canvas -> L1 Bento -> L2 Specular Card -> L3 Frosted Glass Overlay)",
+      "3d_isometric_and_shaders": "Anatomy Kit (kit/iso-kit.mjs, kit/lathe.mjs, kit/tube.mjs, kit/gl.mjs WebGL shaders, kit/audit.mjs spatial collision proof)",
+      "motion_engine": "Native CSS Scroll-Driven Animations (animation-timeline: view()/scroll()) + View Transitions API (document.startViewTransition) + Emil Kowalski cubic-bezier(0.16, 1, 0.3, 1) spring curves",
+      "typography": "Instrument Serif / Geist Display (Editorial Headlines) + Inter / Geist Sans (UI Body) + JetBrains Mono tabular-nums (Telemetry & CLI)"
+    },
+    "runtime_backend_and_edge_stack": {
+      "server": "Pure Go 1.22+ (CGO_ENABLED=0, static binary in FROM scratch distroless container, ~770KB RSS RAM)",
+      "protocols": "HTTP/2 + HTTP/3 (QUIC), Server-Sent Events (SSE /api/events), REST JSON APIs (/api/v1/*), W3C WebMCP",
+      "edge_and_ingress": "Cloudflare DNS/WAF/CDN (Full Strict SSL + Origin CA mTLS + HSTS Preload) -> Traefik v3 Reverse Proxy -> Rootless Podman Service"
+    }
+  },
+  "constellation_domains": {
+    "flowaxon.com": {
+      "role": "Executive Engineering Dossier & Ecosystem Command Hub",
+      "entry_html": "index.html",
+      "theme_palette": {
+        "name": "Obsidian Blueprint & Electric Cyan",
+        "canvas_l0": "oklch(0.13 0.015 260)",
+        "surface_l1": "oklch(0.17 0.018 260)",
+        "surface_l2": "oklch(0.21 0.022 255)",
+        "accent_primary": "oklch(0.75 0.15 230)",
+        "accent_secondary": "oklch(0.72 0.17 160)"
+      },
+      "anatomy_3d_hero_rig": "Interactive 3D Isometric Dual-Plane Homelab & AI Constellation Rig (Cloudflare Edge -> Traefik -> RouterOS Single Authority -> Proxmox Node -> g8s/Aegis sandboxes with animated packet pulses)",
+      "personas": ["CTO / VP of Engineering", "Principal SRE / Infrastructure Lead", "Technical Executive / Recruiter", "Autonomous AI Agent"],
+      "feature_ids": ["FM-HUB-01", "FM-HUB-02", "FM-HUB-03", "FM-HUB-04", "FM-HUB-05", "FM-HUB-06"]
+    },
+    "g8s.flowaxon.com": {
+      "role": "g8s (The Gatekeepers) v0.21.0 — Zero-Trust AI Agent Capability Harness Portal",
+      "entry_html": "sites/g8s.html",
+      "theme_palette": {
+        "name": "Cobalt-Obsidian & Emerald Verification",
+        "canvas_l0": "oklch(0.12 0.025 250)",
+        "surface_l1": "oklch(0.16 0.03 250)",
+        "surface_l2": "oklch(0.20 0.035 248)",
+        "accent_primary": "oklch(0.76 0.15 230)",
+        "accent_secondary": "oklch(0.74 0.18 155)"
+      },
+      "anatomy_3d_hero_rig": "Interactive 3D Isometric F0/F1/F2 Containment Lock & WriteReceipt Stamp Rig (physical gates for S1..S3 strata that open or lock with spring physics when testing paths)",
+      "personas": ["AI Agent & Harness Engineers", "Platform & Security Architects", "Multi-Repo Open-Source Maintainers"],
+      "feature_ids": ["FM-G8S-01", "FM-G8S-02", "FM-G8S-03", "FM-G8S-04", "FM-G8S-05"]
+    },
+    "aegis.flowaxon.com": {
+      "role": "Aegis (defense-in-depth) v1.4.0 — Runtime Shell AST & Telegram 2FA Guardrail Portal",
+      "entry_html": "sites/aegis.html",
+      "theme_palette": {
+        "name": "Carbon-Crimson & Tactical Amber",
+        "canvas_l0": "oklch(0.12 0.025 15)",
+        "surface_l1": "oklch(0.16 0.03 15)",
+        "surface_l2": "oklch(0.20 0.038 15)",
+        "accent_primary": "oklch(0.70 0.19 15)",
+        "accent_secondary": "oklch(0.78 0.16 75)"
+      },
+      "anatomy_3d_hero_rig": "Interactive 3D Isometric Shell AST Laser Scanner & Telegram 2FA Blast Door (commands enter tube, AST prism scores 0..100, blast door locks process group until Telegram 2FA button is clicked)",
+      "personas": ["Autonomous SREs & Infra Operators", "SecOps & AppSec Engineers", "Compliance & DLP Auditors"],
+      "feature_ids": ["FM-AEGIS-01", "FM-AEGIS-02", "FM-AEGIS-03", "FM-AEGIS-04", "FM-AEGIS-05"]
+    }
+  },
+  "feature_map": [
+    { "id": "FM-HUB-01", "domain": "flowaxon.com", "name": "3D Isometric Dual-Plane Constellation Rig", "status": "planned-v3", "layer": "Anatomy 3D + WebGL" },
+    { "id": "FM-HUB-02", "domain": "flowaxon.com", "name": "3-Act Scrollytelling Narrative (48h Crucible -> Determinism -> Symbiotic AI)", "status": "planned-v3", "layer": "BA Storytelling + Scroll Timeline" },
+    { "id": "FM-HUB-03", "domain": "flowaxon.com", "name": "5-Layer OKLCH Spotlight Bento Constellation Launchpad", "status": "planned-v3", "layer": "ui-motion-craft" },
+    { "id": "FM-HUB-04", "domain": "flowaxon.com", "name": "Live SSE Telemetry Stream (/api/events) & Dual-Plane SRE Drill (/api/v1/drill)", "status": "active", "layer": "Go Engine + JS" },
+    { "id": "FM-HUB-05", "domain": "flowaxon.com", "name": "Global Cmd+K Command Palette & Cross-Subdomain Switcher", "status": "planned-v3", "layer": "UX Hotpath" },
+    { "id": "FM-HUB-06", "domain": "flowaxon.com", "name": "W3C WebMCP Tool Registry & /llms.txt Machine Endpoints", "status": "active", "layer": "Agent Experience (AX)" },
+    { "id": "FM-G8S-01", "domain": "g8s.flowaxon.com", "name": "3D Isometric F0/F1/F2 × S0..S3 Containment Lock Rig", "status": "planned-v3", "layer": "Anatomy 3D" },
+    { "id": "FM-G8S-02", "domain": "g8s.flowaxon.com", "name": "3 Target Persona Value Cards (Builder / Architect / Maintainer)", "status": "active", "layer": "BA Product Marketing" },
+    { "id": "FM-G8S-03", "domain": "g8s.flowaxon.com", "name": "Interactive WriteReceipt & Stratum Firewall Playground (/api/v1/g8s/verify-receipt)", "status": "active", "layer": "Go API + Interactive UI" },
+    { "id": "FM-G8S-04", "domain": "g8s.flowaxon.com", "name": "4-Stage CLI & MCP Lifecycle Explorer (Triage -> Worker -> Agent I/O -> Blind Verify)", "status": "active", "layer": "Developer Docs" },
+    { "id": "FM-G8S-05", "domain": "g8s.flowaxon.com", "name": "Orthogonal Control Strata Permission Matrix (S1, S2, S3-M, S3-A, O-Plane)", "status": "active", "layer": "Spec Reference" },
+    { "id": "FM-AEGIS-01", "domain": "aegis.flowaxon.com", "name": "3D Isometric AST Laser & Telegram 2FA Blast Door Rig", "status": "planned-v3", "layer": "Anatomy 3D" },
+    { "id": "FM-AEGIS-02", "domain": "aegis.flowaxon.com", "name": "3 Target Persona Cards (Autonomous SRE / SecOps / Compliance Auditor)", "status": "active", "layer": "BA Product Marketing" },
+    { "id": "FM-AEGIS-03", "domain": "aegis.flowaxon.com", "name": "Interactive Shell AST Risk Analyzer with 0..100 Gauge (/api/v1/aegis/analyze)", "status": "active", "layer": "Go API + Interactive UI" },
+    { "id": "FM-AEGIS-04", "domain": "aegis.flowaxon.com", "name": "Realistic Telegram Bot 2FA Approval Simulator (HMAC-SHA256 + SIGSTOP/SIGCONT)", "status": "active", "layer": "Interactive SecOps" },
+    { "id": "FM-AEGIS-05", "domain": "aegis.flowaxon.com", "name": "STRIDE + OWASP LLM01/LLM07 Threat Vector Countermeasure Matrix", "status": "active", "layer": "Security Spec" }
+  ],
+  "devsecops_cicd_pipeline": {
+    "workflow_file": ".github/workflows/ci-cd.yml",
+    "target_slsa_level": "SLSA Level 3 Provenance Attestation",
+    "stages": [
+      {
+        "stage": 1,
+        "id": "supply-chain-and-dlp",
+        "name": "Supply-Chain Hardening, Gitleaks & 8-Gate Zero-Leakage DLP",
+        "tools": ["step-security/harden-runner", "gitleaks/gitleaks-action", "bash .githooks/pre-commit"],
+        "blocking": true
+      },
+      {
+        "stage": 2,
+        "id": "sast-and-sca",
+        "name": "Static Application Security Testing (SAST) & Go Vulnerability Reachability (SCA)",
+        "tools": ["securego/gosec", "golang.org/x/vuln/cmd/govulncheck", "semgrep (p/golang, p/javascript, p/owasp-top-ten)", "go vet", "go test -race -coverprofile=coverage.out ./..."],
+        "blocking": true
+      },
+      {
+        "stage": 3,
+        "id": "sri-and-visual-e2e-gate",
+        "name": "Cryptographic SRI Verification & Headless Chromium Visual/Spatial Collision Gate",
+        "tools": ["scripts/verify-sri-and-csp.sh", "Playwright/Puppeteer Headless Chrome Audit (0 console/CSP errors, 0 bounding-box collisions across 1440x950 & 390x844)"],
+        "blocking": true
+      },
+      {
+        "stage": 4,
+        "id": "container-trivy-and-sbom",
+        "name": "Distroless Container Build, CycloneDX SBOM & Trivy CVE Gate",
+        "tools": ["docker/build-push-action (load)", "aquasecurity/trivy-action (CRITICAL,HIGH --exit-code 1)", "anchore/sbom-action (CycloneDX)"],
+        "blocking": true
+      },
+      {
+        "stage": 5,
+        "id": "live-dast-probe",
+        "name": "Live Container DAST & Active Security Probe Suite (g8s-sec-gate + OWASP ZAP / Nuclei)",
+        "tools": ["scripts/run-dast-probes.sh (Path Traversal ../, SSRF, XSS/JSON Fuzzing on /api/v1/*, CORS Origin Spoofing, MIME Sniffing, A+ Security Headers)"],
+        "blocking": true
+      },
+      {
+        "stage": 6,
+        "id": "gated-cd-and-provenance",
+        "name": "Strict Gated CD Push to GHCR, SLSA Provenance Attestation & Atomic Pull-GitOps Rollback",
+        "needs": ["supply-chain-and-dlp", "sast-and-sca", "sri-and-visual-e2e-gate", "container-trivy-and-sbom", "live-dast-probe"],
+        "tools": ["docker/build-push-action", "actions/attest-build-provenance", "Pull-GitOps atomic pull + healthcheck rollback"],
+        "blocking": true
+      }
+    ]
+  }
+}

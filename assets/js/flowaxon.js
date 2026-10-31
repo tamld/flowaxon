@@ -520,11 +520,78 @@ $ ./bin/g8s deliver "$TASK" --prune-worktree --json`
     }
   }
 
+  // 6b. BA Persona Self-Segmentation & Global Cmd+K Command Palette (v3.0)
+  const PERSONA_VIEWS = {
+    cto: {
+      badge: 'CTO / VP OF ENGINEERING LENS',
+      headline: 'Zero-Quota-Burn AI Delegation + Deterministic Production Governance',
+      summary: 'See how g8s eliminates frontier F0 Brain quota waste (0% coordinator burn via 9router worker fan-out) while Aegis enforces HMAC-SHA256 human-in-the-loop blast doors on production infrastructure.',
+      ctaText: 'Inspect 3D Constellation Rig ↓',
+      ctaHref: '#anatomy-rig'
+    },
+    sre: {
+      badge: 'PRINCIPAL SRE & SECOPS ARCHITECT LENS',
+      headline: '48-Hour Ransomware Resilience → Dual-Plane Zero-WAN Substrate',
+      summary: 'Explore the 16GB hard-budgeted Proxmox VE substrate, MikroTik RouterOS Single DHCP Authority, Cloudflare Full-Strict mTLS, and sub-2-second VictoriaLogs LogSQL fleet triage.',
+      ctaText: 'Run Live Dual-Plane Fault Drill ↓',
+      ctaHref: '#systems'
+    },
+    builder: {
+      badge: 'AI AGENT & HARNESS ENGINEER LENS',
+      headline: 'F0/F1/F2 Containment Rings × S0..S3 Orthogonal Control Strata',
+      summary: 'Test path-scoped single-use WriteReceipts, SQLite WAL CAS leases, isolated Git worktrees, and pure-Go Agent I/O (search/read/edit/select) across g8s and Aegis.',
+      ctaText: 'Launch g8s & Aegis Portals ↓',
+      ctaHref: '#constellation'
+    },
+    agent: {
+      badge: 'AUTONOMOUS AI AGENT / WEBMCP CONSUMER LENS',
+      headline: 'Native W3C WebMCP (navigator.modelContext) & /llms.txt Ingestion',
+      summary: 'Zero HTML scraping required. Query /llms.txt, /llms-full.txt, /manifest.json, or invoke registered WebMCP tools directly from browser agent contexts.',
+      ctaText: 'Jump to WebMCP & llms.txt Dock ↓',
+      ctaHref: '#agent-endpoint'
+    }
+  };
+
+  function selectPersona(key) {
+    const view = PERSONA_VIEWS[key];
+    if (!view) return;
+    document.querySelectorAll('[data-persona-filter]').forEach(btn => {
+      btn.classList.toggle('active', btn.getAttribute('data-persona-filter') === key);
+    });
+    const badgeEl = document.getElementById('persona-lens-badge');
+    const headEl = document.getElementById('persona-lens-headline');
+    const sumEl = document.getElementById('persona-lens-summary');
+    const ctaEl = document.getElementById('persona-lens-cta');
+    if (badgeEl) badgeEl.textContent = view.badge;
+    if (headEl) headEl.textContent = view.headline;
+    if (sumEl) sumEl.textContent = view.summary;
+    if (ctaEl) {
+      ctaEl.textContent = view.ctaText;
+      ctaEl.setAttribute('href', view.ctaHref);
+    }
+  }
+
+  function toggleCmdk(forceClose) {
+    const modal = document.getElementById('cmdk-modal');
+    if (!modal) return;
+    if (forceClose === true) {
+      modal.classList.add('hidden');
+      return;
+    }
+    modal.classList.toggle('hidden');
+  }
+
   // 7. Global Strict-CSP Event Delegation
   document.addEventListener('click', e => {
-    const t = e.target.closest('button, a, [data-iso-layer], [data-term-cmd], [data-ch], [data-node], [data-g8s-preset], [data-g8s-tab], [data-aegis-cmd], [data-hitl-action]');
+    if (e.target && e.target.id === 'cmdk-modal') {
+      return toggleCmdk(true);
+    }
+    const t = e.target.closest('button, a, [data-iso-layer], [data-term-cmd], [data-ch], [data-node], [data-g8s-preset], [data-g8s-tab], [data-aegis-cmd], [data-hitl-action], [data-persona-filter], [data-cmdk-toggle], [data-cmdk-close]');
     if (!t) return;
 
+    if (t.hasAttribute('data-cmdk-toggle')) { e.preventDefault(); return toggleCmdk(); }
+    if (t.hasAttribute('data-cmdk-close')) { e.preventDefault(); return toggleCmdk(true); }
+    if (t.hasAttribute('data-persona-filter')) { e.preventDefault(); return selectPersona(t.getAttribute('data-persona-filter')); }
     if (t.id === 'toggle-topology-btn') { e.preventDefault(); return toggleTopologyDrawer(); }
     if (t.id === 'copy-btn') { e.preventDefault(); return copyCurl(); }
     if (t.id === 'terminal-run') {
@@ -687,6 +754,15 @@ $ ./bin/g8s deliver "$TASK" --prune-worktree --json`
     }
 
     window.addEventListener('keydown', e => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        toggleCmdk();
+        return;
+      }
+      if (e.key === 'Escape') {
+        toggleCmdk(true);
+        return;
+      }
       if (e.key === '/' && document.activeElement !== input && document.activeElement && document.activeElement.tagName !== 'INPUT') {
         if (input) {
           e.preventDefault();

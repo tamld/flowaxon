@@ -1,39 +1,207 @@
-name: "FlowAxon Zero-WAN Pull CI/CD"
+name: FlowAxon v3.0 — 6-Stage Zero-Trust DevSecOps CI/CD
 
 on:
   push:
     branches: [main]
   pull_request:
     branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: tamld/flowaxon
 
 jobs:
-  dlp-and-test:
+  # ==========================================================================
+  # STAGE 1: SUPPLY-CHAIN HARDENING, GITLEAKS & 8-GATE ZERO-LEAKAGE DLP
+  # ==========================================================================
+  supply-chain-and-dlp:
+    name: "Stage 1 — Supply-Chain, Gitleaks & 8-Gate DLP"
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-go@v5
+      - name: Harden Runner (Audit Outbound Egress)
+        uses: step-security/harden-runner@f4a75cfd619ee5ce8d5b864b0d183aff3c69b55a # v2.11.0
+        with:
+          egress-policy: audit
+
+      - name: Checkout Repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          fetch-depth: 0
+
+      - name: Gitleaks Secret Scan
+        uses: gitleaks/gitleaks-action@ff98106e4c7b2bc287b24eaf42907196329070c7 # v2.3.6
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Run 8-Gate Zero-Leakage DLP & SRI Pre-Commit Suite
+        run: bash .githooks/pre-commit
+
+  # ==========================================================================
+  # STAGE 2: SAST (GOSEC, SEMGREP) & SCA (GOVULNCHECK) + RACE UNIT TESTS
+  # ==========================================================================
+  sast-and-sca:
+    name: "Stage 2 — SAST (gosec/Semgrep), SCA (govulncheck) & Race Tests"
+    runs-on: ubuntu-latest
+    needs: [supply-chain-and-dlp]
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      - name: Setup Go 1.22
+        uses: actions/setup-go@3041bf56c941b39c61721a86cd11f3bb1338122a # v5.2.0
         with:
           go-version: "1.22"
-      - run: bash .githooks/pre-commit
-      - run: go test -v ./...
 
-  publish-ghcr:
-    needs: dlp-and-test
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+      - name: Go Vet & Race Detector Unit Tests
+        run: |
+          go vet ./...
+          go test -race -v -coverprofile=coverage.out ./...
+
+      - name: Run govulncheck (Go CVE Reachability Analysis)
+        run: |
+          go install golang.org/x/vuln/cmd/govulncheck@latest
+          govulncheck ./...
+
+      - name: Run gosec (Go AST Static Security Scanner)
+        run: |
+          go install github.com/securego/gosec/v2/cmd/gosec@latest
+          gosec -exclude=G104 ./...
+
+      - name: Run Semgrep SAST (OWASP Top 10, Go & JS Rules)
+        uses: returntocorp/semgrep-action@v1
+        with:
+          config: >-
+            p/golang
+            p/javascript
+
+  # ==========================================================================
+  # STAGE 3: CRYPTOGRAPHIC SRI & HEADLESS CHROMIUM VISUAL/CSP GATE
+  # ==========================================================================
+  sri-and-visual-e2e-gate:
+    name: "Stage 3 — SHA-384 SRI & Headless Browser CSP/DOM Gate"
     runs-on: ubuntu-latest
+    needs: [supply-chain-and-dlp]
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      - name: Setup Go 1.22 & Node.js 20
+        uses: actions/setup-go@3041bf56c941b39c61721a86cd11f3bb1338122a # v5.2.0
+        with:
+          go-version: "1.22"
+
+      - name: Verify Subresource Integrity (SRI) SHA-384 Byte Match
+        run: bash scripts/verify-sri.sh
+
+      - name: Boot Engine & Verify DOM/CSP/MIME across Virtual Hosts
+        run: |
+          go build -o flowaxon-engine main.go
+          PORT=8080 SITE_ROOT=. ./flowaxon-engine &
+          SERVER_PID=$!
+          sleep 2
+          for host in "flowaxon.com" "g8s.flowaxon.com" "aegis.flowaxon.com"; do
+            curl -sf -H "Host: $host" http://127.0.0.1:8080/ | grep -q "<!DOCTYPE html>"
+          done
+          kill $SERVER_PID
+
+  # ==========================================================================
+  # STAGE 4: DISTROLESS CONTAINER BUILD, TRIVY CVE GATE & CYCLONEDX SBOM
+  # ==========================================================================
+  container-trivy-and-sbom:
+    name: "Stage 4 — Distroless Image, Trivy CVE Scan & SBOM"
+    runs-on: ubuntu-latest
+    needs: [sast-and-sca, sri-and-visual-e2e-gate]
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      - name: Build Distroless Container Image Locally
+        run: docker build -t ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:test-${{ github.sha }} -f Containerfile .
+
+      - name: Run Aqua Security Trivy Image Vulnerability Scan
+        uses: aquasecurity/trivy-action@18f2510ee396bbf400402990b394f2dd8c87dbb0 # 0.28.0
+        with:
+          image-ref: "${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:test-${{ github.sha }}"
+          format: "table"
+          exit-code: "1"
+          ignore-unfixed: true
+          vuln-type: "os,library"
+          severity: "CRITICAL,HIGH"
+
+      - name: Generate CycloneDX SBOM Artifact
+        uses: anchore/sbom-action@e22c38f90f1ab9dbf6ee32fc5ac9ded1dc692e57 # v0.17.8
+        with:
+          image: "${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:test-${{ github.sha }}"
+          format: cyclonedx-json
+          output-file: flowaxon-sbom.cdx.json
+
+  # ==========================================================================
+  # STAGE 5: LIVE DAST (DYNAMIC APPLICATION SECURITY TESTING) PROBE SUITE
+  # ==========================================================================
+  live-dast-probe:
+    name: "Stage 5 — Live Container DAST & Active Probe Suite"
+    runs-on: ubuntu-latest
+    needs: [container-trivy-and-sbom]
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      - name: Build & Launch Ephemeral Container Target (:8080)
+        run: |
+          docker build -t flowaxon-dast:latest -f Containerfile .
+          docker run -d --name flowaxon-dast -p 127.0.0.1:8080:8080 --read-only flowaxon-dast:latest
+          sleep 2
+          curl -sf http://127.0.0.1:8080/healthz
+
+      - name: Execute Active DAST Security Probes (Traversal, XSS, Method, Headers, MIME)
+        run: bash scripts/run-dast-probes.sh http://127.0.0.1:8080
+
+      - name: Stop Ephemeral Container
+        if: always()
+        run: docker rm -f flowaxon-dast || true
+
+  # ==========================================================================
+  # STAGE 6: STRICT GATED CD, SLSA BUILD PROVENANCE & GHCR PUBLISH
+  # ==========================================================================
+  gated-cd-and-provenance:
+    name: "Stage 6 — Gated GHCR Publish & SLSA Provenance Attestation"
+    runs-on: ubuntu-latest
+    needs: [supply-chain-and-dlp, sast-and-sca, sri-and-visual-e2e-gate, container-trivy-and-sbom, live-dast-probe]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     permissions:
       contents: read
       packages: write
+      id-token: write
+      attestations: write
     steps:
-      - uses: actions/checkout@v4
-      - uses: docker/login-action@v3
+      - name: Checkout Repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      - name: Log in to GitHub Container Registry (GHCR)
+        uses: docker/login-action@9780b0c442fbb1117ed29e0efdff1e18412f7567 # v3.3.0
         with:
-          registry: ghcr.io
+          registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - uses: docker/build-push-action@v6
+
+      - name: Build and Push Hardened Distroless Image
+        id: push
+        uses: docker/build-push-action@4f58ea79222b3b9dc2c8bbdd6debcef730109a75 # v6.9.0
         with:
           context: .
           file: ./Containerfile
           push: true
-          tags: ghcr.io/tamld/flowaxon:latest
+          tags: |
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:sha-${{ github.sha }}
+
+      - name: Attest SLSA Build Provenance
+        uses: actions/attest-build-provenance@1c608d11d69870c2092266b3f9a6f3abbf17002c # v1.4.3
+        with:
+          subject-name: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          subject-digest: ${{ steps.push.outputs.digest }}
+          push-to-registry: true

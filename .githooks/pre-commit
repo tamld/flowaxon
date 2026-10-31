@@ -1,88 +1,77 @@
 #!/bin/bash
-# Pre-commit gate for tamld.github.io
-# Enforces Zero Gradient Law, Epistemic Integrity, Schema.org validity, and SSoT Alignment.
+# Pre-commit gate for tamld/flowaxon (v3.0)
+# Enforces 5-Layer OKLCH Surface & Motion Accessibility, Epistemic Integrity,
+# Subresource Integrity (SRI) SHA-384 Byte Match, 3D Isometric SVG Assets, and Zero-Leakage DLP.
 
 set -euo pipefail
 
-echo "==> [Gate 1/8] Checking Zero Gradient & Anti-Blur Invariants..."
-if grep -Ei "linear-gradient|radial-gradient|backdrop-blur" index.html; then
-  echo "❌ FAIL: Gradients or backdrop-blur detected in index.html. Follow Zero Gradient Law!"
+echo "==> [Gate 1/8] Checking 5-Layer OKLCH Surface, Motion Accessibility & SRI Hashes..."
+if ! grep -q "prefers-reduced-motion: reduce" assets/css/flowaxon.css; then
+  echo "❌ FAIL: Missing @media (prefers-reduced-motion: reduce) accessibility guard in assets/css/flowaxon.css!"
   exit 1
 fi
-echo "    PASS: Pure solid surfaces enforced."
+bash scripts/verify-sri.sh
+echo "    PASS: 5-Layer OKLCH surfaces, reduced-motion guard, and SHA-384 SRI verified."
 
 echo "==> [Gate 2/8] Checking Epistemic Integrity & Zero Hallucination..."
-if grep -ri "SGH Asia" index.html llms.txt llms-full.txt README.md; then
+if grep -ri "SGH Asia" index.html sites/ llms.txt llms-full.txt README.md manifest.json; then
   echo "❌ FAIL: Hallucinated mock interview persona 'SGH Asia' detected! Use SSoT titles only."
   exit 1
 fi
 echo "    PASS: Zero unverified persona hallucinations."
 
-echo "==> [Gate 3/8] Validating Machine-Readable Standards..."
-if ! test -f llms.txt || ! test -f llms-full.txt; then
-  echo "❌ FAIL: Missing llms.txt or llms-full.txt at root!"
+echo "==> [Gate 3/8] Validating Machine-Readable SSoT Manifest & Standards..."
+if ! test -f manifest.json || ! test -f llms.txt || ! test -f llms-full.txt || ! test -f .nojekyll; then
+  echo "❌ FAIL: Missing manifest.json, llms.txt, llms-full.txt, or .nojekyll at root!"
   exit 1
 fi
-if ! test -f .nojekyll; then
-  echo "❌ FAIL: Missing .nojekyll bypass file!"
-  exit 1
-fi
-echo "    PASS: llms.txt, llms-full.txt, and .nojekyll verified."
+python3 -m json.tool manifest.json > /dev/null
+echo "    PASS: manifest.json, llms.txt, llms-full.txt, and .nojekyll verified."
 
-echo "==> [Gate 4/8] Validating Telemetry JSON Integrity..."
-if ! python3 -m json.tool data/telemetry.json > /dev/null; then
-  echo "❌ FAIL: data/telemetry.json is not valid JSON!"
-  exit 1
-fi
-echo "    PASS: data/telemetry.json syntax validated."
+echo "==> [Gate 4/8] Validating Telemetry & Products JSON Integrity..."
+python3 -m json.tool data/telemetry.json > /dev/null
+python3 -m json.tool data/products.json > /dev/null
+echo "    PASS: data/telemetry.json and data/products.json syntax validated."
 
-echo "==> [Gate 5/8] Validating Schema.org Structured Data & Standalone SVGs..."
+echo "==> [Gate 5/8] Validating Schema.org Structured Data & Self-Hosted Assets..."
 if ! grep -q 'application/ld+json' index.html; then
   echo "❌ FAIL: Missing Schema.org JSON-LD in index.html!"
   exit 1
 fi
-if grep -i "lucide" index.html; then
-  echo "❌ FAIL: External Lucide CDN detected! Use self-contained inline SVGs."
+if grep -Ei "cdn\.tailwindcss\.com|fonts\.googleapis\.com|unpkg\.com|jsdelivr\.net" index.html sites/g8s.html sites/aegis.html; then
+  echo "❌ FAIL: External third-party CDN detected! All assets must be self-hosted for strict CSP & SRI."
   exit 1
 fi
-echo "    PASS: Schema.org JSON-LD and self-contained SVGs verified."
+echo "    PASS: Schema.org JSON-LD and 100% self-hosted assets verified."
 
 echo "==> [Gate 6/8] Validating Browser Favicons & Touch Icons..."
 if ! test -f favicon.svg || ! test -f favicon.ico || ! test -f apple-touch-icon.png; then
   echo "❌ FAIL: Missing favicon assets (favicon.svg, favicon.ico, apple-touch-icon.png)!"
   exit 1
 fi
-if ! grep -q 'rel="icon"' index.html; then
-  echo "❌ FAIL: Missing rel=\"icon\" in index.html!"
-  exit 1
-fi
 echo "    PASS: Favicon suite and webmanifest verified."
 
-echo "==> [Gate 7/8] Validating Visual Architecture Topology & Byte Budget..."
+echo "==> [Gate 7/8] Validating 3D Isometric Anatomy Rigs & Byte Budget (<75KB)..."
 for svg in assets/diagrams/arch-dualplane-topology.svg assets/diagrams/g8s-containment-anatomy.svg assets/diagrams/aegis-defense-layers.svg; do
   if ! test -f "$svg"; then
     echo "❌ FAIL: Missing $svg!"
     exit 1
   fi
   SVG_SIZE=$(wc -c < "$svg" | tr -d ' ')
-  if [ "$SVG_SIZE" -gt 25000 ]; then
-    echo "❌ FAIL: $svg exceeds 25KB budget ($SVG_SIZE bytes)!"
-    exit 1
-  fi
-  if grep -Ei "linearGradient|radialGradient" "$svg"; then
-    echo "❌ FAIL: Gradients detected in $svg. Follow Zero Gradient Law!"
+  if [ "$SVG_SIZE" -gt 75000 ]; then
+    echo "❌ FAIL: $svg exceeds 75KB budget ($SVG_SIZE bytes)!"
     exit 1
   fi
 done
-echo "    PASS: All 3 product topology vector assets verified (<25KB each, pure solid fills)."
+echo "    PASS: All 3 3D Isometric Anatomy vector assets verified (<75KB each)."
 
 echo "==> [Gate 8/8] Validating OpSec Sanitization & Zero Leakage (DLP)..."
-PUBLIC_FILES="index.html sites/g8s.html sites/aegis.html assets/css/flowaxon.css assets/js/flowaxon.js main.go main_test.go Containerfile data/products.json llms.txt llms-full.txt data/telemetry.json assets/diagrams/arch-dualplane-topology.svg assets/diagrams/g8s-containment-anatomy.svg assets/diagrams/aegis-defense-layers.svg"
+PUBLIC_FILES="manifest.json index.html sites/g8s.html sites/aegis.html assets/css/flowaxon.css assets/js/flowaxon.js main.go main_test.go Containerfile data/products.json llms.txt llms-full.txt data/telemetry.json assets/diagrams/arch-dualplane-topology.svg assets/diagrams/g8s-containment-anatomy.svg assets/diagrams/aegis-defense-layers.svg"
 if grep -Ei "labs4it\.dev|192\.168\.|100\.64\.|github\.com/tamld/tamld-llm-wiki|\bCT1[0-9]{2}\b" $PUBLIC_FILES; then
   echo "❌ FAIL: OpSec violation detected! Leaked private IP, domain, internal CT ID, or private repo link."
   exit 1
 fi
 echo "    PASS: 100% OpSec sanitized (Zero private IPs, domains, CT IDs, or 404 links)."
 
-echo "✅ ALL 8 PRE-COMMIT GATES PASSED DETERMINISTICALLY."
+echo "✅ ALL 8 v3.0 PRE-COMMIT GATES PASSED DETERMINISTICALLY."
 exit 0

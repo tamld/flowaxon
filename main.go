@@ -81,15 +81,15 @@ func NewMux(rootDir string) http.Handler {
 		}
 
 		switch {
-		case path == "/healthz" && r.Method == http.MethodGet:
+		case path == "/healthz" && (r.Method == http.MethodGet || r.Method == http.MethodHead):
 			var m runtime.MemStats
 			runtime.ReadMemStats(&m)
 			json.NewEncoder(w).Encode(map[string]any{
-				"status": "ok", "engine": "flowaxon-engine", "version": "2.0.0", "host": host,
+				"status": "ok", "engine": "flowaxon-engine", "version": "3.0.0", "host": host,
 				"uptime_sec": int(time.Since(startTime).Seconds()), "mem_alloc_kb": m.Alloc / 1024, "goroutines": runtime.NumGoroutine(),
 			})
 
-		case path == "/api/v1/products" && r.Method == http.MethodGet:
+		case path == "/api/v1/products" && (r.Method == http.MethodGet || r.Method == http.MethodHead):
 			data, _ := os.ReadFile(filepath.Join(rootDir, "data/products.json"))
 			var products any
 			json.Unmarshal(data, &products)
@@ -98,7 +98,7 @@ func NewMux(rootDir string) http.Handler {
 			resp := map[string]any{"products": products, "verified_live_at": time.Now().UTC().Format(time.RFC3339), "engine_mem_kb": m.Alloc / 1024}
 			json.NewEncoder(w).Encode(resp)
 
-		case path == "/api/v1/telemetry" && r.Method == http.MethodGet:
+		case path == "/api/v1/telemetry" && (r.Method == http.MethodGet || r.Method == http.MethodHead):
 			data, _ := os.ReadFile(filepath.Join(rootDir, "data/telemetry.json"))
 			var tel any
 			json.Unmarshal(data, &tel)
@@ -144,7 +144,11 @@ func NewMux(rootDir string) http.Handler {
 				time.Sleep(2 * time.Second)
 			}
 
-		case path == "/api/v1/drill" && r.Method == http.MethodPost:
+		case path == "/api/v1/drill":
+			if r.Method != http.MethodPost {
+				http.Error(w, `{"error":"method_not_allowed"}`, http.StatusMethodNotAllowed)
+				return
+			}
 			var req struct{ Mode string }
 			json.NewDecoder(r.Body).Decode(&req)
 			json.NewEncoder(w).Encode(map[string]any{
@@ -153,7 +157,11 @@ func NewMux(rootDir string) http.Handler {
 				"verdict": "ZERO_TRUST_CONTAINMENT_VERIFIED", "timestamp": time.Now().UTC().Format(time.RFC3339),
 			})
 
-		case path == "/api/v1/g8s/verify-receipt" && r.Method == http.MethodPost:
+		case path == "/api/v1/g8s/verify-receipt":
+			if r.Method != http.MethodPost {
+				http.Error(w, `{"error":"method_not_allowed"}`, http.StatusMethodNotAllowed)
+				return
+			}
 			var req struct {
 				Tier         string   `json:"tier"`
 				Stratum      string   `json:"stratum"`
@@ -181,11 +189,15 @@ func NewMux(rootDir string) http.Handler {
 			}
 			json.NewEncoder(w).Encode(map[string]any{"allowed": false, "code": "E_WRITE_SCOPE_VIOLATION", "reason": "Target path outside WriteReceipt.AllowedPaths."})
 
-		case path == "/api/v1/aegis/analyze" && r.Method == http.MethodPost:
+		case path == "/api/v1/aegis/analyze":
+			if r.Method != http.MethodPost {
+				http.Error(w, `{"error":"method_not_allowed"}`, http.StatusMethodNotAllowed)
+				return
+			}
 			var req struct{ Command string }
 			json.NewDecoder(r.Body).Decode(&req)
 			cmd := req.Command
-			highRisk := []string{"kubectl delete", "zfs destroy", "systemctl restart", "systemctl stop", "chmod 777", "| sh", "| bash", "--force", "sudo ", "/etc/shadow"}
+			highRisk := []string{"rm -rf", "<script", "mkfs", "dd if=", "kubectl delete", "zfs destroy", "systemctl restart", "systemctl stop", "chmod 777", "| sh", "| bash", "--force", "sudo ", "/etc/shadow"}
 			var matched []string
 			for _, t := range highRisk {
 				if strings.Contains(cmd, t) {
@@ -229,6 +241,8 @@ func NewMux(rootDir string) http.Handler {
 				w.Header().Set("Content-Type", "text/css; charset=utf-8")
 			} else if strings.HasSuffix(path, ".js") {
 				w.Header().Set("Content-Type", "application/javascript; charset=utf-8")
+			} else if strings.HasSuffix(path, ".json") {
+				w.Header().Set("Content-Type", "application/json; charset=utf-8")
 			}
 			http.FileServer(http.Dir(rootDir)).ServeHTTP(w, r)
 		}

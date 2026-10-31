@@ -622,3 +622,211 @@ body.theme-aegis {
 .group:hover .group-hover\:text-rose-400 { color: #fb7185; }
 .group:hover .group-hover\:text-signalGreen { color: #10b981; }
 .group:hover .group-hover\:text-zinc-200 { color: #e4e4e7; }
+
+/* ==========================================================================
+   v3.0 UPGRADE: 5-LAYER OKLCH SURFACE ARCHITECTURE, ATMOSPHERIC LIGHTING,
+   EMIL KOWALSKI SPRING CURVES & 3D ISOMETRIC ANATOMY ENGINE
+   ========================================================================== */
+:root {
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+  --specular-top: inset 0 1px 0 0 rgba(255, 255, 255, 0.10), inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+  --card-elevation: 0 10px 30px -10px rgba(0, 0, 0, 0.65), 0 2px 6px -1px rgba(0, 0, 0, 0.4);
+}
+
+/* L0 Atmospheric Canvas with Top Radial Spotlight + Subtle Engineering Grid */
+body.bg-canvas {
+  background-color: #07090e;
+  background-image:
+    radial-gradient(ellipse 85% 42% at 50% -10%, rgba(56, 189, 248, 0.15), rgba(16, 185, 129, 0.05) 45%, transparent 75%),
+    linear-gradient(to right, rgba(255, 255, 255, 0.022) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.022) 1px, transparent 1px);
+  background-size: 100% 100%, 36px 36px, 36px 36px;
+}
+
+body.theme-g8s {
+  background-color: #050a11;
+  background-image:
+    radial-gradient(ellipse 85% 42% at 50% -10%, rgba(56, 189, 248, 0.18), rgba(16, 185, 129, 0.07) 48%, transparent 75%),
+    linear-gradient(to right, rgba(56, 189, 248, 0.025) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(56, 189, 248, 0.025) 1px, transparent 1px);
+  background-size: 100% 100%, 36px 36px, 36px 36px;
+}
+
+body.theme-aegis {
+  background-color: #09060b;
+  background-image:
+    radial-gradient(ellipse 85% 42% at 50% -10%, rgba(251, 113, 133, 0.18), rgba(245, 158, 11, 0.06) 48%, transparent 75%),
+    linear-gradient(to right, rgba(251, 113, 133, 0.025) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(251, 113, 133, 0.025) 1px, transparent 1px);
+  background-size: 100% 100%, 36px 36px, 36px 36px;
+}
+
+/* L3 Frosted Glass Sticky Constellation Header */
+header.sticky {
+  background-color: rgba(9, 11, 16, 0.78);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  backdrop-filter: blur(16px) saturate(160%);
+  box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.06), 0 8px 24px -8px rgba(0, 0, 0, 0.6);
+}
+
+/* L1 & L2 Specular Elevated Bento Surfaces */
+.bg-panel, .persona-card, .playground {
+  box-shadow: var(--specular-top), var(--card-elevation);
+  transition: transform 220ms var(--ease-out-expo), border-color 220ms var(--ease-out-quart), box-shadow 220ms var(--ease-out-expo);
+}
+.persona-card:hover {
+  transform: translateY(-2px);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.18), 0 16px 36px -12px rgba(0, 0, 0, 0.75);
+}
+
+/* Persona Self-Segmentation Bar */
+.persona-pill {
+  padding: 0.4rem 0.85rem;
+  border-radius: 9999px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  border: 1px solid var(--border-subtle);
+  background-color: rgba(17, 17, 20, 0.8);
+  color: #a1a1aa;
+  transition: transform 150ms var(--ease-out-quart), border-color 150ms ease, color 150ms ease, background-color 150ms ease;
+}
+.persona-pill:hover {
+  color: #ffffff;
+  border-color: #38bdf8;
+}
+.persona-pill.active {
+  background-color: rgba(56, 189, 248, 0.14);
+  border-color: #38bdf8;
+  color: #ffffff;
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.15);
+}
+.persona-spotlight-highlight {
+  border-color: #38bdf8 !important;
+  box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.45), 0 14px 34px -10px rgba(56, 189, 248, 0.22) !important;
+}
+
+/* Cmd+K Command Palette Modal (L3 Glass Overlay) */
+.cmdk-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  background-color: rgba(4, 6, 10, 0.75);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 12vh;
+}
+.cmdk-backdrop.hidden {
+  display: none;
+}
+.cmdk-dialog {
+  width: min(620px, 92vw);
+  border-radius: 0.75rem;
+  background-color: #0e121a;
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.14), 0 24px 64px -12px rgba(0, 0, 0, 0.85);
+  overflow: hidden;
+}
+.cmdk-item {
+  width: 100%;
+  text-align: left;
+  padding: 0.65rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 0.5rem;
+  font-size: 0.8rem;
+  color: #d4d4d8;
+  transition: background-color 120ms ease, color 120ms ease;
+}
+.cmdk-item:hover {
+  background-color: rgba(56, 189, 248, 0.14);
+  color: #ffffff;
+}
+
+/* 3D Isometric Anatomy Engine CSS (ISO_CSS) */
+.iso {
+  --anatomy-page:#080b11;--anatomy-card:#0c1018;--anatomy-text:#a1a1aa;--anatomy-strong:#f4f4f5;--anatomy-muted:#71717a;
+  --anatomy-paper:#0c1018;--anatomy-face:#151d2a;--anatomy-top:#192334;
+  --anatomy-shade-0:#090d14;--anatomy-shade-1:#0d131d;--anatomy-shade-2:#111926;--anatomy-shade-3:#162030;
+  --anatomy-lit-top:#1e324a;--anatomy-lit-shade:#152538;
+  --anatomy-hi:#e4e4e7;--anatomy-mid:#71717a;--anatomy-lo:#3f4756;--anatomy-faint:#232936;--anatomy-lit:#38bdf8;
+  --anatomy-halo:#020408;--anatomy-halo-opacity:.88;--anatomy-dot:#38bdf8;
+  --anatomy-red:#fb7185;--anatomy-green:#10b981;--anatomy-blue:#38bdf8;
+  --anatomy-weight:.65px;--anatomy-ease:cubic-bezier(.32,.72,0,1);
+  --anatomy-mono:'JetBrains Mono',ui-monospace,monospace;
+}
+body.theme-aegis .iso {
+  --anatomy-card:#110b15;--anatomy-paper:#110b15;--anatomy-face:#211224;--anatomy-top:#29152c;
+  --anatomy-shade-0:#0c070e;--anatomy-shade-1:#120b16;--anatomy-shade-2:#180e1d;--anatomy-shade-3:#1f1226;
+  --anatomy-lit-top:#3d1526;--anatomy-lit-shade:#2b0f1b;--anatomy-lit:#fb7185;--anatomy-dot:#fb7185;
+}
+.iso-svg{display:block;width:100%;height:auto;overflow:visible}
+.iso-svg path,.iso-svg circle{vector-effect:non-scaling-stroke}
+.iso-fill{fill:var(--anatomy-paper);stroke:none}
+.iso-solid[data-lit]>.iso-fill{fill:var(--anatomy-face)}
+.iso-shade,.iso-top{stroke:none}
+.iso-shade[data-shade="0"]{fill:var(--anatomy-shade-0)}
+.iso-shade[data-shade="1"]{fill:var(--anatomy-shade-1)}
+.iso-shade[data-shade="2"]{fill:var(--anatomy-shade-2)}
+.iso-shade[data-shade="3"]{fill:var(--anatomy-shade-3)}
+.iso-top{fill:var(--anatomy-top)}
+.iso-solid[data-lit]>.iso-top{fill:var(--anatomy-lit-top)}
+.iso-solid[data-lit]>.iso-shade{fill:var(--anatomy-lit-shade)}
+.iso-solid[data-lit]>.iso-edge{stroke:var(--anatomy-lit)}
+.iso-halo{fill:var(--anatomy-halo);stroke:none;filter:blur(9px);opacity:var(--anatomy-halo-opacity);transform:translateY(3px)}
+.iso-line{fill:none;stroke:var(--anatomy-lo);stroke-width:var(--anatomy-weight);stroke-linecap:round;stroke-linejoin:round}
+.iso-line[data-tone="hi"]{stroke:var(--anatomy-hi)}
+.iso-line[data-tone="mid"]{stroke:var(--anatomy-mid)}
+.iso-line[data-tone="lo"]{stroke:var(--anatomy-lo)}
+.iso-line[data-tone="faint"]{stroke:var(--anatomy-faint)}
+.iso-line[data-tone="lit"]{stroke:var(--anatomy-lit)}
+.iso-line[data-tone="red"]{stroke:var(--anatomy-red);stroke-width:1.1px}
+.iso-line[data-tone="green"]{stroke:var(--anatomy-green);stroke-width:1.1px}
+.iso-line[data-tone="blue"]{stroke:var(--anatomy-blue);stroke-width:1.1px}
+.iso-line[data-dotted]{stroke-dasharray:.01 3.5;stroke-width:1.1px}
+.iso-line[data-dashed]{stroke-dasharray:3 3}
+.iso-line[data-flow]{stroke-dasharray:3 6}
+.iso-wire-end{fill:var(--anatomy-paper);stroke:var(--anatomy-lo);stroke-width:var(--anatomy-weight)}
+.iso-dots circle{fill:var(--anatomy-dot);stroke:none;opacity:.4}
+.iso-dots[data-tone="hi"] circle{opacity:.9}
+.iso-face-text{fill:var(--anatomy-mid);font-family:var(--anatomy-mono);letter-spacing:.04em}
+.iso-face-text[data-tone="hi"]{fill:var(--anatomy-hi);font-weight:600}
+@keyframes iso-flow{to{stroke-dashoffset:-36}}
+@keyframes iso-pulse{0%,100%{opacity:.22}20%{opacity:1}50%{opacity:.22}}
+.iso-line[data-flow]{animation:iso-flow 1500ms linear infinite}
+.iso-dots circle[data-pulse]{animation:iso-pulse 1600ms steps(1,end) infinite}
+.iso-dots circle[data-pulse]:nth-child(3n+1){animation-delay:420ms}
+.iso-dots circle[data-pulse]:nth-child(3n+2){animation-delay:880ms}
+.iso-figure{margin:0}
+.iso-plate{position:relative;padding:42px 20px 44px;border-radius:0.65rem;background:var(--anatomy-card);border:1px solid rgba(255,255,255,0.09);box-shadow:var(--specular-top),var(--card-elevation);--anatomy-paper:var(--anatomy-card)}
+.iso-plate-corners{position:absolute;inset:14px 18px;pointer-events:none}
+.iso-plate-corner{position:absolute;color:var(--anatomy-muted);font-family:var(--anatomy-mono);font-size:10px;line-height:1;letter-spacing:.05em;white-space:nowrap}
+.iso-plate-corner[data-corner="fig"]{top:0;left:0;color:#38bdf8;font-weight:600}
+body.theme-aegis .iso-plate-corner[data-corner="fig"]{color:#fb7185}
+.iso-plate-corner[data-corner="title"]{top:0;right:0;text-transform:uppercase;letter-spacing:.08em;color:#e4e4e7}
+.iso-plate-corner[data-corner="hint"]{bottom:0;left:0;text-transform:uppercase;letter-spacing:.06em;color:#10b981}
+.iso-plate-corner[data-corner="readout"]{right:0;bottom:0;color:#e4e4e7;font-variant-numeric:tabular-nums}
+.iso-legend{display:grid;gap:6px;margin-top:10px;color:#a1a1aa;font-size:12px;line-height:1.5;font-family:'Inter',sans-serif}
+.iso-keys{display:flex;flex-wrap:wrap;gap:6px 16px;font-family:'JetBrains Mono',monospace;font-size:11px}
+.iso-key{display:inline-flex;align-items:center;gap:6px;color:#d4d4d8}
+.iso-swatch{width:16px;height:10px;flex:none;overflow:visible}
+.iso-swatch path{fill:none;stroke:var(--anatomy-hi);stroke-width:1.2;vector-effect:non-scaling-stroke;stroke-linejoin:round;stroke-linecap:round}
+.iso-swatch[data-mark="lit"] path{stroke:var(--anatomy-lit)}
+.iso-swatch[data-mark="red"] path{stroke:var(--anatomy-red)}
+.iso-swatch[data-mark="green"] path{stroke:var(--anatomy-green)}
+.iso-swatch[data-mark="blue"] path{stroke:var(--anatomy-blue)}
+
+/* Law 6 Mandatory Accessibility & Reduced-Motion Guard */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
