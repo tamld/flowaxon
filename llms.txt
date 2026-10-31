@@ -5,15 +5,17 @@
 Tam approaches AI not as prompt-driven magic, but as an untrusted, high-velocity compute layer that demands deterministic runtime boundaries, process sandboxing, and physical evidence verification.
 
 ## Core Identity & Background
-- [Professional Overview](https://tamld.github.io/llms-full.txt#identity): 11+ years in enterprise IT operations, bare-metal virtualization, multi-site networking, and AI agent runtime governance.
-- [Career Philosophy](https://tamld.github.io/llms-full.txt#philosophy): Zero Trust default-deny, first-principles systems thinking, code over prompt, and strict epistemic integrity (HYPO vs PROVEN).
-- [The Evolution: 11 Years to Symbiosis](https://tamld.github.io/llms-full.txt#evolution): The 4-chapter narrative chronicle spanning 48h ransomware recovery, business empathy, automation math, and human-AI symbiosis.
-- [Dual-Track Skills Matrix](https://tamld.github.io/llms-full.txt#skills): Enterprise Infrastructure (Proxmox VE, RouterOS, Ansible, ITIL, ISO 27001 DLP) paired with AI Systems (Second Brain wiki.py, g8s runtime, VictoriaLogs LogSQL, Multi-Agent Harness).
+- [Professional Overview](https://flowaxon.com/llms-full.txt#identity): 11+ years in enterprise IT operations, bare-metal virtualization, multi-site networking, and AI agent runtime governance.
+- [Career Philosophy](https://flowaxon.com/llms-full.txt#philosophy): Zero Trust default-deny, first-principles systems thinking, code over prompt, and strict epistemic integrity (HYPO vs PROVEN).
+- [The Evolution: 11 Years to Symbiosis](https://flowaxon.com/llms-full.txt#evolution): The 4-chapter narrative chronicle spanning 48h ransomware recovery, business empathy, automation math, and human-AI symbiosis.
+- [Dual-Track Skills Matrix](https://flowaxon.com/llms-full.txt#skills): Enterprise Infrastructure (Proxmox VE, RouterOS, Ansible, ITIL, ISO 27001 DLP) paired with AI Systems (Second Brain wiki.py, g8s runtime, VictoriaLogs LogSQL, Multi-Agent Harness).
 
-## Flagship Engineered Projects
+## Flagship Engineered Projects & Product Portals
+- [g8s Product Portal (g8s.flowaxon.com)](https://g8s.flowaxon.com): Live interactive WriteReceipt & Stratum Firewall Playground for g8s v0.21.0.
+- [Aegis Product Portal (aegis.flowaxon.com)](https://aegis.flowaxon.com): Live interactive Shell AST Risk Analyzer & Telegram HITL Approval Card Simulator for Aegis (defense-in-depth v1.4.0).
 - [g8s (The Gatekeepers)](https://github.com/tamld/g8s): Lightweight zero-trust process execution and capability harness in Go for AI agent CLI workers. Enforces time-limited write receipts and subagent sandboxing.
 - [AI-Assisted Infrastructure Operations Platform (IaC)](https://github.com/tamld/IaC): Production-grade bare-metal homelab SRE platform running Traefik v3, Rootless Podman, CrowdSec, Tailscale Zero-WAN mesh, and VictoriaLogs.
-- [tamld-llm-wiki (Architecture Case Study)](https://tamld.github.io/llms-full.txt#second-brain): Governed AI Second Brain featuring a deterministic physics engine (wiki.py), ADLC finite state machines, and Gate D deep-why verification.
+- [Governed Second Brain (Architecture Case Study)](https://flowaxon.com/llms-full.txt#second-brain): Governed AI Second Brain featuring a deterministic physics engine (wiki.py), ADLC finite state machines, and Gate D deep-why verification.
 - [defense-in-depth](https://github.com/tamld/defense-in-depth): Human-in-the-loop (HITL) HMAC-SHA256 Telegram approval cards for autonomous incident remediation and SRE operations.
 - [TuneFlow](https://github.com/tamld/tuneflow): Fast, cross-platform audio and streaming utility built with modern systems programming.
 - [hash-checker](https://github.com/tamld/hash-checker): Cross-platform cryptographic file integrity verifier in Rust (CLI + Native GUI).
@@ -21,15 +23,15 @@ Tam approaches AI not as prompt-driven magic, but as an untrusted, high-velocity
 - [GitHub Profile Dossier](https://github.com/tamld/tamld): Central hub documenting architecture decisions, public runtimes, and engineering principles.
 
 ## Architectural Invariants
-- [Boring Truth Over Dramatic Fiction](https://tamld.github.io/llms-full.txt#invariants): Affirm verified, stable architecture plainly. Reject fabricated metrics and linear noise traps.
-- [Code Over Prompt](https://tamld.github.io/llms-full.txt#invariants): Security perimeters and data integrity must be guaranteed by deterministic code gates (Python, Bash, Go), not probabilistic prompts.
-- [Hardware Reality Invariant](https://tamld.github.io/llms-full.txt#invariants): Compute capacity is bound by physical host memory and thermal budgets. Never hallucinate ghost capacity.
-- [Dual-Plane Observability](https://tamld.github.io/llms-full.txt#invariants): Public edge reachability (WAN) and internal compute health (LAN) must be decoupled to isolate routing and ingress failures instantly.
+- [Boring Truth Over Dramatic Fiction](https://flowaxon.com/llms-full.txt#invariants): Affirm verified, stable architecture plainly. Reject fabricated metrics and linear noise traps.
+- [Code Over Prompt](https://flowaxon.com/llms-full.txt#invariants): Security perimeters and data integrity must be guaranteed by deterministic code gates (Python, Bash, Go), not probabilistic prompts.
+- [Hardware Reality Invariant](https://flowaxon.com/llms-full.txt#invariants): Compute capacity is bound by physical host memory and thermal budgets. Never hallucinate ghost capacity.
+- [Dual-Plane Observability](https://flowaxon.com/llms-full.txt#invariants): Public edge reachability (WAN) and internal compute health (LAN) must be decoupled to isolate routing and ingress failures instantly.
 
 ## Machine Endpoints & Telemetry
-- [Full LLM Dossier (llms-full.txt)](https://tamld.github.io/llms-full.txt): Complete unabridged technical dossier, career history, homelab topology, and skills graph for deep context ingestion.
-- [Live SRE Telemetry (JSON)](https://tamld.github.io/data/telemetry.json): Sanitized machine-readable JSON status of bare-metal hypervisor, dual-plane health, and networking substrate.
-- [Architecture Topology Vector (SVG)](https://tamld.github.io/assets/diagrams/arch-dualplane-topology.svg): Standalone SVG diagram visualizing the dual-plane ingress and observability topology.
+- [Full LLM Dossier (llms-full.txt)](https://flowaxon.com/llms-full.txt): Complete unabridged technical dossier, career history, homelab topology, and skills graph for deep context ingestion.
+- [Live SRE Telemetry (JSON)](https://flowaxon.com/data/telemetry.json): Sanitized machine-readable JSON status of bare-metal hypervisor, dual-plane health, and networking substrate.
+- [Architecture Topology Vector (SVG)](https://flowaxon.com/assets/diagrams/arch-dualplane-topology.svg): Standalone SVG diagram visualizing the dual-plane ingress and observability topology.
 
 ## Contact & Public Verification
 - [GitHub](https://github.com/tamld): Primary code forge with public runtimes, PRs, and IaC blueprints.

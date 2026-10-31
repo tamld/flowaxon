@@ -59,23 +59,25 @@ fi
 echo "    PASS: Favicon suite and webmanifest verified."
 
 echo "==> [Gate 7/8] Validating Visual Architecture Topology & Byte Budget..."
-if ! test -f assets/diagrams/arch-dualplane-topology.svg; then
-  echo "❌ FAIL: Missing assets/diagrams/arch-dualplane-topology.svg!"
-  exit 1
-fi
-SVG_SIZE=$(wc -c < assets/diagrams/arch-dualplane-topology.svg | tr -d ' ')
-if [ "$SVG_SIZE" -gt 25000 ]; then
-  echo "❌ FAIL: Topology SVG exceeds 25KB budget ($SVG_SIZE bytes)!"
-  exit 1
-fi
-if grep -Ei "linearGradient|radialGradient" assets/diagrams/arch-dualplane-topology.svg; then
-  echo "❌ FAIL: Gradients detected in topology SVG. Follow Zero Gradient Law!"
-  exit 1
-fi
-echo "    PASS: Topology vector asset verified ($SVG_SIZE bytes, pure solid fills)."
+for svg in assets/diagrams/arch-dualplane-topology.svg assets/diagrams/g8s-containment-anatomy.svg assets/diagrams/aegis-defense-layers.svg; do
+  if ! test -f "$svg"; then
+    echo "❌ FAIL: Missing $svg!"
+    exit 1
+  fi
+  SVG_SIZE=$(wc -c < "$svg" | tr -d ' ')
+  if [ "$SVG_SIZE" -gt 25000 ]; then
+    echo "❌ FAIL: $svg exceeds 25KB budget ($SVG_SIZE bytes)!"
+    exit 1
+  fi
+  if grep -Ei "linearGradient|radialGradient" "$svg"; then
+    echo "❌ FAIL: Gradients detected in $svg. Follow Zero Gradient Law!"
+    exit 1
+  fi
+done
+echo "    PASS: All 3 product topology vector assets verified (<25KB each, pure solid fills)."
 
 echo "==> [Gate 8/8] Validating OpSec Sanitization & Zero Leakage (DLP)..."
-PUBLIC_FILES="index.html llms.txt llms-full.txt data/telemetry.json assets/diagrams/arch-dualplane-topology.svg"
+PUBLIC_FILES="index.html sites/g8s.html sites/aegis.html assets/css/flowaxon.css assets/js/flowaxon.js main.go main_test.go Containerfile data/products.json llms.txt llms-full.txt data/telemetry.json assets/diagrams/arch-dualplane-topology.svg assets/diagrams/g8s-containment-anatomy.svg assets/diagrams/aegis-defense-layers.svg"
 if grep -Ei "labs4it\.dev|192\.168\.|100\.64\.|github\.com/tamld/tamld-llm-wiki|\bCT1[0-9]{2}\b" $PUBLIC_FILES; then
   echo "❌ FAIL: OpSec violation detected! Leaked private IP, domain, internal CT ID, or private repo link."
   exit 1

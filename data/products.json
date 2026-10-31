@@ -1,0 +1,79 @@
+{
+  "hub": {
+    "domain": "flowaxon.com",
+    "version": "2.0.0",
+    "engine": "flowaxon-engine (Pure-Go Single-Binary)",
+    "gitops": "Pull-Based GHCR (io.containers.autoupdate=registry)",
+    "status": "OPERATIONAL"
+  },
+  "products": [
+    {
+      "id": "g8s",
+      "name": "g8s — Zero-Trust Agent Harness",
+      "subdomain": "https://g8s.flowaxon.com",
+      "preview_path": "/sites/g8s",
+      "repo": "https://github.com/tamld/g8s",
+      "version": "v0.21.0",
+      "status": "OPERATIONAL",
+      "category": "Autonomous Agent Governance",
+      "summary": "Exponential containment tiers (F0/F1/F2), Orthogonal Control Strata (S0..S3), CAS task queue, and single-use path-scoped WriteReceipts.",
+      "capabilities": [
+        "F0/F1/F2 Isolation",
+        "Single-Use WriteReceipt",
+        "Draft-7 Schema Gate",
+        "Blind Verifier S3-A"
+      ]
+    },
+    {
+      "id": "aegis",
+      "name": "Aegis — Defense-in-Depth Command Firewall",
+      "subdomain": "https://aegis.flowaxon.com",
+      "preview_path": "/sites/aegis",
+      "repo": "https://github.com/tamld/defense-in-depth",
+      "version": "v1.4.0",
+      "status": "OPERATIONAL",
+      "category": "AI Runtime Security & HITL",
+      "summary": "Real-time shell AST risk analyzer and Telegram Human-in-the-Loop (HITL) approval card gateway blocking destructive agent commands before execution.",
+      "capabilities": [
+        "Shell AST Risk Scoring",
+        "Zero-Bypass PreToolUse Hook",
+        "Telegram HITL Approval Cards",
+        "Audit Trail Ledger"
+      ]
+    },
+    {
+      "id": "iac",
+      "name": "IaC — Dual-Plane Homelab SRE Substrate",
+      "subdomain": "https://flowaxon.com/#topology",
+      "preview_path": "/#topology",
+      "repo": "https://github.com/tamld/IaC",
+      "version": "2026.10",
+      "status": "OPERATIONAL",
+      "category": "Bare-Metal Infrastructure",
+      "summary": "Declarative Proxmox VE LXC + Rootless Podman fleet with Single-Authority MikroTik RouterOS DHCP and Dual-Plane observability.",
+      "capabilities": [
+        "Single Authority DHCP",
+        "Zero-WAN Exposure",
+        "15-Yr Origin CA mTLS",
+        "Pull-Based GHCR GitOps"
+      ]
+    },
+    {
+      "id": "second-brain",
+      "name": "Second Brain — Deterministic Knowledge SSoT",
+      "subdomain": "https://flowaxon.com/#journey",
+      "preview_path": "/#journey",
+      "repo": "https://flowaxon.com/llms-full.txt",
+      "version": "v3.2.0",
+      "status": "GOVERNED_PRIVATE",
+      "category": "Epistemic Knowledge Engine",
+      "summary": "ADLC Finite-State-Machine knowledge vault enforcing mechanical red-test proof and zero-leakage DLP gates across 80+ specialized skills.",
+      "capabilities": [
+        "ADLC FSM Gates",
+        "Epistemic Audit Tiering",
+        "Zero-Leakage DLP",
+        "JIT Skill Router"
+      ]
+    }
+  ]
+}

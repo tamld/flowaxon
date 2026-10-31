@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>g8s (The Gatekeepers) v0.21.0 — Zero-Trust AI Agent Capability Harness | FlowAxon</title>
+  <meta name="description" content="k8s orchestrates your compute containers; g8s orchestrates your AI subagents. Zero-trust process execution, single-use WriteReceipts, F0/F1/F2 containment, and S0..S3 control strata in pure Go.">
+  <link rel="canonical" href="https://g8s.flowaxon.com/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="/assets/css/flowaxon.css?v=2.0.3" integrity="sha384-Z1ag+gO8Ce+XjnTaKyOMWdcSuZ3YIzx3Ljmi2zvEsChM/P5cRf4SnEM8noZcNmR8" crossorigin="anonymous">
+  <script src="/assets/js/flowaxon.js?v=2.0.2" integrity="sha384-NUShXKghksb2B3X8APyrTZF/x7Y64I3lUdPyOCkiP6tsarRwrrJdthIv3QZGNUwA" crossorigin="anonymous" defer></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "g8s (The Gatekeepers)",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Linux, macOS, Windows",
+    "softwareVersion": "0.21.0",
+    "programmingLanguage": "Go",
+    "author": { "@type": "Person", "name": "Le Duc Tam", "alternateName": "tamld" },
+    "url": "https://g8s.flowaxon.com/",
+    "codeRepository": "https://github.com/tamld/g8s",
+    "description": "Zero-Trust Process & Capability Harness for AI Agent CLI Workers with F0/F1/F2 exponential containment rings, S0..S3 orthogonal control strata, and path-scoped single-use WriteReceipts."
+  }
+  </script>
+</head>
+<body class="theme-g8s font-sans antialiased min-h-screen">
+
+  <!-- GLOBAL ECOSYSTEM TOPBAR -->
+  <header class="topbar" role="banner">
+    <div class="flex flex-wrap items-center gap-3">
+      <a href="https://flowaxon.com" class="flex items-center gap-2 font-mono text-sm text-zinc-100 hover:text-white">
+        <span class="w-2 h-2 rounded-full bg-accentLight inline-block"></span>
+        <span class="font-bold">g8s</span>
+        <span class="text-zinc-500">/</span>
+        <span class="text-accentLight text-xs">v0.21.0</span>
+      </a>
+      <nav class="topbar-nav" aria-label="FlowAxon Product Constellation">
+        <a href="https://flowaxon.com" class="topbar-link">← flowaxon.com (Hub)</a>
+        <a href="https://g8s.flowaxon.com" class="topbar-link active" aria-current="page">g8s.flowaxon.com</a>
+        <a href="https://aegis.flowaxon.com" class="topbar-link">aegis.flowaxon.com ↗</a>
+      </nav>
+    </div>
+    <div class="topbar-status" aria-live="polite">
+      <div class="hidden sm:flex items-center gap-3 text-xs font-mono text-zinc-400">
+        <a href="#personas" class="hover:text-white">Who It's For</a>
+        <a href="#anatomy" class="hover:text-white">Architecture</a>
+        <a href="#playground" class="hover:text-white">Receipt Playground</a>
+        <a href="#cli-workflow" class="hover:text-white">CLI Lifecycle</a>
+        <a href="#strata-matrix" class="hover:text-white">Strata Matrix</a>
+      </div>
+      <span id="sse-status-text" class="sse-pill">SSE LIVE</span>
+      <span id="sse-mem" class="sse-metric"></span>
+      <span id="sse-uptime" class="sse-metric"></span>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 sm:px-8 py-8 sm:py-12 space-y-16">
+
+    <!-- 1. SPLIT PRODUCT HERO + COPYABLE CLI QUICKSTART -->
+    <section class="grid lg:grid-cols-12 gap-8 items-start">
+      <div class="lg:col-span-7 space-y-6">
+        <div class="inline-flex flex-wrap items-center gap-2 px-3 py-1 rounded bg-[#0c1926] border border-[#14324f] font-mono text-xs text-accentLight">
+          <span>RELEASE v0.21.0</span>
+          <span class="text-zinc-500">•</span>
+          <span>PURE GO 1.22+</span>
+          <span class="text-zinc-500">•</span>
+          <span>SPEC-DRIVEN DEVELOPMENT (SDD)</span>
+        </div>
+
+        <div class="space-y-3">
+          <h1 class="text-2xl sm:text-4xl font-bold tracking-tight text-white">
+            g8s (The Gatekeepers) — Zero-Trust Capability Harness for AI Agents
+          </h1>
+          <p class="text-base sm:text-lg text-zinc-200 leading-relaxed">
+            <span class="text-accentLight font-semibold">"k8s orchestrates your compute containers; g8s orchestrates your AI subagents."</span>
+            Enforce single-use path-scoped WriteReceipts, isolated Git worktrees, and orthogonal kernel firewalls across Claude Code, Cursor, Antigravity, OpenCode, and 9router workers.
+          </p>
+        </div>
+
+        <!-- 4 Core Product KPIs -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 font-mono">
+          <div class="p-3 rounded bg-panel border border-borderSubtle">
+            <div class="text-lg sm:text-xl font-bold text-accentLight">1 : 1 : 1</div>
+            <div class="text-[11px] text-zinc-400">Issue : Worker : Receipt</div>
+          </div>
+          <div class="p-3 rounded bg-panel border border-borderSubtle">
+            <div class="text-lg sm:text-xl font-bold text-signalGreen">0% Burn</div>
+            <div class="text-[11px] text-zinc-400">F0 Brain Quota Saved</div>
+          </div>
+          <div class="p-3 rounded bg-panel border border-borderSubtle">
+            <div class="text-lg sm:text-xl font-bold text-amber-400">F0 / F1 / F2</div>
+            <div class="text-[11px] text-zinc-400">Containment Rings</div>
+          </div>
+          <div class="p-3 rounded bg-panel border border-borderSubtle">
+            <div class="text-lg sm:text-xl font-bold text-purple-400">S0 .. S3</div>
+            <div class="text-[11px] text-zinc-400">Orthogonal Strata</div>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-3 font-mono text-xs pt-1">
+          <a href="#playground" class="px-4 py-2 rounded bg-accentLight text-zinc-950 font-bold hover:bg-white transition-colors">
+            ▶ Test WriteReceipt Firewall
+          </a>
+          <a href="https://github.com/tamld/g8s" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded bg-panel border border-borderSubtle text-zinc-200 hover:text-white hover:border-accentLight transition-colors">
+            github.com/tamld/g8s ↗
+          </a>
+          <a href="#cli-workflow" class="px-3.5 py-2 rounded bg-panel border border-borderHairline text-zinc-400 hover:text-white transition-colors">
+            Inspect CLI Workflow →
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Column: Developer Quickstart & Dogfooding Box -->
+      <div class="lg:col-span-5 rounded-lg bg-panel border border-borderSubtle overflow-hidden font-mono text-xs">
+        <div class="px-3.5 py-2 bg-black border-b border-borderHairline flex items-center justify-between text-zinc-400">
+          <span>quickstart — g8s supervisor loop</span>
+          <span class="text-signalGreen">go 1.22+ • sqlite-wal</span>
+        </div>
+        <div class="p-4 space-y-3 text-[11px] text-zinc-300 leading-relaxed">
+          <div>
+            <div class="text-zinc-500"># 1. Build &amp; verify local harness health</div>
+            <div class="text-accentLight">$ make local &amp;&amp; ./bin/g8s doctor --json</div>
+          </div>
+          <div>
+            <div class="text-zinc-500"># 2. Issue a single-use path-scoped WriteReceipt (F0 Only)</div>
+            <div class="text-amber-400">$ REC=$(./bin/g8s receipt issue --path "internal/worker/*.go" --ttl 1800 --json | ./bin/g8s select data.receipt_id)</div>
+          </div>
+          <div>
+            <div class="text-zinc-500"># 3. Submit bounded F1 worker task &amp; execute in isolated Git worktree</div>
+            <div class="text-zinc-100">$ TASK=$(./bin/g8s submit --idempotency-key slice-01 --permission workspace_write --role implementer --provider 9router --model deep-coding --receipt-id "$REC" --prompt "..." | ./bin/g8s select data.task_id)</div>
+            <div class="text-signalGreen">$ ./bin/g8s worker --once --provider 9router --model deep-coding</div>
+          </div>
+          <div>
+            <div class="text-zinc-500"># 4. Verify mechanical evidence &amp; deliver worktree diff</div>
+            <div class="text-purple-400">$ ./bin/g8s verify --task "$TASK" --json &amp;&amp; ./bin/g8s deliver "$TASK" --prune-worktree</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. TARGET AUDIENCE, READER & CONSUMER PERSONAS -->
+    <section id="personas" class="space-y-4">
+      <div class="border-b border-borderHairline pb-3 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+        <div>
+          <div class="text-[11px] font-mono uppercase tracking-wider text-accentLight">Target Personas &amp; Value Delivery</div>
+          <h2 class="text-xl sm:text-2xl font-bold text-white">Built for 3 Distinct Engineering Consumers</h2>
+        </div>
+        <span class="text-xs font-mono text-zinc-400">Zero-Trust Delegation • Zero Quota Waste</span>
+      </div>
+
+      <div class="persona-grid">
+        <article class="persona-card space-y-2.5">
+          <div class="flex items-center justify-between font-mono text-xs">
+            <span class="px-2 py-0.5 rounded bg-[#0c1926] border border-[#14324f] text-accentLight font-semibold">1. AI Agent &amp; Harness Engineers</span>
+            <span class="text-zinc-500">Builder / Operator</span>
+          </div>
+          <h3 class="text-base font-bold text-white">Stop Frontier Brain Quota Burn (Lesson #23)</h3>
+          <p class="text-xs text-zinc-300 leading-relaxed">
+            Cloning your frontier F0 Brain model (Claude Opus / Gemini Pro) across N subagent coding loops burns your 5-hour quota to 0%. <code class="text-accentLight">g8s</code> keeps F0 strictly for reasoning and dispatches F1 coding/scouting loops through <code class="text-signalGreen">9router</code> SWE combos (<code class="text-zinc-200">deep-coding</code>, <code class="text-zinc-200">reasoning-high</code>, <code class="text-zinc-200">fast-agent</code>).
+          </p>
+          <div class="pt-2 border-t border-borderHairline font-mono text-[11px] text-signalGreen">
+            ✓ Outcome: 10× parallel worker throughput with 0% F0 quota exhaustion.
+          </div>
+        </article>
+
+        <article class="persona-card space-y-2.5">
+          <div class="flex items-center justify-between font-mono text-xs">
+            <span class="px-2 py-0.5 rounded bg-[#241705] border border-amber-500/30 text-amber-400 font-semibold">2. Platform &amp; Security Architects</span>
+            <span class="text-zinc-500">Governance / Auditor</span>
+          </div>
+          <h3 class="text-base font-bold text-white">Eliminate Out-of-Scope Agent Mutations</h3>
+          <p class="text-xs text-zinc-300 leading-relaxed">
+            Prompt instructions cannot stop a hallucinating agent from editing <code class="text-rose-400">.env</code>, CI workflows, or sibling packages. <code class="text-accentLight">g8s</code> enforces in-process <code class="text-amber-400">WriteReceipt.AllowedPaths</code> globs, SHA-256 CAS file guards, and kernel firewall strata (<code class="text-zinc-200">E_S1_DIRECT_MUTATION_FORBIDDEN</code>).
+          </p>
+          <div class="pt-2 border-t border-borderHairline font-mono text-[11px] text-amber-400">
+            ✓ Outcome: Mathematical 1-1-1 boundary (1 Issue = 1 Worker = 1 Receipt).
+          </div>
+        </article>
+
+        <article class="persona-card space-y-2.5">
+          <div class="flex items-center justify-between font-mono text-xs">
+            <span class="px-2 py-0.5 rounded bg-[#1a0f26] border border-[#3b1a59] text-purple-400 font-semibold">3. Multi-Repo Maintainers &amp; Leads</span>
+            <span class="text-zinc-500">Consumer / Adopter</span>
+          </div>
+          <h3 class="text-base font-bold text-white">Pull-Based Offer Bundle &amp; Double-Blind QA</h3>
+          <p class="text-xs text-zinc-300 leading-relaxed">
+            Onboard any repository in 60 seconds with <code class="text-purple-400">g8s offer init</code> across 4 domain profiles (<code class="text-zinc-200">knowledge</code>, <code class="text-zinc-200">security</code>, <code class="text-zinc-200">infra</code>, <code class="text-zinc-200">utility</code>) and defeat AI reviewer sycophancy using <code class="text-zinc-200">S3-A BlindAdjudicator</code> verification packets.
+          </p>
+          <div class="pt-2 border-t border-borderHairline font-mono text-[11px] text-purple-400">
+            ✓ Outcome: Repo-agnostic CI spec-sync gates &amp; sanitized Mode-3 defect packets.
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 3. VISUAL ARCHITECTURE ASSET: F0/F1/F2 CONTAINMENT & S0..S3 STRATA -->
+    <section id="anatomy" class="p-5 sm:p-6 rounded-lg bg-panel border border-borderSubtle space-y-4">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-borderHairline pb-3">
+        <div>
+          <div class="text-[11px] font-mono uppercase tracking-wider text-accentLight">Dedicated Architecture Blueprint • ADR-0032 &amp; ADR-0035</div>
+          <h2 class="text-lg sm:text-xl font-bold text-white">Exponential Containment Rings (F0 / F1 / F2) × Control Strata (S0..S3)</h2>
+        </div>
+        <a href="/assets/diagrams/g8s-containment-anatomy.svg" target="_blank" class="text-xs font-mono text-accentLight hover:underline">Open Standalone SVG Asset ↗</a>
+      </div>
+
+      <div class="p-3 rounded bg-black border border-borderHairline overflow-x-auto">
+        <img src="/assets/diagrams/g8s-containment-anatomy.svg" alt="g8s F0 F1 F2 Containment Rings and S0 to S3 Orthogonal Control Strata Diagram" class="w-full min-w-[720px] h-auto block">
+      </div>
+
+      <div class="grid sm:grid-cols-4 gap-3 font-mono text-xs">
+        <div class="p-3 rounded bg-canvas border border-borderHairline space-y-1">
+          <div class="text-accentLight font-bold">Ring F0 — Sovereign Brain</div>
+          <p class="text-[11px] text-zinc-400">Exclusive holder of architecture authority, git commits, vault promotion, and WriteReceipt issuance (<code class="text-zinc-200">Operator ↔ F0 = 1-1</code>).</p>
+        </div>
+        <div class="p-3 rounded bg-canvas border border-borderHairline space-y-1">
+          <div class="text-signalGreen font-bold">Ring F1 — Isolated Worker</div>
+          <p class="text-[11px] text-zinc-400">Spawned via <code class="text-zinc-200">g8s worker</code> with SQLite WAL CAS lease, isolated Git worktree, killable OS PGID, and zero horizontal <code class="text-zinc-200">F1 ↔ F1</code> edges.</p>
+        </div>
+        <div class="p-3 rounded bg-canvas border border-borderHairline space-y-1">
+          <div class="text-purple-400 font-bold">Ring F2 — Bounded Subagent</div>
+          <p class="text-[11px] text-zinc-400">Spawned inside F1 (<code class="text-zinc-200">F2 ⊆ F1 ⊆ F0</code>), inheriting <code class="text-zinc-200">G8S_RECEIPT_ID</code> and <code class="text-zinc-200">G8S_SCOPE_ROOT</code>. Invisible to F0 except via F1's sealed evidence.</p>
+        </div>
+        <div class="p-3 rounded bg-canvas border border-borderHairline space-y-1">
+          <div class="text-amber-400 font-bold">Jev System-1 Reflex</div>
+          <p class="text-[11px] text-zinc-400">Enforces Sensor ≠ Decider across L1 Pre-Mutation Triage, monotonic gate-lane routing (<code class="text-zinc-200">0/D/R/F/S</code>), and 3-tier offline fallback.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. INTERACTIVE WRITERECEIPT & STRATUM FIREWALL PLAYGROUND -->
+    <section id="playground" class="playground space-y-4">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-borderHairline pb-3">
+        <div>
+          <div class="text-[11px] font-mono uppercase tracking-wider text-signalGreen">Live Kernel Enforcement • POST /api/v1/g8s/verify-receipt</div>
+          <h2 class="text-lg sm:text-xl font-bold text-white">Interactive WriteReceipt &amp; Orthogonal Stratum Firewall Playground</h2>
+        </div>
+        <span class="text-xs font-mono text-zinc-400">Select a preset or test custom Stratum + Path combinations</span>
+      </div>
+
+      <div class="presets" role="group" aria-label="Preset scenarios">
+        <button type="button" data-g8s-preset="s3m-ok" class="preset-btn">✓ S3-M BoundedMutator (Allowed)</button>
+        <button type="button" data-g8s-preset="s1-blocked" class="preset-btn">✗ S1 Coordinator Direct Write (Blocked)</button>
+        <button type="button" data-g8s-preset="s3a-blocked" class="preset-btn">✗ S3-A BlindAdjudicator Write (Blocked)</button>
+        <button type="button" data-g8s-preset="env-dlp" class="preset-btn">✗ .env Secret DLP Violation (Blocked)</button>
+        <button type="button" data-g8s-preset="scope-violation" class="preset-btn">✗ Worktree Path Traversal (Blocked)</button>
+      </div>
+
+      <div class="inputs">
+        <label for="g8s-tier">Ring</label>
+        <select id="g8s-tier">
+          <option value="F1" selected>F1 Worker</option>
+          <option value="F2">F2 Subagent</option>
+          <option value="F0">F0 Brain</option>
+        </select>
+        <label for="g8s-stratum">Stratum</label>
+        <select id="g8s-stratum">
+          <option value="S3-M" selected>S3-M (BoundedMutator — Worktree Coder)</option>
+          <option value="S3-A">S3-A (BlindAdjudicator — Disjoint Verifier)</option>
+          <option value="S2">S2 (DomainGovernor — Single-Repo F0)</option>
+          <option value="S1">S1 (FederationCoordinator — Multi-Repo Read-Only)</option>
+          <option value="O-Plane">O-Plane (TelemetryProjector — Portfolio Read-Only)</option>
+        </select>
+        <label for="g8s-path">Target Path</label>
+        <input type="text" id="g8s-path" value="internal/worker/runner.go" placeholder="internal/worker/runner.go"/>
+        <button type="button" id="g8s-verify-btn">Verify Receipt ↵</button>
+      </div>
+
+      <pre id="g8s-verify-output" aria-live="polite"></pre>
+    </section>
+
+    <!-- 5. MULTI-TAB CLI WORKFLOW EXPLORER -->
+    <section id="cli-workflow" class="p-5 sm:p-6 rounded-lg bg-panel border border-borderSubtle space-y-4">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-borderHairline pb-3">
+        <div>
+          <div class="text-[11px] font-mono uppercase tracking-wider text-accentLight">Developer Experience • Pure-Go Native Agent I/O (DELTA-23..45)</div>
+          <h2 class="text-lg sm:text-xl font-bold text-white">End-to-End CLI &amp; MCP Execution Lifecycle</h2>
+        </div>
+        <div class="flex flex-wrap gap-1.5">
+          <button type="button" data-g8s-tab="submit" class="cli-tab-btn active">1. Triage &amp; Submit</button>
+          <button type="button" data-g8s-tab="worker" class="cli-tab-btn">2. 9router Worker</button>
+          <button type="button" data-g8s-tab="io" class="cli-tab-btn">3. Native Agent I/O</button>
+          <button type="button" data-g8s-tab="verify" class="cli-tab-btn">4. Blind Verify &amp; Deliver</button>
+        </div>
+      </div>
+
+      <div id="g8s-tab-content" class="p-4 rounded bg-black border border-borderHairline font-mono text-xs text-zinc-300 space-y-2 overflow-x-auto">
+        <!-- Populated dynamically by switchG8sTab('submit') in flowaxon.js -->
+      </div>
+    </section>
+
+    <!-- 6. ORTHOGONAL STRATA MATRIX & TECH STACK -->
+    <section id="strata-matrix" class="space-y-4">
+      <div class="border-b border-borderHairline pb-3">
+        <div class="text-[11px] font-mono uppercase tracking-wider text-purple-400">Zero-Trust Specification • DELTA-33 &amp; DELTA-45</div>
+        <h2 class="text-xl sm:text-2xl font-bold text-white">Orthogonal Control Strata Permission Matrix &amp; Tech Stack</h2>
+      </div>
+
+      <div class="overflow-x-auto rounded-lg border border-borderSubtle">
+        <table class="spec-table">
+          <thead>
+            <tr>
+              <th>Stratum ID</th>
+              <th>Role Name</th>
+              <th>Containment Ring</th>
+              <th>Allowed CLI Capabilities</th>
+              <th>Kernel Firewall Invariant</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-accentLight font-bold">S1</td>
+              <td>FederationCoordinator</td>
+              <td>F0 (Multi-Repo)</td>
+              <td><code>g8s charter issue|verify|list</code>, <code>g8s fleet status</code></td>
+              <td class="text-rose-400">Blocked from direct file write (<code>E_S1_DIRECT_MUTATION_FORBIDDEN</code>) &amp; direct <code>g8s submit</code> (<code>E_STRATUM_ADJACENCY_VIOLATION</code>).</td>
+            </tr>
+            <tr>
+              <td class="text-amber-400 font-bold">S2</td>
+              <td>DomainGovernor</td>
+              <td>F0 (Single-Repo)</td>
+              <td><code>g8s receipt issue</code>, <code>g8s submit</code>, <code>g8s verify</code>, <code>g8s deliver</code></td>
+              <td class="text-zinc-300">Never runs raw log-hunting loops; delegates procedural coding/scouting to F1 workers.</td>
+            </tr>
+            <tr>
+              <td class="text-signalGreen font-bold">S3-M</td>
+              <td>BoundedMutator</td>
+              <td>F1 / F2 Worktree</td>
+              <td><code>g8s search</code>, <code>g8s read</code>, <code>g8s edit --if-sha256</code></td>
+              <td class="text-signalGreen">Strictly jailed to isolated Git worktree &amp; <code>WriteReceipt.AllowedPaths</code> globs.</td>
+            </tr>
+            <tr>
+              <td class="text-purple-400 font-bold">S3-A</td>
+              <td>BlindAdjudicator</td>
+              <td>F1 Disjoint Model</td>
+              <td><code>g8s verify --task &lt;id&gt;</code>, <code>BlindReviewPacket</code></td>
+              <td class="text-rose-400">Read-only; receives spec + raw diff + test output with worker identity stripped.</td>
+            </tr>
+            <tr>
+              <td class="text-zinc-400 font-bold">O-Plane</td>
+              <td>TelemetryProjector</td>
+              <td>F0 / Daemon</td>
+              <td><code>g8s charter portfolio --json</code>, <code>g8s scorecard status</code></td>
+              <td class="text-zinc-400">Strictly observational projection; zero mutation or queue dispatch authority.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="border-t border-borderHairline py-8 px-4 sm:px-8 text-xs font-mono text-zinc-500">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>g8s (The Gatekeepers) v0.21.0 • Part of the FlowAxon Engineering Constellation</div>
+      <div class="flex flex-wrap items-center gap-4 text-zinc-400">
+        <a href="https://flowaxon.com" class="hover:text-white">flowaxon.com (Hub)</a>
+        <a href="https://aegis.flowaxon.com" class="hover:text-rose-400">aegis.flowaxon.com</a>
+        <a href="https://github.com/tamld/g8s" target="_blank" rel="noopener noreferrer" class="hover:text-accentLight">GitHub (tamld/g8s)</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

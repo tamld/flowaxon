@@ -1,5 +1,5 @@
 # Le Duc Tam (tamld) — Full Technical Dossier & Systems Profile
-Source: https://tamld.github.io/llms-full.txt
+Source: https://flowaxon.com/llms-full.txt
 Standard: https://llmstxt.org/
 
 ---
@@ -51,7 +51,7 @@ With over 11 years in enterprise IT operations, bare-metal virtualization, and n
 - Automation & IaC: Ansible automation playbooks, hardened Bash tooling, ZFS storage management, immutable snapshot rotations.
 
 ### Track B: AI Systems Engineering & Agentic Harnesses
-- Governed Cognitive Architectures: tamld-llm-wiki (Deterministic 3-layer Second Brain with ADLC finite state machines, JIT context prefetching, and Gate D deep-why audits).
+- Governed Cognitive Architectures: Governed AI Second Brain (Deterministic 3-layer Second Brain with ADLC finite state machines, JIT context prefetching, and Gate D deep-why audits).
 - Capability Sandboxing: g8s (The Gatekeepers) — Go-based process execution runtime providing subagent capability dropping, path-scoped write receipts, and automated supervisor fix loops.
 - Telemetry & Observability: VictoriaLogs LogSQL high-speed log aggregation, VictoriaMetrics time-series monitoring, Uptime Kuma dual-plane synthetic probing.
 - AI Routing & Cost Engineering: Multi-tier LLM gateway (9Router, LiteLLM), context window compaction, token budget enforcement, subagent model tiered allocation (flash/flash_lite vs pro).
@@ -76,9 +76,9 @@ With over 11 years in enterprise IT operations, bare-metal virtualization, and n
   * Dual-Plane Observability Mandate: Internal compute health ([LAN]) and public edge reachability ([WAN]) decoupled to instantly isolate network/routing failures.
   * Single Authority Network Identity: MikroTik RouterOS DHCP server is the authoritative single source of truth for MAC-to-IP static lease bindings.
 
-### 4.3 tamld-llm-wiki (Governed AI Second Brain)
+### 4.3 Governed AI Second Brain (Deterministic Knowledge Core)
 - Classification: [🔒 Architecture Case Study / Private SSoT Core]
-- Reference: https://tamld.github.io/llms-full.txt#second-brain
+- Reference: https://flowaxon.com/llms-full.txt#second-brain
 - Core Engine: wiki.py (Deterministic Python physics engine)
 - Features:
   * 3-Layer Map Protocol: Global Scope (README) -> Architectural Scope (DESIGN) -> Behavioral Scope (AGENTS).
@@ -107,11 +107,11 @@ With over 11 years in enterprise IT operations, bare-metal virtualization, and n
 
 5. Machine-Readable Telemetry Invariant:
    A sanitized JSON snapshot of the active homelab state (hypervisor, memory budget, dual-plane monitoring, and network authority) is published at:
-   https://tamld.github.io/data/telemetry.json
+   https://flowaxon.com/data/telemetry.json
 
 6. Visual Architecture Topology & Vector Asset Invariant:
    An authoritative, code-compiled vector diagram illustrating edge ingress (Cloudflare WAF), reverse proxy (Traefik), forward authentication (Authelia), single DHCP authority (MikroTik RouterOS), and dual-plane observability (Uptime Kuma) is published at:
-   https://tamld.github.io/assets/diagrams/arch-dualplane-topology.svg
+   https://flowaxon.com/assets/diagrams/arch-dualplane-topology.svg
    The asset adheres strictly to the Zero Gradient Law (pure flat industrial fills), 100% OpSec sanitization, and under 25KB byte budget.
 
 ---
@@ -137,7 +137,7 @@ True infrastructure reliability comes from an upfront investment in testing, fai
 
 ### Chapter 4: The Symbiotic Frontier (Human-AI Symbiosis)
 The primal human instinct when encountering exponential technology is fear. Banning AI out of "Terminator" paranoia is an exercise in futility.
-Instead, the systems engineer's mission is to architect a trusted, safe, and governed substrate (g8s, tamld-llm-wiki, defense-in-depth). In this environment, AI agents are granted structured domain knowledge and decision-making capabilities within strict capability boundaries, co-existing symbiotically with humans to solve complex real-world problems.
+Instead, the systems engineer's mission is to architect a trusted, safe, and governed substrate (g8s, Governed AI Second Brain, defense-in-depth). In this environment, AI agents are granted structured domain knowledge and decision-making capabilities within strict capability boundaries, co-existing symbiotically with humans to solve complex real-world problems.
 
 ---
 
