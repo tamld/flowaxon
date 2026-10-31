@@ -29,7 +29,7 @@
 - E1 CSP-first: zero inline `<style>`/`<script>` in shipped HTML; CSS/JS in external files; no CDN, no fetch(), no runtime dependencies (§13.3).
 - E2 Budgets (amended 2026-10-31 post-WF4: raw limits were set pre-rig; gzip is the metric performance actually cares about): index ≤30KB raw · css ≤22KB raw **/ ≤6KB gz** · js ≤15KB raw / ≤4KB gz · rig.js ≤12KB raw · total page ≤20KB gz; video poster-first, lazy; loops ≤90KB; full ≤6MB (§9, §11). Measured at integration: html 7.5KB gz · css 5.1KB gz · js+rig 6.7KB gz — PASS.
 - E3 SRI hashes generated at integration; assets content-hashed before CF Pages publish (§13.3, §15).
-- E4 Deployment target: CF Pages + Workers (compute), R2 (media @ media.flowaxon.com); homelab is NOT the public-site origin (§15).
+- E4 Deployment target: CF Pages + Workers (compute), R2 (media @ media.flowaxon.com); homelab is NOT the public-site origin (§15). Post-WF3b: ROOT is the single canonical source — sites/v4 retired (2026-11-01); Pages deploy dir = repo root; security headers ship via `_headers` (CF Pages native) mirroring main.go.
 
 ## F. Security / DLP (hard walls)
 - F1 No RFC1918/CGNAT IPs, no internal hostnames, no CT1xx container IDs, no company/customer names — anywhere, ever. Say "the production host" (v3 handoff guardrails, §10).
