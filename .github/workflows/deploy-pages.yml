@@ -12,6 +12,10 @@ on:
     branches: [main]
     paths:
       - "sites/v4/**"
+      - "index.html"
+      - "assets/v4/**"
+      - "assets/video/**"
+      - "ops/cf/**"
       - ".github/workflows/deploy-pages.yml"
   workflow_dispatch:
 
