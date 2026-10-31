@@ -32,7 +32,7 @@ func NewMux(rootDir string) http.Handler {
 		w.Header().Set("Permissions-Policy", "camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()")
 
 		if strings.HasPrefix(host, "www.") {
-			http.Redirect(w, r, "https://flowaxon.com"+r.URL.RequestURI(), http.StatusMovedPermanently)
+			http.Redirect(w, r, "https://flowaxon.com/", http.StatusMovedPermanently)
 			return
 		}
 
@@ -50,18 +50,25 @@ func NewMux(rootDir string) http.Handler {
 		}
 
 		if path == "/.well-known/security.txt" || path == "/security.txt" {
-			cleanHost := strings.TrimPrefix(host, "mta-sts.")
-			if cleanHost == "" {
-				cleanHost = "flowaxon.com"
+			canonicalHost := "flowaxon.com"
+			if strings.Contains(host, "g8s.") {
+				canonicalHost = "g8s.flowaxon.com"
+			} else if strings.Contains(host, "aegis.") {
+				canonicalHost = "aegis.flowaxon.com"
 			}
 			w.Header().Set("Content-Type", "text/plain; charset=utf-8")
-			fmt.Fprintf(w, "Contact: mailto:security@%s\nExpires: %s\nCanonical: https://%s/.well-known/security.txt\nPolicy: https://%s/security-policy\n", cleanHost, time.Now().AddDate(1,0,0).Format(time.RFC3339), cleanHost, cleanHost)
+			fmt.Fprintf(w, "Contact: mailto:security@%s\nExpires: %s\nCanonical: https://%s/.well-known/security.txt\nPolicy: https://%s/security-policy\n", canonicalHost, time.Now().AddDate(1, 0, 0).Format(time.RFC3339), canonicalHost, canonicalHost)
 			return
 		}
 
-		if path == "/llms.txt" || path == "/llms-full.txt" {
+		if path == "/llms.txt" {
 			w.Header().Set("Content-Type", "text/markdown; charset=utf-8")
-			http.ServeFile(w, r, filepath.Join(rootDir, path))
+			http.ServeFile(w, r, filepath.Join(rootDir, "llms.txt"))
+			return
+		}
+		if path == "/llms-full.txt" {
+			w.Header().Set("Content-Type", "text/markdown; charset=utf-8")
+			http.ServeFile(w, r, filepath.Join(rootDir, "llms-full.txt"))
 			return
 		}
 

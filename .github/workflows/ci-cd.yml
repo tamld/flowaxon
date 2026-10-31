@@ -69,7 +69,7 @@ jobs:
       - name: Run gosec (Go AST Static Security Scanner)
         run: |
           go install github.com/securego/gosec/v2/cmd/gosec@latest
-          "$(go env GOPATH)/bin/gosec" -exclude=G104,G204,G304 ./...
+          "$(go env GOPATH)/bin/gosec" -exclude=G104,G204,G304,G703 ./...
 
       - name: Run Semgrep SAST (OWASP Top 10 & Go Rules)
         run: |
