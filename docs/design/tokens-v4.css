@@ -1,0 +1,91 @@
+/* ============================================================
+   FlowAxon v4 — Design Tokens (WF2)
+   Source of truth: 18-canvas-layer-spec.md + WF0 mockup (locked)
+   Consumer: WF3 homepage build · every component derives from here
+   Layer semantics: L0 canvas → L5 human (see canvas spec)
+   ============================================================ */
+
+:root {
+  /* ---- L0 Deep Canvas -------------------------------------- */
+  --fx-canvas:        #0a0e14;
+  --fx-grid-line:     rgba(120, 150, 190, 0.045);
+  --fx-grid-size:     28px;
+  --fx-panel:         rgba(12, 17, 24, 0.82);
+  --fx-panel-deep:    rgba(10, 14, 20, 0.94);   /* sticky header, logs */
+  --fx-border:        #1c2530;
+  --fx-border-strong: #2a3644;
+
+  /* ---- Text tiers (on dark canvas) -------------------------- */
+  --fx-text-hi:       #eef4fb;   /* headlines, values           */
+  --fx-text:          #dbe4ef;   /* body default                */
+  --fx-text-mid:      #9db0c6;   /* body secondary              */
+  --fx-text-dim:      #8fa3ba;   /* labels, nav                 */
+  --fx-text-faint:    #5d7090;   /* kickers, captions, units    */
+  --fx-text-src:      #4d6a8a;   /* source links (referencable) */
+
+  /* ---- Accents (ownership per canvas-spec rule 4) ----------- */
+  --fx-amber:         #f0a832;   /* PROOF/authority only — receipts, gates, CTAs */
+  --fx-rust:          #e07850;   /* Act I */
+  --fx-steel:         #6f8fb8;   /* Act II */
+  --fx-green:         #57c48f;   /* success states — receipt sealed, done */
+  --fx-danger:        #c2452a;   /* strikes, overflow stop (video Diff-Guard parity) */
+
+  /* ---- Typography -------------------------------------------
+     Display = Georgia serif (editorial discipline over blueprint)
+     Labels  = system mono (terminal-native taste signature)     */
+  --fx-font-display:  Georgia, 'Iowan Old Style', serif;
+  --fx-font-mono:     ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  --fx-fs-h1:         clamp(28px, 5.5vw, 41px);
+  --fx-fs-h2:         clamp(21px, 3.5vw, 25px);
+  --fx-fs-h3:         19px;
+  --fx-fs-body:       13px;
+  --fx-fs-small:      11px;
+  --fx-fs-micro:      10px;     /* never below 10 on site (labels only) */
+  --fx-lh-tight:      1.15;
+  --fx-lh-body:       1.55;
+
+  /* ---- Layout ------------------------------------------------ */
+  --fx-container:     980px;
+  --fx-gutter:        26px;
+  --fx-sec-pt:        60px;     /* section top rhythm (dense control-panel) */
+  --fx-sec-pb:        20px;
+  --fx-card-pad:      24px;
+  --fx-radius:        0px;      /* sharp corners — part of ratified B-spine (WF0 lock) */
+
+  /* ---- Motion (deterministic; reduced-motion kills all) ------ */
+  --fx-ease-fly:      cubic-bezier(0.3, 0.7, 0.3, 1);   /* L4 dispatch  */
+  --fx-ease-return:   cubic-bezier(0.5, 0, 0.4, 1);     /* receipt return */
+  --fx-ease-reveal:   cubic-bezier(0.2, 0.8, 0.2, 1);   /* scroll reveals */
+  --fx-dur-fly:       900ms;
+  --fx-dur-reveal:    600ms;
+  --fx-dur-count:     900ms;
+  --fx-dur-seal:      250ms;
+
+  /* ---- Layer stack (z-index semantics) ----------------------- */
+  --fx-z-canvas:      0;       /* L0 grid background            */
+  --fx-z-content:     1;       /* L1-L3 sections                */
+  --fx-z-motion:      3;       /* L4 dots/flows above content   */
+  --fx-z-header:      5;       /* sticky chrome                 */
+  --fx-z-overlay:     9;       /* L5 human pause dimmer         */
+
+  /* ---- Component primitives ---------------------------------- */
+  --fx-chip-bg:       rgba(20, 28, 38, 0.7);
+  --fx-chip-border:   var(--fx-border-strong);
+  --fx-stat-bg:       var(--fx-panel);
+  --fx-focus-ring:    0 0 0 3px rgba(240, 168, 50, 0.25);
+}
+
+/* ---- Media guards ------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ---- Performance budgets (enforced in CI — WF5) --------------
+   JS  ≤ 50 KB gz (zero runtime deps)
+   CSS ≤ 20 KB gz
+   LCP ≤ 2.0s mobile · CLS ≤ 0.1 · 60fps animations (transform/opacity only)
+   Video: lazy-load on click · poster-first · loops ≤ 90KB · full ≤ 6MB
+   Referencability: every stat renders with .fx-src link — no orphan numbers */
