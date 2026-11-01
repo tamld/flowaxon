@@ -16,7 +16,7 @@
       "title": "AI Agent Systems Architect & Principal Infrastructure Engineer",
       "experience_years": 11,
       "location": "Ho Chi Minh City, Vietnam (UTC+7)",
-      "core_thesis": "LLMs cannot be trusted to operate production infrastructure on probabilistic prompts alone. True human-AI symbiosis requires a deterministic physical substrate: capability-scoped WriteReceipts (g8s), runtime AST & human-in-the-loop blast doors (Aegis), and epistemic memory verification."
+      "core_thesis": "LLMs cannot be trusted to operate production infrastructure on probabilistic prompts alone. True human-AI symbiosis requires a deterministic physical substrate: capability-scoped WriteReceipts (g8s), and epistemic memory verification."
     },
     "three_act_narrative_arc": [
       {
@@ -36,7 +36,7 @@
       {
         "act": "Act III (2025–2026+)",
         "title": "The Symbiotic Frontier — Deterministic Harnesses for Autonomous AI",
-        "anchor_event": "Creation of g8s (The Gatekeepers), Aegis (defense-in-depth), and Governed Second-Brain Wiki.",
+        "anchor_event": "Creation of g8s (The Gatekeepers) and the Governed Second-Brain Wiki.",
         "engineering_proof": "F0/F1/F2 exponential containment rings + S0..S3 orthogonal control strata + HMAC-SHA256 Telegram 2FA runtime interception.",
         "visual_interactive_artifact": "Live Multi-Subdomain Product Constellation (flowaxon.com -> g8s.flowaxon.com + aegis.flowaxon.com)"
       }
@@ -75,14 +75,14 @@
       "order": 5,
       "id": "C5_BENTO_PRODUCT_CONSTELLATION_GRID",
       "name": "5-Layer OKLCH Spotlight Bento Constellation Grid",
-      "purpose": "Showcase flagship systems (g8s, Aegis, Dual-Plane IaC, Governed Second Brain) with radial cursor-tracking spotlight borders, specular 1px top highlights, and live telemetry counters.",
+      "purpose": "Showcase flagship systems (g8s, Dual-Plane IaC, Governed Second Brain) with radial cursor-tracking spotlight borders, specular 1px top highlights, and live telemetry counters.",
       "benchmark_inspiration": "Linear.app/features + Apple Bento Grids"
     },
     {
       "order": 6,
       "id": "C6_LIVE_INTERACTIVE_SANDBOX_AND_TERMINAL",
       "name": "Real Backend-Connected Interactive Sandbox / Playground",
-      "purpose": "Let visitors execute real HTTP/JSON calls against the Go engine (Dual-Plane SRE Drill on Hub, WriteReceipt Stratum Firewall on g8s, Shell AST + Telegram 2FA Simulator on Aegis).",
+      "purpose": "Let visitors execute real HTTP/JSON calls against the Go engine (Dual-Plane SRE Drill on Hub, WriteReceipt Stratum Firewall on g8s).",
       "benchmark_inspiration": "Cloudflare Workers Playground + Stripe API Explorer"
     },
     {
@@ -127,7 +127,7 @@
         "accent_primary": "oklch(0.75 0.15 230)",
         "accent_secondary": "oklch(0.72 0.17 160)"
       },
-      "anatomy_3d_hero_rig": "Interactive 3D Isometric Dual-Plane Homelab & AI Constellation Rig (Cloudflare Edge -> Traefik -> RouterOS Single Authority -> Proxmox Node -> g8s/Aegis sandboxes with animated packet pulses)",
+      "anatomy_3d_hero_rig": "Interactive 3D Isometric Dual-Plane Homelab & AI Constellation Rig (Cloudflare Edge -> Traefik -> RouterOS Single Authority -> Proxmox Node -> g8s sandboxes with animated packet pulses)",
       "personas": ["CTO / VP of Engineering", "Principal SRE / Infrastructure Lead", "Technical Executive / Recruiter", "Autonomous AI Agent"],
       "feature_ids": ["FM-HUB-01", "FM-HUB-02", "FM-HUB-03", "FM-HUB-04", "FM-HUB-05", "FM-HUB-06"]
     },

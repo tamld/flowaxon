@@ -4,17 +4,17 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>FlowAxon v4 — AI Agent Systems Architect &amp; Infrastructure Governance</title>
-  <meta property="og:description" content="11 years of production infrastructure. Deterministic harnesses for autonomous AI: g8s + Aegis.">
+  <meta property="og:description" content="11 years of production infrastructure. Deterministic harnesses for autonomous AI: the g8s engine.">
   <meta property="og:image" content="https://flowaxon.com/assets/og-image.png">
   <meta property="og:title" content="Le Duc Tam — I build the brakes for autonomous AI agents">
   <meta name="description" content="Autonomous AI agents are already in production. Most have no brakes. I build the brakes. Eleven years of operating real infrastructure.">
-  <link rel="stylesheet" href="assets/v4/v4.css" integrity="sha384-3zZbIZLlMjkMZItz8CABxYQdoxsE4rXcba1KFhPgzyCOw+s6LKHqL5aegrVBsCeE" crossorigin  crossorigin>
+  <link rel="stylesheet" href="assets/v4/v4.css" integrity="sha384-mqJoGPLE5eE5/2gkjfnEl6SucU68Lzr3Ai47i1IVJxgoMtZyR194ZkpUI6a+ezrH" crossorigin  crossorigin>
   <script src="assets/v4/v4.js" integrity="sha384-IrOZJl5GMysHNYiRr3xIL3XadTLnLdaPNBtCfdMhoidDmvPWwJSpYspb3u3l4UNd" crossorigin  crossorigin defer></script>
   <script src="assets/v4/rig.js" integrity="sha384-rLffYEfhTOyLwXcfGTSxw/E7DYKJ6++/i3cSZckhsJ7oL8ztjTzsVgqWQ9g/GZv7" crossorigin  crossorigin defer></script>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@graph":[
     {"@type":"Person","name":"Le Duc Tam","alternateName":"tamld","jobTitle":"AI Agent Systems Architect & Principal Infrastructure Engineer","url":"https://flowaxon.com","sameAs":["https://github.com/tamld"],"knowsAbout":["AI agent orchestration","zero-trust infrastructure","DevSecOps","Go","homelab automation"]},
-    {"@type":"WebSite","name":"FlowAxon","url":"https://flowaxon.com","author":{"@type":"Person","name":"Le Duc Tam"},"description":"Deterministic harnesses for autonomous AI agents — g8s and Aegis."}
+    {"@type":"WebSite","name":"FlowAxon","url":"https://flowaxon.com","author":{"@type":"Person","name":"Le Duc Tam"},"description":"Deterministic harnesses for autonomous AI agents — the g8s engine."}
   ]}
   </script>
 </head>
@@ -43,13 +43,12 @@
     <section id="hero" class="section-v4">
     <div class="container">
     <h1 class="hero-h1">Autonomous AI agents are already in production. Most have <span class="text-amber">no brakes</span>. I build the brakes.</h1>
-    <p class="hero-echo">$ whoami — AI agent systems architect · 11y production · UTC+7</p>
-    <p class="hero-sub">Eleven years of operating real infrastructure — from a 48-hour ransomware crucible to a Proxmox/podman fleet in production. One drive underneath it all: take what repeats, and make it obey — one system, seen from above. g8s is the engine agents obey; Aegis is the console humans command.</p>
+    <p class="hero-echo">whoami — AI agent systems architect · 11y production · UTC+7</p>
+    <p class="hero-sub">Eleven years of operating real infrastructure — from a 48-hour ransomware crucible to a Proxmox/podman fleet in production. One drive underneath it all: take what repeats, and make it obey — one system, seen from above. g8s is the engine agents obey — built in the open, receipts and all.</p>
 
     <div class="hero-chips" aria-label="Core Engineering Pillars">
     <span class="chip">g8s</span>
-    <span class="chip">Aegis</span>
-    <span class="chip">6-stage zero-trust CI</span>
+        <span class="chip">6-stage zero-trust CI</span>
     <span class="chip">SLSA attested</span>
     <span class="chip">EN-first</span>
     </div>
@@ -81,40 +80,23 @@
 
     <!-- 2. 01 THE TRUST DUALITY -->
     <section id="duality" class="section-v4">
-    <div class="container">
-    <h2 class="section-title">Two governance planes, one invariant boundary</h2>
-    <div class="duality-grid">
-    <div class="duality-panel panel-g8s reveal-on-scroll">
-    <div class="duality-head">
-    <span class="duality-name">g8s</span>
-    <span class="duality-tagline">"The engine agents obey"</span>
-    </div>
-    <ul class="duality-list">
-    <li>agent-facing: containment rings F2⊆F1⊆F0</li>
-    <li>single-use path-scoped write receipts</li>
-    <li>fail-closed worktree isolation</li>
-    <li>durable SQLite controlplane</li>
-    </ul>
-    </div>
-    <div class="duality-hinge" aria-hidden="true">
-    <span class="hinge-glyph">⧉</span>
-    <span class="hinge-label">Harness Ring</span>
-    </div>
-    <div class="duality-panel panel-aegis reveal-on-scroll">
-    <div class="duality-head">
-    <span class="duality-name">Aegis</span>
-    <span class="duality-tagline">"The console humans command"</span>
-    </div>
-    <ul class="duality-list">
-    <li>human-facing: runtime interception &amp; blast doors</li>
-    <li>HITL approvals</li>
-    <li>AST-level mutation guards</li>
-    <li>proportional governance</li>
-    </ul>
-    </div>
-    </div>
-    </div>
-    </section>
+<div class="container">
+<h2 class="section-title">The engine agents obey — built in the open</h2>
+<div class="duality-grid duality-solo">
+<div class="duality-panel panel-g8s">
+<div class="duality-head"><span class="duality-name">g8s — The Gatekeepers</span><span class="src-link">github.com/tamld/g8s</span></div>
+<ul class="duality-list">
+<li>Exponential containment rings F2 &sube; F1 &sube; F0 — power stops where the layer ends</li>
+<li>Single-use, path-scoped write receipts — every mutation attributable</li>
+<li>Fail-closed worktree isolation — agents work in sandboxes, not your system</li>
+<li>Durable SQLite controlplane — queue survives reboots, leases, CAS claims</li>
+<li>6-stage zero-trust pipeline — supply-chain to SLSA, no blind spots</li>
+</ul>
+</div>
+</div>
+<p class="src-footer-line">served live at g8s.flowaxon.com &middot; built for AI agents as primary users</p>
+</div>
+</section>
 
     <!-- 3. 02 THE ONE THREAD -->
     <section id="thread" class="section-v4">
@@ -274,7 +256,7 @@
     </g>
 
     <!-- 5. HARNESS -->
-    <g class="rig-node" id="node-harness" data-entity="harness" tabindex="0" role="button" aria-haspopup="dialog" aria-label="Harness block: g8s controlplane and Aegis gates">
+    <g class="rig-node" id="node-harness" data-entity="harness" tabindex="0" role="button" aria-haspopup="dialog" aria-label="Harness block: g8s controlplane gates">
     <rect class="rig-node-box" x="766" y="55" width="144" height="100" rx="3" />
     <rect class="rig-node-header-bar" x="766" y="55" width="144" height="22" rx="3" />
     <circle class="rig-status-dot" cx="778" cy="66" r="3" />
@@ -345,7 +327,7 @@
     <h3 class="act-title">Act III · The Symbiotic Frontier — Deterministic Harnesses for Autonomous AI</h3>
     <button type="button" class="btn-copy" data-drill="harness" aria-label="Inspect Harness in Constellation Rig">Harness Rig #5 ↗</button>
     </div>
-    <p class="act-desc">g8s &amp; Aegis. F0/F1/F2 exponential containment rings + S0..S3 orthogonal control strata + HMAC-SHA256 Telegram 2FA runtime interception.</p>
+    <p class="act-desc">g8s. F0/F1/F2 exponential containment rings + S0..S3 orthogonal control strata + HMAC-SHA256 Telegram 2FA runtime interception.</p>
     <div class="dispatch-module">
     <div class="dispatch-flow" aria-label="Dispatch Architecture Flow">
     <span class="flow-step" data-step="1">F0 Brain</span>
@@ -436,21 +418,6 @@
     <span class="work-metric">v0.21 · 21+ releases</span>
     </div>
     <a href="https://github.com/tamld/g8s" class="src-link" target="_blank" rel="noopener noreferrer">github.com/tamld/g8s ↗</a>
-    </div>
-    <div class="work-row reveal-on-scroll">
-    <div class="work-title-group">
-    <span class="work-name">Aegis</span>
-    <span class="work-metric">0 unreviewed mutations</span>
-    </div>
-    <a href="https://github.com/tamld/aegis" class="src-link" target="_blank" rel="noopener noreferrer">github.com/tamld/aegis ↗</a>
-    </div>
-    <div class="work-row reveal-on-scroll">
-    <div class="work-title-group">
-    <span class="work-name">The constellation</span>
-    <span class="work-metric">6/6 stages green</span>
-    </div>
-    <a href="https://github.com/tamld/flowaxon" class="src-link" target="_blank" rel="noopener noreferrer">github.com/tamld/flowaxon ↗</a>
-    </div>
     </div>
     </div>
     </section>
