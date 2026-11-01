@@ -1,0 +1,79 @@
+{
+ "repo": "tamld/tamld.github.io",
+ "span": "2026-10-31 \u2192 11-01",
+ "note": "every row is a real commit \u2014 scrub rebuilds the site from these",
+ "rows": [
+  {
+   "wave": "W0 \u00b7 RESEARCH",
+   "date": "10-31",
+   "title": "Doctrine before pixels",
+   "detail": "brand brief \u00b7 design audit (20 dims) \u00b7 directive ledger \u2014 4 F1 waves through g8s",
+   "ref": "docs/research/",
+   "url": "https://github.com/tamld/tamld.github.io/tree/main/docs/research"
+  },
+  {
+   "wave": "WAVE 1",
+   "date": "11-01 00:28",
+   "sha": "a7278f6",
+   "title": "Homepage v4 + CI/CD P0 + CF Pages + k6",
+   "detail": "PR #1 \u2014 9 sections, zero inline styles, CSP-first, 6-stage CI green",
+   "url": "https://github.com/tamld/tamld.github.io/commit/a7278f6"
+  },
+  {
+   "wave": "WAVE 2",
+   "date": "11-01 00:33",
+   "sha": "e7a2258",
+   "title": "Root swap \u2014 v4 becomes the site root",
+   "detail": "PR #2 \u2014 OG meta, deploy badge, SRI gate on v4 assets",
+   "url": "https://github.com/tamld/tamld.github.io/commit/e7a2258"
+  },
+  {
+   "wave": "WAVE 3",
+   "date": "11-01 00:41\u219200:47",
+   "sha": "c32b740",
+   "title": "CF Pages pipeline self-heal",
+   "detail": "project create before deploy \u00b7 token env \u00b7 _headers parity \u00b7 canonical root",
+   "url": "https://github.com/tamld/tamld.github.io/commit/c32b740"
+  },
+  {
+   "wave": "WAVE 4",
+   "date": "11-01 00:50",
+   "sha": "0db265c",
+   "title": "First edge load test recorded",
+   "detail": "k6 \u00b7 pages.dev p95 124ms \u00b7 0% failures",
+   "url": "https://github.com/tamld/tamld.github.io/commit/0db265c"
+  },
+  {
+   "wave": "WAVE 5",
+   "date": "11-01 00:54",
+   "sha": "fed3c24",
+   "title": "Actions hardened, node24-native",
+   "detail": "checkout v7 \u00b7 setup-go v7 \u00b7 gitleaks v3 \u00b7 deploy checkout pinned to immutable SHA",
+   "url": "https://github.com/tamld/tamld.github.io/commit/fed3c24"
+  },
+  {
+   "wave": "CUTOVER",
+   "date": "11-01 01:16",
+   "sha": "1b7405f",
+   "title": "flowaxon.com \u2192 CF edge",
+   "detail": "production baseline \u00b7 p95 166ms \u00b7 0% failures \u00b7 zero-origin by design",
+   "url": "https://github.com/tamld/tamld.github.io/commit/1b7405f"
+  },
+  {
+   "wave": "HOTFIX",
+   "date": "11-01 01:30",
+   "sha": "9569a90",
+   "title": "CSP-clean promo toggle",
+   "detail": "inline styles \u2192 classes \u00b7 SRI recomputed",
+   "url": "https://github.com/tamld/tamld.github.io/commit/9569a90"
+  },
+  {
+   "wave": "V4.1",
+   "date": "11-01 20:41",
+   "sha": "3c6e0b6",
+   "title": "Aegis removed from public surface",
+   "detail": "private repo \u2014 not listed, not advertised",
+   "url": "https://github.com/tamld/tamld.github.io/commit/3c6e0b6"
+  }
+ ]
+}

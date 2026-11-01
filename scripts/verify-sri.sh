@@ -2,9 +2,9 @@
 # Mechanical Subresource Integrity (SRI) & CSP Inline-Style Verifier
 set -euo pipefail
 
-CSS_FILE="assets/v4/v4.css"
-JS_FILE="assets/v4/v4.js"
-RIG_FILE="assets/v4/rig.js"
+CSS_FILE="assets/v5/v5.css"
+JS_FILE="assets/v5/site.js"
+RIG_FILE="assets/v5/herofield.js"
 
 CSS_HASH="sha384-$(openssl dgst -sha384 -binary "$CSS_FILE" | openssl base64 -A)"
 JS_HASH="sha384-$(openssl dgst -sha384 -binary "$JS_FILE" | openssl base64 -A)"
@@ -12,7 +12,7 @@ RIG_HASH="sha384-$(openssl dgst -sha384 -binary "$RIG_FILE" | openssl base64 -A)
 
 echo "==> [SRI Gate] Expected CSS SHA-384: $CSS_HASH"
 echo "==> [SRI Gate] Expected JS  SHA-384: $JS_HASH"
-echo "==> [SRI Gate] Expected RIG SHA-384: $RIG_HASH"
+echo "==> [SRI Gate] Expected FIELD SHA-384: $RIG_HASH"
 
 for html in index.html sites/g8s.html sites/aegis.html; do
   if [ "$html" = "index.html" ]; then
@@ -31,7 +31,7 @@ for html in index.html sites/g8s.html sites/aegis.html; do
     exit 1
   fi
   if ! grep -Fq "$X_HASH" "$html"; then
-    echo "❌ FAIL: $html does not contain matching RIG/JS SRI hash ($X_HASH)"
+    echo "❌ FAIL: $html does not contain matching FIELD/JS SRI hash ($X_HASH)"
     exit 1
   fi
   if grep -Eq ' style="' "$html"; then
