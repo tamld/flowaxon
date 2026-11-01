@@ -1,0 +1,80 @@
+# Mobile gate: 390px horizontal-overflow + core-element visibility check.
+# Born from the v4 mobile failure (H1/nav/stats cut at 390px, found after deploy).
+name: mobile-gate
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+concurrency:
+  group: mobile-gate-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  overflow-390:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: 22
+
+      - name: Install playwright + chromium
+        run: |
+          npm install --no-save playwright@1.49.1
+          npx playwright@1.49.1 install --with-deps chromium
+
+      - name: Serve site
+        run: |
+          python3 -m http.server 8123 --directory . >/dev/null 2>&1 &
+          sleep 1
+          curl -fsS -o /dev/null http://127.0.0.1:8123/ && echo "server up"
+
+      - name: 390px overflow + visibility gate
+        run: |
+          cat > mobile-check.mjs <<'EOF'
+          import { chromium } from 'playwright';
+          const browser = await chromium.launch();
+          const page = await browser.newPage({ viewport: { width: 390, height: 844 } });
+          await page.goto('http://127.0.0.1:8123/', { waitUntil: 'networkidle' });
+          await page.waitForTimeout(800);
+          const report = await page.evaluate(() => {
+            const doc = document.documentElement;
+            const vw = window.innerWidth;
+            const issues = [];
+            // the real user-visible signal: the page scrolls horizontally
+            if (doc.scrollWidth > vw + 1) {
+              issues.push(`document overflow: scrollWidth=${doc.scrollWidth} > viewport=${vw}`);
+            }
+            for (const sel of ['h1', 'header.site', '.stats', '.lede', '#term', '.filmbox', 'footer.site']) {
+              const el = document.querySelector(sel);
+              if (!el) { issues.push(`missing element: ${sel}`); continue; }
+              const r = el.getBoundingClientRect();
+              // content actually sticking out of the viewport (cut off on phones)
+              if (r.right > vw + 1) issues.push(`${sel} overflows right edge: ${Math.round(r.right)}px > ${vw}`);
+              if (r.left < -1) issues.push(`${sel} overflows left edge: ${Math.round(r.left)}px`);
+              // scrollable containers must not hide reachable content
+              const scrollable = getComputedStyle(el).overflowX === 'auto' || getComputedStyle(el).overflowX === 'scroll';
+              if (scrollable && el.scrollWidth > el.clientWidth + 1) {
+                issues.push(`${sel} hides scrollable content: ${el.scrollWidth}>${el.clientWidth}`);
+              }
+            }
+            return issues;
+          });
+          await page.screenshot({ path: 'mobile-390.png', fullPage: true });
+          console.log(JSON.stringify(report, null, 2));
+          if (report.length) { process.exitCode = 1; }
+          await browser.close();
+          EOF
+          node mobile-check.mjs
+
+      - name: Upload screenshot artifact
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: mobile-390
+          path: mobile-390.png
+          retention-days: 7

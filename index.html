@@ -1,502 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>FlowAxon v4 — AI Agent Systems Architect &amp; Infrastructure Governance</title>
-  <meta property="og:description" content="11 years of production infrastructure. Deterministic harnesses for autonomous AI: the g8s engine.">
-  <meta property="og:image" content="https://flowaxon.com/assets/og-image.png">
-  <meta property="og:title" content="Le Duc Tam — I build the brakes for autonomous AI agents">
-  <meta name="description" content="Autonomous AI agents are already in production. Most have no brakes. I build the brakes. Eleven years of operating real infrastructure.">
-  <link rel="stylesheet" href="assets/v4/v4.css" integrity="sha384-mqJoGPLE5eE5/2gkjfnEl6SucU68Lzr3Ai47i1IVJxgoMtZyR194ZkpUI6a+ezrH" crossorigin  crossorigin>
-  <script src="assets/v4/v4.js" integrity="sha384-IrOZJl5GMysHNYiRr3xIL3XadTLnLdaPNBtCfdMhoidDmvPWwJSpYspb3u3l4UNd" crossorigin  crossorigin defer></script>
-  <script src="assets/v4/rig.js" integrity="sha384-rLffYEfhTOyLwXcfGTSxw/E7DYKJ6++/i3cSZckhsJ7oL8ztjTzsVgqWQ9g/GZv7" crossorigin  crossorigin defer></script>
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@graph":[
-    {"@type":"Person","name":"Le Duc Tam","alternateName":"tamld","jobTitle":"AI Agent Systems Architect & Principal Infrastructure Engineer","url":"https://flowaxon.com","sameAs":["https://github.com/tamld"],"knowsAbout":["AI agent orchestration","zero-trust infrastructure","DevSecOps","Go","homelab automation"]},
-    {"@type":"WebSite","name":"FlowAxon","url":"https://flowaxon.com","author":{"@type":"Person","name":"Le Duc Tam"},"description":"Deterministic harnesses for autonomous AI agents — the g8s engine."}
-  ]}
-  </script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Le Duc Tam — FlowAxon · the harness AI agents obey</title>
+<meta name="description" content="AI agent systems architect. g8s: a containment harness — isolated worktrees, single-use write receipts, human-confirmed gates. This site was assembled by that harness.">
+<link rel="canonical" href="https://flowaxon.com/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Autonomous AI agents are already in production. Most have no brakes.">
+<meta property="og:description" content="g8s — the containment harness agents obey. Every write sealed, every gate human-confirmed. Built by its own harness.">
+<meta property="og:url" content="https://flowaxon.com/">
+<meta property="og:image" content="https://flowaxon.com/assets/video/promo-poster.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%23f7f5f0'/%3E%3Ccircle cx='8' cy='8' r='5' fill='none' stroke='%238a5c06'/%3E%3Ccircle cx='8' cy='8' r='1.6' fill='%238a5c06'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="/assets/v5/v5.css" integrity="sha384-ruyAKc6AZdt9WdxyP0fG14wRrZVXAZGnakas4Mw5DnKsGXP+l6hKQkSy7JpisAc4">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Person","name":"Le Duc Tam","url":"https://flowaxon.com/","sameAs":["https://github.com/tamld"],"jobTitle":"AI Agent Systems Architect","description":"Builds containment harnesses for autonomous AI agents. 11 years of production infrastructure.","knowsAbout":["agent containment","zero-trust CI/CD","infrastructure automation","g8s"]}
+</script>
 </head>
 <body>
+<div class="wrap">
 
-  <header class="site-header">
-    <div class="container nav-row">
-    <a href="#hero" class="brand-link" aria-label="FlowAxon Homepage">
-    <span>flowaxon</span>
-    <span class="brand-badge">v4</span>
-    </a>
-    <nav class="nav-links" aria-label="Primary Navigation">
-    <a href="#duality">01 Duality</a>
-    <a href="#thread">02 Thread</a>
-    <a href="#acts">03 Acts</a>
-    <a href="#surf">04 Surf</a>
-    <a href="#work">06 Work</a>
-    <a href="#motion">07 Motion</a>
-    <a href="#collaborate">08 Collaborate</a>
-    </nav>
-    </div>
-  </header>
+<header class="site">
+  <a class="brand" href="/">LDT <b>/</b> flowaxon</a>
+  <nav class="top">
+    <a class="keep" href="#builtby">built-by</a>
+    <a class="keep" href="#rig">rig</a>
+    <a class="keep" href="#drill">drill</a>
+    <a class="keep" href="#film">film</a>
+    <button class="tgl" id="tgl" type="button" aria-label="Toggle color theme"><span aria-hidden="true">◐</span> <span id="tglLbl">Paper</span></button>
+  </nav>
+</header>
 
-  <main>
-    <!-- 1. HERO -->
-    <section id="hero" class="section-v4">
-    <div class="container">
-    <h1 class="hero-h1">Autonomous AI agents are already in production. Most have <span class="text-amber">no brakes</span>. I build the brakes.</h1>
-    <p class="hero-echo">whoami — AI agent systems architect · 11y production · UTC+7</p>
-    <p class="hero-sub">Eleven years of operating real infrastructure — from a 48-hour ransomware crucible to a Proxmox/podman fleet in production. One drive underneath it all: take what repeats, and make it obey — one system, seen from above. g8s is the engine agents obey — built in the open, receipts and all.</p>
-
-    <div class="hero-chips" aria-label="Core Engineering Pillars">
-    <span class="chip">g8s</span>
-        <span class="chip">6-stage zero-trust CI</span>
-    <span class="chip">SLSA attested</span>
-    <span class="chip">EN-first</span>
+<!-- HERO -->
+<section class="hero" id="top">
+  <canvas id="field" width="640" height="640" aria-hidden="true"></canvas>
+  <p class="kick"><b>$</b> whoami — AI agent systems architect · 11y production · UTC+7</p>
+  <h1>Autonomous AI agents are already in production. Most have <b>no brakes</b>. I build the brakes.</h1>
+  <p class="lede">Eleven years of operating real infrastructure — from a 48-hour ransomware crucible to a Proxmox/podman fleet in production. One drive underneath it all: <b>take what repeats, and make it obey — one system, seen from above.</b> <b>g8s</b> is the harness agents obey — and this page was assembled by that harness itself.</p>
+  <div class="chips">
+    <span>g8s</span><span>containment F0/F1/F2</span><span>write receipts</span><span>6-stage zero-trust CI</span><span>zero-origin edge</span>
+  </div>
+  <div class="stats">
+    <div class="stat" tabindex="0">
+      <div><b>1,146</b><span>repos surfed · 5yr</span></div>
+      <div class="face"><em>star corpus taste-mined 2026-10-31 · AI wave 2025 = 456★</em><a href="https://github.com/tamld?tab=stars">github.com/tamld?tab=stars</a></div>
     </div>
-
-    <div class="hero-stats-grid">
-    <div class="stat-card reveal-on-scroll">
-    <div class="stat-value" data-count="1146">1,146</div>
-    <div class="stat-label">repos surfed</div>
-    <a href="https://github.com/tamld?tab=stars" class="src-link" target="_blank" rel="noopener noreferrer">github.com/tamld?tab=stars ↗</a>
+    <div class="stat" tabindex="0">
+      <div><b>6<i>/6</i></b><span>CI stages green</span></div>
+      <div class="face"><em>code-sync · structure · links · SAST · DAST · devsecops — flowaxon engine</em><a href="https://github.com/tamld/flowaxon/actions">github.com/tamld/flowaxon/actions</a></div>
     </div>
-    <div class="stat-card reveal-on-scroll">
-    <div class="stat-value"><span data-count="6">6</span>/6</div>
-    <div class="stat-label">CI stages verified</div>
-    <a href="https://github.com/tamld/flowaxon/actions/runs/41189766268" class="src-link" target="_blank" rel="noopener noreferrer">run #41189766268 link ↗</a>
+    <div class="stat" tabindex="0">
+      <div><b>166<i>ms</i></b><span>p95 · production edge</span></div>
+      <div class="face"><em>k6 baseline, 0% failures, zero-origin by design</em><a href="https://github.com/tamld/flowaxon/commit/1b7405f">commit 1b7405f · k6 runbook</a></div>
     </div>
-    <div class="stat-card reveal-on-scroll">
-    <div class="stat-value"><span data-count="864">864</span> KB</div>
-    <div class="stat-label">RSS prod memory</div>
-    <a href="/healthz" class="src-link">(measured 2026-10-31)</a>
+    <div class="stat" tabindex="0">
+      <div><b>1<i>:1</i></b><span>issue = worker = receipt</span></div>
+      <div class="face"><em>cardinality law — one task, one worker, one sealed receipt</em><a href="https://github.com/tamld/g8s">github.com/tamld/g8s</a></div>
     </div>
-    <div class="stat-card reveal-on-scroll">
-    <div class="stat-value">1:1</div>
-    <div class="stat-label">issue=worker=receipt</div>
-    <a href="https://github.com/tamld/g8s" class="src-link" target="_blank" rel="noopener noreferrer">github.com/tamld/g8s ↗</a>
-    </div>
-    </div>
-    </div>
-    </section>
-
-    <!-- 2. 01 THE TRUST DUALITY -->
-    <section id="duality" class="section-v4">
-<div class="container">
-<h2 class="section-title">The engine agents obey — built in the open</h2>
-<div class="duality-grid duality-solo">
-<div class="duality-panel panel-g8s">
-<div class="duality-head"><span class="duality-name">g8s — The Gatekeepers</span><span class="src-link">github.com/tamld/g8s</span></div>
-<ul class="duality-list">
-<li>Exponential containment rings F2 &sube; F1 &sube; F0 — power stops where the layer ends</li>
-<li>Single-use, path-scoped write receipts — every mutation attributable</li>
-<li>Fail-closed worktree isolation — agents work in sandboxes, not your system</li>
-<li>Durable SQLite controlplane — queue survives reboots, leases, CAS claims</li>
-<li>6-stage zero-trust pipeline — supply-chain to SLSA, no blind spots</li>
-</ul>
-</div>
-</div>
-<p class="src-footer-line">served live at g8s.flowaxon.com &middot; built for AI agents as primary users</p>
-</div>
+  </div>
+  <p class="stat-hint">hover / focus a stat → its source</p>
 </section>
 
-    <!-- 3. 02 THE ONE THREAD -->
-    <section id="thread" class="section-v4">
-    <div class="container">
-    <h2 class="section-title">From shell scripts to agent containment harnesses</h2>
-    <div class="thread-card reveal-on-scroll">
-    <div class="thread-svg-wrap">
-    <svg class="thread-svg" font-family="ui-monospace, monospace" viewBox="0 0 720 90" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Chronological evolution timeline">
-    <line x1="80" y1="45" x2="640" y2="45" stroke="#f0a832" stroke-width="2" stroke-dasharray="6 6" opacity="0.8" />
-    <circle cx="80" cy="45" r="8" fill="#0a0e14" stroke="#e07850" stroke-width="3" />
-    <circle cx="80" cy="45" r="3" fill="#e07850" />
-    <text x="80" y="24" fill="#e07850" font-size="12" font-weight="700" text-anchor="middle">2016</text>
-    <circle cx="360" cy="45" r="8" fill="#0a0e14" stroke="#6f8fb8" stroke-width="3" />
-    <circle cx="360" cy="45" r="3" fill="#6f8fb8" />
-    <text x="360" y="24" fill="#6f8fb8" font-size="12" font-weight="700" text-anchor="middle">2021</text>
-    <circle cx="640" cy="45" r="8" fill="#0a0e14" stroke="#f0a832" stroke-width="3" />
-    <circle cx="640" cy="45" r="3" fill="#f0a832" />
-    <text x="640" y="24" fill="#f0a832" font-size="12" font-weight="700" text-anchor="middle">2025</text>
-    </svg>
+<!-- ACT I — BUILD LEDGER (meta-story centerpiece) -->
+<section class="act reveal" id="builtby">
+  <p class="act-label"><b>ACT I</b> — built by its own harness</p>
+  <h2>The site that assembled itself.</h2>
+  <p class="act-sub">Every line of this page passed through the containment it describes: briefs issued, workers claimed tasks inside isolated worktrees, receipts sealed every write, a human confirmed every merge. The ledger below is the real build log — <b>scrub it and watch the page rebuild itself</b>, frame by frame, from real commits.</p>
+  <div class="card">
+    <span class="corner" aria-hidden="true"></span><span class="corner br" aria-hidden="true"></span>
+    <div class="tb"><span class="t">BUILD LEDGER — <b>g8s harness</b></span><span class="yr">2026-10-31 → 11-01</span></div>
+    <div class="ledger" id="ledger" aria-live="polite"></div>
+    <div class="scrub">
+      <button class="btn" id="scrubPlay" type="button">▶ replay</button>
+      <input type="range" id="scrub" min="0" max="1000" value="0" aria-label="Scrub the build timeline">
+      <span class="pos" id="scrubPos">t+0.0s</span>
     </div>
-    <div class="thread-nodes-grid">
-    <div class="thread-node-box node-rust">
-    <div class="thread-year text-rust">2016 company floor</div>
-    <p class="thread-body">"cmd scripts kill repetition → automation mindset born"</p>
-    </div>
-    <div class="thread-node-box node-steel">
-    <div class="thread-year text-steel">2021 the doctrine</div>
-    <p class="thread-body">"top-down vision, then lateral — homelab becomes one governed system"</p>
-    </div>
-    <div class="thread-node-box node-amber">
-    <div class="thread-year text-amber">2025 the harness</div>
-    <p class="thread-body">"g8s unifies agent chaos under receipts and rings"</p>
-    </div>
-    </div>
-    </div>
-    </div>
-    </section>
+    <div class="rebuild" id="rebuild" aria-hidden="true"></div>
+    <p class="rebuild-cap">the wireframe above reassembles in commit order — the same order the real page was built</p>
+  </div>
+  <p class="srcnote">sources: every row links its commit in <a href="https://github.com/tamld/flowaxon/commits/main">github.com/tamld/tamld.github.io</a> · doctrine in <a href="https://github.com/tamld/flowaxon/tree/main/docs/research">docs/research/</a></p>
+</section>
 
-    <!-- 4. 03 THE ACTS -->
-    <section id="acts" class="section-v4">
-    <div class="container">
-    <h2 class="section-title">Three eras of deterministic execution</h2>
-    <div class="acts-stack">
-    <!-- Act I -->
-    <article class="act-card act-1 reveal-on-scroll">
-    <div class="act-header">
-    <h3 class="act-title">Act I · The 48-Hour Crucible — Distributed Command Under Crisis</h3>
-    <span class="micro-label">operator-attested · essay pending</span>
+<!-- ACT II — RIG -->
+<section class="act reveal" id="rig">
+  <p class="act-label"><b>ACT II</b> — the rig, with depth</p>
+  <h2>Three planes of containment, drawn like a drafting sheet.</h2>
+  <p class="act-sub">Depth from the drawing, not from decoration. <b>Click a plane to descend</b> — the camera drops into the layer and its anatomy opens. Click again to pull back to the sheet.</p>
+  <div class="card">
+    <span class="corner" aria-hidden="true"></span>
+    <div class="rigbox">
+      <div class="rig3" id="rig3">
+        <div class="plane p1" data-layer="F2" tabindex="0" role="button" aria-label="Descend into F2 sandbox layer"><span>F2 · SUBTASK</span>
+          <i class="dot d1"></i><i class="dot g d2"></i></div>
+        <div class="plane p2" data-layer="F1" tabindex="0" role="button" aria-label="Descend into F1 executor layer"><span>F1 · EXECUTOR</span>
+          <i class="dot d1"></i><i class="dot g d3"></i></div>
+        <div class="plane p3" data-layer="F0" tabindex="0" role="button" aria-label="Descend into F0 architect layer"><span>F0 · ARCHITECT</span>
+          <i class="dot g d4"></i></div>
+      </div>
+      <p class="rig-note" id="rigNote">click any plane to descend</p>
+      <div class="rig-anno">
+        <span><b>F2</b> sandbox · isolated worktrees <i class="a">· CAS lease, killable process group</i></span>
+        <span><b>F1</b> executor · write receipts <i class="a">· single-use, path-scoped</i></span>
+        <span><b>F0</b> architect · human-confirmed <i class="a">· the only tier that commits</i></span>
+      </div>
     </div>
-    <p class="act-desc">2016 nationwide retail ransomware outbreak (100+ endpoints crippled at Thien Nam Hoa). Decomposed recovery into 3 parallel operational squads (Foundation / ERP-POS / Identity Verification) with pre-built automation scripts, recovering 100+ nodes in 48 hours with zero Monday morning retail downtime.</p>
-    <div class="scrubber-module">
-    <div class="scrubber-controls">
-    <input type="range" id="scrubber-range" class="scrubber-slider" min="0" max="48" step="1" value="0" aria-label="48-Hour recovery timeline">
-    <div class="scrubber-milestones">
-    <button type="button" class="scrubber-btn active" data-hour="0">0h</button>
-    <button type="button" class="scrubber-btn" data-hour="12">12h</button>
-    <button type="button" class="scrubber-btn" data-hour="24">24h</button>
-    <button type="button" class="scrubber-btn" data-hour="36">36h</button>
-    <button type="button" class="scrubber-btn" data-hour="48">48h</button>
-    </div>
-    </div>
-    <div class="scrubber-readout">
-    <div class="scrubber-meta">
-    <span id="scrubber-hour" class="scrubber-hour">T+00:00</span>
-    <span id="scrubber-squad" class="scrubber-squad">Squad: Incident Command</span>
-    <span id="scrubber-recovered" class="scrubber-recovered">0 / 100+ recovered</span>
-    </div>
-    <div id="scrubber-log" class="scrubber-log">Nationwide retail ransomware outbreak detected across 100+ endpoints. Air-gap isolation initiated. Automated triage underway.</div>
-    </div>
-    </div>
-    </article>
+  </div>
+  <p class="srcnote">ground truth: <a href="https://github.com/tamld/g8s/blob/main/docs/decisions/0032-containment-levels.md">ADR-0032 — containment levels</a></p>
+</section>
 
-    <!-- Act II -->
-    <article class="act-card act-2 reveal-on-scroll">
-    <div class="act-header">
-    <h3 class="act-title">Act II · The Arithmetic of Determinism — Kaizen &amp; Single-Source Infrastructure</h3>
-    <a href="https://github.com/tamld/flowaxon/actions/runs/41189766268" class="src-link" target="_blank" rel="noopener noreferrer">run #41189766268 link ↗</a>
-    </div>
-    <p class="act-desc">Enterprise virtualization, MikroTik RouterOS Single DHCP Authority, Dual-Plane Observability ([LAN] vs [WAN]), and Zero-WAN Exposure. The Automation Equation: "1 manual click takes 3 seconds. 1 automated script takes 3 hours. 100 flawed clicks cost 3 years."</p>
-    <div class="rig-container" id="constellation-rig">
-    <div class="rig-plate-header">
-    <div class="rig-plate-meta">
-    <span class="rig-plate-tag">FIG 01 // CONSTELLATION-RIG</span>
-    <span class="rig-plate-title">PRODUCTION DEPLOYMENT &amp; HARNESS BENCH</span>
-    </div>
-    <div class="rig-plate-readout" id="rig-plate-readout">
-    <span class="readout-dot"></span>
-    <span>RSS 864KB • TLS 1.3 mTLS • 6/6 CI GREEN</span>
-    </div>
-    </div>
+<!-- ACT III — TERMINAL -->
+<section class="act reveal" id="drill">
+  <p class="act-label"><b>ACT III</b> — drill</p>
+  <h2>Keyboard-first. Trust nothing.</h2>
+  <p class="act-sub">The terminal below replays a <b>real dispatch cycle</b> captured from this harness — task <b>6a605f76</b>, provider agy, 5.86s end to end. Nothing scripted by hand. Press <b>/</b> for the command palette, <b>Tab</b> to complete, <b>Enter</b> to run.</p>
+  <div class="term" id="term">
+    <div class="pal" id="pal" role="listbox"></div>
+    <div id="termOut"></div>
+    <div class="cmdline"><span class="ps1">$</span><input id="termIn" type="text" autocomplete="off" spellcheck="false" aria-label="Terminal input"></div>
+  </div>
+  <p class="srcnote">capture artifact: task 6a605f76 · receipt 96fd2088 · result {"ok":true,"harness":"g8s"} · commands: submit · watch · verify · charter</p>
+</section>
 
-    <div class="rig-canvas-wrap" id="rig-canvas-wrap">
-    <svg class="rig-svg" id="rig-svg" viewBox="0 0 920 220" role="img" aria-label="Deployment map of the machine serving this page" preserveAspectRatio="xMidYMid meet">
-    <text x="14" y="28" class="rig-svg-kicker">DEPLOYMENT MAP OF THE MACHINE SERVING THIS PAGE</text>
-    <text x="906" y="28" text-anchor="end" class="rig-svg-kicker-src">TOPOLOGY SSoT · ZERO PROBABILISTIC NOISE</text>
+<!-- ACT IV — FILM -->
+<section class="act reveal" id="film">
+  <p class="act-label"><b>ACT IV</b> — the film</p>
+  <h2>The Harness — one minute, with sound.</h2>
+  <p class="act-sub">Three movements: the problem, the harness, the proof. The terminal in the second movement is the same real capture you can drill above.</p>
+  <div class="filmbox">
+    <video id="filmV" controls preload="metadata" poster="/assets/video/harness-poster.jpg">
+      <source src="/assets/video/harness-en.mp4" type="video/mp4">
+      Your browser does not support embedded video.
+    </video>
+    <div class="film-meta">
+      <span><span class="snd">◈ sound on</span> · Foley + VO · EBU R128 −14 LUFS</span>
+      <span>16:9 master · 9:16 social cut after feedback round</span>
+    </div>
+  </div>
+</section>
 
-    <g class="rig-paths-layer">
-    <path id="path-edge-ingress" class="rig-path-track" d="M 158 105 L 202 105" />
-    <path id="path-edge-ingress-pulse" class="rig-pulse-line" data-index="0" data-path="edge-ingress" d="M 158 105 L 202 105" />
+<footer class="site">
+  <a href="mailto:hello@flowaxon.com">hello@flowaxon.com</a>
+  <a href="https://github.com/tamld">github.com/tamld</a>
+  <a href="/.well-known/security.txt">/.well-known/security.txt</a>
+</footer>
 
-    <path id="path-fleet-ingress" class="rig-path-track" d="M 346 105 L 390 105" />
-    <path id="path-fleet-ingress-pulse" class="rig-pulse-line" data-index="1" data-path="fleet-ingress" d="M 346 105 L 390 105" />
-
-    <path id="path-engine-fleet" class="rig-path-track" d="M 534 105 L 578 105" />
-    <path id="path-engine-fleet-pulse" class="rig-pulse-line" data-index="2" data-path="engine-fleet" d="M 534 105 L 578 105" />
-
-    <path id="path-engine-harness" class="rig-path-track" d="M 722 105 L 766 105" />
-    <path id="path-engine-harness-pulse" class="rig-pulse-line" data-index="3" data-path="engine-harness" d="M 722 105 L 766 105" />
-    </g>
-
-    <!-- 1. EDGE -->
-    <g class="rig-node" id="node-edge" data-entity="edge" tabindex="0" role="button" aria-haspopup="dialog" aria-label="Edge block: Cloudflare WAF and TLS termination">
-    <rect class="rig-node-box" x="14" y="55" width="144" height="100" rx="3" />
-    <rect class="rig-node-header-bar" x="14" y="55" width="144" height="22" rx="3" />
-    <circle class="rig-status-dot" cx="26" cy="66" r="3" />
-    <text class="rig-node-label" x="38" y="70">01 // EDGE</text>
-    <text class="rig-node-name" x="26" y="92">CLOUDFLARE WAF</text>
-    <text class="rig-node-sub" x="26" y="108">Strict TLS · HSTS Preload</text>
-    <rect class="rig-metric-pill" x="22" y="122" width="128" height="24" rx="2" />
-    <text class="rig-node-metric-text" x="86" y="138" text-anchor="middle">TLS 1.3 · mTLS origin</text>
-    </g>
-
-    <!-- 2. INGRESS -->
-    <g class="rig-node" id="node-ingress" data-entity="ingress" tabindex="0" role="button" aria-haspopup="dialog" aria-label="Ingress block: Traefik v3 reverse proxy">
-    <rect class="rig-node-box" x="202" y="55" width="144" height="100" rx="3" />
-    <rect class="rig-node-header-bar" x="202" y="55" width="144" height="22" rx="3" />
-    <circle class="rig-status-dot" cx="214" cy="66" r="3" />
-    <text class="rig-node-label" x="226" y="70">02 // INGRESS</text>
-    <text class="rig-node-name" x="214" y="92">TRAEFIK v3</text>
-    <text class="rig-node-sub" x="214" y="108">Reverse Proxy · mTLS</text>
-    <rect class="rig-metric-pill" x="210" y="122" width="128" height="24" rx="2" />
-    <text class="rig-node-metric-text" x="274" y="138" text-anchor="middle">3 vhosts</text>
-    </g>
-
-    <!-- 3. FLEET -->
-    <g class="rig-node" id="node-fleet" data-entity="fleet" tabindex="0" role="button" aria-haspopup="dialog" aria-label="Fleet block: Proxmox LXC and rootless podman">
-    <rect class="rig-node-box" x="390" y="55" width="144" height="100" rx="3" />
-    <rect class="rig-node-header-bar" x="390" y="55" width="144" height="22" rx="3" />
-    <circle class="rig-status-dot" cx="402" cy="66" r="3" />
-    <text class="rig-node-label" x="414" y="70">03 // FLEET</text>
-    <text class="rig-node-name" x="402" y="92">PROXMOX · PODMAN</text>
-    <text class="rig-node-sub" x="402" y="108">Production Container</text>
-    <rect class="rig-metric-pill" x="398" y="122" width="128" height="24" rx="2" />
-    <text class="rig-node-metric-text" x="462" y="138" text-anchor="middle">production container</text>
-    </g>
-
-    <!-- 4. ENGINE -->
-    <g class="rig-node" id="node-engine" data-entity="engine" tabindex="0" role="button" aria-haspopup="dialog" aria-label="Engine block: Static Go binary">
-    <rect class="rig-node-box" x="578" y="55" width="144" height="100" rx="3" />
-    <rect class="rig-node-header-bar" x="578" y="55" width="144" height="22" rx="3" />
-    <circle class="rig-status-dot" cx="590" cy="66" r="3" />
-    <text class="rig-node-label" x="602" y="70">04 // ENGINE</text>
-    <text class="rig-node-name" x="590" y="92">GO ENGINE</text>
-    <text class="rig-node-sub" x="590" y="108">Static Binary · HTTP/2</text>
-    <rect class="rig-metric-pill" x="586" y="122" width="128" height="24" rx="2" />
-    <text class="rig-node-metric-text" x="650" y="138" text-anchor="middle">864 KB RSS</text>
-    </g>
-
-    <!-- 5. HARNESS -->
-    <g class="rig-node" id="node-harness" data-entity="harness" tabindex="0" role="button" aria-haspopup="dialog" aria-label="Harness block: g8s controlplane gates">
-    <rect class="rig-node-box" x="766" y="55" width="144" height="100" rx="3" />
-    <rect class="rig-node-header-bar" x="766" y="55" width="144" height="22" rx="3" />
-    <circle class="rig-status-dot" cx="778" cy="66" r="3" />
-    <text class="rig-node-label" x="790" y="70">05 // HARNESS</text>
-    <text class="rig-node-name" x="778" y="92">g8s · AEGIS</text>
-    <text class="rig-node-sub" x="778" y="108">Agent Ring · AST Gates</text>
-    <rect class="rig-metric-pill" x="774" y="122" width="128" height="24" rx="2" />
-    <text class="rig-node-metric-text" x="838" y="138" text-anchor="middle">6-stage pipeline green</text>
-    </g>
-
-    <text x="14" y="195" class="rig-svg-footer-text">TRAVERSAL: CLOUDFLARE EDGE ➔ TRAEFIK v3 ➔ PROXMOX PODMAN ➔ GO ENGINE ⇄ g8s/AEGIS</text>
-    <text x="906" y="195" text-anchor="end" class="rig-svg-footer-src">(src: manifest.json + run #41189766268)</text>
-    </svg>
-
-    <div id="rig-popover" class="rig-popover" role="dialog" aria-modal="true" aria-labelledby="rig-popover-title" hidden>
-    <div class="rig-popover-header">
-    <span class="rig-popover-tag" id="rig-popover-tag">ENTITY // 01</span>
-    <button type="button" class="rig-popover-close" id="rig-popover-close" aria-label="Close popover (Esc)">[Esc ✕]</button>
-    </div>
-    <h4 class="rig-popover-title" id="rig-popover-title">Edge</h4>
-    <p class="rig-popover-what" id="rig-popover-what">Cloudflare WAF + TLS termination, HSTS preload</p>
-    <div class="rig-popover-metric-wrap">
-    <div class="rig-metric-header">
-    <span>ONE VERIFIED METRIC</span>
-    <span>MECHANICAL SSoT</span>
-    </div>
-    <div class="rig-metric-val" id="rig-popover-metric">TLS 1.3 · mTLS origin</div>
-    <div class="rig-metric-src" id="rig-popover-source">(src: manifest tech_stack.edge_and_ingress)</div>
-    </div>
-    <div class="rig-popover-chips-wrap">
-    <div class="rig-chips-header">FEATURE MAP BRIDGE (manifest.json)</div>
-    <div class="rig-popover-chips" id="rig-popover-chips"></div>
-    </div>
-    </div>
-    </div>
-
-    <div class="rig-footer">
-    <div class="rig-promise-bar">
-    <span class="rig-promise-line">CLICK ANY BLOCK · OR TYPE /DRILL</span>
-    <span class="rig-telemetry-badge">100% OPERATIONAL</span>
-    </div>
-    <form id="rig-cli-form" class="rig-cli-form" autocomplete="off">
-    <label for="rig-cli-input" class="rig-cli-prompt">$</label>
-    <input type="text" id="rig-cli-input" class="rig-cli-input" placeholder="/drill [edge | ingress | fleet | engine | harness | map | help]" aria-label="Constellation rig drill command input" autocomplete="off" spellcheck="false">
-    <button type="submit" class="rig-cli-submit">RUN</button>
-    </form>
-    <div class="rig-quick-bar" aria-label="Quick drill commands">
-    <span class="rig-quick-label">TARGETS:</span>
-    <button type="button" class="rig-chip-btn" data-drill="edge">/drill edge</button>
-    <button type="button" class="rig-chip-btn" data-drill="ingress">/drill ingress</button>
-    <button type="button" class="rig-chip-btn" data-drill="fleet">/drill fleet</button>
-    <button type="button" class="rig-chip-btn" data-drill="engine">/drill engine</button>
-    <button type="button" class="rig-chip-btn" data-drill="harness">/drill harness</button>
-    <button type="button" class="rig-chip-btn" data-drill="map">/drill map</button>
-    <button type="button" class="rig-chip-btn" data-drill="help">/drill help</button>
-    </div>
-    <div id="rig-log-area" class="rig-log-area" role="log" aria-live="polite">
-    <div class="rig-log-line text-muted">[INIT] Constellation Rig SSoT initialized · 5 deployment entities mapped.</div>
-    <div class="rig-log-line text-muted">[READY] Click any block above or run /drill [target] in terminal.</div>
-    </div>
-    </div>
-    </div>
-    </article>
-
-    <!-- Act III -->
-    <article class="act-card act-3 reveal-on-scroll">
-    <div class="act-header">
-    <h3 class="act-title">Act III · The Symbiotic Frontier — Deterministic Harnesses for Autonomous AI</h3>
-    <button type="button" class="btn-copy" data-drill="harness" aria-label="Inspect Harness in Constellation Rig">Harness Rig #5 ↗</button>
-    </div>
-    <p class="act-desc">g8s. F0/F1/F2 exponential containment rings + S0..S3 orthogonal control strata + HMAC-SHA256 Telegram 2FA runtime interception.</p>
-    <div class="dispatch-module">
-    <div class="dispatch-flow" aria-label="Dispatch Architecture Flow">
-    <span class="flow-step" data-step="1">F0 Brain</span>
-    <span class="flow-arrow">→</span>
-    <span class="flow-step" data-step="2">F1·a Lease Claim</span>
-    <span class="flow-arrow">→</span>
-    <span class="flow-step" data-step="3">F1·b Scoped Write</span>
-    <span class="flow-arrow">→</span>
-    <span class="flow-step" data-step="4">F1·c WriteReceipt</span>
-    <span class="flow-arrow">→</span>
-    <span class="flow-step" data-step="5">Seal &amp; Done</span>
-    </div>
-    <div class="dispatch-terminal" role="region" aria-label="Terminal Log">
-    <div class="term-line" data-step="1">$ g8s submit —brief: research-packet-N</div>
-    <div class="term-line" data-step="2">lease claimed (CAS) · worktree isolated</div>
-    <div class="term-line" data-step="3">F1 writing … receipt-scoped paths only</div>
-    <div class="term-line" data-step="4">receipt sealed · id 0x8f7d2e4a · paths 1 · ttl 3600s</div>
-    <div class="term-line" data-step="5">$ watch --milestone worker-complete … done</div>
-    </div>
-    <div class="dispatch-actions">
-    <button type="button" id="btn-dispatch-trigger" class="btn-dispatch">Dispatch Worker (Demo)</button>
-    <button type="button" class="btn-dispatch rig-bridge-btn" data-drill="harness">Inspect Harness in Rig (/drill harness)</button>
-    </div>
-    </div>
-    </article>
-    </div>
-    </div>
-    </section>
-
-    <!-- 5. 04 SURF MAP -->
-    <section id="surf" class="section-v4">
-    <div class="container">
-    <h2 class="section-title">Continuous horizon curation &amp; star trajectory</h2>
-    <div class="surf-card reveal-on-scroll">
-    <div class="bars-container" aria-label="Repository Stars By Year">
-    <div class="bar-col">
-    <div class="bar-value" data-count="183">183</div>
-    <div class="surf-bar-track"><div class="surf-bar bar-2022"></div></div>
-    <div class="bar-year">2022</div>
-    </div>
-    <div class="bar-col">
-    <div class="bar-value" data-count="186">186</div>
-    <div class="surf-bar-track"><div class="surf-bar bar-2023"></div></div>
-    <div class="bar-year">2023</div>
-    </div>
-    <div class="bar-col">
-    <div class="bar-value" data-count="106">106</div>
-    <div class="surf-bar-track"><div class="surf-bar bar-2024"></div></div>
-    <div class="bar-year">2024</div>
-    </div>
-    <div class="bar-col">
-    <div class="bar-value" data-count="456">456</div>
-    <div class="surf-bar-track"><div class="surf-bar bar-2025"></div></div>
-    <div class="bar-year">2025</div>
-    </div>
-    <div class="bar-col">
-    <div class="bar-value" data-count="212">212</div>
-    <div class="surf-bar-track"><div class="surf-bar bar-2026"></div></div>
-    <div class="bar-year">2026</div>
-    </div>
-    </div>
-    <div class="cluster-chips" aria-label="Topic Clusters">
-    <span class="cluster-chip">ai <span>114</span></span>
-    <span class="cluster-chip">agents <span>81</span></span>
-    <span class="cluster-chip">docker <span>68</span></span>
-    <span class="cluster-chip">claude-code <span>49</span></span>
-    <span class="cluster-chip">cli <span>50</span></span>
-    <span class="cluster-chip">linux <span>46</span></span>
-    <span class="cluster-chip">golang <span>36</span></span>
-    <span class="cluster-chip">mcp <span>26</span></span>
-    </div>
-    <div class="src-footer-line">
-    github.com/tamld stars, fetched 2026-10-31, n=1,146 &mdash; <a href="https://github.com/tamld?tab=stars" class="src-link" target="_blank" rel="noopener noreferrer">github.com/tamld?tab=stars ↗</a>
-    </div>
-    </div>
-    </div>
-    </section>
-
-    <!-- 6. 05 FEATURE MAP -->
-    <!-- 7. 06 WORK -->
-    <section id="work" class="section-v4">
-    <div class="container">
-    <h2 class="section-title">Autonomous agent systems in production</h2>
-    <div class="work-table">
-    <div class="work-row reveal-on-scroll">
-    <div class="work-title-group">
-    <span class="work-name">g8s</span>
-    <span class="work-metric">v0.21 · 21+ releases</span>
-    </div>
-    <a href="https://github.com/tamld/g8s" class="src-link" target="_blank" rel="noopener noreferrer">github.com/tamld/g8s ↗</a>
-    </div>
-    </div>
-    </section>
-
-    <!-- 8. 07 IN MOTION -->
-    <section id="motion" class="section-v4">
-    <div class="container">
-    <h2 class="section-title">Architectural walkthrough &amp; dynamic containment</h2>
-    <div class="motion-grid">
-    <div class="video-cell reveal-on-scroll">
-    <video class="motion-video" src="assets/video/loop-proof.webm" poster="assets/video/promo-poster.jpg" autoplay muted loop playsinline preload="auto" aria-label="FlowAxon proof loop - live evidence"></video>
-<div class="video-badge">LIVE · 5s LOOP · 676 KB</div>
 </div>
-<div class="affordance-cell reveal-on-scroll">
-<h3 class="affordance-title">FlowAxon in 32 Seconds — Rendered from Live Captures</h3>
-<p class="affordance-spec">full promo · EN · 3.2 MB VP9 · Remotion render from production screenshots</p>
-<button class="btn-dispatch promo-play" id="promoPlay" type="button">▶ play the promo</button>
-</div>
-<video id="promoFull" class="promo-full" src="assets/video/flowaxon-promo-en.webm" controls playsinline preload="none"></video>
-    </div>
-    </div>
-    </section>
-
-    <!-- 9. 08 COLLABORATE + WRITING + FOOTER -->
-    <section id="collaborate" class="section-v4">
-    <div class="container">
-    <h2 class="section-title">Deterministic systems engineered for production</h2>
-    <div class="propositions-grid">
-    <div class="prop-card reveal-on-scroll">
-    <h3 class="prop-title">You bring chaos, I return a system</h3>
-    <p class="prop-body">Where disparate tools and brittle handoffs fail under load, I engineer single-authority control planes that bring deterministic order. Every component is bounded, observable, and governed from a unified vantage point.</p>
-    </div>
-    <div class="prop-card reveal-on-scroll">
-    <h3 class="prop-title">Agents you can bet production on</h3>
-    <p class="prop-body">Probabilistic models belong behind deterministic harnesses with strict capability rings and fail-closed isolation. I build containment architectures so autonomous workers execute safely in production without risking infrastructure.</p>
-    </div>
-    <div class="prop-card reveal-on-scroll">
-    <h3 class="prop-title">Systems that prove themselves</h3>
-    <p class="prop-body">Claims without mechanical verification are liability. Every pipeline, policy, and state transition in my systems generates tamper-evident receipts and cryptographic audit trails before touching disk.</p>
-    </div>
-    </div>
-
-    <blockquote class="whoami-block reveal-on-scroll">
-    "I am the person who cannot watch something repeat twice without building the system that ends it. Cmd scripts became a homelab doctrine; the doctrine became a harness for AI agents. Same screw, three turns — and I'm not done turning it."
-    </blockquote>
-
-    <div class="essays-section reveal-on-scroll">
-    <div class="essays-title">Essays &amp; Systems Doctrine</div>
-    <ul class="essays-list">
-    <li class="essay-item">
-    <span class="essay-name">The 48-Hour Crucible: Distributed Command and Recovery Under Crisis</span>
-    <span class="essay-status">outline</span>
-    </li>
-    <li class="essay-item">
-    <span class="essay-name">The Arithmetic of Determinism: Kaizen, Single-Authority Ingress, and Dual-Plane Systems</span>
-    <span class="essay-status">outline</span>
-    </li>
-    <li class="essay-item">
-    <span class="essay-name">Containment Rings and WriteReceipts: Deterministic Harnesses for Autonomous AI Agents</span>
-    <span class="essay-status">outline</span>
-    </li>
-    </ul>
-    </div>
-    </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-row">
-    <div class="footer-contact">
-    <span class="footer-email">hello@flowaxon.com</span>
-    <button type="button" id="copy-email-btn" class="btn-copy" aria-label="Copy email to clipboard">copy</button>
-    </div>
-    <div class="footer-links">
-    <a href="https://github.com/tamld" class="footer-link" target="_blank" rel="noopener noreferrer">github.com/tamld ↗</a>
-    <a href="/.well-known/security.txt" class="footer-link">/.well-known/security.txt</a>
-    </div>
-    </div>
-  </footer>
-
+<script src="/assets/v5/herofield.js" integrity="sha384-8mL/jz4nLeNNIer5faNxoYyXVCwWBpYQDdkQ5opabGI9vMTMNdYGe7ShvH+ccI3w" defer></script>
+<script src="/assets/v5/site.js" integrity="sha384-HJG9HCQxl3A6Y9P6zdLKLb1taJfG3OvxHRiUXLemz7CMFVkwXYeCJTedGRkdI6wz" defer></script>
 </body>
 </html>
