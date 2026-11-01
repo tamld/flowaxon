@@ -100,33 +100,158 @@
   });
   if (play) play.addEventListener('click', animateScrub);
 
-  /* ── ACT II: rig descent ── */
-  var rig3 = $('#rig3'), rigNote = $('#rigNote');
-  var layerText = {
-    F2: 'F2 · subtask sandbox — worktree isolated, receipt-jail, killable process group',
-    F1: 'F1 · executor — CAS lease claimed, single-use write receipt, no horizontal edges',
-    F0: 'F0 · architect — full trust, the only tier that commits. You are here.'
+  /* ── ACT II: rig v2 — dispatch story ── */
+  var rig3 = $('#rig3'), sheet = $('#rigSheet'), packet = $('#packet'),
+      rigNote = $('#rigNote'), anatomy = $('#anatomy');
+  var REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // waypoints (% of sheet) — F0 top-right, F1 middle, F2 bottom-left
+  var WP = { F0: [88, 22], F1: [50, 46], F2: [12, 70] };
+  var ANATOMY = {
+    F0: { t: 'F0 · the architect', ul: [
+      'Full trust — the only tier that commits',
+      'Issues charters, reads sealed receipts',
+      'F0 ↔ F2 = 0 direct edges — sees evidence, not files',
+      ['ADR-0032 — containment levels', 'https://github.com/tamld/g8s/blob/main/docs/decisions/0032-containment-levels.md']] },
+    F1: { t: 'F1 · the executor', ul: [
+      'Claims tasks with a CAS lease — single winner',
+      'Writes sealed by single-use, path-scoped receipts',
+      'F1 ↔ F1 = 0 — no horizontal edges, frozen briefs only',
+      ['g8s harness — tamld/g8s', 'https://github.com/tamld/g8s']] },
+    F2: { t: 'F2 · the subtask sandbox', ul: [
+      'Isolated git worktree per task',
+      'Killable OS process group (Setpgid)',
+      'Receipt jail: AllowedPaths enforced in-process',
+      ['cardinality law — 1 issue = 1 worker = 1 receipt', 'https://github.com/tamld/g8s']] }
   };
-  function descend(layer) {
-    var on = rig3.classList.contains('descend');
-    var active = rig3.getAttribute('data-desc') === layer;
-    if (on && active) { // pull back
-      rig3.classList.remove('descend'); rig3.removeAttribute('data-desc');
-      rigNote.textContent = 'click any plane to descend';
+  var STEPS = [
+    { at: 0,    wp: 'F0', on: 'F0', chip: 'c-f0',    note: '<b>F0</b> — the architect issues the brief' },
+    { at: 1400, wp: 'F1', on: 'F1', chip: 'c-lease', note: '<b>F1</b> — lease claimed (CAS) · worktree isolating' },
+    { at: 3200, wp: 'F2', on: 'F2', chip: 'c-work',  note: '<b>F2</b> — subtask writes inside the sandbox',
+      seals: [300, 700, 1100] },
+    { at: 5700, wp: 'F1', on: 'F1', chip: 'c-receipt', note: '<b>F1</b> — write receipt <b>sealed</b> · single-use, path-scoped' },
+    { at: 7600, wp: 'F0', on: 'F0', chip: 'c-gate', note: '<b>F0</b> — the gate: a human confirms the merge' },
+    { at: 9200, wp: 'F0', on: 'F0', chip: 'c-merge', note: 'merged ✓ — one issue = one worker = one receipt' },
+    { at: 11000, clear: true, note: 'restarting the dispatch…' }
+  ];
+  var timers = [], frozen = false, descended = null, stepIdx = 0;
+
+  function clearStep() {
+    rig3.querySelectorAll('.chip.on').forEach(function (c) { c.classList.remove('on'); });
+    rig3.querySelectorAll('.seal.on').forEach(function (s) { s.classList.remove('on'); });
+    var ring = rig3.querySelector('.gate-ring'); if (ring) ring.classList.remove('on');
+    rig3.querySelectorAll('.plane').forEach(function (pl) { pl.classList.remove('active'); });
+  }
+  function applyStep(st) {
+    if (st.clear) { clearStep(); rigNote.textContent = st.note.replace(/<[^>]+>/g, ''); return; }
+    clearStep();
+    packet.style.left = WP[st.wp][0] + '%';
+    packet.style.top = WP[st.wp][1] + '%';
+    var pl = rig3.querySelector('.plane.' + (st.on === 'F0' ? 'p3' : st.on === 'F1' ? 'p2' : 'p1'));
+    if (pl) pl.classList.add('active');
+    var chip = rig3.querySelector('.' + st.chip);
+    if (chip) chip.classList.add('on');
+    if (st.chip === 'c-gate') { var ring = rig3.querySelector('.gate-ring'); if (ring) ring.classList.add('on'); }
+    (st.seals || []).forEach(function (d) {
+      timers.push(setTimeout(function () {
+        var first = rig3.querySelector('.seal:not(.on)');
+        if (first) first.classList.add('on');
+      }, d));
+    });
+    rigNote.innerHTML = st.note;
+  }
+  function runLoop() {
+    timers.forEach(clearTimeout); timers = [];
+    stepIdx = 0;
+    STEPS.forEach(function (st) {
+      timers.push(setTimeout(function () {
+        if (frozen || descended) return;
+        applyStep(st);
+        stepIdx = STEPS.indexOf(st) + 1;
+      }, st.at));
+    });
+    timers.push(setTimeout(runLoop, 11800));
+  }
+  function toggleFreeze() {
+    frozen = !frozen;
+    packet.classList.toggle('frozen', frozen);
+    if (frozen) {
+      rigNote.innerHTML = 'frozen — this state is a law: <b>one issue = one worker = one receipt</b>. click the packet to resume';
     } else {
-      rig3.classList.add('descend'); rig3.setAttribute('data-desc', layer);
-      rigNote.textContent = layerText[layer] || '';
+      rigNote.innerHTML = 'resumed — the packet continues its containment';
     }
   }
-  if (rig3) rig3.querySelectorAll('.plane').forEach(function (pl) {
-    pl.addEventListener('click', function () { descend(pl.getAttribute('data-layer')); });
-    pl.addEventListener('keydown', function (ev) {
-      if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); descend(pl.getAttribute('data-layer')); }
+  function showAnatomy(layer) {
+    var a = ANATOMY[layer];
+    var html = '<h4>' + a.t + '</h4><ul>';
+    a.ul.forEach(function (li) {
+      html += '<li>' + (Array.isArray(li) ? '<a href="' + li[1] + '" target="_blank" rel="noopener">' + li[0] + '</a>' : li) + '</li>';
     });
-  });
-  document.addEventListener('keydown', function (ev) {
-    if (ev.key === 'Escape' && rig3 && rig3.classList.contains('descend')) descend(rig3.getAttribute('data-desc'));
-  });
+    html += '</ul>';
+    anatomy.innerHTML = html;
+    anatomy.classList.add('show');
+  }
+  function descend(layer) {
+    if (descended === layer) { // pull back
+      descended = null;
+      rig3.removeAttribute('data-desc');
+      anatomy.classList.remove('show');
+      return;
+    }
+    descended = layer;
+    rig3.setAttribute('data-desc', layer);
+    showAnatomy(layer);
+  }
+  if (rig3) {
+    rig3.querySelectorAll('.plane').forEach(function (pl) {
+      pl.addEventListener('click', function () {
+        if (dragMoved) return;
+        descend(pl.getAttribute('data-layer'));
+      });
+      pl.addEventListener('keydown', function (ev) {
+        if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); descend(pl.getAttribute('data-layer')); }
+      });
+    });
+    packet.addEventListener('click', function () { if (!dragMoved) toggleFreeze(); });
+    packet.addEventListener('keydown', function (ev) {
+      if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); toggleFreeze(); }
+    });
+    document.addEventListener('keydown', function (ev) {
+      if (ev.key === 'Escape' && descended) descend(descended);
+    });
+    // drag to rotate the drafting sheet
+    var dragging = false, sx = 0, sy = 0, rz = -38, rx = 52, moved = 0;
+    var dragMoved = false;
+    rig3.addEventListener('pointerdown', function (ev) {
+      dragging = true; dragMoved = false; sx = ev.clientX; sy = ev.clientY;
+      rig3.classList.add('dragging'); rig3.setPointerCapture(ev.pointerId);
+    });
+    rig3.addEventListener('pointermove', function (ev) {
+      if (!dragging) return;
+      var dx = ev.clientX - sx, dy = ev.clientY - sy;
+      moved = Math.abs(dx) + Math.abs(dy);
+      if (moved > 6) dragMoved = true;
+      rz = Math.max(-62, Math.min(-14, -38 + dx * 0.12));
+      rx = Math.max(28, Math.min(68, 52 - dy * 0.1));
+      sheet.style.setProperty('--rz', rz + 'deg');
+      sheet.style.setProperty('--rx', rx + 'deg');
+    });
+    rig3.addEventListener('pointerup', function () {
+      dragging = false; rig3.classList.remove('dragging');
+      setTimeout(function () { dragMoved = false; }, 50);
+    });
+    rig3.addEventListener('pointercancel', function () { dragging = false; rig3.classList.remove('dragging'); });
+    // boot
+    var boot = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        boot.disconnect();
+        if (REDUCED) { applyStep(STEPS[5]); rigNote.textContent = 'static sheet — packet motion disabled (reduced motion)'; }
+        else runLoop();
+      });
+    }, { threshold: 0.3 });
+    boot.observe(rig3);
+  }
 
   /* ── ACT III: terminal drill — real capture, task 6a605f76 ── */
   var out = $('#termOut'), tin = $('#termIn'), pal = $('#pal');

@@ -13,7 +13,7 @@
 <meta property="og:image" content="https://flowaxon.com/assets/video/promo-poster.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%23f7f5f0'/%3E%3Ccircle cx='8' cy='8' r='5' fill='none' stroke='%238a5c06'/%3E%3Ccircle cx='8' cy='8' r='1.6' fill='%238a5c06'/%3E%3C/svg%3E">
-<link rel="stylesheet" href="/assets/v5/v5.css" integrity="sha384-ruyAKc6AZdt9WdxyP0fG14wRrZVXAZGnakas4Mw5DnKsGXP+l6hKQkSy7JpisAc4">
+<link rel="stylesheet" href="/assets/v5/v5.css" integrity="sha384-sh9sn9T/L10jHf/kDJ9tC19fxX/HZG/usd2/DUk6Z2l1yzxOm4oVxcuRGJbLV4nj">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Person","name":"Le Duc Tam","url":"https://flowaxon.com/","sameAs":["https://github.com/tamld"],"jobTitle":"AI Agent Systems Architect","description":"Builds containment harnesses for autonomous AI agents. 11 years of production infrastructure.","knowsAbout":["agent containment","zero-trust CI/CD","infrastructure automation","g8s"]}
 </script>
@@ -85,28 +85,40 @@
 <!-- ACT II — RIG -->
 <section class="act reveal" id="rig">
   <p class="act-label"><b>ACT II</b> — the rig, with depth</p>
-  <h2>Three planes of containment, drawn like a drafting sheet.</h2>
-  <p class="act-sub">Depth from the drawing, not from decoration. <b>Click a plane to descend</b> — the camera drops into the layer and its anatomy opens. Click again to pull back to the sheet.</p>
+  <h2>One task travels the containment. Watch it.</h2>
+  <p class="act-sub">The amber packet is a real dispatch: <b>brief → lease → worktree → receipt → human gate → merge</b>. Click a plane to descend into its anatomy. Drag the sheet to rotate it. Click the packet to freeze the story.</p>
   <div class="card">
     <span class="corner" aria-hidden="true"></span>
     <div class="rigbox">
       <div class="rig3" id="rig3">
-        <div class="plane p1" data-layer="F2" tabindex="0" role="button" aria-label="Descend into F2 sandbox layer"><span>F2 · SUBTASK</span>
-          <i class="dot d1"></i><i class="dot g d2"></i></div>
-        <div class="plane p2" data-layer="F1" tabindex="0" role="button" aria-label="Descend into F1 executor layer"><span>F1 · EXECUTOR</span>
-          <i class="dot d1"></i><i class="dot g d3"></i></div>
-        <div class="plane p3" data-layer="F0" tabindex="0" role="button" aria-label="Descend into F0 architect layer"><span>F0 · ARCHITECT</span>
-          <i class="dot g d4"></i></div>
+        <div class="rig-sheet" id="rigSheet">
+          <div class="plane p3" data-layer="F0" tabindex="0" role="button" aria-label="Descend into F0 architect layer">
+            <span class="tag">F0 · ARCHITECT</span><i class="dot g d4"></i>
+            <span class="chip c-f0">brief issued</span><span class="chip c-gate">✓ human confirmed</span><span class="chip c-merge">merged</span>
+            <i class="gate-ring" aria-hidden="true"></i>
+          </div>
+          <div class="plane p2" data-layer="F1" tabindex="0" role="button" aria-label="Descend into F1 executor layer">
+            <span class="tag">F1 · EXECUTOR</span><i class="dot d1"></i><i class="dot g d3"></i>
+            <span class="chip c-lease">lease claimed · CAS</span><span class="chip c-receipt">receipt sealed</span>
+          </div>
+          <div class="plane p1" data-layer="F2" tabindex="0" role="button" aria-label="Descend into F2 sandbox layer">
+            <span class="tag">F2 · SUBTASK</span><i class="dot d1"></i><i class="dot g d2"></i>
+            <span class="chip c-work">worktree isolated</span>
+            <i class="seal s1"></i><i class="seal s2"></i><i class="seal s3"></i>
+          </div>
+          <div class="packet" id="packet" role="button" tabindex="0" aria-label="Dispatch packet — click to freeze or resume"></div>
+        </div>
       </div>
-      <p class="rig-note" id="rigNote">click any plane to descend</p>
+      <p class="rig-note" id="rigNote">dispatching…</p>
+      <div class="anatomy" id="anatomy" aria-live="polite"></div>
       <div class="rig-anno">
-        <span><b>F2</b> sandbox · isolated worktrees <i class="a">· CAS lease, killable process group</i></span>
-        <span><b>F1</b> executor · write receipts <i class="a">· single-use, path-scoped</i></span>
-        <span><b>F0</b> architect · human-confirmed <i class="a">· the only tier that commits</i></span>
+        <span><b>F2</b> sandbox · isolated worktrees · killable process group</span>
+        <span><b>F1</b> executor · single-use write receipts</span>
+        <span><b>F0</b> architect · human-confirmed · the only tier that commits</span>
       </div>
     </div>
   </div>
-  <p class="srcnote">ground truth: <a href="https://github.com/tamld/g8s/blob/main/docs/decisions/0032-containment-levels.md">ADR-0032 — containment levels</a></p>
+  <p class="srcnote">ground truth: <a href="https://github.com/tamld/g8s/blob/main/docs/decisions/0032-containment-levels.md">ADR-0032 — containment levels</a> · the packet replays the real capture in ACT III</p>
 </section>
 
 <!-- ACT III — TERMINAL -->
@@ -147,6 +159,6 @@
 
 </div>
 <script src="/assets/v5/herofield.js" integrity="sha384-8mL/jz4nLeNNIer5faNxoYyXVCwWBpYQDdkQ5opabGI9vMTMNdYGe7ShvH+ccI3w" defer></script>
-<script src="/assets/v5/site.js" integrity="sha384-HJG9HCQxl3A6Y9P6zdLKLb1taJfG3OvxHRiUXLemz7CMFVkwXYeCJTedGRkdI6wz" defer></script>
+<script src="/assets/v5/site.js" integrity="sha384-CyyFfyyZ5s1g86WAVpNAdCzYmD3TuNcD0oZXDiDEU0i1SeB5wrhI5Jge/MREY+HQ" defer></script>
 </body>
 </html>

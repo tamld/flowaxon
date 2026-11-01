@@ -112,32 +112,86 @@ h2{font-family:Georgia,serif;font-size:26px;font-weight:400;color:var(--t1);marg
 .rebuild i.sml{grid-column:span 3}
 .rebuild-cap{font-size:10.5px;color:var(--t5);margin-top:8px}
 
-/* ── rig (3 planes + descent) ── */
-.rigbox{padding:30px 0 10px}
-.rig3{display:flex;justify-content:center;align-items:flex-end;perspective:1100px;height:270px;position:relative;overflow:clip}
-.plane{width:216px;height:132px;border:1px solid var(--bd2);background:var(--panel2);position:relative;cursor:pointer;
-  transform:rotateX(52deg) rotateZ(-38deg);box-shadow:var(--shadow-hard);
-  transition:transform .65s var(--ez),box-shadow .65s var(--ez),border-color .3s}
+/* ── rig v2.1: staircase containment (flex row inside a shared 3D sheet) ── */
+.rigbox{padding:26px 0 10px}
+.rig3{height:340px;position:relative;perspective:1200px;overflow:clip;cursor:grab;touch-action:none}
+.rig3.dragging{cursor:grabbing}
+.rig-sheet{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;transform-style:preserve-3d;
+  transform:translateY(34px) rotateX(var(--rx,50deg)) rotateZ(var(--rz,-36deg));transition:transform .5s var(--ez)}
+.rig3.dragging .rig-sheet{transition:none}
+.plane{position:relative;width:216px;height:132px;border:1px solid var(--bd2);background:var(--panel2);cursor:pointer;
+  transition:transform .55s var(--ez),box-shadow .55s var(--ez),border-color .3s,opacity .4s;flex:none}
 .plane:hover{border-color:var(--amber)}
-.plane span{position:absolute;top:7px;left:9px;font-size:10px;letter-spacing:.14em;color:var(--t4)}
+.plane span.tag{position:absolute;top:7px;left:9px;font-size:10px;letter-spacing:.14em;color:var(--t4)}
 .plane .dot{position:absolute;width:7px;height:7px;background:var(--amber)}
 .plane .dot.g{background:var(--green)}
 .plane .d1{right:16px;bottom:14px}
 .plane .d2{right:38px;bottom:14px}
 .plane .d3{left:18px;bottom:12px}
 .plane .d4{right:18px;top:14px}
-.plane.p2{margin-left:-74px;margin-bottom:40px;box-shadow:8px 11px 0 rgba(24,26,31,.07)}
-.plane.p3{margin-left:-74px;margin-bottom:40px;border-color:var(--amber)}
-.rig3.descend .plane{transform:rotateX(8deg) rotateZ(-6deg) scale(1.12)}
-.rig3.descend .plane.p1{transform:rotateX(8deg) rotateZ(-6deg) scale(1.12) translate(34px,58px)}
-.rig3.descend .plane.p2{transform:rotateX(8deg) rotateZ(-6deg) scale(1.12)}
-.rig3.descend .plane.p3{transform:rotateX(8deg) rotateZ(-6deg) scale(1.12) translate(-30px,-46px);box-shadow:14px 18px 0 rgba(24,26,31,.12)}
-.rig-note{position:absolute;left:0;right:0;bottom:-8px;text-align:center;font-size:10.5px;color:var(--t5);transition:opacity .3s}
-.rig3.descend + .rig-note{opacity:0}
-.rig-anno{display:flex;gap:16px;justify-content:center;font-size:10.5px;color:var(--t5);padding:22px 0 4px;flex-wrap:wrap}
+/* the staircase: F2 floor → F1 mid → F0 top, each a containment shelf */
+.plane.p1{transform:translateZ(0);box-shadow:-16px 14px 0 rgba(24,26,31,.08);margin-right:-64px}
+.plane.p2{transform:translateZ(54px) translateY(-20px);box-shadow:-12px 10px 0 rgba(24,26,31,.07);margin-right:-64px}
+.plane.p3{transform:translateZ(108px) translateY(-40px);border-color:var(--amber);box-shadow:-8px 7px 0 rgba(24,26,31,.09)}
+/* packet — the travelling task (2D overlay on the projected path) */
+.packet{position:absolute;width:20px;height:13px;left:50%;top:50%;transform:translate(-50%,-50%);
+  background:var(--amber);box-shadow:0 0 0 3px var(--amber-bg),0 2px 0 rgba(0,0,0,.25);cursor:pointer;z-index:6;
+  transition:left .95s var(--ez),top .95s var(--ez);animation:ppulse 1.1s ease-in-out infinite}
+.packet::after{content:'';position:absolute;inset:-7px;border:1px dashed var(--amber);opacity:.55}
+@keyframes ppulse{50%{box-shadow:0 0 0 6px var(--amber-bg),0 2px 0 rgba(0,0,0,.25)}}
+.packet.frozen{animation:none;background:var(--rust)}
+/* chips pinned to plane edges */
+.chip{position:absolute;font-size:8.5px;letter-spacing:.08em;color:var(--t3);background:var(--panel);
+  border:1px solid var(--bd2);padding:2px 6px;opacity:0;transform:scale(.85);transition:opacity .3s,transform .3s;white-space:nowrap}
+.chip.on{opacity:1;transform:scale(1)}
+.p3 .c-f0{right:-10px;top:-24px}.p3 .c-gate{right:-10px;bottom:-24px;color:var(--green);border-color:var(--green)}
+.p3 .c-merge{left:-12px;bottom:-24px;color:var(--amber);border-color:var(--amber)}
+.p2 .c-lease{left:-14px;top:-24px}.p2 .c-receipt{left:-14px;bottom:-24px;color:var(--amber);border-color:var(--amber)}
+.p1 .c-work{left:-14px;top:-24px}
+/* gate ring + seals */
+.gate-ring{position:absolute;inset:-9px;border:1px dashed var(--green);opacity:0;transition:opacity .4s;pointer-events:none}
+.gate-ring.on{opacity:.9;animation:gatepulse 1.2s ease-in-out infinite}
+@keyframes gatepulse{50%{inset:-13px}}
+.seal{position:absolute;width:8px;height:8px;background:var(--amber);opacity:0;transform:scale(0) rotate(45deg);
+  transition:opacity .25s,transform .25s var(--ez)}
+.seal.on{opacity:.95;transform:scale(1) rotate(45deg)}
+.p1 .s1{right:30px;bottom:12px}.p1 .s2{right:52px;bottom:26px}.p1 .s3{right:30px;bottom:40px}
+/* descend: the camera drops — sheet flattens, active plane lifts */
+.rig3[data-desc] .plane{opacity:.16;filter:saturate(.3)}
+.rig3[data-desc] .plane.p3{transform:translateZ(148px) translateY(-52px);opacity:.16}
+.rig3[data-desc="F0"] .plane.p3,
+.rig3[data-desc="F1"] .plane.p2,
+.rig3[data-desc="F2"] .plane.p1{opacity:1;filter:none;border-color:var(--amber);z-index:4}
+.rig3[data-desc="F0"] .plane.p3{transform:translateZ(230px) scale(1.22)}
+.rig3[data-desc="F1"] .plane.p2{transform:translateZ(230px) scale(1.22) translateY(-26px)}
+.rig3[data-desc="F2"] .plane.p1{transform:translateZ(230px) scale(1.22)}
+/* note + anatomy */
+.rig-note{margin:14px 0 0;text-align:center;font-size:11px;color:var(--t5);min-height:17px}
+.rig-note b{color:var(--amber);font-weight:400}
+.anatomy{display:none;margin-top:14px;border:1px solid var(--amber);background:var(--panel2);padding:16px 18px}
+.anatomy.show{display:block}
+.anatomy h4{margin:0 0 8px;font-family:Georgia,serif;font-weight:400;font-size:15px;color:var(--t1)}
+.anatomy ul{margin:0;padding-left:16px;font-size:12px;color:var(--t3);line-height:1.8}
+.anatomy a{color:var(--src)}
+.rig-anno{display:flex;gap:16px;justify-content:center;font-size:10.5px;color:var(--t5);padding:14px 0 4px;flex-wrap:wrap}
 .rig-anno b{color:var(--t3);font-weight:400}
-.rig-anno .a{display:none}
-.rig3.descend ~ .rig-anno .a{display:inline;color:var(--amber)}
+@media (prefers-reduced-motion:reduce){
+  .packet{transition:none;animation:none}
+  .gate-ring.on{animation:none}
+  .rig-sheet{transition:none}
+}
+@media (max-width:480px){
+  .rig3{height:260px}
+  .plane{width:150px;height:92px}
+  .plane.p1{margin-right:-44px}
+  .plane.p2{margin-right:-44px;transform:translateZ(38px) translateY(-14px)}
+  .plane.p3{transform:translateZ(76px) translateY(-28px)}
+  .rig3[data-desc="F1"] .plane.p2{transform:translateZ(180px) scale(1.22) translateY(-14px)}
+  .rig3[data-desc="F0"] .plane.p3{transform:translateZ(180px) scale(1.22) translateY(-28px)}
+  .rig3[data-desc="F2"] .plane.p1{transform:translateZ(180px) scale(1.22)}
+  .chip{font-size:7.5px;padding:2px 4px}
+  .anatomy{padding:12px}
+}
 
 /* ── terminal ── */
 .term{background:var(--term);border:1px solid var(--term-bd);padding:16px 18px;font-size:12px;color:#9db0c6;min-height:230px;position:relative}
