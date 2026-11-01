@@ -1,6 +1,6 @@
 {
  "repo": "tamld/flowaxon",
- "span": "2026-10-31 \u2192 11-01",
+ "span": "2026-10-31 \u2192 11-01 (v4\u2192v5)",
  "note": "every row is a real commit \u2014 scrub rebuilds the site from these",
  "rows": [
   {
@@ -74,6 +74,14 @@
    "title": "Aegis removed from public surface",
    "detail": "private repo \u2014 not listed, not advertised",
    "url": "https://github.com/tamld/flowaxon/commit/3c6e0b6"
+  },
+  {
+   "wave": "V5.0",
+   "date": "11-01 22:12",
+   "sha": "1112cd4",
+   "title": "v5 rebuild goes live \u2014 this ledger included",
+   "detail": "PR #3 squash-merged \u00b7 the site rebuilt itself by the harness it describes",
+   "url": "https://github.com/tamld/flowaxon/commit/1112cd4"
   }
  ]
 }
