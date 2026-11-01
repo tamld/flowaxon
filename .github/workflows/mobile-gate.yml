@@ -22,8 +22,10 @@ jobs:
         with:
           node-version: 22
 
-      - name: Install chromium (playwright)
-        run: npx -y playwright@1.49.1 install --with-deps chromium
+      - name: Install playwright + chromium
+        run: |
+          npm install --no-save playwright@1.49.1
+          npx playwright@1.49.1 install --with-deps chromium
 
       - name: Serve site
         run: |
@@ -33,7 +35,7 @@ jobs:
 
       - name: 390px overflow + visibility gate
         run: |
-          cat > /tmp/mobile-check.mjs <<'EOF'
+          cat > mobile-check.mjs <<'EOF'
           import { chromium } from 'playwright';
           const browser = await chromium.launch();
           const page = await browser.newPage({ viewport: { width: 390, height: 844 } });
@@ -67,7 +69,7 @@ jobs:
           if (report.length) { process.exitCode = 1; }
           await browser.close();
           EOF
-          npm exec --yes --package=playwright@1.49.1 -- node /tmp/mobile-check.mjs
+          node mobile-check.mjs
 
       - name: Upload screenshot artifact
         if: always()
