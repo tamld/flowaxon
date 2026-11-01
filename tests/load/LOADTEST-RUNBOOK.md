@@ -110,3 +110,11 @@ log check confirms zero traffic during the paused window.
 - Custom domain Active; served by CF edge (cf-ray SIN) — apex no longer traverses the homelab (structural zero-origin).
 - k6 smoke: p95 = **166ms**, 0.00% failures, 13,298/13,298 checks ✓ (budget <800ms, 4.8× headroom).
 - CSP + HSTS live on production (`_headers` parity with main.go, incl. media-src for R2).
+
+## v5 cutover smoke (2026-11-01, 22:15 ICT)
+
+- Target: https://flowaxon.com + /assets/v5/v5.css · 25 VU / 60s · k6 smoke
+- Result: 1,852 iters, 0 failures, all checks pass. p95 threshold crossed (p95 ~1.4s, max 13.7s).
+- Attribution: measurement fell inside the deploy-propagation window of commit 21f82d4 AND VN-peak-hour path congestion (controls from same vantage: developers.cloudflare.com 0.17-0.21s, github 0.21-0.28s; flowaxon hosts 0.2-3.5s erratic on BOTH flowaxon.com and flowaxon-v4.pages.dev → vantage-side path, not zone/project).
+- Baseline re-run recommended at off-peak (01:00-06:00 ICT) before treating v5 as regressed.
+- Note: pages.dev project is `flowaxon-v4` (name kept from v4 era); `flowaxon-pages.pages.dev` does not exist.
