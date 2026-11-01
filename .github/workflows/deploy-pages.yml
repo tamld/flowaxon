@@ -14,6 +14,7 @@ on:
       - "sites/v4/**"
       - "index.html"
       - "assets/v4/**"
+      - "assets/v5/**"
       - "assets/video/**"
       - "ops/cf/**"
       - ".github/workflows/deploy-pages.yml"
