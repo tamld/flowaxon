@@ -13,7 +13,7 @@
 <meta property="og:image" content="https://flowaxon.com/assets/video/promo-poster.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%23f7f5f0'/%3E%3Ccircle cx='8' cy='8' r='5' fill='none' stroke='%238a5c06'/%3E%3Ccircle cx='8' cy='8' r='1.6' fill='%238a5c06'/%3E%3C/svg%3E">
-<link rel="stylesheet" href="/assets/v5/v5.css" integrity="sha384-sh9sn9T/L10jHf/kDJ9tC19fxX/HZG/usd2/DUk6Z2l1yzxOm4oVxcuRGJbLV4nj">
+<link rel="stylesheet" href="/assets/v5/v5.css" integrity="sha384-oqyLUPfC+T7irz7IeRW3GUthGRNKMXFQL9ptFGSltH3vk1b9T2csC07yu1yzaTVZ">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Person","name":"Le Duc Tam","url":"https://flowaxon.com/","sameAs":["https://github.com/tamld"],"jobTitle":"AI Agent Systems Architect","description":"Builds containment harnesses for autonomous AI agents. 11 years of production infrastructure.","knowsAbout":["agent containment","zero-trust CI/CD","infrastructure automation","g8s"]}
 </script>
@@ -92,21 +92,23 @@
     <div class="rigbox">
       <div class="rig3" id="rig3">
         <div class="rig-sheet" id="rigSheet">
-          <div class="plane p3" data-layer="F0" tabindex="0" role="button" aria-label="Descend into F0 architect layer">
-            <span class="tag">F0 · ARCHITECT</span><i class="dot g d4"></i>
-            <span class="chip c-f0">brief issued</span><span class="chip c-gate">✓ human confirmed</span><span class="chip c-merge">merged</span>
-            <i class="gate-ring" aria-hidden="true"></i>
+          <div class="plane p1" data-layer="F2" tabindex="0" role="button" aria-label="Descend into F2 sandbox layer">
+            <span class="tag">F2 · SUBTASK</span><i class="dot d1"></i><i class="dot g d2"></i>
+            <span class="chip c-work">task_started</span>
+            <i class="seal s1"></i><i class="seal s2"></i><i class="seal s3"></i>
           </div>
           <div class="plane p2" data-layer="F1" tabindex="0" role="button" aria-label="Descend into F1 executor layer">
             <span class="tag">F1 · EXECUTOR</span><i class="dot d1"></i><i class="dot g d3"></i>
-            <span class="chip c-lease">lease claimed · CAS</span><span class="chip c-receipt">receipt sealed</span>
+            <span class="chip c-lease">task_claimed · lease <span class="lease-timer">60</span>s</span><span class="chip c-receipt">receipt sealed · 96fd2088</span>
           </div>
-          <div class="plane p1" data-layer="F2" tabindex="0" role="button" aria-label="Descend into F2 sandbox layer">
-            <span class="tag">F2 · SUBTASK</span><i class="dot d1"></i><i class="dot g d2"></i>
-            <span class="chip c-work">worktree isolated</span>
-            <i class="seal s1"></i><i class="seal s2"></i><i class="seal s3"></i>
+          <div class="plane p3" data-layer="F0" tabindex="0" role="button" aria-label="Descend into F0 architect layer">
+            <span class="tag">F0 · ARCHITECT</span><i class="dot g d4"></i>
+            <span class="chip c-f0">task_submitted</span><span class="chip c-gate">attempt_finished · 5.86s</span><span class="chip c-merge">WORKER_COMPLETED ✓</span>
+            <i class="gate-ring" aria-hidden="true"></i>
           </div>
-          <div class="packet" id="packet" role="button" tabindex="0" aria-label="Dispatch packet — click to freeze or resume"></div>
+        </div>
+        <div class="packet" id="packet" role="button" tabindex="0" aria-label="Dispatch packet 6a605f76 — click to freeze or resume">
+          <span class="pkt-id">6a605f76</span>
         </div>
       </div>
       <p class="rig-note" id="rigNote">dispatching…</p>
@@ -159,6 +161,6 @@
 
 </div>
 <script src="/assets/v5/herofield.js" integrity="sha384-8mL/jz4nLeNNIer5faNxoYyXVCwWBpYQDdkQ5opabGI9vMTMNdYGe7ShvH+ccI3w" defer></script>
-<script src="/assets/v5/site.js" integrity="sha384-CyyFfyyZ5s1g86WAVpNAdCzYmD3TuNcD0oZXDiDEU0i1SeB5wrhI5Jge/MREY+HQ" defer></script>
+<script src="/assets/v5/site.js" integrity="sha384-T24JREaYe0AIakc11JWvvIvwd+RIf2MiGi7FW5IhcHJPuhId11ezLpWa330dQknp" defer></script>
 </body>
 </html>

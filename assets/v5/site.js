@@ -105,8 +105,6 @@
       rigNote = $('#rigNote'), anatomy = $('#anatomy');
   var REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // waypoints (% of sheet) — F0 top-right, F1 middle, F2 bottom-left
-  var WP = { F0: [88, 22], F1: [50, 46], F2: [12, 70] };
   var ANATOMY = {
     F0: { t: 'F0 · the architect', ul: [
       'Full trust — the only tier that commits',
@@ -125,18 +123,58 @@
       ['cardinality law — 1 issue = 1 worker = 1 receipt', 'https://github.com/tamld/g8s']] }
   };
   var STEPS = [
-    { at: 0,    wp: 'F0', on: 'F0', chip: 'c-f0',    note: '<b>F0</b> — the architect issues the brief' },
-    { at: 1400, wp: 'F1', on: 'F1', chip: 'c-lease', note: '<b>F1</b> — lease claimed (CAS) · worktree isolating' },
-    { at: 3200, wp: 'F2', on: 'F2', chip: 'c-work',  note: '<b>F2</b> — subtask writes inside the sandbox',
-      seals: [300, 700, 1100] },
-    { at: 5700, wp: 'F1', on: 'F1', chip: 'c-receipt', note: '<b>F1</b> — write receipt <b>sealed</b> · single-use, path-scoped' },
-    { at: 7600, wp: 'F0', on: 'F0', chip: 'c-gate', note: '<b>F0</b> — the gate: a human confirms the merge' },
-    { at: 9200, wp: 'F0', on: 'F0', chip: 'c-merge', note: 'merged ✓ — one issue = one worker = one receipt' },
-    { at: 11000, clear: true, note: 'restarting the dispatch…' }
+    { at: 0,    layer: 'F0', chip: 'c-f0',      note: '<b>F0</b> · <b>task_submitted</b> — brief issued · task 6a605f76 · role scout (read_only)' },
+    { at: 1500, layer: 'F1', chip: 'c-lease',   note: '<b>F1</b> · <b>task_claimed</b> — CAS lease 60s claimed (token b9f379a2…) · affinity agy', countdown: 3000 },
+    { at: 4700, layer: 'F2', chip: 'c-work',    note: '<b>F2</b> · <b>task_started</b> — worktree isolated · sandbox F1 · response: {"ok":true,"harness":"g8s"}', seals: [300, 700, 1100] },
+    { at: 7200, layer: 'F1', chip: 'c-receipt',  note: '<b>F1</b> · write receipt <b>96fd2088fe80da90</b> sealed · single-use, path-scoped' },
+    { at: 9200, layer: 'F0', chip: 'c-gate',     note: '<b>F0</b> · <b>attempt_finished</b> · 5.86s (result_hash 99bcdd7e…) · gate ring active' },
+    { at: 11200, layer: 'F0', chip: 'c-merge',   note: '<b>WORKER_COMPLETED</b> ✓ — 1 issue = 1 worker = 1 receipt' },
+    { at: 13400, clear: true, note: 'restarting the dispatch…' }
   ];
   var timers = [], frozen = false, descended = null, stepIdx = 0;
+  var leaseTimer = null, currentLayer = 'F0';
+
+  function anchorToPlane(layer) {
+    if (layer) currentLayer = layer;
+    if (!rig3 || !packet) return;
+    var pl = rig3.querySelector('.plane[data-layer="' + currentLayer + '"]');
+    if (!pl) return;
+    var pRect = pl.getBoundingClientRect();
+    var rRect = rig3.getBoundingClientRect();
+    if (!rRect.width || !rRect.height) return;
+    var leftPct = ((pRect.left + pRect.width / 2 - rRect.left) / rRect.width) * 100;
+    var topPct = ((pRect.top + pRect.height / 2 - rRect.top) / rRect.height) * 100;
+    packet.style.left = leftPct.toFixed(2) + '%';
+    packet.style.top = topPct.toFixed(2) + '%';
+  }
+
+  function startLeaseCountdown(durationMs) {
+    if (leaseTimer) clearInterval(leaseTimer);
+    var timerEl = rig3 ? rig3.querySelector('.lease-timer') : null;
+    if (!timerEl) return;
+    var startVal = 60;
+    timerEl.textContent = startVal;
+    var startTime = Date.now();
+    leaseTimer = setInterval(function () {
+      if (frozen || descended) {
+        startTime += 50;
+        return;
+      }
+      var elapsed = Date.now() - startTime;
+      var frac = Math.min(1, elapsed / durationMs);
+      var current = Math.max(0, Math.round(startVal * (1 - frac)));
+      timerEl.textContent = current;
+      if (frac >= 1) {
+        clearInterval(leaseTimer);
+        leaseTimer = null;
+      }
+    }, 50);
+  }
 
   function clearStep() {
+    if (leaseTimer) { clearInterval(leaseTimer); leaseTimer = null; }
+    var timerEl = rig3 ? rig3.querySelector('.lease-timer') : null;
+    if (timerEl) timerEl.textContent = '60';
     rig3.querySelectorAll('.chip.on').forEach(function (c) { c.classList.remove('on'); });
     rig3.querySelectorAll('.seal.on').forEach(function (s) { s.classList.remove('on'); });
     var ring = rig3.querySelector('.gate-ring'); if (ring) ring.classList.remove('on');
@@ -145,13 +183,13 @@
   function applyStep(st) {
     if (st.clear) { clearStep(); rigNote.textContent = st.note.replace(/<[^>]+>/g, ''); return; }
     clearStep();
-    packet.style.left = WP[st.wp][0] + '%';
-    packet.style.top = WP[st.wp][1] + '%';
-    var pl = rig3.querySelector('.plane.' + (st.on === 'F0' ? 'p3' : st.on === 'F1' ? 'p2' : 'p1'));
+    anchorToPlane(st.layer);
+    var pl = rig3.querySelector('.plane[data-layer="' + st.layer + '"]');
     if (pl) pl.classList.add('active');
     var chip = rig3.querySelector('.' + st.chip);
     if (chip) chip.classList.add('on');
     if (st.chip === 'c-gate') { var ring = rig3.querySelector('.gate-ring'); if (ring) ring.classList.add('on'); }
+    if (st.countdown) startLeaseCountdown(st.countdown);
     (st.seals || []).forEach(function (d) {
       timers.push(setTimeout(function () {
         var first = rig3.querySelector('.seal:not(.on)');
@@ -170,7 +208,7 @@
         stepIdx = STEPS.indexOf(st) + 1;
       }, st.at));
     });
-    timers.push(setTimeout(runLoop, 11800));
+    timers.push(setTimeout(runLoop, 14200));
   }
   function toggleFreeze() {
     frozen = !frozen;
@@ -179,6 +217,8 @@
       rigNote.innerHTML = 'frozen — this state is a law: <b>one issue = one worker = one receipt</b>. click the packet to resume';
     } else {
       rigNote.innerHTML = 'resumed — the packet continues its containment';
+      timers.forEach(clearTimeout); timers = [];
+      timers.push(setTimeout(runLoop, 1200));
     }
   }
   function showAnatomy(layer) {
@@ -196,11 +236,14 @@
       descended = null;
       rig3.removeAttribute('data-desc');
       anatomy.classList.remove('show');
+      setTimeout(function () { anchorToPlane(); }, 560);
       return;
     }
     descended = layer;
     rig3.setAttribute('data-desc', layer);
     showAnatomy(layer);
+    anchorToPlane(layer);
+    setTimeout(function () { anchorToPlane(layer); }, 560);
   }
   if (rig3) {
     rig3.querySelectorAll('.plane').forEach(function (pl) {
@@ -218,6 +261,9 @@
     });
     document.addEventListener('keydown', function (ev) {
       if (ev.key === 'Escape' && descended) descend(descended);
+    });
+    window.addEventListener('resize', function () {
+      anchorToPlane();
     });
     // drag to rotate the drafting sheet
     var dragging = false, sx = 0, sy = 0, rz = -38, rx = 52, moved = 0;
@@ -238,9 +284,13 @@
     });
     rig3.addEventListener('pointerup', function () {
       dragging = false; rig3.classList.remove('dragging');
+      anchorToPlane();
       setTimeout(function () { dragMoved = false; }, 50);
     });
-    rig3.addEventListener('pointercancel', function () { dragging = false; rig3.classList.remove('dragging'); });
+    rig3.addEventListener('pointercancel', function () {
+      dragging = false; rig3.classList.remove('dragging');
+      anchorToPlane();
+    });
     // boot
     var boot = new IntersectionObserver(function (es) {
       es.forEach(function (e) {
