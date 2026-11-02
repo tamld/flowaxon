@@ -23,7 +23,7 @@ def f2s(f): return f / FPS
 M2_START = 450             # 15.0 s — bar 7 downbeat
 M3_START = 1238            # 41.27 s
 GATE_FRAMES = [840 + 60 * i for i in range(6)]   # abs frames of gate chip pops
-TYPE_START, TYPE_END = 540, 1220                 # typing window (clacks)
+TYPE_START, TYPE_END = 540, 1174                 # typing window (clacks)
 LEDGER_FRAMES = [1240 + 55 * i for i in range(6)]  # ledger row reveals
 ENDCARD = 1800             # 60.0 s — bar 24 downbeat
 VO_SPANS = [(2.0, 12.13), (16.0, 37.12), (41.33, 60.79)]  # duck bed here
