@@ -13,7 +13,7 @@
 <meta property="og:image" content="https://flowaxon.com/assets/video/promo-poster.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%23f7f5f0'/%3E%3Ccircle cx='8' cy='8' r='5' fill='none' stroke='%238a5c06'/%3E%3Ccircle cx='8' cy='8' r='1.6' fill='%238a5c06'/%3E%3C/svg%3E">
-<link rel="stylesheet" href="/assets/v5/v5.css" integrity="sha384-oqyLUPfC+T7irz7IeRW3GUthGRNKMXFQL9ptFGSltH3vk1b9T2csC07yu1yzaTVZ">
+<link rel="stylesheet" href="/assets/v5/v5.css" integrity="sha384-BuhMLy646rsvsH2ISB7V56M6QMIsQnQfvsDOtA1LIPFk9GkJGOr3yLNgUcYUZj3L">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Person","name":"Le Duc Tam","url":"https://flowaxon.com/","sameAs":["https://github.com/tamld"],"jobTitle":"AI Agent Systems Architect","description":"Builds containment harnesses for autonomous AI agents. 11 years of production infrastructure.","knowsAbout":["agent containment","zero-trust CI/CD","infrastructure automation","g8s"]}
 </script>
@@ -36,8 +36,8 @@
 <section class="hero" id="top">
   <canvas id="field" width="640" height="640" aria-hidden="true"></canvas>
   <p class="kick"><b>$</b> whoami — AI agent systems architect · 11y production · UTC+7</p>
-  <h1>Autonomous AI agents are already in production. Most have <b>no brakes</b>. I build the brakes.</h1>
-  <p class="lede">Eleven years of operating real infrastructure — from a 48-hour ransomware crucible to a Proxmox/podman fleet in production. One drive underneath it all: <b>take what repeats, and make it obey — one system, seen from above.</b> <b>g8s</b> is the harness agents obey — and this page was assembled by that harness itself.</p>
+  <h1>Most agents in production have no <b>brakes</b>. I build them.</h1>
+  <p class="lede">Autonomous AI agents are already in production. Eleven years of operating real infrastructure — from a 48-hour ransomware crucible to a Proxmox/podman fleet in production. One drive underneath it all: <b>take what repeats, and make it obey — one system, seen from above.</b> <b>g8s</b> is the harness agents obey — and this page was assembled by that harness itself.</p>
   <div class="chips">
     <span>g8s</span><span>containment F0/F1/F2</span><span>write receipts</span><span>6-stage zero-trust CI</span><span>zero-origin edge</span>
   </div>
@@ -64,9 +64,8 @@
 
 <!-- ACT I — BUILD LEDGER (meta-story centerpiece) -->
 <section class="act reveal" id="builtby">
-  <p class="act-label"><b>ACT I</b> — built by its own harness</p>
   <h2>The site that assembled itself.</h2>
-  <p class="act-sub">Every line of this page passed through the containment it describes: briefs issued, workers claimed tasks inside isolated worktrees, receipts sealed every write, a human confirmed every merge. The ledger below is the real build log — <b>scrub it and watch the page rebuild itself</b>, frame by frame, from real commits.</p>
+  <p class="act-sub"><b>Act I — Built by its own harness.</b> Every line of this page passed through the containment it describes: briefs issued, workers claimed tasks inside isolated worktrees, receipts sealed every write, a human confirmed every merge. The ledger below is the real build log — <b>scrub it and watch the page rebuild itself</b>, frame by frame, from real commits.</p>
   <div class="card">
     <span class="corner" aria-hidden="true"></span><span class="corner br" aria-hidden="true"></span>
     <div class="tb"><span class="t">BUILD LEDGER — <b>g8s harness</b></span><span class="yr">2026-10-31 → 11-01</span></div>
@@ -84,31 +83,20 @@
 
 <!-- ACT II — RIG -->
 <section class="act reveal" id="rig">
-  <p class="act-label"><b>ACT II</b> — the rig, with depth</p>
   <h2>One task travels the containment. Watch it.</h2>
-  <p class="act-sub">The amber packet is a real dispatch: <b>brief → lease → worktree → receipt → human gate → merge</b>. Click a plane to descend into its anatomy. Drag the sheet to rotate it. Click the packet to freeze the story.</p>
+  <p class="act-sub"><b>Act II — The containment rig.</b> The amber packet is a real dispatch: <b>brief → lease → worktree → receipt → human gate → merge</b>. Click a tier to descend into its anatomy. Drag to orbit. Press Space or click the packet to freeze the story.</p>
   <div class="card">
     <span class="corner" aria-hidden="true"></span>
     <div class="rigbox">
-      <div class="rig3" id="rig3">
-        <div class="rig-sheet" id="rigSheet">
-          <div class="plane p1" data-layer="F2" tabindex="0" role="button" aria-label="Descend into F2 sandbox layer">
-            <span class="tag">F2 · SUBTASK</span><i class="dot d1"></i><i class="dot g d2"></i>
-            <span class="chip c-work">task_started</span>
-            <i class="seal s1"></i><i class="seal s2"></i><i class="seal s3"></i>
-          </div>
-          <div class="plane p2" data-layer="F1" tabindex="0" role="button" aria-label="Descend into F1 executor layer">
-            <span class="tag">F1 · EXECUTOR</span><i class="dot d1"></i><i class="dot g d3"></i>
-            <span class="chip c-lease">task_claimed · lease <span class="lease-timer">60</span>s</span><span class="chip c-receipt">receipt sealed · 96fd2088</span>
-          </div>
-          <div class="plane p3" data-layer="F0" tabindex="0" role="button" aria-label="Descend into F0 architect layer">
-            <span class="tag">F0 · ARCHITECT</span><i class="dot g d4"></i>
-            <span class="chip c-f0">task_submitted</span><span class="chip c-gate">attempt_finished · 5.86s</span><span class="chip c-merge">WORKER_COMPLETED ✓</span>
-            <i class="gate-ring" aria-hidden="true"></i>
-          </div>
-        </div>
-        <div class="packet" id="packet" role="button" tabindex="0" aria-label="Dispatch packet 6a605f76 — click to freeze or resume">
-          <span class="pkt-id">6a605f76</span>
+      <div class="rig3" id="rig3" role="region" aria-label="Containment Rig v3 visualizer">
+        <canvas id="rigCanvas" width="800" height="420" aria-label="3D isometric canvas visualization of g8s containment"></canvas>
+        <div class="rig-overlay" id="rigOverlay">
+          <button class="rig-tier-btn" id="btnTierF0" data-layer="F0" type="button" aria-label="F0 Architect layer · 0 to focus">F0 · ARCHITECT</button>
+          <button class="rig-tier-btn" id="btnTierF1" data-layer="F1" type="button" aria-label="F1 Executor layer · 1 to focus">F1 · EXECUTOR</button>
+          <button class="rig-tier-btn" id="btnTierF2" data-layer="F2" type="button" aria-label="F2 Sandbox layer · 2 to focus">F2 · SANDBOX</button>
+          <button class="rig-pkt-btn" id="btnPacket" type="button" aria-label="Dispatch packet 6a605f76 · click or Space to freeze">
+            <span class="pkt-pill"><span class="pkt-id">6a605f76</span></span>
+          </button>
         </div>
       </div>
       <p class="rig-note" id="rigNote">dispatching…</p>
@@ -125,9 +113,8 @@
 
 <!-- ACT III — TERMINAL -->
 <section class="act reveal" id="drill">
-  <p class="act-label"><b>ACT III</b> — drill</p>
   <h2>Keyboard-first. Trust nothing.</h2>
-  <p class="act-sub">The terminal below replays a <b>real dispatch cycle</b> captured from this harness — task <b>6a605f76</b>, provider agy, 5.86s end to end. Nothing scripted by hand. Press <b>/</b> for the command palette, <b>Tab</b> to complete, <b>Enter</b> to run.</p>
+  <p class="act-sub"><b>Act III — Interactive drill.</b> The terminal below replays a <b>real dispatch cycle</b> captured from this harness — task <b>6a605f76</b>, provider agy, 5.86s end to end. Nothing scripted by hand. Press <b>/</b> for the command palette, <b>Tab</b> to complete, <b>Enter</b> to run.</p>
   <div class="term" id="term">
     <div class="pal" id="pal" role="listbox"></div>
     <div id="termOut"></div>
@@ -138,9 +125,8 @@
 
 <!-- ACT IV — FILM -->
 <section class="act reveal" id="film">
-  <p class="act-label"><b>ACT IV</b> — the film</p>
   <h2>The Harness — one minute, with sound.</h2>
-  <p class="act-sub">Three movements: the problem, the harness, the proof. The terminal in the second movement is the same real capture you can drill above.</p>
+  <p class="act-sub"><b>Act IV — The film.</b> Three movements: the problem, the harness, the proof. The terminal in the second movement is the same real capture you can drill above.</p>
   <div class="filmbox">
     <video id="filmV" controls preload="metadata" poster="/assets/video/harness-poster.jpg">
       <source src="/assets/video/harness-en.mp4" type="video/mp4">
@@ -161,6 +147,7 @@
 
 </div>
 <script src="/assets/v5/herofield.js" integrity="sha384-8mL/jz4nLeNNIer5faNxoYyXVCwWBpYQDdkQ5opabGI9vMTMNdYGe7ShvH+ccI3w" defer></script>
-<script src="/assets/v5/site.js" integrity="sha384-T24JREaYe0AIakc11JWvvIvwd+RIf2MiGi7FW5IhcHJPuhId11ezLpWa330dQknp" defer></script>
+<script src="/assets/v5/rig3.js" integrity="sha384-60ydoWAKZ023QzexQUI6dN5o/ir+/Ft3WT0UoZJhafz8BklQqGY0GZbfwK+dI+zW" defer></script>
+<script src="/assets/v5/site.js" integrity="sha384-Uh/Vl0j0HW/NGUUWeBQ0rcC2CGtSEzn8/DrWpePWyKBl1iUzZVCgtFG4hHSlFmOZ" defer></script>
 </body>
 </html>
