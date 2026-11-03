@@ -53,7 +53,16 @@
   fetch('/assets/v5/ledger.json').then(function (r) { return r.json(); }).then(function (d) {
     d.rows.forEach(function (row) {
       var div = document.createElement('div'); div.className = 'wave';
-      var w = document.createElement('span'); w.className = 'w'; w.textContent = row.wave;
+      var w = document.createElement('span'); w.className = 'w';
+      var bullet = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      bullet.setAttribute('class', 'bullet-seal');
+      bullet.setAttribute('viewBox', '0 0 14 14');
+      bullet.setAttribute('aria-hidden', 'true');
+      var use = document.createElementNS('http://www.w3.org/2000/svg', 'use');
+      use.setAttribute('href', '/assets/v5/seals.svg#seal-bullet');
+      bullet.appendChild(use);
+      w.appendChild(bullet);
+      w.appendChild(document.createTextNode(row.wave));
       var dd = document.createElement('span'); dd.className = 'd';
       var b = document.createElement('b'); b.textContent = row.title + ' — ';
       dd.appendChild(b);

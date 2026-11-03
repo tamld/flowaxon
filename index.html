@@ -10,10 +10,13 @@
 <meta property="og:title" content="Autonomous AI agents are already in production. Most have no brakes.">
 <meta property="og:description" content="g8s — the containment harness agents obey. Every write sealed, every gate human-confirmed. Built by its own harness.">
 <meta property="og:url" content="https://flowaxon.com/">
-<meta property="og:image" content="https://flowaxon.com/assets/video/promo-poster.jpg">
+<meta property="og:image" content="https://flowaxon.com/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<!-- TODO(analytics): Cloudflare Web Analytics beacon skipped — no CF Pages beacon token in env; preserved CSP without unconfirmed third-party script injection -->
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%23f7f5f0'/%3E%3Ccircle cx='8' cy='8' r='5' fill='none' stroke='%238a5c06'/%3E%3Ccircle cx='8' cy='8' r='1.6' fill='%238a5c06'/%3E%3C/svg%3E">
-<link rel="stylesheet" href="/assets/v5/v5.css" integrity="sha384-BuhMLy646rsvsH2ISB7V56M6QMIsQnQfvsDOtA1LIPFk9GkJGOr3yLNgUcYUZj3L">
+<link rel="stylesheet" href="/assets/v5/v5.css" integrity="sha384-MuiqkNwxoLhGeVBURbV0Ax0vO0O7Wel+exdpJbHdQbyGHspv2dUVuBRkJ78AYdYj">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Person","name":"Le Duc Tam","url":"https://flowaxon.com/","sameAs":["https://github.com/tamld"],"jobTitle":"AI Agent Systems Architect","description":"Builds containment harnesses for autonomous AI agents. 11 years of production infrastructure.","knowsAbout":["agent containment","zero-trust CI/CD","infrastructure automation","g8s"]}
 </script>
@@ -37,9 +40,10 @@
   <canvas id="field" width="640" height="640" aria-hidden="true"></canvas>
   <p class="kick"><b>$</b> whoami — AI agent systems architect · 11y production · UTC+7</p>
   <h1>Most agents in production have no <b>brakes</b>. I build them.</h1>
+  <p class="stake">When autonomous workers run without mechanical brakes, one unconstrained loop overwrites production configs, leaks API keys into git history, or breaks live traffic on your watch.</p>
   <p class="lede">Autonomous AI agents are already in production. Eleven years of operating real infrastructure — from a 48-hour ransomware crucible to a Proxmox/podman fleet in production. One drive underneath it all: <b>take what repeats, and make it obey — one system, seen from above.</b> <b>g8s</b> is the harness agents obey — and this page was assembled by that harness itself.</p>
   <div class="chips">
-    <span>g8s</span><span>containment F0/F1/F2</span><span>write receipts</span><span>6-stage zero-trust CI</span><span>zero-origin edge</span>
+    <span>g8s</span><span>containment F0/F1/F2</span><span>sealed writes</span><span>6-stage zero-trust CI</span><span>zero-origin edge</span>
   </div>
   <div class="stats">
     <div class="stat" tabindex="0">
@@ -62,12 +66,18 @@
   <p class="stat-hint">hover / focus a stat → its source</p>
 </section>
 
+<!-- DIVIDER 1: SEAL-01 -->
+<div class="divider-seal" aria-hidden="true">
+  <svg viewBox="0 0 236 28"><use href="/assets/v5/seals.svg#seal-sealed"></use></svg>
+</div>
+
 <!-- ACT I — BUILD LEDGER (meta-story centerpiece) -->
 <section class="act reveal" id="builtby">
   <h2>The site that assembled itself.</h2>
-  <p class="act-sub"><b>Act I — Built by its own harness.</b> Every line of this page passed through the containment it describes: briefs issued, workers claimed tasks inside isolated worktrees, receipts sealed every write, a human confirmed every merge. The ledger below is the real build log — <b>scrub it and watch the page rebuild itself</b>, frame by frame, from real commits.</p>
-  <div class="card">
-    <span class="corner" aria-hidden="true"></span><span class="corner br" aria-hidden="true"></span>
+  <p class="act-sub"><b>Act I — Built by its own harness.</b> Every line of this page passed through the containment it describes: briefs issued, workers claimed tasks under a lease (a timed credential that bounds sandbox execution and auto-expires), write receipts (a one-time permission slip that names exactly which files a worker may touch) sealed every write, and human-confirmed gates (a mandatory checkpoint where an engineer reviews diffs before merge) guarded every commit. The ledger below is the real build log — <b>scrub it and watch the page rebuild itself</b>, frame by frame, from real commits.</p>
+  <div class="card plate-blueprint">
+    <span class="corner" aria-hidden="true"></span><span class="corner tr" aria-hidden="true"></span>
+    <span class="corner bl" aria-hidden="true"></span><span class="corner br" aria-hidden="true"></span>
     <div class="tb"><span class="t">BUILD LEDGER — <b>g8s harness</b></span><span class="yr">2026-10-31 → 11-01</span></div>
     <div class="ledger" id="ledger" aria-live="polite"></div>
     <div class="scrub">
@@ -77,9 +87,21 @@
     </div>
     <div class="rebuild" id="rebuild" aria-hidden="true"></div>
     <p class="rebuild-cap">the wireframe above reassembles in commit order — the same order the real page was built</p>
+    <div class="plate-titleblock" aria-label="Engineering Drawing Title Block">
+      <div class="tb-item"><span>DWG:</span><b>FX-V5-BLD</b></div>
+      <div class="tb-item"><span>REV:</span><b>5.1</b></div>
+      <div class="tb-item"><span>SCALE:</span><b>1:1</b></div>
+      <div class="tb-item"><span>DATE:</span><b>2026-11-01</b></div>
+      <div class="tb-item"><span>ATTEST:</span><b class="tb-proof">g8s-harness</b></div>
+    </div>
   </div>
   <p class="srcnote">sources: every row links its commit in <a href="https://github.com/tamld/flowaxon/commits/main">github.com/tamld/tamld.github.io</a> · doctrine in <a href="https://github.com/tamld/flowaxon/tree/main/docs/research">docs/research/</a></p>
 </section>
+
+<!-- DIVIDER 2: SEAL-01 -->
+<div class="divider-seal" aria-hidden="true">
+  <svg viewBox="0 0 236 28"><use href="/assets/v5/seals.svg#seal-sealed"></use></svg>
+</div>
 
 <!-- ACT II — RIG -->
 <section class="act reveal" id="rig">
@@ -111,6 +133,11 @@
   <p class="srcnote">ground truth: <a href="https://github.com/tamld/g8s/blob/main/docs/decisions/0032-containment-levels.md">ADR-0032 — containment levels</a> · the packet replays the real capture in ACT III</p>
 </section>
 
+<!-- DIVIDER 3: SEAL-01 -->
+<div class="divider-seal" aria-hidden="true">
+  <svg viewBox="0 0 236 28"><use href="/assets/v5/seals.svg#seal-sealed"></use></svg>
+</div>
+
 <!-- ACT III — TERMINAL -->
 <section class="act reveal" id="drill">
   <h2>Keyboard-first. Trust nothing.</h2>
@@ -120,8 +147,54 @@
     <div id="termOut"></div>
     <div class="cmdline"><span class="ps1">$</span><input id="termIn" type="text" autocomplete="off" spellcheck="false" aria-label="Terminal input"></div>
   </div>
+
+  <!-- SPECIMEN-01 (forensic receipt panel from real capture) -->
+  <div class="specimen card" id="specimen-01">
+    <span class="corner" aria-hidden="true"></span><span class="corner br" aria-hidden="true"></span>
+    <div class="tb">
+      <span class="t"><svg class="specimen-seal" viewBox="0 0 14 14" aria-hidden="true"><use href="/assets/v5/seals.svg#seal-bullet"></use></svg> SPECIMEN-01 // <b>FORENSIC WRITE-RECEIPT</b></span>
+      <span class="yr">RECORDED 2026-11-01 · 5.86s</span>
+    </div>
+    <pre class="specimen-pre" tabindex="0"><code>{
+  <span class="k">"receipt_id"</span>: <span class="v-proof">"96fd2088fe80da90"</span>,
+  <span class="k">"status"</span>: <span class="v-proof">"SEALED · SINGLE-USE"</span>,
+  <span class="k">"task_id"</span>: <span class="v">"6a605f76-8a88-4b7f-a457-df194c6775e6"</span>,
+  <span class="k">"operator"</span>: <span class="v">"tamld@<span class="redact">████████</span>"</span>,
+  <span class="k">"lease"</span>: {
+    <span class="k">"token"</span>: <span class="v">"b9f379a2<span class="redact">████████████████</span>"</span>,
+    <span class="k">"duration_s"</span>: <span class="v-num">60</span>,
+    <span class="k">"affinity"</span>: <span class="v">"provider=agy model=gemini-3.8-flash-low"</span>
+  },
+  <span class="k">"sandbox"</span>: {
+    <span class="k">"tier"</span>: <span class="v">"F1"</span>,
+    <span class="k">"worktree"</span>: <span class="v">"/private/tmp/g8s-sandboxes/wt-<span class="redact">████████</span>"</span>,
+    <span class="k">"path_scope"</span>: [
+      <span class="v">"+/sites/v5/index.html"</span>,
+      <span class="v">"+/assets/v5/*"</span>,
+      <span class="v">"-/etc/<span class="redact">████████</span>"</span>,
+      <span class="v">"-~/.ssh/<span class="redact">████████</span>"</span>
+    ]
+  },
+  <span class="k">"attempt"</span>: {
+    <span class="k">"response"</span>: { <span class="k">"ok"</span>: <span class="v-bool">true</span>, <span class="k">"harness"</span>: <span class="v-proof">"g8s"</span> },
+    <span class="k">"result_hash"</span>: <span class="v">"sha256:99bcdd7e<span class="redact">████████████████████████████</span>"</span>,
+    <span class="k">"duration_ms"</span>: <span class="v-num">5860</span>
+  },
+  <span class="k">"human_gate"</span>: <span class="v-proof">"CONFIRMED · MERGE_PERMITTED (tamld, 2026-11-01T22:12:00Z)"</span>
+}</code></pre>
+    <div class="specimen-foot">
+      <span>AUDIT: immutable-wal · hash-verified</span>
+      <span>RECEIPT: 96fd2088fe80da90</span>
+    </div>
+  </div>
+
   <p class="srcnote">capture artifact: task 6a605f76 · receipt 96fd2088 · result {"ok":true,"harness":"g8s"} · commands: submit · watch · verify · charter</p>
 </section>
+
+<!-- DIVIDER 4: SEAL-01 -->
+<div class="divider-seal" aria-hidden="true">
+  <svg viewBox="0 0 236 28"><use href="/assets/v5/seals.svg#seal-sealed"></use></svg>
+</div>
 
 <!-- ACT IV — FILM -->
 <section class="act reveal" id="film">
@@ -148,6 +221,6 @@
 </div>
 <script src="/assets/v5/herofield.js" integrity="sha384-8mL/jz4nLeNNIer5faNxoYyXVCwWBpYQDdkQ5opabGI9vMTMNdYGe7ShvH+ccI3w" defer></script>
 <script src="/assets/v5/rig3.js" integrity="sha384-60ydoWAKZ023QzexQUI6dN5o/ir+/Ft3WT0UoZJhafz8BklQqGY0GZbfwK+dI+zW" defer></script>
-<script src="/assets/v5/site.js" integrity="sha384-Uh/Vl0j0HW/NGUUWeBQ0rcC2CGtSEzn8/DrWpePWyKBl1iUzZVCgtFG4hHSlFmOZ" defer></script>
+<script src="/assets/v5/site.js" integrity="sha384-Rx0/TDY7c+z7Yu/xASEBTtUb40g/v9fV3x9GwECXdhkDbP0HgAckA8pFm6FhbV/2" defer></script>
 </body>
 </html>
