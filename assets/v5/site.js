@@ -115,8 +115,8 @@
   var out = $('#termOut'), tin = $('#termIn'), pal = $('#pal');
   var SCRIPTS = {
     submit: [
-      ['$ g8s submit -provider agy -model gemini-3.8-flash-low -effort low -role scout', 'lc'],
-      ['  -permission read_only · prompt: "Reply with exactly: {\\"ok\\":true,\\"harness\\":\\"g8s\\"}"', 'lc'],
+      ['$ g8s submit --idempotency-key demo-1 --prompt "inventory the module" --permission read_only', 'lc'],
+      ['  → one task enters the queue, carrying its own permission slip', 'c'],
       ['task 6a605f76-8a88-4b7f-a457-df194c6775e6 · state QUEUED', 'la'],
       ['request_hash 2f45b299 · queue: sqlite WAL · single-winner', 'c'],
       ['worker --once → claim affinity: provider=agy', 'c'],
