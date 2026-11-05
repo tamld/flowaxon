@@ -96,6 +96,9 @@ jobs:
       - name: Verify Subresource Integrity (SRI) SHA-384 Byte Match
         run: bash scripts/verify-sri.sh
 
+      - name: Hardened Header Parity across _headers / nginx.conf / main.go (C15)
+        run: python3 tools/header_parity.py
+
       - name: Boot Engine & Verify DOM/CSP/MIME across Virtual Hosts
         run: |
           go build -o flowaxon-engine main.go
