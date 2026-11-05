@@ -386,7 +386,34 @@
     });
   }
 
-  /* ── 8. LAZY-INIT VIA INTERSECTION OBSERVER ── */
+  /* ── 8. LEDGER CONTENT: built at parse time (static data, no lazy gate) so the
+     section holds its final geometry from the first layout pass — no CLS and no
+     page-height jump after the observer fires (which would strand later sections
+     outside a pre-computed scroll horizon). Only the animated construct (iframe
+     + auto-play) is lazy. ── */
+  function initializeLedger() {
+    fetch('/assets/v5/ledger.json')
+      .then(function (res) {
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        return res.json();
+      })
+      .then(function (data) {
+        ledgerData = data;
+        assertBT1(data.rows, REVEAL_MAP);
+        buildLedgerDOM(data.rows);
+        var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        // Reduced motion: static end frame, no animation. Otherwise initial frame.
+        paintFromNormalized(prefersReduced ? 1.0 : 0.0);
+      })
+      .catch(function (err) {
+        if (ledgerEl) {
+          ledgerEl.textContent = 'Build ledger unavailable (' + err.message + ') — see github.com/tamld/flowaxon/commits/main';
+        }
+      });
+  }
+  initializeLedger();
+
+  /* ── 9. LAZY ANIMATED CONSTRUCT VIA INTERSECTION OBSERVER ── */
   function initializeTheater() {
     if (initialized) return;
     initialized = true;
@@ -399,33 +426,11 @@
       theaterFrame.src = embedUrl;
     }
 
-    // Fetch ledger.json and run BT-1 gate assert
-    fetch('/assets/v5/ledger.json')
-      .then(function (res) {
-        if (!res.ok) throw new Error('HTTP ' + res.status);
-        return res.json();
-      })
-      .then(function (data) {
-        ledgerData = data;
-        assertBT1(data.rows, REVEAL_MAP);
-        buildLedgerDOM(data.rows);
-
-        var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        if (prefersReduced) {
-          if (scrub) scrub.value = 1000;
-          paintFromNormalized(1.0);
-        } else {
-          // Initial frame
-          paintFromNormalized(0.0);
-          // Auto-play once when scrolled into view
-          startPlayback();
-        }
-      })
-      .catch(function (err) {
-        if (ledgerEl) {
-          ledgerEl.textContent = 'Build ledger unavailable (' + err.message + ') — see github.com/tamld/flowaxon/commits/main';
-        }
-      });
+    var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!prefersReduced) {
+      // Auto-play once when scrolled into view
+      startPlayback();
+    }
   }
 
   // IntersectionObserver for lazy-init
