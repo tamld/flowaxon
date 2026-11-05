@@ -18,7 +18,7 @@
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon.ico" sizes="32x32">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="stylesheet" href="/assets/v5/v5.css" integrity="sha384-psAh+IXkQCnFzoPcvk2TH1nmNsMDzvMLv9yOz045Uf4OFBlMemz3o8CwdSOFUwt2">
+<link rel="stylesheet" href="/assets/v5/v5.css" integrity="sha384-GXQBPBhTw4OwMfT07W0HqNI2G6aaDP0PSuiESuj1qrtUJJGhjcGGXix5j+btuxNX">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Person","name":"Le Duc Tam","url":"https://flowaxon.com/","sameAs":["https://github.com/tamld"],"jobTitle":"AI Agent Systems Architect","description":"Builds containment harnesses for autonomous AI agents. 11 years of production infrastructure.","knowsAbout":["agent containment","zero-trust CI/CD","infrastructure automation","g8s"]}
 </script>
@@ -65,31 +65,72 @@
   <svg viewBox="0 0 236 28"><use href="/assets/v5/seals.svg#seal-sealed"></use></svg>
 </div>
 
-<!-- ACT I — BUILD LEDGER (meta-story centerpiece) -->
+<!-- ACT I — BUILD THEATER (meta-story centerpiece) -->
 <section class="act reveal" id="builtby">
   <h2>The site that assembled itself.</h2>
-  <p class="act-sub"><b>Act I — Built by its own harness.</b> Every line of this page passed through the containment it describes: briefs issued, workers claimed tasks under a lease (a timed credential that bounds sandbox execution and auto-expires), write receipts (a one-time permission slip that names exactly which files a worker may touch) sealed every write, and human-confirmed gates (a mandatory checkpoint where an engineer reviews diffs before merge) guarded every commit. The ledger below is the real build log — <b>scrub it and watch the page rebuild itself</b>, frame by frame, from real commits.</p>
-  <div class="card plate-blueprint">
+  <p class="act-sub"><b>Act I — Built by its own harness.</b> Every line of this page passed through the containment it describes: briefs issued, workers claimed tasks under a lease, write receipts sealed every write, and human-confirmed gates guarded every commit. The theater below is the real page assembling itself live in commit order: <b>scrub the timeline or press play</b> to watch each region unlock under cryptographic receipt.</p>
+  <div class="card plate-blueprint theater-card" id="theaterCard">
     <span class="corner" aria-hidden="true"></span><span class="corner tr" aria-hidden="true"></span>
     <span class="corner bl" aria-hidden="true"></span><span class="corner br" aria-hidden="true"></span>
-    <div class="tb"><span class="t">BUILD LEDGER — <b>g8s harness</b></span><span class="yr">2026-10-31 → 11-01</span></div>
-    <div class="ledger" id="ledger" aria-live="polite"></div>
-    <div class="scrub">
-      <button class="btn" id="scrubPlay" type="button">▶ replay</button>
-      <input type="range" id="scrub" min="0" max="1000" value="0" aria-label="Scrub the build timeline">
-      <span class="pos" id="scrubPos">t+0.0s</span>
+    <div class="tb">
+      <span class="t">Build theater — <b>self-assembly live frame</b></span>
+      <span class="yr">2026-10-31 → 11-01 · 9 commits</span>
     </div>
-    <div class="rebuild" id="rebuild" aria-hidden="true"></div>
-    <p class="rebuild-cap">the wireframe above reassembles in commit order — the same order the real page was built</p>
+
+    <!-- 16:10 THEATER STAGE -->
+    <div class="theater-stage" id="theaterStage">
+      <div class="theater-viewport" id="theaterViewport">
+        <!-- Live scaled 0.25 iframe (src populated dynamically by IntersectionObserver) -->
+        <iframe
+          id="theaterFrame"
+          class="theater-frame"
+          title="Build theater live assembly preview"
+          tabindex="-1"
+          aria-hidden="true"
+          loading="lazy">
+        </iframe>
+        <!-- Static fallback wireframe background -->
+        <div class="theater-fallback" id="theaterFallback" aria-hidden="true"></div>
+        <!-- Theater HUD chip overlay -->
+        <div class="theater-hud" id="theaterHud" aria-hidden="true">
+          <div class="theater-scanline"></div>
+          <div class="theater-chip" id="theaterChip">
+            <svg class="chip-seal" viewBox="0 0 14 14" aria-hidden="true"><use href="/assets/v5/seals.svg#seal-bullet"></use></svg>
+            <span id="theaterChipText">W0 · RESEARCH</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCRUB CONTROLS (WCAG compliant range input + keyboard) -->
+    <div class="scrub theater-scrub">
+      <button class="btn" id="theaterPlay" type="button" aria-label="Play or replay build assembly animation">▶ play</button>
+      <input type="range" id="theaterScrub" min="0" max="1000" value="0" aria-label="Scrub the build timeline" aria-valuemin="0" aria-valuemax="1000" aria-valuenow="0" aria-valuetext="Step 1 of 10: Doctrine before pixels">
+      <span class="pos" id="theaterPos">t+0.0s (1/10)</span>
+    </div>
+
+    <!-- ACTIVE COMMIT HUMAN-LINE STRIP -->
+    <div class="theater-human-strip" id="theaterHumanStrip" aria-live="polite">
+      <div class="strip-header">
+        <span class="strip-sha" id="stripSha">DOCS</span>
+        <span class="strip-wave" id="stripWave">W0 · RESEARCH</span>
+        <svg class="strip-seal" id="stripSeal" viewBox="0 0 236 28" aria-hidden="true"><use href="/assets/v5/seals.svg#seal-sealed"></use></svg>
+      </div>
+      <p class="strip-line" id="stripLine">Doctrine before pixels: established brand brief, 20-dimension design audit, and directive ledger across 4 g8s waves.</p>
+    </div>
+
+    <!-- FULL COMMIT ROWS LEDGER -->
+    <div class="ledger theater-ledger" id="ledger" aria-live="polite"></div>
+
     <div class="plate-titleblock" aria-label="Engineering Drawing Title Block">
-      <div class="tb-item"><span>DWG:</span><b>FX-V5-BLD</b></div>
-      <div class="tb-item"><span>REV:</span><b>5.1</b></div>
-      <div class="tb-item"><span>SCALE:</span><b>1:1</b></div>
-      <div class="tb-item"><span>DATE:</span><b>2026-11-01</b></div>
-      <div class="tb-item"><span>ATTEST:</span><b class="tb-proof">g8s-harness</b></div>
+      <div class="tb-item"><span>DWG:</span><b>FX-V5-THTR</b></div>
+      <div class="tb-item"><span>REV:</span><b>5.2</b></div>
+      <div class="tb-item"><span>SCALE:</span><b>0.25 : 1</b></div>
+      <div class="tb-item"><span>DATE:</span><b>2026-11-05</b></div>
+      <div class="tb-item"><span>ATTEST:</span><b class="tb-proof">self-assembly</b></div>
     </div>
   </div>
-  <p class="srcnote">sources: every row links its commit in <a href="https://github.com/tamld/flowaxon/commits/main">github.com/tamld/tamld.github.io</a> · doctrine in <a href="https://github.com/tamld/flowaxon/tree/main/docs/research">docs/research/</a></p>
+  <p class="srcnote">sources: 9 verified git commits in <a href="https://github.com/tamld/flowaxon/commits/main">github.com/tamld/flowaxon</a> · doctrine in <a href="https://github.com/tamld/flowaxon/tree/main/docs/research">docs/research/</a></p>
 </section>
 
 <!-- DIVIDER 2: SEAL-01 -->
@@ -214,7 +255,8 @@
 
 </div>
 <script src="/assets/v5/herofield.js" integrity="sha384-8mL/jz4nLeNNIer5faNxoYyXVCwWBpYQDdkQ5opabGI9vMTMNdYGe7ShvH+ccI3w" defer></script>
+<script src="/assets/v5/theater.js" integrity="sha384-3TpAgvJmLorYAjU5rTdLOUgiz4w0fmvmFh+taMv/U6CTRylMGGSeSY0s2CoyXGR5" defer></script>
 <script src="/assets/v5/rig3.js" integrity="sha384-60ydoWAKZ023QzexQUI6dN5o/ir+/Ft3WT0UoZJhafz8BklQqGY0GZbfwK+dI+zW" defer></script>
-<script src="/assets/v5/site.js" integrity="sha384-82caF/h1yUZIBYsQXMBPjgihhTsOYWeGQoeih8kp0XRjvVkP7iaE6i1lrTK+t65v" defer></script>
+<script src="/assets/v5/site.js" integrity="sha384-JZhxvvZCs61VE2ukC84JwzFTIZ8NkNKVXtnrkmoLMpL97lX9uVRfGkLwwMDG6S4o" defer></script>
 </body>
 </html>

@@ -7,13 +7,19 @@ echo "==> [DAST] Running Active Security Probes against $TARGET_URL..."
 
 # 1. Healthz & Security Headers Probe
 HEADERS=$(curl -sI "$TARGET_URL/")
-for hdr in "content-security-policy:" "strict-transport-security:" "x-content-type-options: nosniff" "x-frame-options: DENY" "referrer-policy:" "permissions-policy:"; do
+for hdr in "content-security-policy:" "strict-transport-security:" "x-content-type-options: nosniff" "x-frame-options: sameorigin" "referrer-policy:" "permissions-policy:"; do
   if ! echo "$HEADERS" | grep -iq "$hdr"; then
     echo "❌ DAST FAIL: Missing required hardened header '$hdr'"
     exit 1
   fi
 done
-echo "    [PASS] Hardened HTTP Security Headers verified."
+# Frame-policy: self-framing allowed (Build Theater), external framing MUST stay blocked.
+# Assert both controls: CSP frame-ancestors 'self' AND X-Frame-Options SAMEORIGIN.
+if ! echo "$HEADERS" | grep -i "content-security-policy:" | grep -iq "frame-ancestors 'self'"; then
+  echo "❌ DAST FAIL: CSP must declare frame-ancestors 'self' (external framing blocked, self-framing for Build Theater)"
+  exit 1
+fi
+echo "    [PASS] Hardened HTTP Security Headers verified (frame policy: self-only)."
 
 # 2. MIME-Sniffing Strictness Probe across Virtual Hosts & Assets
 check_mime() {
