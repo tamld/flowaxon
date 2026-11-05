@@ -39,12 +39,13 @@ a{color:var(--src)}
 .serif{font-family:Georgia,'Times New Roman',serif}
 
 /* ── header ── */
-header.site{display:flex;justify-content:space-between;align-items:center;padding:18px 0;border-bottom:1px solid var(--bd)}
-.brand{display:inline-flex;align-items:center;gap:9px;font-size:13px;letter-spacing:.12em;color:var(--t4);text-decoration:none}
+header.site{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;row-gap:6px;padding:18px 0;border-bottom:1px solid var(--bd)}
+.brand{display:inline-flex;align-items:center;gap:9px;font-size:13px;letter-spacing:.12em;color:var(--t4);text-decoration:none;white-space:nowrap}
 .brand-mark{flex:none;color:var(--t1);transition:transform var(--dur-layout) var(--ez)}
 .brand:hover .brand-mark{transform:rotate(14deg)}
 .brand b{color:var(--amber);font-weight:400}
 nav.top{display:flex;gap:18px;align-items:center;font-size:13px}
+nav.top a{white-space:nowrap}
 nav.top a{color:var(--t4);text-decoration:none;border-bottom:1px dotted transparent;padding-bottom:2px;transition:color var(--dur-hover) var(--ez),border-color var(--dur-hover) var(--ez)}
 nav.top a:hover{color:var(--amber);border-bottom-color:var(--amber)}
 .tgl{display:flex;align-items:center;gap:8px;font:inherit;font-size:13px;color:var(--t4);
